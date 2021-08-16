@@ -37,7 +37,6 @@ extension Instance {
     
     /// The array of all the `Solve`s in the instance, sorted by `Date`.
     var solveArray: [Solve] {
-        print(Int.random(in: 1...10))
         let set = solves as? Set<Solve> ?? []
         return set.sorted {
             $0.date < $1.date
