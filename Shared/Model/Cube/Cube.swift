@@ -13,6 +13,9 @@ struct Cube {
     
     /// The number of pieces on each edge of the `Cube`.
     let size: Int
+    /// The `Puzzle` that the `Cube` represents.
+    let puzzle: Puzzle
+    
     /// A dictionary indicating how to rotate a `Cube`.
     private static var moveTable: [Tile: [(Tile, Face.Direction, Tile, Face.Direction)]] = [
          .up: [(.front, .up, .right, .up), (.right, .up, .back, .up), (.back, .up, .left, .up), (.left, .up, .front, .up)],
@@ -24,7 +27,11 @@ struct Cube {
     ]
     
     /// Creates a `Cube` of a specified size.
-    init(size: Int = 3) {
+    init(size: Int = 3) throws {
+        if size <= 1 {
+            throw CubeError.invalidSize
+        }
+        
         cubeState = [
             .up: Face(tile: .up, size: size),
             .front: Face(tile: .front, size: size),
@@ -35,6 +42,27 @@ struct Cube {
         ]
         
         self.size = size
+        
+        puzzle = Puzzle(size: size)
+    }
+    
+    init(from puzzle: Puzzle) throws {
+        guard let size = puzzle.size else {
+            throw CubeError.invalidPuzzle
+        }
+        
+        self.size = size
+        
+        cubeState = [
+            .up: Face(tile: .up, size: size),
+            .front: Face(tile: .front, size: size),
+            .right: Face(tile: .right, size: size),
+            .down: Face(tile: .down, size: size),
+            .back: Face(tile: .back, size: size),
+            .left: Face(tile: .left, size: size),
+        ]
+
+        self.puzzle = puzzle
     }
     
     // MARK: Types
@@ -163,6 +191,10 @@ struct Cube {
         case invalidMove
         /// Thrown when an invalid `Algorithm` is applied to a `Cube`.
         case invalidAlgorithm
+        /// Thrown when a cube is initialized with an invalid size.
+        case invalidSize
+        /// Thrown when a cube is initialized from a non `n` x `n` puzzle.
+        case invalidPuzzle
     }
 
     // MARK: Methods
