@@ -11,7 +11,7 @@ import Foundation
 class Countdown: ObservableObject {
     // MARK: Properties
     /// Whether the `duration` has passed since the `Countdown` was started.
-    @Published var complete = false
+    @Published var isComplete = false
     /// Whether the `Countdown` is running.
     @Published var isRunning = false
     
@@ -44,7 +44,7 @@ class Countdown: ObservableObject {
         }
         
         timer = Foundation.Timer.scheduledTimer(withTimeInterval: duration, repeats: false) { _ in
-            self.complete = true
+            self.isComplete = true
         }
         
         isRunning = true
@@ -58,7 +58,7 @@ class Countdown: ObservableObject {
         
         timer.invalidate()
         
-        complete = false
+        isComplete = false
         isRunning = false
     }
 }
