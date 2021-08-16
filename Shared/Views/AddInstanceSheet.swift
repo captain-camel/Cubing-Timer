@@ -12,7 +12,7 @@ struct AddInstanceSheet: View {
     /// The presentation mode of the sheet.
     @Environment(\.presentationMode) var presentationMode
     
-    /// A callback that is ran when the button to create the new `Instance` is pressed.
+    /// A callback that is called when the button to create the new `Instance` is pressed.
     let create: (_ name: String, _ puzzle: String, _ notes: String?) -> Void
     
     /// The name of the new `Instance`.
