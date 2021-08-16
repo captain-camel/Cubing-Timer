@@ -75,7 +75,7 @@ extension Instance {
     // MARK: Methods
     /// Adds a new `Solve` to the instance and saves it to Core Data.
     func addSolve(time: Double, date: Date = Date(), plusTwo: Bool = false, dnf: Bool = false, scramble: String? = nil) {
-        SolveStorage.shared.add(time: time, date: date, plusTwo: plusTwo, dnf: dnf, scramble: scramble, instance: self)
+        SolveStorage.add(time: time, date: date, plusTwo: plusTwo, dnf: dnf, scramble: scramble, instance: self)
         
         PersistenceController.save()
     }
