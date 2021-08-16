@@ -1,0 +1,128 @@
+//
+//  Puzzle.swift
+//  Cubing Timer
+//
+//  Created by Cameron Delong on 8/5/21.
+//
+
+import Foundation
+
+enum Puzzle: Hashable {
+    // MARK: Cases
+    /// A cube with 2 pieces on each edge.
+    case _2x2
+    /// A cube with 3 pieces on each edge.
+    case _3x3
+    /// A cube with 4 pieces on each edge.
+    case _4x4
+    /// A cube with 5 pieces on each edge.
+    case _5x5
+    /// A cube with 6 pieces on each edge.
+    case _6x6
+    /// A cube with 7 pieces on each edge.
+    case _7x7
+    
+    /// A tetrahedron with 3 pieces on each edge.
+    case pyraminx
+    /// A dodecahedron with 3 pieces on each edge.
+    case megaminx
+    /// A cube that rotates around its corners.
+    case skewb
+    /// A complex shape shifting cube.
+    case square_1
+    
+    /// Some other puzzle that is not listed.
+    case other(String)
+    
+    // MARK: Properties
+    /// Formatted name of the puzzle.
+    var stringValue: String {
+        get {
+            switch self {
+            case ._2x2:
+                return "2x2"
+            case ._3x3:
+                return "3x3"
+            case ._4x4:
+                return "4x4"
+            case ._5x5:
+                return "5x5"
+            case ._6x6:
+                return "6x6"
+            case ._7x7:
+                return "7x7"
+                
+            case .pyraminx:
+                return "Pyraminx"
+            case .megaminx:
+                return "Megaminx"
+            case .skewb:
+                return "Skewb"
+            case .square_1:
+                return "Square-1"
+                
+            case let .other(name):
+                return name
+            }
+        }
+        set {
+            switch newValue {
+            case "2x2":
+                self = ._2x2
+            case "3x3":
+                self = ._3x3
+            case "4x4":
+                self = ._4x4
+            case "5x5":
+                self = ._5x5
+            case "6x6":
+                self = ._6x6
+            case "7x7":
+                self = ._7x7
+                
+            case "Pyraminx":
+                self = .pyraminx
+            case "Megaminx":
+                self = .megaminx
+            case "Skewb":
+                self = .skewb
+            case "Square-1":
+                self = .square_1
+                
+            default:
+                self = .other(newValue)
+            }
+        }
+    }
+    
+    // MARK: Initializers
+    /// Creates an instance of `Puzzle` from a serialized string.
+    init(_ stringValue: String) {
+        switch stringValue {
+        case "2x2":
+            self = ._2x2
+        case "3x3":
+            self = ._3x3
+        case "4x4":
+            self = ._4x4
+        case "5x5":
+            self = ._5x5
+        case "6x6":
+            self = ._6x6
+        case "7x7":
+            self = ._7x7
+            
+        case "Pyraminx":
+            self = .pyraminx
+        case "Megaminx":
+            self = .megaminx
+        case "Skewb":
+            self = .skewb
+        case "Square-1":
+            self = .square_1
+            
+        default:
+            self = .other(stringValue)
+        }
+    }
+}

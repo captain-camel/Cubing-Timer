@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20G80" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Instance" representedClassName="Instance" syncable="YES">
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="name" attributeType="String"/>
+        <attribute name="notes" optional="YES" attributeType="String"/>
+        <attribute name="order" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="primaryStatisticRawValue" attributeType="String"/>
+        <attribute name="puzzleRawValue" attributeType="String"/>
+        <attribute name="secondaryStatisticRawValue" attributeType="String"/>
+        <relationship name="solves" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Solve" inverseName="instance" inverseEntity="Solve"/>
+    </entity>
+    <entity name="Solve" representedClassName="Solve" syncable="YES">
+        <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="dnf" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="plusTwo" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="scramble" optional="YES" attributeType="String"/>
+        <attribute name="time" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="instance" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Instance" inverseName="solves" inverseEntity="Instance"/>
+    </entity>
+    <elements>
+        <element name="Instance" positionX="-63" positionY="-18" width="128" height="149"/>
+        <element name="Solve" positionX="-54" positionY="45" width="128" height="119"/>
+    </elements>
+</model>

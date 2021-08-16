@@ -1,0 +1,172 @@
+//
+//  Statistic.swift
+//  Cubing Timer
+//
+//  Created by Cameron Delong on 8/5/21.
+//
+
+import Foundation
+
+struct Statistic {
+    // MARK: Properties
+    /// The type of statistic being tracked.
+    var kind: Kind
+    /// An extra option for the statistic. (`nil` if not applicable)
+    var modifier: Int?
+    
+    /// The `Instance` that the `Statistic` belongs to.
+    private var instance: Instance! {
+        didSet {
+            solveArray = instance.solveArray
+        }
+    }
+    
+    /// The array of all the `Solve`s in the instance that the `Statistic` belongs to, sorted by `Date`.
+    private var solveArray = [Solve]()
+    
+    /// Serialized value of the statistic for persistence.
+    var rawValue: String {
+        switch kind {
+        case .average:
+            return "average:\(modifier ?? 5)"
+        case .haha:
+            return "haha"
+        }
+    }
+    
+    /// Abbreviated version of the statistic's name.
+    var shortName: String {
+        switch kind {
+        case .average:
+            return "ao\(modifier ?? 5)"
+        case .haha:
+            return "haha"
+        }
+    }
+    
+    /// Full version of the statistic's name.
+    var longName: String {
+        switch kind {
+        case .average:
+            return "Average of \(modifier ?? 5)"
+        case .haha:
+            return "Haha(long)"
+        }
+    }
+    
+    /// Full name of statistic's extra option. (`nil` if no additional option)
+    var modifierTitle: String? {
+        switch kind {
+        case .average:
+            return "Average of:"
+        default:
+            return nil
+        }
+    }
+    
+    /// The computed value of the statistic.
+    var value: String {
+        switch kind {
+        case .average:
+            return Solve.formatTime(instance.average(of: modifier ?? 5))
+        case .haha:
+            return "haha(val)"
+        }
+    }
+    
+    /// `Array` of `Strings` that give extra information about the statistic.
+    var details: [String]? {
+        switch kind {
+        case .average:
+            let times = solveArray.suffix(modifier ?? 5).map { $0.time }
+            
+            var foundMin = false
+            var foundMax = false
+            
+            return solveArray.suffix(modifier ?? 5).map { solve in
+                if (solve.time == times.min() && !foundMin) || (solve.time == times.max() && !foundMax) {
+                    foundMin = solve.time == times.min()
+                    foundMax = solve.time == times.max()
+                    
+                    return "(\(solve.formattedTime))"
+                } else {
+                    return solve.formattedTime
+                }
+            }.reversed()
+        default:
+            return nil
+        }
+    }
+    
+    /// A closure to perform when a button next to a detail row is pressed.
+    var action: ((Int) -> Void)? {
+        switch kind {
+        case .average:
+            return { index in
+                if solveArray.count > index {
+                    //self.instance.deleteSolve(self.instance.solves.suffix(index + 1).first!)
+                    ()
+                }
+            }
+        default:
+            return nil
+        }
+    }
+    
+    /// The system image on the button that performs the action.
+    var actionSymbol: String? {
+        switch kind {
+        case .average:
+            return "trash"
+        default:
+            return nil
+        }
+    }
+    
+    // MARK: Initializers
+    /// Creates an instance of `Statistic` from its `Kind`, and a modifier if applicable.
+    init(kind: Kind, modifier: Int? = nil, instance: Instance? = nil) {
+        self.kind = kind
+        self.modifier = modifier
+        self.instance = instance
+    }
+    
+    /// Creates an instance of `Statistic` from a serialized string.
+    init(from rawValue: String, instance: Instance? = nil) {
+        let components = rawValue.split(separator: ":")
+        
+        self.init(kind: Kind(rawValue: String(components.first ?? "average")) ?? .average, modifier: Int(components.last ?? "5"), instance: instance)
+    }
+    
+    // MARK: Types
+    /// An enum containing all the possible statistics the user can track.
+    enum Kind: String, CaseIterable {
+        // MARK: Cases
+        /// The mean of the most recent `n` solves, excuding the fastest and slowest.
+        case average = "average"
+        /// A temporary test example.
+        case haha = "haha"
+        
+        // MARK: Properties
+        /// Stylized version of the statistic's name.
+        var stylizedName: String {
+            return self.rawValue.capitalized
+        }
+    }
+    
+    // MARK: Methods
+    /// Sets the `Statistic`'s corresponding instance.
+    mutating func setInstance(to instance: Instance) {
+        self.instance = instance
+    }
+}
+
+extension Statistic: Hashable {
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(rawValue)
+    }
+    
+    static func == (lhs: Statistic, rhs: Statistic) -> Bool {
+        lhs.rawValue == rhs.rawValue
+    }
+}
