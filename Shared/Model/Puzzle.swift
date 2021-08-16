@@ -114,9 +114,9 @@ enum Puzzle: Hashable, CaseIterable {
             return 7
             
         case .pyraminx:
-            return 3
+            return nil
         case .megaminx:
-            return 3
+            return nil
         case .skewb:
             return nil
         case .square_1:
@@ -129,7 +129,7 @@ enum Puzzle: Hashable, CaseIterable {
     
     // MARK: Initializers
     /// Creates an instance of `Puzzle` from a serialized string.
-    init(_ stringValue: String) {
+    init(from stringValue: String) {
         switch stringValue {
         case "2x2":
             self = ._2x2
