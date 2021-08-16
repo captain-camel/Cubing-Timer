@@ -34,7 +34,7 @@ struct AddInstanceSheet: View {
                 }
             },
             set: {
-                puzzle = Puzzle($0)
+                puzzle = Puzzle(from: $0)
             }
         )
         

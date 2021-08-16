@@ -46,7 +46,7 @@ extension Instance {
     /// The puzzle assigned to the `Instance`.
     var puzzle: Puzzle {
         get {
-            return Puzzle(puzzleRawValue)
+            return Puzzle(from: puzzleRawValue)
         }
         set {
             puzzleRawValue = newValue.stringValue
