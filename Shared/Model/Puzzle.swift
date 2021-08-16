@@ -97,6 +97,36 @@ enum Puzzle: Hashable, CaseIterable {
         }
     }
     
+    /// The number of peices on each edge of the puzzle.
+    var size: Int? {
+        switch self {
+        case ._2x2:
+            return 2
+        case ._3x3:
+            return 3
+        case ._4x4:
+            return 4
+        case ._5x5:
+            return 5
+        case ._6x6:
+            return 6
+        case ._7x7:
+            return 7
+            
+        case .pyraminx:
+            return 3
+        case .megaminx:
+            return 3
+        case .skewb:
+            return nil
+        case .square_1:
+            return nil
+            
+        case .other:
+            return nil
+        }
+    }
+    
     // MARK: Initializers
     /// Creates an instance of `Puzzle` from a serialized string.
     init(_ stringValue: String) {
@@ -125,6 +155,26 @@ enum Puzzle: Hashable, CaseIterable {
             
         default:
             self = .other(stringValue)
+        }
+    }
+    
+    /// Creates an instance of an `n` x `n` `Puzzle` from the number of peices in each edge.
+    init(size: Int) {
+        switch size {
+        case 2:
+            self = ._2x2
+        case 3:
+            self = ._3x3
+        case 4:
+            self = ._4x4
+        case 5:
+            self = ._5x5
+        case 6:
+            self = ._6x6
+        case 7:
+            self = ._7x7
+        default:
+            self = .other("\(size)x\(size)")
         }
     }
 }
