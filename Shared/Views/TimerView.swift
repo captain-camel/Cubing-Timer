@@ -39,6 +39,9 @@ struct TimerView: View {
         }
     }
     
+    /// A callback that is called when a the timer is stopped, with the time on the timer.
+    let timerStopped: ((_ time: Double) -> Void)
+    
     // MARK: Body
     var body: some View {
         VStack {
@@ -58,6 +61,8 @@ struct TimerView: View {
             case .stationary:
                 if stopwatch.isRunning {
                     try? stopwatch.stop()
+                    
+                    timerStopped(stopwatch.secondsElapsed)
                 } else {
                     try? countdown.start()
                 }

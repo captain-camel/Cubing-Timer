@@ -35,7 +35,9 @@ struct InstanceView: View {
     // MARK: Body
     var body: some View {
         VStack {
-            TimerView(gestureState: $gestureState)
+            TimerView(gestureState: $gestureState) { time in
+                instance.addSolve(time: time)
+            }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .contentShape(Rectangle())
