@@ -7,7 +7,9 @@
 
 import Foundation
 
-enum Puzzle: Hashable {
+enum Puzzle: Hashable, CaseIterable {
+    static var allCases: [Puzzle] = [_2x2, _3x3, _4x4, _5x5, _6x6, _7x7, .pyraminx, .megaminx, .skewb, .square_1, .other("")]
+    
     // MARK: Cases
     /// A cube with 2 pieces on each edge.
     case _2x2
