@@ -67,6 +67,8 @@
 		DDF6C79126C97F5500B505B9 /* Countdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF6C78F26C97F5500B505B9 /* Countdown.swift */; };
 		DDF6C79326C97F5C00B505B9 /* Inspection.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF6C79226C97F5C00B505B9 /* Inspection.swift */; };
 		DDF6C79426C97F5C00B505B9 /* Inspection.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF6C79226C97F5C00B505B9 /* Inspection.swift */; };
+		DDF6C79A26CA35A000B505B9 /* AddInstanceSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF6C79926CA35A000B505B9 /* AddInstanceSheet.swift */; };
+		DDF6C79B26CA35A000B505B9 /* AddInstanceSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF6C79926CA35A000B505B9 /* AddInstanceSheet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -105,6 +107,7 @@
 		DDF6C78C26C97ED100B505B9 /* Stopwatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stopwatch.swift; sourceTree = "<group>"; };
 		DDF6C78F26C97F5500B505B9 /* Countdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Countdown.swift; sourceTree = "<group>"; };
 		DDF6C79226C97F5C00B505B9 /* Inspection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inspection.swift; sourceTree = "<group>"; };
+		DDF6C79926CA35A000B505B9 /* AddInstanceSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddInstanceSheet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +195,7 @@
 			children = (
 				DD090A4326C1B1A000DEAC82 /* ContentView.swift */,
 				DD0909D526BF09C500DEAC82 /* InstanceList.swift */,
+				DDF6C79926CA35A000B505B9 /* AddInstanceSheet.swift */,
 				DD090A2126BF355800DEAC82 /* InstanceRow.swift */,
 				DD090A2426BF3A0A00DEAC82 /* StatisticView.swift */,
 				DD090A2E26BF3AB700DEAC82 /* ListPopover.swift */,
@@ -361,6 +365,7 @@
 			files = (
 				DD0909FD26BF0B8D00DEAC82 /* InstanceStorage.swift in Sources */,
 				DD090A2F26BF3AB700DEAC82 /* ListPopover.swift in Sources */,
+				DDF6C79A26CA35A000B505B9 /* AddInstanceSheet.swift in Sources */,
 				DD090A4426C1B1A000DEAC82 /* ContentView.swift in Sources */,
 				DD090A2C26BF3A7800DEAC82 /* StatisticButtonStyle.swift in Sources */,
 				DD090A2526BF3A0A00DEAC82 /* StatisticView.swift in Sources */,
@@ -397,6 +402,7 @@
 			files = (
 				DD0909FE26BF0B8D00DEAC82 /* InstanceStorage.swift in Sources */,
 				DD090A3026BF3AB700DEAC82 /* ListPopover.swift in Sources */,
+				DDF6C79B26CA35A000B505B9 /* AddInstanceSheet.swift in Sources */,
 				DD090A4526C1B1A000DEAC82 /* ContentView.swift in Sources */,
 				DD090A2D26BF3A7800DEAC82 /* StatisticButtonStyle.swift in Sources */,
 				DD090A2626BF3A0A00DEAC82 /* StatisticView.swift in Sources */,
