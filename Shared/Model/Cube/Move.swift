@@ -20,11 +20,11 @@ struct Move {
         if layers == 0...0 {
             return face.rawValue
         } else if layers.count == 1 {
-            return String(layers.first! + 1) + face.rawValue + direction.rawValue
-        } else if layers.contains(0) {//simp;ify with extension
-            return String(layers.max()! + 1) + face.rawValue + "w" + direction.rawValue
+            return "\(layers.first! + 1)\(face.rawValue)\(direction.rawValue)"
+        } else if layers.contains(0) {
+            return "\(layers.max()! + 1)\(face.rawValue)w\(direction.rawValue)"
         } else {
-            return String(layers.upperBound) + "-" + String(layers.lowerBound) + face.rawValue + direction.rawValue
+            return "\(layers.upperBound)-\(layers.lowerBound)\(face.rawValue)\(direction.rawValue)"
         }
     }
     
