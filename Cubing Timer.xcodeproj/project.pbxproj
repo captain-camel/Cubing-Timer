@@ -59,6 +59,10 @@
 		DD090A4C26C3698200DEAC82 /* Cube.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD090A4A26C3698200DEAC82 /* Cube.swift */; };
 		DD4F1A0026CAD2B7008A1022 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4F19FF26CAD2B7008A1022 /* TimerView.swift */; };
 		DD4F1A0126CAD2B7008A1022 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4F19FF26CAD2B7008A1022 /* TimerView.swift */; };
+		DD4F1A0326CB4010008A1022 /* ListSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4F1A0226CB4010008A1022 /* ListSheet.swift */; };
+		DD4F1A0426CB4011008A1022 /* ListSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4F1A0226CB4010008A1022 /* ListSheet.swift */; };
+		DD4F1A0626CC1306008A1022 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4F1A0526CC1305008A1022 /* String.swift */; };
+		DD4F1A0726CC1306008A1022 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4F1A0526CC1305008A1022 /* String.swift */; };
 		DDF6C78026C782C200B505B9 /* Move.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF6C77F26C782C200B505B9 /* Move.swift */; };
 		DDF6C78126C782C200B505B9 /* Move.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF6C77F26C782C200B505B9 /* Move.swift */; };
 		DDF6C78326C782E900B505B9 /* Algorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF6C78226C782E900B505B9 /* Algorithm.swift */; };
@@ -105,6 +109,8 @@
 		DD090A4326C1B1A000DEAC82 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		DD090A4A26C3698200DEAC82 /* Cube.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cube.swift; sourceTree = "<group>"; };
 		DD4F19FF26CAD2B7008A1022 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
+		DD4F1A0226CB4010008A1022 /* ListSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListSheet.swift; sourceTree = "<group>"; };
+		DD4F1A0526CC1305008A1022 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		DDF6C77F26C782C200B505B9 /* Move.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Move.swift; sourceTree = "<group>"; };
 		DDF6C78226C782E900B505B9 /* Algorithm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Algorithm.swift; sourceTree = "<group>"; };
 		DDF6C78C26C97ED100B505B9 /* Stopwatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stopwatch.swift; sourceTree = "<group>"; };
@@ -202,6 +208,7 @@
 				DD090A2126BF355800DEAC82 /* InstanceRow.swift */,
 				DD090A2426BF3A0A00DEAC82 /* StatisticView.swift */,
 				DD090A2E26BF3AB700DEAC82 /* ListPopover.swift */,
+				DD4F1A0226CB4010008A1022 /* ListSheet.swift */,
 				DD090A3126BF3AC900DEAC82 /* InstanceView.swift */,
 				DD4F19FF26CAD2B7008A1022 /* TimerView.swift */,
 			);
@@ -237,6 +244,7 @@
 				DD090A1526BF0EA100DEAC82 /* Array.swift */,
 				DD090A3A26BF3EB000DEAC82 /* View.swift */,
 				DD090A4026C0937200DEAC82 /* Collection.swift */,
+				DD4F1A0526CC1305008A1022 /* String.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -379,6 +387,7 @@
 				DD0909E826BF09C800DEAC82 /* Cubing_Timer.xcdatamodeld in Sources */,
 				DD090A3226BF3AC900DEAC82 /* InstanceView.swift in Sources */,
 				DD0909EE26BF09C800DEAC82 /* Persistence.swift in Sources */,
+				DD4F1A0626CC1306008A1022 /* String.swift in Sources */,
 				DD090A0D26BF0D4200DEAC82 /* Puzzle.swift in Sources */,
 				DD090A3826BF3D8000DEAC82 /* Device.swift in Sources */,
 				DD0909EA26BF09C800DEAC82 /* Cubing_TimerApp.swift in Sources */,
@@ -398,6 +407,7 @@
 				DD090A3B26BF3EB000DEAC82 /* View.swift in Sources */,
 				DD090A0526BF0C9100DEAC82 /* Instance+CoreDataProperties.swift in Sources */,
 				DDF6C79026C97F5500B505B9 /* Countdown.swift in Sources */,
+				DD4F1A0326CB4010008A1022 /* ListSheet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,6 +427,7 @@
 				DD0909E926BF09C800DEAC82 /* Cubing_Timer.xcdatamodeld in Sources */,
 				DD090A3326BF3AC900DEAC82 /* InstanceView.swift in Sources */,
 				DD0909EF26BF09C800DEAC82 /* Persistence.swift in Sources */,
+				DD4F1A0726CC1306008A1022 /* String.swift in Sources */,
 				DD090A0E26BF0D4200DEAC82 /* Puzzle.swift in Sources */,
 				DD090A3926BF3D8000DEAC82 /* Device.swift in Sources */,
 				DD0909EB26BF09C800DEAC82 /* Cubing_TimerApp.swift in Sources */,
@@ -436,6 +447,7 @@
 				DD090A3C26BF3EB000DEAC82 /* View.swift in Sources */,
 				DD090A0626BF0C9100DEAC82 /* Instance+CoreDataProperties.swift in Sources */,
 				DDF6C79126C97F5500B505B9 /* Countdown.swift in Sources */,
+				DD4F1A0426CB4011008A1022 /* ListSheet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
