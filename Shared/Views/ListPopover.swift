@@ -12,13 +12,14 @@ struct ListPopover: View {
     // MARK: Properties
     /// The array of vales to display.
     var values: [String]
+    
     /// Whether the values are concatinated.
     var valuesConcatenated = false
     
     // MARK: Initializers
-    init(values: [String]) {
-        if values.count > 10 {
-            self.values = values.suffix(9) + ["\(values.count - 9) more..."]
+    init(values: [String], limit: Int) {
+        if values.count > limit {
+            self.values = values.suffix(limit - 1) + ["\(values.count - (limit - 1)) more..."]
             self.valuesConcatenated = true
         } else {
             self.values = values
