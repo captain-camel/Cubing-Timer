@@ -55,7 +55,7 @@ extension Solve {
                 secondsString = "0\(secondsString)"
             }
             
-            return hoursString + minutesString + secondsString
+            return "\(hoursString)\(minutesString)\(secondsString)"
             
         } else {
             return "--.--"
