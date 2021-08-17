@@ -9,10 +9,6 @@ import SwiftUI
 
 /// A button with a transparent background, gray when pressed.
 struct StatisticButtonStyle: ButtonStyle {
-    // MARK: Properties
-    /// Whether the button is active.
-    @Environment(\.isEnabled) private var isEnabled: Bool
-    
     // MARK: Body
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
