@@ -39,16 +39,26 @@ struct TimerView: View {
         }
     }
     
+    /// The most recently recorded solve.
+    var solve: Solve?
+    
     /// A callback that is called when a the timer is stopped, with the time on the timer.
     let timerStopped: ((_ time: Double) -> Void)
     
+    /// The displayed time.
+    var time: String {
+        if countdown.isComplete {
+            return "0.0"
+        } else if stopwatch.isRunning {
+            return Solve.formatTime(stopwatch.secondsElapsed, places: 1)
+        } else {
+            return Solve.formatTime(solve?.time ?? 0)
+        }
+    }
+    
     // MARK: Body
     var body: some View {
-        VStack {
-            Text(Solve.formatTime(stopwatch.secondsElapsed))
-            Text(String(countdown.isRunning))
-            Text(String(gestureState.id))
-        }
+        Text(time)
         .font(.system(size: 100, design: .monospaced))
         .onChange(of: gestureState.id) { _ in
             switch gestureState {

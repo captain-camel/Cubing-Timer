@@ -16,26 +16,25 @@ struct InstanceView: View {
     /// The state of any drag gesture in progress.
     @State var gestureState: GestureState = .none
     
-//    @State var timerState: TimerView.TimerState = .none
-    
-//    /// All of the `Solve`s fetched from Core Data belonging to the current `Instance`.
-//    @FetchRequest var solves: FetchedResults<Solve>
-//
-//    init(instance: Instance) {
-//        self.instance = instance
-//
-//        self._solves = FetchRequest(
-//            entity: Solve.entity(),
-//            sortDescriptors: [NSSortDescriptor(keyPath: \Solve.date, ascending: true)],
-//            predicate: NSPredicate(format: "instance == %@", instance),
-//            animation: .easeInOut
-//        )
-//    }
+    /// All of the `Solve`s fetched from Core Data belonging to the current `Instance`.
+    @FetchRequest var solves: FetchedResults<Solve>
+
+    // MARK: Initializers
+    init(instance: Instance) {
+        self.instance = instance
+
+        self._solves = FetchRequest(
+            entity: Solve.entity(),
+            sortDescriptors: [NSSortDescriptor(keyPath: \Solve.date, ascending: true)],
+            predicate: NSPredicate(format: "instance == %@", instance),
+            animation: .easeInOut
+        )
+    }
     
     // MARK: Body
     var body: some View {
         VStack {
-            TimerView(gestureState: $gestureState) { time in
+            TimerView(gestureState: $gestureState, solve: solves.last) { time in
                 instance.addSolve(time: time)
             }
         }
