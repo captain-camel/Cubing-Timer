@@ -193,7 +193,7 @@ struct Cube {
         case invalidAlgorithm
         /// Thrown when a cube is initialized with an invalid size.
         case invalidSize
-        /// Thrown when a cube is initialized from a non `n` x `n` puzzle.
+        /// Thrown when a cube is initialized from a non cube puzzle.
         case invalidPuzzle
     }
 
