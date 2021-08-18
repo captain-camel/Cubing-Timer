@@ -26,10 +26,10 @@ struct AddInstanceSheet: View {
     var body: some View {
         let puzzleString = Binding(
             get: {
-                return puzzle.stringValue
+                return String(puzzle)
             },
             set: {
-                puzzle = Puzzle(from: $0)
+                puzzle = Puzzle($0)
             }
         )
         
@@ -42,7 +42,7 @@ struct AddInstanceSheet: View {
                 Section(header: Text("Puzzle")) {
                     Picker(selection: $puzzle, label: Text("Puzzle")) {
                         ForEach(Puzzle.allCases, id: \.self) { puzzle in
-                            Text(puzzle.stringValue)
+                            Text(String(puzzle))
                                 .tag(puzzle)
                         }
                     }
