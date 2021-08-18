@@ -26,10 +26,12 @@ enum Puzzle: Hashable, CaseIterable {
     
     /// Some other puzzle that is not listed.
     case other(String)
-    
+}
+
+extension Puzzle: LosslessStringConvertible {
     // MARK: Properties
-    /// Formatted name of the puzzle.
-    var stringValue: String {
+    /// The `String` description of the `Puzzle`.
+    var description: String {
         switch self {
         case let .cube(size):
             return "\(size)x\(size)"
@@ -49,11 +51,11 @@ enum Puzzle: Hashable, CaseIterable {
     }
     
     // MARK: Initializers
-    /// Creates an instance of `Puzzle` from a serialized string.
-    init(from stringValue: String) {
-        switch stringValue {
-        case _ where stringValue.count == 3 && (Int(String(stringValue.first!)) != nil) && (Int(String(stringValue.last!)) != nil) && stringValue[1] == "x":
-            self = .cube(Int(String(stringValue.first!))!)
+    /// Creates a `Puzzle` from a `String`.
+    init(_ description: String) {
+        switch description {
+        case _ where description.count == 3 && (Int(String(description.first!)) != nil) && (Int(String(description.last!)) != nil) && description[1] == "x":
+            self = .cube(Int(String(description.first!))!)
         case "Pyraminx":
             self = .pyraminx
         case "Megaminx":
@@ -64,13 +66,14 @@ enum Puzzle: Hashable, CaseIterable {
             self = .square_1
             
         default:
-            self = .other(stringValue)
+            self = .other(description)
         }
     }
 }
 
 extension Puzzle: ExpressibleByStringLiteral {
+    // MARK: Initializers
     init(stringLiteral value: String) {
-        self.init(from: value)
+        self.init(value)
     }
 }
