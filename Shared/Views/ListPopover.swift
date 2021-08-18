@@ -22,7 +22,7 @@ struct ListPopover: View {
     var actionSymbol: String?
     
     // MARK: Initializers
-    init(values: [String], limit: Int = 10, action: ((_ index: Int) -> Void)? = nil, actionSymbol: String? = nil) {
+    init(values: [String], limit: Int, action: ((_ index: Int) -> Void)? = nil, actionSymbol: String? = nil) {
         if values.count > limit {
             self.values = values.suffix(limit - 1) + ["\(values.count - (limit - 1)) more..."]
             valuesConcatenated = true
