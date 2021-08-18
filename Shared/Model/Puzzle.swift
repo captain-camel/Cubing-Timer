@@ -47,16 +47,13 @@ enum Puzzle: Hashable, CaseIterable {
             return name
         }
     }
-        
+    
     // MARK: Initializers
     /// Creates an instance of `Puzzle` from a serialized string.
     init(from stringValue: String) {
-        if stringValue.count == 3 && Int(String(stringValue.first!)) != nil && Int(String(stringValue.last!)) != nil && stringValue[1] == "x" {
-            self = .cube(Int(String(stringValue.first!))!)
-            return
-        }
-        
         switch stringValue {
+        case _ where stringValue.count == 3 && (Int(String(stringValue.first!)) != nil) && (Int(String(stringValue.last!)) != nil) && stringValue[1] == "x":
+            self = .cube(Int(String(stringValue.first!))!)
         case "Pyraminx":
             self = .pyraminx
         case "Megaminx":
