@@ -13,14 +13,20 @@ struct ListPopover: View {
     /// The array of vales to display.
     var values: [String]
     
-    /// Whether the values are concatinated.
-    var valuesConcatenated = false
+    /// Whether there are more values than the limit and they are concatenated.
+    var valuesConcatenated: Bool = false
+    
+    /// A closure that is called when the button next to a row is pressed.
+    var action: ((_ index: Int) -> Void)?
+    /// The SF symbol on the button in each row.
+    var actionSymbolName: String?
     
     // MARK: Initializers
-    init(values: [String], limit: Int) {
+    init(values: [String], limit: Int = 10) {
         if values.count > limit {
             self.values = values.suffix(limit - 1) + ["\(values.count - (limit - 1)) more..."]
-            self.valuesConcatenated = true
+            valuesConcatenated = true
+            
         } else {
             self.values = values
         }
@@ -29,8 +35,33 @@ struct ListPopover: View {
     // MARK: Body
     var body: some View {
         VStack {
-            ForEach(values, id: \.self) { value in
-                Text(value)
+            ForEachWithIndex(values, id: \.self) { index, value in
+                HStack {
+                    if !(index == values.indices.last && valuesConcatenated) {
+                        Text("\(index).")
+                            .foregroundColor(.secondary)
+                    }
+
+                    Text(value)
+
+                    if action != nil && !(index == values.indices.last && valuesConcatenated) {
+                        Spacer()
+
+                        Button {
+                            action!(index)
+                        } label: {
+                            Image(systemName: actionSymbolName ?? "questionmark")
+                        }
+                        .frame(alignment: .trailing)
+                        .padding()
+                    }
+                }
+                .if((values.count - index) % 2 == 0) { view in
+                    view.background(
+                        Color(.systemGray5)
+                            .cornerRadius(5)
+                    )
+                }
             }
         }
     }
