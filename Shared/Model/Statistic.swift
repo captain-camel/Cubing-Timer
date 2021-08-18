@@ -9,25 +9,15 @@ import Foundation
 
 struct Statistic {
     // MARK: Properties
-    /// The type of statistic being tracked.
+    /// The type of `Statistic` being tracked.
     var kind: Kind
-    /// An extra option for the statistic. (`nil` if not applicable)
+    /// An extra option for the `Statistic`. (`nil` if not applicable)
     var modifier: Int?
     
     /// The `Instance` that the `Statistic` belongs to.
     private var instance: Instance!
     
-    /// Serialized value of the statistic for persistence.
-    var rawValue: String {
-        switch kind {
-        case .average:
-            return "average:\(modifier ?? 5)"
-        case .haha:
-            return "haha"
-        }
-    }
-    
-    /// Abbreviated version of the statistic's name.
+    /// Abbreviated version of the `Statistic`'s name.
     var shortName: String {
         switch kind {
         case .average:
@@ -37,7 +27,7 @@ struct Statistic {
         }
     }
     
-    /// Full version of the statistic's name.
+    /// Full version of the `Statistic`'s name.
     var longName: String {
         switch kind {
         case .average:
@@ -47,7 +37,7 @@ struct Statistic {
         }
     }
     
-    /// Full name of statistic's extra option. (`nil` if no additional option)
+    /// Full name of `Statistic`'s extra option. (`nil` if no additional option)
     var modifierTitle: String? {
         switch kind {
         case .average:
@@ -57,7 +47,7 @@ struct Statistic {
         }
     }
     
-    /// The computed value of the statistic.
+    /// The computed value of the `Statistic`.
     var value: String {
         switch kind {
         case .average:
@@ -67,7 +57,7 @@ struct Statistic {
         }
     }
     
-    /// `Array` of `Strings` that give extra information about the statistic.
+    /// `Array` of `Strings` that give extra information about the `Statistic`.
     var details: [String]? {
         switch kind {
         case .average:
@@ -132,7 +122,7 @@ struct Statistic {
     }
     
     // MARK: Types
-    /// An enum containing all the possible statistics the user can track.
+    /// An enum containing all the possible `Statistic`s the user can track.
     enum Kind: String, CaseIterable {
         // MARK: Cases
         /// The mean of the most recent `n` solves, excuding the fastest and slowest.
@@ -154,12 +144,24 @@ struct Statistic {
     }
 }
 
+extension Statistic: CustomStringConvertible {
+    /// Serialized value of the `Statistic` for persistence.
+    var description: String {
+        switch kind {
+        case .average:
+            return "average:\(modifier ?? 5)"
+        case .haha:
+            return "haha"
+        }
+    }
+}
+
 extension Statistic: Hashable {
     func hash(into hasher: inout Hasher) {
-        hasher.combine(rawValue)
+        hasher.combine(description)
     }
-    
+
     static func == (lhs: Statistic, rhs: Statistic) -> Bool {
-        lhs.rawValue == rhs.rawValue
+        lhs.description == rhs.description
     }
 }
