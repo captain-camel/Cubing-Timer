@@ -57,8 +57,6 @@
 		DD090A4526C1B1A000DEAC82 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD090A4326C1B1A000DEAC82 /* ContentView.swift */; };
 		DD090A4B26C3698200DEAC82 /* Cube.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD090A4A26C3698200DEAC82 /* Cube.swift */; };
 		DD090A4C26C3698200DEAC82 /* Cube.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD090A4A26C3698200DEAC82 /* Cube.swift */; };
-		DD0E676526CCACE900E1C444 /* ForEachWithIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0E676426CCACE900E1C444 /* ForEachWithIndex.swift */; };
-		DD0E676626CCACE900E1C444 /* ForEachWithIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0E676426CCACE900E1C444 /* ForEachWithIndex.swift */; };
 		DD0E676826CD994500E1C444 /* PopoverRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0E676726CD994500E1C444 /* PopoverRow.swift */; };
 		DD0E676926CD994500E1C444 /* PopoverRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0E676726CD994500E1C444 /* PopoverRow.swift */; };
 		DD0E676B26CDCB4400E1C444 /* ListSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0E676A26CDCB4400E1C444 /* ListSheet.swift */; };
@@ -112,7 +110,6 @@
 		DD090A4026C0937200DEAC82 /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
 		DD090A4326C1B1A000DEAC82 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		DD090A4A26C3698200DEAC82 /* Cube.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cube.swift; sourceTree = "<group>"; };
-		DD0E676426CCACE900E1C444 /* ForEachWithIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForEachWithIndex.swift; sourceTree = "<group>"; };
 		DD0E676726CD994500E1C444 /* PopoverRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverRow.swift; sourceTree = "<group>"; };
 		DD0E676A26CDCB4400E1C444 /* ListSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListSheet.swift; sourceTree = "<group>"; };
 		DD4F19FF26CAD2B7008A1022 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
@@ -218,7 +215,6 @@
 				DD0E676A26CDCB4400E1C444 /* ListSheet.swift */,
 				DD0E676726CD994500E1C444 /* PopoverRow.swift */,
 				DD4F19FF26CAD2B7008A1022 /* TimerView.swift */,
-				DD0E676326CCACAD00E1C444 /* Utility */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -274,14 +270,6 @@
 				DDF6C78226C782E900B505B9 /* Algorithm.swift */,
 			);
 			path = Cube;
-			sourceTree = "<group>";
-		};
-		DD0E676326CCACAD00E1C444 /* Utility */ = {
-			isa = PBXGroup;
-			children = (
-				DD0E676426CCACE900E1C444 /* ForEachWithIndex.swift */,
-			);
-			path = Utility;
 			sourceTree = "<group>";
 		};
 		DDF6C78B26C97EC200B505B9 /* Timer */ = {
@@ -402,7 +390,6 @@
 				DD0E676B26CDCB4400E1C444 /* ListSheet.swift in Sources */,
 				DD090A0926BF0C9100DEAC82 /* Solve+CoreDataProperties.swift in Sources */,
 				DD090A0726BF0C9100DEAC82 /* Solve+CoreDataClass.swift in Sources */,
-				DD0E676526CCACE900E1C444 /* ForEachWithIndex.swift in Sources */,
 				DD0909E826BF09C800DEAC82 /* Cubing_Timer.xcdatamodeld in Sources */,
 				DD090A3226BF3AC900DEAC82 /* InstanceView.swift in Sources */,
 				DD0909EE26BF09C800DEAC82 /* Persistence.swift in Sources */,
@@ -444,7 +431,6 @@
 				DD0E676C26CDCB4400E1C444 /* ListSheet.swift in Sources */,
 				DD090A0A26BF0C9100DEAC82 /* Solve+CoreDataProperties.swift in Sources */,
 				DD090A0826BF0C9100DEAC82 /* Solve+CoreDataClass.swift in Sources */,
-				DD0E676626CCACE900E1C444 /* ForEachWithIndex.swift in Sources */,
 				DD0909E926BF09C800DEAC82 /* Cubing_Timer.xcdatamodeld in Sources */,
 				DD090A3326BF3AC900DEAC82 /* InstanceView.swift in Sources */,
 				DD0909EF26BF09C800DEAC82 /* Persistence.swift in Sources */,
