@@ -46,7 +46,7 @@ struct Cube {
         puzzle = Puzzle.cube(size)
     }
     
-    init?(from puzzle: Puzzle) {
+    init?(puzzle: Puzzle) {
         switch puzzle {
         case let .cube(size):
             self.size = size
