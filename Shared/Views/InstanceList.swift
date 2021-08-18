@@ -35,7 +35,7 @@ struct InstanceList: View {
                     Button {
                         InstanceStorage.add(
                             name: "name",
-                            puzzle: ._2x2,
+                            puzzle: .cube(3),
                             primaryStatistic: Statistic(kind: .average, modifier: 5),
                             secondaryStatistic: Statistic(kind: .average, modifier: 12)
                         )

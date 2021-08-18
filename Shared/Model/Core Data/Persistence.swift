@@ -19,7 +19,7 @@ struct PersistenceController {
         for i in 0..<10 {
             let newInstance = Instance(context: viewContext)
             newInstance.name = "name"
-            newInstance.puzzle = ._3x3
+            newInstance.puzzle = .cube(3)
             newInstance.order = Int16(i)
             newInstance.primaryStatistic = Statistic(kind: .average, modifier: 5)
             newInstance.secondaryStatistic = Statistic(kind: .average, modifier: 12)
