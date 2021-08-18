@@ -16,6 +16,9 @@ struct InstanceList: View {
             NSSortDescriptor(keyPath: \Instance.order, ascending: true)
         ]
     ) var instances: FetchedResults<Instance>
+    
+    /// Whether the sheet to add a new instance is displayed.
+    @State var showingAddInstanceSheet = false
 
     // MARK: Body
     var body: some View {
@@ -33,12 +36,7 @@ struct InstanceList: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
-                        InstanceStorage.add(
-                            name: "name",
-                            puzzle: .cube(3),
-                            primaryStatistic: Statistic(kind: .average, modifier: 5),
-                            secondaryStatistic: Statistic(kind: .average, modifier: 12)
-                        )
+                        showingAddInstanceSheet = true
                     } label: {
                         Image(systemName: "plus")
                     }
@@ -48,12 +46,19 @@ struct InstanceList: View {
                     EditButton()
                 }
             }
-            
-            if instances.isEmpty {
-                Text("No Instances.\nPress the plus button to create one.")
-            }
         }
         .navigationViewStyle(StackNavigationViewStyle())
+        .sheet(isPresented: $showingAddInstanceSheet) {
+            AddInstanceSheet { name, puzzle, notes in
+                InstanceStorage.add(
+                    name: name,
+                    puzzle: puzzle,
+                    notes: notes,
+                    primaryStatistic: Statistic(kind: .average, modifier: 5),
+                    secondaryStatistic: Statistic(kind: .average, modifier: 12)
+                )
+            }
+        }
     }
 }
 
