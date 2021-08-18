@@ -27,9 +27,9 @@ struct Cube {
     ]
     
     /// Creates a `Cube` of a specified size.
-    init(size: Int = 3) throws {
+    init?(size: Int = 3) {
         if size <= 1 {
-            throw CubeError.invalidSize
+            return nil
         }
         
         cubeState = [
@@ -46,12 +46,12 @@ struct Cube {
         puzzle = Puzzle.cube(size)
     }
     
-    init(from puzzle: Puzzle) throws {
+    init?(from puzzle: Puzzle) {
         switch puzzle {
         case let .cube(size):
             self.size = size
         default:
-            throw CubeError.invalidPuzzle
+            return nil
         }
 
         cubeState = [
