@@ -17,26 +17,39 @@ struct StatisticView: View {
     @State private var showingDetails = false
     
     /// Whether the `StatisticView` shows a popover when pressed if applicable.
-    var popover: Bool = false
+    var popover: Bool = true
     
     // MARK: Body
     var body: some View {
-        Button {
-            showingDetails.toggle()
-        } label: {
+        if statistic.details == nil || !popover {
             HStack {
                 Text("\(statistic.shortName):")
                     .foregroundColor(.secondary)
                 Text(statistic.value)
             }
             .lineLimit(1)
-        }
-        .buttonStyle(StatisticButtonStyle())
-        .disabled(statistic.details == nil || statistic.details!.isEmpty || !popover)
-        .if(statistic.details != nil && popover) { view in
-            view.if(Device.shared.currentDevice == .pad) { view in
+        } else {
+            Button {
+                showingDetails.toggle()
+            } label: {
+                HStack {
+                    Text("\(statistic.shortName):")
+                        .foregroundColor(.secondary)
+                    Text(statistic.value)
+                }
+                .lineLimit(1)
+            }
+            .buttonStyle(StatisticButtonStyle())
+            .disabled(statistic.details!.isEmpty)
+            .if(Device.shared.currentDevice == .pad) { view in
+                view.popover(isPresented: $showingDetails) {
+                    ListPopover(values: statistic.details!, action: statistic.action, actionSymbol: statistic.actionSymbol)
+                        .fixedSize()
+                }
+            }
+            .if(Device.shared.currentDevice == .phone) { view in
                 view.sheet(isPresented: $showingDetails) {
-                    ListPopover(values: statistic.details!)
+                    ListPopover(values: statistic.details!, action: statistic.action, actionSymbol: statistic.actionSymbol)
                 }
             }
         }
