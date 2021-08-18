@@ -46,10 +46,10 @@ extension Instance {
     /// The puzzle assigned to the `Instance`.
     var puzzle: Puzzle {
         get {
-            return Puzzle(from: puzzleRawValue)
+            return Puzzle(puzzleRawValue)
         }
         set {
-            puzzleRawValue = newValue.stringValue
+            puzzleRawValue = String(newValue)
         }
     }
     
@@ -59,7 +59,7 @@ extension Instance {
             return Statistic(from: primaryStatisticRawValue, instance: self)
         }
         set {
-            primaryStatisticRawValue = newValue.rawValue
+            primaryStatisticRawValue = newValue.description
         }
     }
     
@@ -68,7 +68,7 @@ extension Instance {
         get {
             return Statistic(from: secondaryStatisticRawValue, instance: self)
         } set {
-            secondaryStatisticRawValue = newValue.rawValue
+            secondaryStatisticRawValue = newValue.description
         }
     }
     
