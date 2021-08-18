@@ -15,14 +15,7 @@ struct Statistic {
     var modifier: Int?
     
     /// The `Instance` that the `Statistic` belongs to.
-    private var instance: Instance! {
-        didSet {
-            solveArray = instance.solveArray
-        }
-    }
-    
-    /// The array of all the `Solve`s in the instance that the `Statistic` belongs to, sorted by `Date`.
-    private var solveArray = [Solve]()
+    private var instance: Instance!
     
     /// Serialized value of the statistic for persistence.
     var rawValue: String {
@@ -78,12 +71,12 @@ struct Statistic {
     var details: [String]? {
         switch kind {
         case .average:
-            let times = solveArray.suffix(modifier ?? 5).map { $0.time }
+            let times = instance.solveArray.suffix(modifier ?? 5).map { $0.time }
             
             var foundMin = false
             var foundMax = false
             
-            return solveArray.suffix(modifier ?? 5).map { solve in
+            return instance.solveArray.suffix(modifier ?? 5).map { solve in
                 if (solve.time == times.min() && !foundMin) || (solve.time == times.max() && !foundMax) {
                     foundMin = solve.time == times.min()
                     foundMax = solve.time == times.max()
@@ -103,9 +96,9 @@ struct Statistic {
         switch kind {
         case .average:
             return { index in
-                if solveArray.count > index {
+                if instance.solveArray.count > index {
                     //self.instance.deleteSolve(self.instance.solves.suffix(index + 1).first!)
-                    ()
+                    print(index)
                 }
             }
         default:
