@@ -9,7 +9,7 @@ import Foundation
 
 /// Any twisty puzzle.
 enum Puzzle: Hashable, CaseIterable {
-    static var allCases: [Puzzle] = [cube(3), pyraminx, megaminx, skewb, square_1, other("")]
+    static var allCases: [Puzzle] = (2...7).map { cube($0) } + [pyraminx, megaminx, skewb, square_1, other("")]
     
     // MARK: Cases
     /// A cube with the same number of pieces on each edge.
