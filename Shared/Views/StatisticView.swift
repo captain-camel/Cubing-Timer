@@ -11,7 +11,7 @@ import SwiftUI
 struct StatisticView: View {
     // MARK: Properties
     /// The `Statistic` described by the `StatisticView`.
-    var statistic: Statistic
+    @Binding var statistic: Statistic
     
     /// Whether a `ListPopover` is currently displayed.
     @State private var showingDetails = false
@@ -20,8 +20,8 @@ struct StatisticView: View {
     var popover: Bool
     
     // MARK: Initializers
-    init(_ statistic: Statistic, popover: Bool = true) {
-        self.statistic = statistic
+    init(_ statistic: Binding<Statistic>, popover: Bool = true) {
+        self._statistic = statistic
         self.popover = popover
     }
     
