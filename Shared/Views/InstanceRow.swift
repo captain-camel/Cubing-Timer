@@ -20,7 +20,7 @@ struct InstanceRow: View {
                 Text(instance.name)
                     .bold()
                     .lineLimit(1)
-                Text(instance.puzzle.stringValue)
+                Text(String(instance.puzzle))
                     .font(.caption)
                     .foregroundColor(.secondary)
                     .lineLimit(1)
