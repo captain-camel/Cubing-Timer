@@ -43,16 +43,17 @@ struct Cube {
         
         self.size = size
         
-        puzzle = Puzzle(size: size)
+        puzzle = Puzzle.cube(size)
     }
     
     init(from puzzle: Puzzle) throws {
-        guard let size = puzzle.size else {
+        switch puzzle {
+        case let .cube(size):
+            self.size = size
+        default:
             throw CubeError.invalidPuzzle
         }
-        
-        self.size = size
-        
+
         cubeState = [
             .up: Face(tile: .up, size: size),
             .front: Face(tile: .front, size: size),
@@ -61,7 +62,7 @@ struct Cube {
             .back: Face(tile: .back, size: size),
             .left: Face(tile: .left, size: size),
         ]
-
+        
         self.puzzle = puzzle
     }
     
