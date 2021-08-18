@@ -115,7 +115,7 @@ struct Statistic {
     }
     
     /// Creates an instance of `Statistic` from a serialized string.
-    init(description: String, instance: Instance? = nil) {
+    init(_ description: String, instance: Instance? = nil) {
         let components = description.split(separator: ":")
         
         self.init(kind: Kind(rawValue: String(components.first ?? "average")) ?? .average, modifier: Int(components.last ?? "5"), instance: instance)
