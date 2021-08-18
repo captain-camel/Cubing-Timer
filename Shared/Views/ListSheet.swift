@@ -28,11 +28,11 @@ struct ListSheet: View {
     var actionSymbol: String?
     
     // MARK: Initializers
-    init(title: String, values: [String], limit: Int, action: ((_ index: Int) -> Void)? = nil, actionSymbol: String? = nil) {
+    init(title: String, values: [String], limit: Int? = nil, action: ((_ index: Int) -> Void)? = nil, actionSymbol: String? = nil) {
         self.title = title
         
-        if values.count > limit {
-            self.values = values.prefix(limit - 1) + ["\(values.count - (limit - 1)) more..."]
+        if limit != nil && values.count > limit! {
+            self.values = values.prefix(limit! - 1) + ["\(values.count - (limit! - 1)) more..."]
             valuesConcatenated = true
         } else {
             self.values = values

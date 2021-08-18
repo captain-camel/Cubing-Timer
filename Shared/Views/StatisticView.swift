@@ -55,7 +55,7 @@ struct StatisticView: View {
             }
             .if(Device.shared.currentDevice == .phone) { view in
                 view.sheet(isPresented: $showingDetails) {
-                    ListSheet(title: statistic.longName, values: statistic.details!, limit: 15, action: statistic.action, actionSymbol: statistic.actionSymbol)
+                    ListSheet(title: statistic.longName, values: statistic.details!, action: statistic.action, actionSymbol: statistic.actionSymbol)
                 }
             }
         }
