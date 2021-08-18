@@ -10,12 +10,8 @@ struct Algorithm {
     // MARK: Properties
     /// The `Move`s making up the `Algorithm`.
     var moves: [Move] = []
-
-    /// A `String` representation of the `Algorithm`.
-    var stringValue: String {
-        return moves.map { $0.stringValue }.joined(separator: " ")
-    }
     
+    /// The reverse of the algorithm.
     var reversed: Algorithm {
         return Algorithm(moves.reversed().map { $0.reversed })
     }
@@ -30,24 +26,33 @@ struct Algorithm {
     init(_ moves: [Move]) {
         self.moves = moves
     }
+}
 
+extension Algorithm: LosslessStringConvertible {
+    // MARK: Properties
+    /// A `String` describing of the `Algorithm`.
+    var description: String {
+        return moves.map { String($0) }.joined(separator: " ")
+    }
+    
+    // MARK: Initializers
     /// Creates an `Algorithm` from a `String`.
-    init(from string: String) throws {
-        let moves = string.split(separator: " ")
+    init?(_ description: String) {
+        let moves = description.split(separator: " ")
         
         for move in moves {
-            guard let toAppend = try? Move(from: String(move)) else {
-                throw AlgorithmError.invalidAlgorithmString
+            guard let toAppend = Move(String(move)) else {
+                return nil
             }
             
             self.moves.append(toAppend)
         }
     }
-    
-    // MARK: Types
-    /// `Error`s that can be thrown by an `Algorithm`.
-    enum AlgorithmError: Error {
-        /// Thrown when initializing an `Algorithm` from an invalid string.
-        case invalidAlgorithmString
+}
+
+extension Algorithm: ExpressibleByStringLiteral {
+    // MARK: Initializers
+    init(stringLiteral value: String) {
+        self.init(value)!
     }
 }
