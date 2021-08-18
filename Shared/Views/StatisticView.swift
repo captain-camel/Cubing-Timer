@@ -11,13 +11,19 @@ import SwiftUI
 struct StatisticView: View {
     // MARK: Properties
     /// The `Statistic` described by the `StatisticView`.
-    @Binding var statistic: Statistic
+    var statistic: Statistic
     
     /// Whether a `ListPopover` is currently displayed.
     @State private var showingDetails = false
     
     /// Whether the `StatisticView` shows a popover when pressed if applicable.
-    var popover: Bool = true
+    var popover: Bool
+    
+    // MARK: Initializers
+    init(_ statistic: Statistic, popover: Bool = true) {
+        self.statistic = statistic
+        self.popover = popover
+    }
     
     // MARK: Body
     var body: some View {
@@ -43,13 +49,13 @@ struct StatisticView: View {
             .disabled(statistic.details!.isEmpty)
             .if(Device.shared.currentDevice == .pad) { view in
                 view.popover(isPresented: $showingDetails) {
-                    ListPopover(values: statistic.details!, action: statistic.action, actionSymbol: statistic.actionSymbol)
+                    ListPopover(values: statistic.details!, limit: 10, action: statistic.action, actionSymbol: statistic.actionSymbol)
                         .fixedSize()
                 }
             }
             .if(Device.shared.currentDevice == .phone) { view in
                 view.sheet(isPresented: $showingDetails) {
-                    ListPopover(values: statistic.details!, action: statistic.action, actionSymbol: statistic.actionSymbol)
+                    ListPopover(values: statistic.details!, limit: 15, action: statistic.action, actionSymbol: statistic.actionSymbol)
                 }
             }
         }
