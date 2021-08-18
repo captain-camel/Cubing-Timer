@@ -56,7 +56,7 @@ extension Instance {
     /// The first statistic displayed by the instance.
     var primaryStatistic: Statistic {
         get {
-            return Statistic(from: primaryStatisticRawValue, instance: self)
+            return Statistic(primaryStatisticRawValue, instance: self)
         }
         set {
             primaryStatisticRawValue = newValue.description
@@ -66,7 +66,7 @@ extension Instance {
     /// The second statistic displayed by the instance.
     var secondaryStatistic: Statistic {
         get {
-            return Statistic(from: secondaryStatisticRawValue, instance: self)
+            return Statistic(secondaryStatisticRawValue, instance: self)
         } set {
             secondaryStatisticRawValue = newValue.description
         }
