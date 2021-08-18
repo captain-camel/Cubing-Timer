@@ -15,8 +15,56 @@ struct Move {
     /// The layers to be rotated.
     var layers: ClosedRange<Int> = 0...0
     
-    /// A `String` representation of the `Move`.
-    var stringValue: String {
+    /// The reverse of the move.
+    var reversed: Move {
+        return Move(face: face, direction: direction.reversed, layers: layers)!
+    }
+    
+    // MARK: Initializers
+    /// Creates an instance of `Move`.
+    init?(face: Cube.Tile, direction: Direction = .clockwise, layers: ClosedRange<Int> = 0...0) {
+        if layers.isEmpty || layers.map({ $0 < 0 }).contains(true) {
+            return nil
+        }
+        
+        self.face = face
+        self.direction = direction
+        self.layers = layers
+    }
+    
+    // MARK: Types
+    /// Possible direction a `Move` can turn.
+    enum Direction: String {
+        /// Rotating a face clockwise.
+        case clockwise = ""
+        /// Rotating a face counterclockwise.
+        case counterClockwise = "'"
+        /// Rotating a face twice.
+        case double = "2"
+        
+        var reversed: Direction {
+            switch self {
+            case .clockwise:
+                return .counterClockwise
+            case .counterClockwise:
+                return .clockwise
+            case .double:
+                return .double
+            }
+        }
+    }
+    
+    /// `Error`s that can be thrown by an `Algorithm`.
+    enum MoveError: Error {
+        /// Thrown when initializing a `Move` with invalid layers.
+        case invalidMoveLayers
+    }
+}
+
+extension Move: LosslessStringConvertible {
+    // MARK: Properties
+    /// A `String`describing of the `Move`.
+    var description: String {
         if layers == 0...0 {
             return face.rawValue
         } else if layers.count == 1 {
@@ -28,31 +76,16 @@ struct Move {
         }
     }
     
-    var reversed: Move {
-        return try! Move(face: face, direction: direction.reversed, layers: layers)
-    }
-    
     // MARK: Initializers
-    /// Creates an instance of `Move`.
-    init(face: Cube.Tile, direction: Direction = .clockwise, layers: ClosedRange<Int> = 0...0) throws {
-        if layers.isEmpty || layers.map({ $0 < 0 }).contains(true) {
-            throw MoveError.invalidMoveLayers
-        }
-        
-        self.face = face
-        self.direction = direction
-        self.layers = layers
-    }
-    
     /// Creates a `Move` from a `String`.
-    init(from string: String) throws {
+    init?(_ description: String) {
         var lowerBound = ""
         var upperBound = ""
         
         var foundSeparator = false
         
-        for (index, character) in Array(string).enumerated() {
-            if let number = Int(String(character)), Array(string)[0...index].allSatisfy({ Int(String($0)) != nil || $0 == "-" }) {
+        for (index, character) in Array(description).enumerated() {
+            if let number = Int(String(character)), Array(description)[0...index].allSatisfy({ Int(String($0)) != nil || $0 == "-" }) {
                 if !foundSeparator {
                     lowerBound += String(number)
                 } else {
@@ -83,14 +116,14 @@ struct Move {
         }
         
         if (Int(lowerBound) == nil && lowerBound != "") || (Int(upperBound) == nil && upperBound != "") {
-            throw MoveError.invalidMoveString
+            return nil
         }
         
         if (upperBound != "" && lowerBound != "") && Int(upperBound)! < Int(lowerBound)! {
-            throw MoveError.invalidMoveString
+            return nil
         }
         
-        if string.contains("w") {
+        if description.contains("w") {
             layers = 0...(Int(lowerBound) ?? 0)
         } else if lowerBound != "" {
             if lowerBound == "" {
@@ -102,43 +135,23 @@ struct Move {
             layers = Int(lowerBound)! - 1...Int(upperBound)! - 1
         }
         
-        if string.contains("'") {
+        if description.contains("'") {
             direction = .counterClockwise
-        } else if let lastCharacter = string.last {
+        } else if let lastCharacter = description.last {
             if lastCharacter == "2" {
                 direction = .double
             } else {
                 direction = .clockwise
             }
         } else {
-            throw MoveError.invalidMoveString
+            return nil
         }
     }
-    
-    // MARK: Types
-    /// Possible direction a `Move` can turn.
-    enum Direction: String {
-        case clockwise = ""
-        case counterClockwise = "'"
-        case double = "2"
-        
-        var reversed: Direction {
-            switch self {
-            case .clockwise:
-                return .counterClockwise
-            case .counterClockwise:
-                return .clockwise
-            case .double:
-                return .double
-            }
-        }
-    }
-    
-    /// `Error`s that can be thrown by an `Algorithm`.
-    enum MoveError: Error {
-        /// Thrown when initializing a `Move` from an invalid string.
-        case invalidMoveString
-        /// Thrown when initializing a `Move` with invalid layers.
-        case invalidMoveLayers
+}
+
+extension Move: ExpressibleByStringLiteral {
+    // MARK: Initializers
+    init(stringLiteral value: String) {
+        self.init(value)!
     }
 }
