@@ -28,7 +28,6 @@ struct StatisticView: View {
                 Text("\(statistic.shortName):")
                     .foregroundColor(.secondary)
                 Text(statistic.value)
-                Text(String(statistic.shortName))
             }
             .lineLimit(1)
         }
