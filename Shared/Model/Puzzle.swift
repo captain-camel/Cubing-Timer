@@ -68,3 +68,9 @@ enum Puzzle: Hashable, CaseIterable {
         }
     }
 }
+
+extension Puzzle: ExpressibleByStringLiteral {
+    init(stringLiteral value: String) {
+        self.init(from: value)
+    }
+}
