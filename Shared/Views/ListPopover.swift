@@ -24,7 +24,7 @@ struct ListPopover: View {
     // MARK: Initializers
     init(values: [String], limit: Int, action: ((_ index: Int) -> Void)? = nil, actionSymbol: String? = nil) {
         if values.count > limit {
-            self.values = values.suffix(limit - 1) + ["\(values.count - (limit - 1)) more..."]
+            self.values = values.prefix(limit - 1) + ["\(values.count - (limit - 1)) more..."]
             valuesConcatenated = true
         } else {
             self.values = values
