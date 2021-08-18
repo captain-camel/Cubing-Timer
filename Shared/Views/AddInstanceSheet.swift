@@ -18,7 +18,7 @@ struct AddInstanceSheet: View {
     /// The name of the new `Instance`.
     @State var name = ""
     /// The `Puzzle` assigned to the new `Instance`.
-    @State var puzzle: Puzzle = ._3x3
+    @State var puzzle: Puzzle = .cube(3)
     /// Notes about the new `Instance`.
     @State var notes = ""
     
@@ -26,12 +26,7 @@ struct AddInstanceSheet: View {
     var body: some View {
         let puzzleString = Binding(
             get: {
-                switch puzzle {
-                case let .other(puzzle):
-                    return puzzle
-                default:
-                    return puzzle.stringValue
-                }
+                return puzzle.stringValue
             },
             set: {
                 puzzle = Puzzle(from: $0)
