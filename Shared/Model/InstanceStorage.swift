@@ -48,11 +48,11 @@ class InstanceStorage {
         let newInstance = Instance(context: PersistenceController.viewContext)
         
         newInstance.name = name
-        newInstance.puzzleRawValue = puzzle.stringValue
+        newInstance.puzzleRawValue = String(puzzle)
         newInstance.notes = notes
         
-        newInstance.primaryStatisticRawValue = primaryStatistic.rawValue
-        newInstance.secondaryStatisticRawValue = secondaryStatistic.rawValue
+        newInstance.primaryStatisticRawValue = primaryStatistic.description
+        newInstance.secondaryStatisticRawValue = secondaryStatistic.description
         
         newInstance.primaryStatistic.setInstance(to: newInstance)
         newInstance.secondaryStatistic.setInstance(to: newInstance)
