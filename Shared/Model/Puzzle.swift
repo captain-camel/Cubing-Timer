@@ -26,6 +26,26 @@ enum Puzzle: Hashable, CaseIterable {
     
     /// Some other puzzle that is not listed.
     case other(String)
+    
+    /// The name of the `Puzzle` to be displayed while creating a new `Instance`.
+    var displayName: String {
+        switch self {
+        case let .cube(size):
+            return "\(size)x\(size)"
+            
+        case .pyraminx:
+            return "Pyraminx"
+        case .megaminx:
+            return "Megaminx"
+        case .skewb:
+            return "Skewb"
+        case .square_1:
+            return "Square-1"
+            
+        case .other:
+            return "Other"
+        }
+    }
 }
 
 extension Puzzle: LosslessStringConvertible {
