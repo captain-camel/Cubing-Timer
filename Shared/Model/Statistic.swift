@@ -145,6 +145,7 @@ struct Statistic {
 }
 
 extension Statistic: CustomStringConvertible {
+    // MARK: Properties
     /// Serialized value of the `Statistic` for persistence.
     var description: String {
         switch kind {
@@ -157,6 +158,7 @@ extension Statistic: CustomStringConvertible {
 }
 
 extension Statistic: Hashable {
+    // MARK: Methods
     func hash(into hasher: inout Hasher) {
         hasher.combine(description)
     }
