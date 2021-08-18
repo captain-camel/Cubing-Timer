@@ -115,8 +115,8 @@ struct Statistic {
     }
     
     /// Creates an instance of `Statistic` from a serialized string.
-    init(from rawValue: String, instance: Instance? = nil) {
-        let components = rawValue.split(separator: ":")
+    init(description: String, instance: Instance? = nil) {
+        let components = description.split(separator: ":")
         
         self.init(kind: Kind(rawValue: String(components.first ?? "average")) ?? .average, modifier: Int(components.last ?? "5"), instance: instance)
     }
@@ -125,7 +125,7 @@ struct Statistic {
     /// An enum containing all the possible `Statistic`s the user can track.
     enum Kind: String, CaseIterable {
         // MARK: Cases
-        /// The mean of the most recent `n` solves, excuding the fastest and slowest.
+        /// The mean of the most recent `n` solves, excluding the fastest and slowest.
         case average = "average"
         /// A temporary test example.
         case haha = "haha"
