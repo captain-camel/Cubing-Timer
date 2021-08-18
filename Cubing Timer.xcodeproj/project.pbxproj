@@ -59,10 +59,10 @@
 		DD090A4C26C3698200DEAC82 /* Cube.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD090A4A26C3698200DEAC82 /* Cube.swift */; };
 		DD0E676526CCACE900E1C444 /* ForEachWithIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0E676426CCACE900E1C444 /* ForEachWithIndex.swift */; };
 		DD0E676626CCACE900E1C444 /* ForEachWithIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0E676426CCACE900E1C444 /* ForEachWithIndex.swift */; };
+		DD0E676826CD994500E1C444 /* PopoverRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0E676726CD994500E1C444 /* PopoverRow.swift */; };
+		DD0E676926CD994500E1C444 /* PopoverRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0E676726CD994500E1C444 /* PopoverRow.swift */; };
 		DD4F1A0026CAD2B7008A1022 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4F19FF26CAD2B7008A1022 /* TimerView.swift */; };
 		DD4F1A0126CAD2B7008A1022 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4F19FF26CAD2B7008A1022 /* TimerView.swift */; };
-		DD4F1A0326CB4010008A1022 /* ListSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4F1A0226CB4010008A1022 /* ListSheet.swift */; };
-		DD4F1A0426CB4011008A1022 /* ListSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4F1A0226CB4010008A1022 /* ListSheet.swift */; };
 		DD4F1A0626CC1306008A1022 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4F1A0526CC1305008A1022 /* String.swift */; };
 		DD4F1A0726CC1306008A1022 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4F1A0526CC1305008A1022 /* String.swift */; };
 		DDF6C78026C782C200B505B9 /* Move.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF6C77F26C782C200B505B9 /* Move.swift */; };
@@ -111,8 +111,8 @@
 		DD090A4326C1B1A000DEAC82 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		DD090A4A26C3698200DEAC82 /* Cube.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cube.swift; sourceTree = "<group>"; };
 		DD0E676426CCACE900E1C444 /* ForEachWithIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForEachWithIndex.swift; sourceTree = "<group>"; };
+		DD0E676726CD994500E1C444 /* PopoverRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverRow.swift; sourceTree = "<group>"; };
 		DD4F19FF26CAD2B7008A1022 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
-		DD4F1A0226CB4010008A1022 /* ListSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListSheet.swift; sourceTree = "<group>"; };
 		DD4F1A0526CC1305008A1022 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		DDF6C77F26C782C200B505B9 /* Move.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Move.swift; sourceTree = "<group>"; };
 		DDF6C78226C782E900B505B9 /* Algorithm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Algorithm.swift; sourceTree = "<group>"; };
@@ -207,12 +207,12 @@
 			children = (
 				DD090A4326C1B1A000DEAC82 /* ContentView.swift */,
 				DD0909D526BF09C500DEAC82 /* InstanceList.swift */,
-				DDF6C79926CA35A000B505B9 /* AddInstanceSheet.swift */,
 				DD090A2126BF355800DEAC82 /* InstanceRow.swift */,
+				DDF6C79926CA35A000B505B9 /* AddInstanceSheet.swift */,
+				DD090A3126BF3AC900DEAC82 /* InstanceView.swift */,
 				DD090A2426BF3A0A00DEAC82 /* StatisticView.swift */,
 				DD090A2E26BF3AB700DEAC82 /* ListPopover.swift */,
-				DD4F1A0226CB4010008A1022 /* ListSheet.swift */,
-				DD090A3126BF3AC900DEAC82 /* InstanceView.swift */,
+				DD0E676726CD994500E1C444 /* PopoverRow.swift */,
 				DD4F19FF26CAD2B7008A1022 /* TimerView.swift */,
 				DD0E676326CCACAD00E1C444 /* Utility */,
 			);
@@ -394,6 +394,7 @@
 				DD090A2C26BF3A7800DEAC82 /* StatisticButtonStyle.swift in Sources */,
 				DD090A2526BF3A0A00DEAC82 /* StatisticView.swift in Sources */,
 				DD090A2926BF3A6A00DEAC82 /* TimerActionButtonStyle.swift in Sources */,
+				DD0E676826CD994500E1C444 /* PopoverRow.swift in Sources */,
 				DD090A0926BF0C9100DEAC82 /* Solve+CoreDataProperties.swift in Sources */,
 				DD090A0726BF0C9100DEAC82 /* Solve+CoreDataClass.swift in Sources */,
 				DD0E676526CCACE900E1C444 /* ForEachWithIndex.swift in Sources */,
@@ -420,7 +421,6 @@
 				DD090A3B26BF3EB000DEAC82 /* View.swift in Sources */,
 				DD090A0526BF0C9100DEAC82 /* Instance+CoreDataProperties.swift in Sources */,
 				DDF6C79026C97F5500B505B9 /* Countdown.swift in Sources */,
-				DD4F1A0326CB4010008A1022 /* ListSheet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -435,6 +435,7 @@
 				DD090A2D26BF3A7800DEAC82 /* StatisticButtonStyle.swift in Sources */,
 				DD090A2626BF3A0A00DEAC82 /* StatisticView.swift in Sources */,
 				DD090A2A26BF3A6A00DEAC82 /* TimerActionButtonStyle.swift in Sources */,
+				DD0E676926CD994500E1C444 /* PopoverRow.swift in Sources */,
 				DD090A0A26BF0C9100DEAC82 /* Solve+CoreDataProperties.swift in Sources */,
 				DD090A0826BF0C9100DEAC82 /* Solve+CoreDataClass.swift in Sources */,
 				DD0E676626CCACE900E1C444 /* ForEachWithIndex.swift in Sources */,
@@ -461,7 +462,6 @@
 				DD090A3C26BF3EB000DEAC82 /* View.swift in Sources */,
 				DD090A0626BF0C9100DEAC82 /* Instance+CoreDataProperties.swift in Sources */,
 				DDF6C79126C97F5500B505B9 /* Countdown.swift in Sources */,
-				DD4F1A0426CB4011008A1022 /* ListSheet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
