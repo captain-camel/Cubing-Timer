@@ -46,7 +46,7 @@ struct TimerView: View {
     let timerStopped: ((_ time: Double) -> Void)
     
     /// The displayed time.
-    var time: String {
+    private var time: String {
         if countdown.isComplete {
             return "0.0"
         } else if stopwatch.isRunning {
@@ -56,30 +56,62 @@ struct TimerView: View {
         }
     }
     
+    ///
+    private var timeColor: Color {
+        if stopwatch.isRunning {
+            return .white
+        } else if countdown.isRunning {
+            return .yellow
+        } else {
+            return .primary
+        }
+    }
+    
+    private var circleScale: CGFloat {
+        if stopwatch.isRunning {
+            return 15
+        } else if countdown.isComplete {
+            return 2
+        } else {
+            return 0.0001
+        }
+    }
+    
     // MARK: Body
     var body: some View {
         Text(time)
-        .font(.system(size: 100, design: .monospaced))
-        .onChange(of: gestureState.id) { _ in
-            switch gestureState {
-            case .none:
-                if countdown.isComplete {
-                    try? stopwatch.start()
-                }
-                
-                try? countdown.reset()
-            case .stationary:
-                if stopwatch.isRunning {
-                    try? stopwatch.stop()
+            .font(.system(size: 100, design: .monospaced))
+            .minimumScaleFactor(0.01)
+            .lineLimit(1)
+            .foregroundColor(.white)
+            .colorMultiply(timeColor)
+            .animation(.easeInOut, value: timeColor)
+            .background(
+                Circle()
+                    .foregroundColor(Color(red: 0.27, green: 0.95, blue: 0.65))
+                    .scaleEffect(circleScale)
+                    .animation(countdown.isRunning ? .spring(response: 0.5, dampingFraction: 0.5, blendDuration: 0.5) : .easeInOut, value: circleScale)
+            )
+            .onChange(of: gestureState.id) { _ in
+                switch gestureState {
+                case .none:
+                    if countdown.isComplete {
+                        try? stopwatch.start()
+                    }
                     
-                    timerStopped(stopwatch.secondsElapsed)
-                } else {
-                    try? countdown.start()
+                    try? countdown.reset()
+                case .stationary:
+                    if stopwatch.isRunning {
+                        try? stopwatch.stop()
+                        
+                        timerStopped(stopwatch.secondsElapsed)
+                    } else {
+                        try? countdown.start()
+                    }
+                    
+                case .moved:
+                    try? countdown.reset()
                 }
-                
-            case .moved:
-                try? countdown.reset()
             }
-        }
     }
 }
