@@ -65,6 +65,8 @@
 		DD4F1A0126CAD2B7008A1022 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4F19FF26CAD2B7008A1022 /* TimerView.swift */; };
 		DD4F1A0626CC1306008A1022 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4F1A0526CC1305008A1022 /* String.swift */; };
 		DD4F1A0726CC1306008A1022 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4F1A0526CC1305008A1022 /* String.swift */; };
+		DD7809F926D051AC00E716F3 /* CGSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7809F826D051AC00E716F3 /* CGSize.swift */; };
+		DD7809FA26D051AC00E716F3 /* CGSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7809F826D051AC00E716F3 /* CGSize.swift */; };
 		DDF6C78026C782C200B505B9 /* Move.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF6C77F26C782C200B505B9 /* Move.swift */; };
 		DDF6C78126C782C200B505B9 /* Move.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF6C77F26C782C200B505B9 /* Move.swift */; };
 		DDF6C78326C782E900B505B9 /* Algorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF6C78226C782E900B505B9 /* Algorithm.swift */; };
@@ -114,6 +116,7 @@
 		DD0E676A26CDCB4400E1C444 /* ListSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListSheet.swift; sourceTree = "<group>"; };
 		DD4F19FF26CAD2B7008A1022 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		DD4F1A0526CC1305008A1022 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		DD7809F826D051AC00E716F3 /* CGSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGSize.swift; sourceTree = "<group>"; };
 		DDF6C77F26C782C200B505B9 /* Move.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Move.swift; sourceTree = "<group>"; };
 		DDF6C78226C782E900B505B9 /* Algorithm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Algorithm.swift; sourceTree = "<group>"; };
 		DDF6C78C26C97ED100B505B9 /* Stopwatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stopwatch.swift; sourceTree = "<group>"; };
@@ -210,11 +213,11 @@
 				DD090A2126BF355800DEAC82 /* InstanceRow.swift */,
 				DDF6C79926CA35A000B505B9 /* AddInstanceSheet.swift */,
 				DD090A3126BF3AC900DEAC82 /* InstanceView.swift */,
+				DD4F19FF26CAD2B7008A1022 /* TimerView.swift */,
 				DD090A2426BF3A0A00DEAC82 /* StatisticView.swift */,
 				DD090A2E26BF3AB700DEAC82 /* ListPopover.swift */,
 				DD0E676A26CDCB4400E1C444 /* ListSheet.swift */,
 				DD0E676726CD994500E1C444 /* PopoverRow.swift */,
-				DD4F19FF26CAD2B7008A1022 /* TimerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -249,6 +252,7 @@
 				DD090A3A26BF3EB000DEAC82 /* View.swift */,
 				DD090A4026C0937200DEAC82 /* Collection.swift */,
 				DD4F1A0526CC1305008A1022 /* String.swift */,
+				DD7809F826D051AC00E716F3 /* CGSize.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -396,6 +400,7 @@
 				DD4F1A0626CC1306008A1022 /* String.swift in Sources */,
 				DD090A0D26BF0D4200DEAC82 /* Puzzle.swift in Sources */,
 				DD090A3826BF3D8000DEAC82 /* Device.swift in Sources */,
+				DD7809F926D051AC00E716F3 /* CGSize.swift in Sources */,
 				DD0909EA26BF09C800DEAC82 /* Cubing_TimerApp.swift in Sources */,
 				DD090A2226BF355800DEAC82 /* InstanceRow.swift in Sources */,
 				DDF6C78026C782C200B505B9 /* Move.swift in Sources */,
@@ -437,6 +442,7 @@
 				DD4F1A0726CC1306008A1022 /* String.swift in Sources */,
 				DD090A0E26BF0D4200DEAC82 /* Puzzle.swift in Sources */,
 				DD090A3926BF3D8000DEAC82 /* Device.swift in Sources */,
+				DD7809FA26D051AC00E716F3 /* CGSize.swift in Sources */,
 				DD0909EB26BF09C800DEAC82 /* Cubing_TimerApp.swift in Sources */,
 				DD090A2326BF355800DEAC82 /* InstanceRow.swift in Sources */,
 				DDF6C78126C782C200B505B9 /* Move.swift in Sources */,
