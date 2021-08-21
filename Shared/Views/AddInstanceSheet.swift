@@ -13,7 +13,7 @@ struct AddInstanceSheet: View {
     @Environment(\.presentationMode) var presentationMode
     
     /// A callback that is called when the button to create the new `Instance` is pressed.
-    let create: (_ name: String, _ puzzle: Puzzle, _ notes: String?) -> Void
+    let createAction: (_ name: String, _ puzzle: Puzzle, _ notes: String?) -> Void
     
     /// The name of the new `Instance`.
     @State var name = ""
@@ -66,7 +66,7 @@ struct AddInstanceSheet: View {
                 
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Create") {
-                        create(
+                        createAction(
                             name,
                             puzzle,
                             notes == ""
