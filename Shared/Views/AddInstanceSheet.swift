@@ -42,7 +42,7 @@ struct AddInstanceSheet: View {
                 Section(header: Text("Puzzle")) {
                     Picker(selection: $puzzle, label: Text("Puzzle")) {
                         ForEach(Puzzle.allCases, id: \.self) { puzzle in
-                            Text(String(puzzle))
+                            Text(puzzle.displayName)
                                 .tag(puzzle)
                         }
                     }
