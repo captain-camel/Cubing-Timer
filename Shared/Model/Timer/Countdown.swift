@@ -50,6 +50,8 @@ class Countdown: ObservableObject {
         
         timer = Foundation.Timer.scheduledTimer(withTimeInterval: duration, repeats: false) { _ in
             self.isComplete = true
+            
+            self.completeAction()
         }
         
         isRunning = true
