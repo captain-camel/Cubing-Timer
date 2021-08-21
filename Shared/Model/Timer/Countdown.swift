@@ -17,19 +17,14 @@ class Countdown: ObservableObject {
     
     /// The number of seconds after the `Countdown` is started before it completes.
     let duration: Double
-    
-    /// A callback that is called when the `Countdown` completes.
-    let completeAction: () -> Void
-    
+
     /// The `Swift` `Timer` that determines when the `Countdown` should complete.
     private var timer = Foundation.Timer()
     
     // MARK: Initializers
     /// Creates a `Countdown` of a specified duration.
-    init(duration: Double, completeAction: @escaping () -> Void) {
+    init(duration: Double) {
         self.duration = duration
-        
-        self.completeAction = completeAction
     }
     
     // MARK: Types
@@ -50,8 +45,6 @@ class Countdown: ObservableObject {
         
         timer = Foundation.Timer.scheduledTimer(withTimeInterval: duration, repeats: false) { _ in
             self.isComplete = true
-            
-            self.completeAction()
         }
         
         isRunning = true
