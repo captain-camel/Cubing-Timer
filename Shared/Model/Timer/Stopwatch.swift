@@ -13,11 +13,11 @@ class Stopwatch: ObservableObject {
     /// The numbers of seconds elapsed since the `Stopwatch` started.
     @Published var secondsElapsed = 0.0
     /// Whether the `Stopwatch` is running.
-    @Published var isRunning = false
+    @Published var running = false
     
     /// The exaxt time that the timer started.
     private var startTime = Date()
-    /// The `Swift` `Timer` that updates `secondsElapsed` every `0.1` seconds.
+    /// The `Timer` object that updates `secondsElapsed` every `0.1` seconds.
     private var timer = Foundation.Timer()
     
     // MARK: Types
@@ -32,7 +32,7 @@ class Stopwatch: ObservableObject {
     // MARK: Methods
     /// Starts the `Stopwatch`.
     func start() throws {
-        if isRunning {
+        if running {
             throw StopwatchError.alreadyRunning
         }
         
@@ -42,19 +42,19 @@ class Stopwatch: ObservableObject {
             self.secondsElapsed = round(Date().timeIntervalSince(self.startTime) * 10) / 10
         }
         
-        isRunning = true
+        running = true
     }
     
     /// Stops the `Stopwatch`.
     func stop() throws {
-        if !isRunning {
+        if !running {
             throw StopwatchError.notRunning
         }
         
         timer.invalidate()
         
         secondsElapsed = Date().timeIntervalSince(startTime)
-        isRunning = false
+        running = false
     }
     
     /// Resets the `Stopwatch`.
