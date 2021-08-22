@@ -11,7 +11,7 @@ import SwiftUI
 struct InstanceView: View {
     // MARK: Properties
     /// The color of the circle behind the timer.
-    static var circleColor = Color(red: 0.27, green: 0.95, blue: 0.65)
+    static let circleColor = Color(red: 0.27, green: 0.95, blue: 0.65)
     
     /// The `Instance` displayed by the `InstanceView`.
     @ObservedObject var instance: Instance
