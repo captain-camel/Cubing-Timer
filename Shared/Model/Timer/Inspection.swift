@@ -17,7 +17,7 @@ class Inspection: ObservableObject {
     let duration: Int
     
     /// Whether the `Inspection` is running.
-    private var isRunning = false
+    private var running = false
     /// The `Swift` `Timer` that updates `secondsRemaining` every second.
     private var timer = Foundation.Timer()
     
@@ -39,7 +39,7 @@ class Inspection: ObservableObject {
     // MARK: Methods
     /// Starts the `Inspection`.
     func start() throws {
-        if isRunning {
+        if running {
             throw InspectionError.alreadyRunning
         }
         
@@ -52,13 +52,13 @@ class Inspection: ObservableObject {
     
     /// Stops and resets the `Inspection`.
     func reset() throws {
-        if !isRunning {
+        if !running {
             throw InspectionError.notRunning
         }
         
         timer.invalidate()
         
         secondsRemaining = duration
-        isRunning = false
+        running = false
     }
 }
