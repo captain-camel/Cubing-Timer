@@ -10,71 +10,45 @@ import SwiftUI
 struct TimerView: View {
     // MARK: Properties
     /// A stopwatch to time solves.
-    @ObservedObject var stopwatch = Stopwatch()
+    @StateObject var stopwatch = Stopwatch()
     /// A countdown to start timing solves.
-    @ObservedObject var countdown = Countdown(duration: 0.5)
+    @StateObject var countdown = Countdown(duration: 0.5)
     /// A timer for inspection.
-    @ObservedObject var inspection = Inspection(duration: 15)
+    @StateObject var inspection = Inspection(duration: 15)
     
-    /// A binding to a `GestureState` to determine when to start and stop the timer.
-    @Binding var gestureState: InstanceView.GestureState {
-        didSet {
-            switch gestureState {
-            case .none:
-                if countdown.isComplete {
-                    try? stopwatch.start()
-                }
-                
-                try? countdown.reset()
-            case .stationary:
-                if stopwatch.isRunning {
-                    try? stopwatch.stop()
-                } else {
-                    try? countdown.start()
-                }
-                
-            case .moved:
-                try? countdown.reset()
-            }
-        }
-    }
-    
-    /// The most recently recorded solve.
-    var solve: Solve?
-    
+    /// The state of the timer.
+    @Binding var timerState: TimerState
+
     /// A callback that is called when a the timer is stopped, with the time on the timer.
-    let timerStopped: ((_ time: Double) -> Void)
+    let timerStoppedAction: (_ time: Double) -> Void
     
     /// The displayed time.
     private var time: String {
-        if countdown.isComplete {
+        if timerState == .ready {
             return "0.0"
-        } else if stopwatch.isRunning {
+        } else if timerState == .running {
             return Solve.formatTime(stopwatch.secondsElapsed, places: 1)
         } else {
-            return Solve.formatTime(solve?.time ?? 0)
+            return Solve.formatTime(stopwatch.secondsElapsed)
         }
     }
     
-    ///
+    /// The color of the timer text.
     private var timeColor: Color {
-        if stopwatch.isRunning {
+        if timerState == .running || timerState == .ready {
             return .white
-        } else if countdown.isRunning {
+        } else if timerState == .counting {
             return .yellow
         } else {
             return .primary
         }
     }
-    
-    private var circleScale: CGFloat {
-        if stopwatch.isRunning {
-            return 15
-        } else if countdown.isComplete {
-            return 2
-        } else {
-            return 0.0001
-        }
+
+    // MARK: Initializers
+    init(timerState: Binding<TimerState>, timerStoppedAction: @escaping (_ time: Double) -> Void) {
+        self._timerState = timerState
+        
+        self.timerStoppedAction = timerStoppedAction
     }
     
     // MARK: Body
@@ -86,32 +60,44 @@ struct TimerView: View {
             .foregroundColor(.white)
             .colorMultiply(timeColor)
             .animation(.easeInOut, value: timeColor)
-            .background(
-                Circle()
-                    .foregroundColor(Color(red: 0.27, green: 0.95, blue: 0.65))
-                    .scaleEffect(circleScale)
-                    .animation(countdown.isRunning ? .spring(response: 0.5, dampingFraction: 0.5, blendDuration: 0.5) : .easeInOut, value: circleScale)
-            )
-            .onChange(of: gestureState.id) { _ in
-                switch gestureState {
-                case .none:
-                    if countdown.isComplete {
-                        try? stopwatch.start()
-                    }
-                    
-                    try? countdown.reset()
-                case .stationary:
-                    if stopwatch.isRunning {
-                        try? stopwatch.stop()
-                        
-                        timerStopped(stopwatch.secondsElapsed)
-                    } else {
-                        try? countdown.start()
-                    }
-                    
-                case .moved:
-                    try? countdown.reset()
+            .onChange(of: countdown.isComplete) { isComplete in
+                if isComplete {
+                    timerState = .ready
                 }
             }
+            .onChange(of: timerState) { [timerState] newValue in
+                switch newValue {
+                case .stopped:
+                    if timerState == .running {
+                        try? stopwatch.stop()
+
+                        timerStoppedAction(stopwatch.secondsElapsed)
+                    } else {
+                        try? countdown.reset()
+                    }
+                case .counting:
+                    try? countdown.start()
+                case .running:
+                    try? stopwatch.start()
+                    
+                    try? countdown.reset()
+                default:
+                    break
+                }
+            }
+    }
+    
+    /// Possible states of a `TimerView`.
+    enum TimerState {
+        /// The timer is stopped.
+        case stopped
+        /// The timer is counting until it's ready.
+        case counting
+        /// Inspection is being counted
+        case inspection
+        /// The timer is ready to start.
+        case ready
+        /// The timer is running
+        case running
     }
 }

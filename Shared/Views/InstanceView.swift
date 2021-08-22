@@ -10,19 +10,36 @@ import SwiftUI
 /// A view opened by a `NavigationView` showing details about an `Instance` and a timer to add solves to it.
 struct InstanceView: View {
     // MARK: Properties
+    /// The color of the circle behind the timer.
+    static var circleColor = Color(red: 0.27, green: 0.95, blue: 0.65)
+    
     /// The `Instance` displayed by the `InstanceView`.
     @ObservedObject var instance: Instance
     
     /// The state of any drag gesture in progress.
-    @State var gestureState: GestureState = .none
+    @State private var gestureState: GestureState = .none
+    
+    /// The state of the `TimerView` in the `InstanceView`.
+    @State private var timerState: TimerView.TimerState = .stopped
     
     /// All of the `Solve`s fetched from Core Data belonging to the current `Instance`.
     @FetchRequest var solves: FetchedResults<Solve>
-
+    
+    /// The scale of the circle behind the timer.
+    private var circleScale: CGFloat {
+        if timerState == .running {
+            return 3
+        } else if timerState == .ready {
+            return 0.7
+        } else {
+            return 0.0001
+        }
+    }
+    
     // MARK: Initializers
     init(instance: Instance) {
         self.instance = instance
-
+        
         self._solves = FetchRequest(
             entity: Solve.entity(),
             sortDescriptors: [NSSortDescriptor(keyPath: \Solve.date, ascending: true)],
@@ -34,37 +51,61 @@ struct InstanceView: View {
     // MARK: Body
     var body: some View {
         VStack {
-            TimerView(gestureState: $gestureState, solve: solves.last) { time in
+            TimerView(timerState: $timerState) { time in
                 instance.addSolve(time: time)
+            }
+            
+            HStack {
+                StatisticView($instance.primaryStatistic)
+                StatisticView($instance.secondaryStatistic)
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(
+            Circle()
+                .foregroundColor(Self.circleColor)
+                .scaleEffect(circleScale)
+                .animation(timerState == .ready ? .spring(response: 0.5, dampingFraction: 0.5, blendDuration: 0.5) : .easeIn)
+        )
+        .offset(gestureState.translation)
+        .animation(.easeIn, value: gestureState.translation)
         .contentShape(Rectangle())
         .gesture(
             DragGesture(minimumDistance: 0)
                 .onChanged { gesture in
-                    let horizontalDistance = gesture.translation.width
-                    let verticalDistance = gesture.translation.height
-                    
-                    let totalDistance = (pow(gesture.translation.height, 2) + pow(gesture.translation.width, 2)).squareRoot()
-                    
-                    if totalDistance < 15 {
-                        gestureState = .stationary
-                    } else if (pow(gesture.translation.height, 2) + pow(gesture.translation.width, 2)).squareRoot() > 15 && (gestureState == .none || gestureState == .stationary) {
-                        print(gestureState)
-                        if abs(horizontalDistance) > abs(verticalDistance) {
-                            if horizontalDistance < 0 {
-                                gestureState = .moved(.left, horizontalDistance)
+                    switch timerState {
+                    case .stopped, .counting:
+                        if gestureState != .complete {
+                            if gesture.translation.distance > 15 && gestureState == .stationary {
+                                if abs(gesture.translation.width) > abs(gesture.translation.height) {
+                                    if gesture.translation.width < 0 {
+                                        gestureState = .moved(.left)
+                                    } else {
+                                        gestureState = .moved(.right)
+                                    }
+                                } else {
+                                    if gesture.translation.height < 0 {
+                                        gestureState = .moved(.up)
+                                    } else {
+                                        gestureState = .moved(.down)
+                                    }
+                                }
+                                
+                                timerState = .stopped
                             } else {
-                                gestureState = .moved(.right, horizontalDistance)
-                            }
-                        } else {
-                            if verticalDistance < 0 {
-                                gestureState = .moved(.up, verticalDistance)
-                            } else {
-                                gestureState = .moved(.down, verticalDistance)
+                                timerState = .counting
+                                
+                                gestureState = .stationary
                             }
                         }
+                        
+                    case .running:
+                        timerState = .stopped
+                        
+                        gestureState = .complete
+                        
+                    default:
+                        break
                     }
                 }
                 .onEnded { gesture in
@@ -78,7 +119,11 @@ struct InstanceView: View {
                     case .down:
                         print("down")
                     default:
-                        break
+                        if timerState == .ready {
+                            timerState = .running
+                        } else {
+                            timerState = .stopped
+                        }
                     }
                     
                     gestureState = .none
@@ -95,34 +140,33 @@ struct InstanceView: View {
         /// Gesture started but not moved.
         case stationary
         /// Gesture moved.
-        case moved(GestureDirection, CGFloat)
-
-        /// A unique if for each `GestureState`.
-        var id: Int {
-            switch self {
-            case .none:
-                return 0
-            case .stationary:
-                return 1
-            case .moved:
-                return 2
-            }
-        }
+        case moved(GestureDirection)
+        /// The gesture is complete.
+        case complete
         
-        /// The distance that has been swiped left, right, up, or down.
-        var distance: CGFloat? {
+        /// The translation of the gesture in a single direction.
+        var translation: CGSize {
             switch self {
-            case let .moved(_, distance):
-                return distance
+            case let .moved(direction):
+                switch direction {
+                case .left:
+                    return CGSize(width: -15, height: 0)
+                case .right:
+                    return CGSize(width: 15, height: 0)
+                case .up:
+                    return CGSize(width: 0, height: -15)
+                case .down:
+                    return CGSize(width: 0, height: 15)
+                }
             default:
-                return nil
+                return CGSize.zero
             }
         }
         
-        /// The direction that was swiped.
+        /// The direction of the gesture.
         var direction: GestureDirection? {
             switch self {
-            case let .moved(direction, _):
+            case let .moved(direction):
                 return direction
             default:
                 return nil
@@ -131,14 +175,14 @@ struct InstanceView: View {
     }
     
     /// Possible directions for a `DragGesture` to be in.
-    enum GestureDirection {
-        /// Swiped left.
+    enum GestureDirection: Equatable {
+        /// Left.
         case left
-        /// Swiped right.
+        /// Right.
         case right
-        /// Swiped up.
+        /// Up.
         case up
-        /// Swiped down.
+        /// Down.
         case down
     }
 }
