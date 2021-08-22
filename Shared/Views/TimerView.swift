@@ -57,6 +57,7 @@ struct TimerView: View {
             .font(.system(size: 100, design: .monospaced))
             .minimumScaleFactor(0.01)
             .lineLimit(1)
+            .padding(.horizontal)
             .foregroundColor(.white)
             .colorMultiply(timeColor)
             .animation(.easeInOut, value: timeColor)
