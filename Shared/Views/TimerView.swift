@@ -18,14 +18,16 @@ struct TimerView: View {
     /// A stopwatch to time solves.
     @StateObject var stopwatch = Stopwatch()
     /// A countdown to start timing solves.
-    @StateObject var countdown = Countdown(duration: 0.5)
+    @StateObject var countdown: Countdown
     /// A timer for inspection.
-    @StateObject var inspection = Inspection(duration: 15)
+    @StateObject var inspection: Inspection
     
     /// The displayed time.
     private var time: String {
         if timerState == .ready {
             return "0.0"
+        } else if timerState == .inspection {
+            return Solve.formatTime(Double(inspection.secondsRemaining))
         } else if timerState == .running {
             return Solve.formatTime(stopwatch.secondsElapsed, places: 1)
         } else {
@@ -45,8 +47,11 @@ struct TimerView: View {
     }
 
     // MARK: Initializers
-    init(timerState: Binding<TimerState>, timerStoppedAction: @escaping (_ time: Double) -> Void) {
+    init(timerState: Binding<TimerState>, countdownDuration: Double = 0.5, inspectionDuration: Int? = nil, timerStoppedAction: @escaping (_ time: Double) -> Void) {
         self._timerState = timerState
+        
+        _countdown = StateObject(wrappedValue: Countdown(duration: countdownDuration))
+        _inspection = StateObject(wrappedValue: Inspection(duration: inspectionDuration ?? 0))
         
         self.timerStoppedAction = timerStoppedAction
     }
@@ -61,7 +66,7 @@ struct TimerView: View {
             .foregroundColor(.white)
             .colorMultiply(timeColor)
             .animation(.easeInOut, value: timeColor)
-            .onChange(of: countdown.isComplete) { isComplete in
+            .onChange(of: countdown.complete) { isComplete in
                 if isComplete {
                     timerState = .ready
                 }
@@ -73,15 +78,23 @@ struct TimerView: View {
                         try? stopwatch.stop()
 
                         timerStoppedAction(stopwatch.secondsElapsed)
+                    } else if timerState == .inspection {
+                        try? inspection.reset()
                     } else {
                         try? countdown.reset()
                     }
                 case .counting:
                     try? countdown.start()
-                case .running:
-                    try? stopwatch.start()
-                    
+                case .inspection:
                     try? countdown.reset()
+                    
+                    try? inspection.start()
+                case .running:
+                    try? countdown.reset()
+                    
+                    try? inspection.reset()
+                    
+                    try? stopwatch.start()
                 default:
                     break
                 }
