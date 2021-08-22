@@ -13,13 +13,13 @@ struct ListPopover: View {
     /// The array of vales to display.
     var values: [String]
     
-    /// Whether there are more values than the limit and they are concatenated.
-    var valuesConcatenated: Bool = false
-    
     /// A closure that is called when the button next to a row is pressed.
     var action: ((_ index: Int) -> Void)?
     /// The SF symbol on the button in each row.
     var actionSymbol: String?
+    
+    /// Whether there are more values than the limit and they are concatenated.
+    var valuesConcatenated: Bool = false
     
     // MARK: Initializers
     init(values: [String], limit: Int, action: ((_ index: Int) -> Void)? = nil, actionSymbol: String? = nil) {

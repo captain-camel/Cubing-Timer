@@ -13,11 +13,11 @@ struct StatisticView: View {
     /// The `Statistic` described by the `StatisticView`.
     @Binding var statistic: Statistic
     
-    /// Whether a `ListPopover` is currently displayed.
-    @State private var showingDetails = false
-    
     /// Whether the `StatisticView` shows a popover when pressed if applicable.
     var popover: Bool
+    
+    /// Whether a `ListPopover` is currently displayed.
+    @State private var showingDetails = false
     
     // MARK: Initializers
     init(_ statistic: Binding<Statistic>, popover: Bool = true) {

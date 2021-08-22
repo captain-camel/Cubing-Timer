@@ -9,18 +9,18 @@ import SwiftUI
 
 struct AddInstanceSheet: View {
     // MARK: Properties
-    /// The presentation mode of the sheet.
-    @Environment(\.presentationMode) var presentationMode
-    
-    /// A callback that is called when the button to create the new `Instance` is pressed.
-    let createAction: (_ name: String, _ puzzle: Puzzle, _ notes: String?) -> Void
-    
     /// The name of the new `Instance`.
     @State var name = ""
     /// The `Puzzle` assigned to the new `Instance`.
     @State var puzzle: Puzzle = .cube(3)
     /// Notes about the new `Instance`.
     @State var notes = ""
+    
+    /// A callback that is called when the button to create the new `Instance` is pressed.
+    let createAction: (_ name: String, _ puzzle: Puzzle, _ notes: String?) -> Void
+    
+    /// The presentation mode of the sheet.
+    @Environment(\.presentationMode) var presentationMode
     
     // MARK: Body
     var body: some View {

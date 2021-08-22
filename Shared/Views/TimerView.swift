@@ -9,18 +9,18 @@ import SwiftUI
 
 struct TimerView: View {
     // MARK: Properties
+    /// The state of the timer.
+    @Binding var timerState: TimerState
+
+    /// A callback that is called when a the timer is stopped, with the time on the timer.
+    let timerStoppedAction: (_ time: Double) -> Void
+
     /// A stopwatch to time solves.
     @StateObject var stopwatch = Stopwatch()
     /// A countdown to start timing solves.
     @StateObject var countdown = Countdown(duration: 0.5)
     /// A timer for inspection.
     @StateObject var inspection = Inspection(duration: 15)
-    
-    /// The state of the timer.
-    @Binding var timerState: TimerState
-
-    /// A callback that is called when a the timer is stopped, with the time on the timer.
-    let timerStoppedAction: (_ time: Double) -> Void
     
     /// The displayed time.
     private var time: String {
