@@ -11,9 +11,9 @@ import Foundation
 class Countdown: ObservableObject {
     // MARK: Properties
     /// Whether the `duration` has passed since the `Countdown` was started.
-    @Published var isComplete = false
+    @Published var complete = false
     /// Whether the `Countdown` is running.
-    @Published var isRunning = false
+    @Published var running = false
     
     /// The number of seconds after the `Countdown` is started before it completes.
     let duration: Double
@@ -39,26 +39,26 @@ class Countdown: ObservableObject {
     // MARK: Methods
     /// Starts the `Countdown`.
     func start() throws {
-        if isRunning {
+        if running {
             throw CountdownError.alreadyRunning
         }
         
         timer = Foundation.Timer.scheduledTimer(withTimeInterval: duration, repeats: false) { _ in
-            self.isComplete = true
+            self.complete = true
         }
         
-        isRunning = true
+        running = true
     }
     
     /// Stops and resets the `Countdown`.
     func reset() throws {
-        if !isRunning {
+        if !running {
             throw CountdownError.notRunning
         }
         
         timer.invalidate()
         
-        isComplete = false
-        isRunning = false
+        complete = false
+        running = false
     }
 }
