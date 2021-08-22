@@ -38,7 +38,11 @@ class Inspection: ObservableObject {
     
     // MARK: Methods
     /// Starts the `Inspection`.
-    func start() {
+    func start() throws {
+        if isRunning {
+            throw InspectionError.alreadyRunning
+        }
+        
         secondsRemaining = duration
         
         timer = Foundation.Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
