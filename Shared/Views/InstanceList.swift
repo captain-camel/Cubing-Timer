@@ -9,13 +9,8 @@ import SwiftUI
 
 struct InstanceList: View {
     // MARK: Properties
-    /// All of the `Instance`s fetched from Core Data.
-    @FetchRequest(
-        entity: Instance.entity(),
-        sortDescriptors: [
-            NSSortDescriptor(keyPath: \Instance.order, ascending: true)
-        ]
-    ) var instances: FetchedResults<Instance>
+    /// All of the `Instance`s to display.
+    var instances: FetchedResults<Instance>
     
     /// Whether the sheet to add a new instance is displayed.
     @State var showingAddInstanceSheet = false
@@ -59,11 +54,5 @@ struct InstanceList: View {
                 )
             }
         }
-    }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        InstanceList()
     }
 }
