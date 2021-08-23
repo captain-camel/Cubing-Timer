@@ -37,7 +37,7 @@ struct TimerView: View {
     
     /// The color of the timer text.
     private var timeColor: Color {
-        if timerState == .running || timerState == .ready {
+        if timerState == .running || timerState == .ready || timerState == .inspection {
             return .white
         } else if timerState == .counting {
             return .yellow
