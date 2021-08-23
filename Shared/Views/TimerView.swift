@@ -27,7 +27,7 @@ struct TimerView: View {
         if timerState == .ready {
             return "0.0"
         } else if timerState == .inspection {
-            return Solve.formatTime(Double(inspection.secondsRemaining))
+            return Solve.formatTime(Double(inspection.secondsRemaining), places: 0)
         } else if timerState == .running {
             return Solve.formatTime(stopwatch.secondsElapsed, places: 1)
         } else {
