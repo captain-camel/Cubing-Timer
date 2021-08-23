@@ -44,7 +44,7 @@ class InstanceStorage {
     }
     
     /// Creates a new `Instance` and saves it to Core Data.
-    static func add(name: String, puzzle: Puzzle, notes: String? = nil, primaryStatistic: Statistic = Statistic(kind: .average, modifier: 5), secondaryStatistic: Statistic = Statistic(kind: .average, modifier: 5), inspection: Bool = true, inspectionDuration: Int = 15, order: Int? = nil, id: UUID = UUID()) {
+    static func add(name: String, puzzle: Puzzle, notes: String? = nil, primaryStatistic: Statistic = Statistic(kind: .average, modifier: 5), secondaryStatistic: Statistic = Statistic(kind: .average, modifier: 12), inspection: Bool = true, inspectionDuration: Int = 15, order: Int? = nil, id: UUID = UUID()) {
         let newInstance = Instance(context: PersistenceController.viewContext)
         
         newInstance.name = name
