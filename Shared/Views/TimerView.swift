@@ -90,6 +90,8 @@ struct TimerView: View {
                     
                     try? inspection.start()
                 case .running:
+                    stopwatch.reset()
+                    
                     try? countdown.reset()
                     
                     try? inspection.reset()
