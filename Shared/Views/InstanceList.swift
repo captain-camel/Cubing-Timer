@@ -48,9 +48,7 @@ struct InstanceList: View {
                 InstanceStorage.add(
                     name: name,
                     puzzle: puzzle,
-                    notes: notes,
-                    primaryStatistic: Statistic(kind: .average, modifier: 5),
-                    secondaryStatistic: Statistic(kind: .average, modifier: 12)
+                    notes: notes
                 )
             }
         }
