@@ -57,7 +57,7 @@ class InstanceStorage {
         newInstance.primaryStatistic.setInstance(to: newInstance)
         newInstance.secondaryStatistic.setInstance(to: newInstance)
         
-        newInstance.inspectionDuration = inspectionDuration != nil ? Int64(inspectionDuration!) : nil
+        newInstance.inspectionDuration = inspectionDuration
 
         if order == nil {
             newInstance.order = (Self.shared.instances.map { $0.order }.max() ?? -1) + 1

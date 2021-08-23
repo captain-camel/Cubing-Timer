@@ -31,9 +31,11 @@ extension Instance {
     @NSManaged public var primaryStatisticRawValue: String
     /// Serialized string of the second statistic displayed by the `Instance`.
     @NSManaged public var secondaryStatisticRawValue: String
-
+    
+    /// Whether the instance has an inspection countdown before the timer starts.
+    @NSManaged public var inspection: Bool
     /// The length of the inspection before the timer starts.
-    @NSManaged public var inspectionDuration: Int64?
+    @NSManaged public var inspectionDurationRawValue: Int64
     
     /// The set of all the `Solve`s in the `Instance`.
     @NSManaged public var solves: NSSet?
@@ -72,6 +74,27 @@ extension Instance {
             return Statistic(secondaryStatisticRawValue, instance: self)
         } set {
             secondaryStatisticRawValue = newValue.description
+        }
+    }
+    
+    var inspectionDuration: Int? {
+        get {
+            if inspection {
+                return Int(inspectionDurationRawValue)
+            }
+            
+            return nil
+        }
+        set {
+            if newValue != nil {
+                inspectionDurationRawValue = Int64(newValue!)
+                
+                inspection = true
+            } else {
+                inspectionDurationRawValue = 0
+                
+                inspection = false
+            }
         }
     }
     
