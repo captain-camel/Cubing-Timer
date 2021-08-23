@@ -47,11 +47,11 @@ struct TimerView: View {
     }
 
     // MARK: Initializers
-    init(timerState: Binding<TimerState>, countdownDuration: Double = 0.5, inspectionDuration: Int? = nil, timerStoppedAction: @escaping (_ time: Double) -> Void) {
+    init(timerState: Binding<TimerState>, countdownDuration: Double = 0.5, inspectionDuration: Int = 15, timerStoppedAction: @escaping (_ time: Double) -> Void) {
         self._timerState = timerState
         
         _countdown = StateObject(wrappedValue: Countdown(duration: countdownDuration))
-        _inspection = StateObject(wrappedValue: Inspection(duration: inspectionDuration ?? 0))
+        _inspection = StateObject(wrappedValue: Inspection(duration: inspectionDuration))
         
         self.timerStoppedAction = timerStoppedAction
     }
