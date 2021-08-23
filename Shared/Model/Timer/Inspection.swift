@@ -48,6 +48,8 @@ class Inspection: ObservableObject {
         timer = Foundation.Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
             self.secondsRemaining -= 1
         }
+        
+        running = true
     }
     
     /// Stops and resets the `Inspection`.
@@ -59,6 +61,7 @@ class Inspection: ObservableObject {
         timer.invalidate()
         
         secondsRemaining = duration
+        
         running = false
     }
 }
