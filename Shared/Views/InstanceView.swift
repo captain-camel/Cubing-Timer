@@ -27,7 +27,7 @@ struct InstanceView: View {
     
     /// The scale of the circle behind the timer.
     private var circleScale: CGFloat {
-        if timerState == .running {
+        if timerState == .running || timerState == .inspection {
             return 3
         } else if timerState == .ready {
             return 0.7
@@ -51,7 +51,7 @@ struct InstanceView: View {
     // MARK: Body
     var body: some View {
         VStack {
-            TimerView(timerState: $timerState) { time in
+            TimerView(timerState: $timerState, inspectionDuration: Int(instance.inspectionDuration ?? 0)) { time in
                 instance.addSolve(time: time)
             }
             
@@ -73,9 +73,9 @@ struct InstanceView: View {
         .gesture(
             DragGesture(minimumDistance: 0)
                 .onChanged { gesture in
-                    switch timerState {
-                    case .stopped, .counting:
-                        if gestureState != .complete {
+                    if gestureState != .complete {
+                        switch timerState {
+                        case .stopped, .counting:
                             if gesture.translation.distance > 15 && gestureState == .stationary {
                                 if abs(gesture.translation.width) > abs(gesture.translation.height) {
                                     if gesture.translation.width < 0 {
@@ -97,15 +97,20 @@ struct InstanceView: View {
                                 
                                 gestureState = .stationary
                             }
+                            
+                        case .inspection:
+                            timerState = .running
+                            
+                            gestureState = .complete
+                            
+                        case .running:
+                            timerState = .stopped
+                            
+                            gestureState = .complete
+                            
+                        default:
+                            break
                         }
-                        
-                    case .running:
-                        timerState = .stopped
-                        
-                        gestureState = .complete
-                        
-                    default:
-                        break
                     }
                 }
                 .onEnded { gesture in
@@ -120,8 +125,12 @@ struct InstanceView: View {
                         print("down")
                     default:
                         if timerState == .ready {
-                            timerState = .running
-                        } else {
+                            if instance.inspectionDuration != nil {
+                                timerState = .inspection
+                            } else {
+                                timerState = .running
+                            }
+                        } else if timerState == .counting {
                             timerState = .stopped
                         }
                     }
