@@ -19,7 +19,7 @@ class Countdown: ObservableObject {
     let duration: Double
 
     /// The `Timer` that determines when the `Countdown` should complete.
-    private var timer = Foundation.Timer()
+    private var timer = Timer()
     
     // MARK: Initializers
     /// Creates a `Countdown` of a specified duration.
@@ -43,7 +43,7 @@ class Countdown: ObservableObject {
             throw CountdownError.alreadyRunning
         }
         
-        timer = Foundation.Timer.scheduledTimer(withTimeInterval: duration, repeats: false) { _ in
+        timer = Timer.scheduledTimer(withTimeInterval: duration, repeats: false) { _ in
             self.complete = true
         }
         
