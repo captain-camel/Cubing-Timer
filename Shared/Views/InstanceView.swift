@@ -25,11 +25,22 @@ struct InstanceView: View {
     /// All of the `Solve`s fetched from Core Data belonging to the current `Instance`.
     @FetchRequest var solves: FetchedResults<Solve>
     
-    /// The scale of the circle behind the timer.
-    private var circleScale: CGFloat {
-        if timerState == .running || timerState == .inspection {
+    /// The scale of the circle behind the timer that is displayed when the timer is runing.
+    private var runningCircleScale: CGFloat {
+        if timerState == .running {
             return 3
-        } else if timerState == .ready {
+        } else if timerState == .ready && !instance.inspection {
+            return 0.7
+        } else {
+            return 0.0001
+        }
+    }
+    
+    /// The scale of the circle behind the timer that is displayed during inspection.
+    private var inspectionCircleScale: CGFloat {
+        if timerState == .inspection && instance.inspection {
+            return 3
+        } else if timerState == .ready && instance.inspection {
             return 0.7
         } else {
             return 0.0001
@@ -62,10 +73,17 @@ struct InstanceView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(
-            Circle()
-                .foregroundColor(Self.circleColor)
-                .scaleEffect(circleScale)
-                .animation(timerState == .ready ? .spring(response: 0.5, dampingFraction: 0.5, blendDuration: 0.5) : .easeIn)
+            ZStack {
+                Circle()
+                    .foregroundColor(.yellow)
+                    .scaleEffect(inspectionCircleScale)
+                    .animation(timerState == .ready ? .spring(response: 0.5, dampingFraction: 0.5, blendDuration: 0.5) : .easeIn, value: inspectionCircleScale)
+                
+                Circle()
+                    .foregroundColor(Self.circleColor)
+                    .scaleEffect(runningCircleScale)
+                    .animation(timerState == .ready ? .spring(response: 0.5, dampingFraction: 0.5, blendDuration: 0.5) : .easeIn, value: runningCircleScale)
+            }
         )
         .offset(gestureState.translation)
         .animation(.easeIn, value: gestureState.translation)
