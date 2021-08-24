@@ -18,7 +18,7 @@ class Countdown: ObservableObject {
     /// The number of seconds after the `Countdown` is started before it completes.
     let duration: Double
 
-    /// The `Swift` `Timer` that determines when the `Countdown` should complete.
+    /// The `Timer` that determines when the `Countdown` should complete.
     private var timer = Foundation.Timer()
     
     // MARK: Initializers
