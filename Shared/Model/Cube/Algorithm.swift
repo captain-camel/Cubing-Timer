@@ -58,7 +58,7 @@ extension Algorithm: ExpressibleByStringLiteral {
 }
 
 extension Algorithm: ExpressibleByArrayLiteral {
-    // MARK: Methods
+    // MARK: Initializers
     init(arrayLiteral: Move...) {
         self.init(arrayLiteral)
     }
