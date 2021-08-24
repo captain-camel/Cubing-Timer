@@ -56,3 +56,10 @@ extension Algorithm: ExpressibleByStringLiteral {
         self.init(value)!
     }
 }
+
+extension Algorithm: ExpressibleByArrayLiteral {
+    // MARK: Methods
+    init(arrayLiteral: Move...) {
+        self.init(arrayLiteral)
+    }
+}
