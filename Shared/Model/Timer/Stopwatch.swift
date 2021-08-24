@@ -18,7 +18,7 @@ class Stopwatch: ObservableObject {
     /// The exaxt time that the timer started.
     private var startTime = Date()
     /// The `Timer` object that updates `secondsElapsed` every `0.1` seconds.
-    private var timer = Foundation.Timer()
+    private var timer = Timer()
     
     // MARK: Types
     /// Errors that can be thrown by `Stopwatch`
@@ -38,7 +38,7 @@ class Stopwatch: ObservableObject {
         
         startTime = Date()
         
-        timer = Foundation.Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { _ in
+        timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { _ in
             self.secondsElapsed = round(Date().timeIntervalSince(self.startTime) * 10) / 10
         }
         
