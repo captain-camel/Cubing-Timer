@@ -39,7 +39,7 @@ class Stopwatch: ObservableObject {
         startTime = Date()
         
         timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { _ in
-            self.secondsElapsed = round(Date().timeIntervalSince(self.startTime) * 10) / 10
+            self.secondsElapsed = Date().timeIntervalSince(self.startTime)
         }
         
         running = true
