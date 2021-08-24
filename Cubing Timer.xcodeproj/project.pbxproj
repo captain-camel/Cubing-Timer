@@ -67,6 +67,8 @@
 		DD4F1A0726CC1306008A1022 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4F1A0526CC1305008A1022 /* String.swift */; };
 		DD7809F926D051AC00E716F3 /* CGSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7809F826D051AC00E716F3 /* CGSize.swift */; };
 		DD7809FA26D051AC00E716F3 /* CGSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7809F826D051AC00E716F3 /* CGSize.swift */; };
+		DDAD68F126D4B1B4005750A5 /* InstanceSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDAD68F026D4B1B4005750A5 /* InstanceSettings.swift */; };
+		DDAD68F226D4B1B4005750A5 /* InstanceSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDAD68F026D4B1B4005750A5 /* InstanceSettings.swift */; };
 		DDF6C78026C782C200B505B9 /* Move.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF6C77F26C782C200B505B9 /* Move.swift */; };
 		DDF6C78126C782C200B505B9 /* Move.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF6C77F26C782C200B505B9 /* Move.swift */; };
 		DDF6C78326C782E900B505B9 /* Algorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF6C78226C782E900B505B9 /* Algorithm.swift */; };
@@ -117,6 +119,7 @@
 		DD4F19FF26CAD2B7008A1022 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		DD4F1A0526CC1305008A1022 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		DD7809F826D051AC00E716F3 /* CGSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGSize.swift; sourceTree = "<group>"; };
+		DDAD68F026D4B1B4005750A5 /* InstanceSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstanceSettings.swift; sourceTree = "<group>"; };
 		DDF6C77F26C782C200B505B9 /* Move.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Move.swift; sourceTree = "<group>"; };
 		DDF6C78226C782E900B505B9 /* Algorithm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Algorithm.swift; sourceTree = "<group>"; };
 		DDF6C78C26C97ED100B505B9 /* Stopwatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stopwatch.swift; sourceTree = "<group>"; };
@@ -213,6 +216,7 @@
 				DD090A2126BF355800DEAC82 /* InstanceRow.swift */,
 				DDF6C79926CA35A000B505B9 /* AddInstanceSheet.swift */,
 				DD090A3126BF3AC900DEAC82 /* InstanceView.swift */,
+				DDAD68F026D4B1B4005750A5 /* InstanceSettings.swift */,
 				DD4F19FF26CAD2B7008A1022 /* TimerView.swift */,
 				DD090A2426BF3A0A00DEAC82 /* StatisticView.swift */,
 				DD090A2E26BF3AB700DEAC82 /* ListPopover.swift */,
@@ -414,6 +418,7 @@
 				DD090A4126C0937200DEAC82 /* Collection.swift in Sources */,
 				DD0909EC26BF09C800DEAC82 /* InstanceList.swift in Sources */,
 				DDF6C78326C782E900B505B9 /* Algorithm.swift in Sources */,
+				DDAD68F126D4B1B4005750A5 /* InstanceSettings.swift in Sources */,
 				DD4F1A0026CAD2B7008A1022 /* TimerView.swift in Sources */,
 				DD090A3B26BF3EB000DEAC82 /* View.swift in Sources */,
 				DD090A0526BF0C9100DEAC82 /* Instance+CoreDataProperties.swift in Sources */,
@@ -456,6 +461,7 @@
 				DD090A4226C0937200DEAC82 /* Collection.swift in Sources */,
 				DD0909ED26BF09C800DEAC82 /* InstanceList.swift in Sources */,
 				DDF6C78426C782E900B505B9 /* Algorithm.swift in Sources */,
+				DDAD68F226D4B1B4005750A5 /* InstanceSettings.swift in Sources */,
 				DD4F1A0126CAD2B7008A1022 /* TimerView.swift in Sources */,
 				DD090A3C26BF3EB000DEAC82 /* View.swift in Sources */,
 				DD090A0626BF0C9100DEAC82 /* Instance+CoreDataProperties.swift in Sources */,

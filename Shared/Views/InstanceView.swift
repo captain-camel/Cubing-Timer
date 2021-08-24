@@ -28,6 +28,9 @@ struct InstanceView: View {
     /// All of the `Solve`s fetched from Core Data belonging to the current `Instance`.
     @FetchRequest var solves: FetchedResults<Solve>
     
+    /// Whether the `Instance`'s settings are displayed.
+    @State private var showingSettings = false
+    
     /// The scale of the circle behind the timer that is displayed when the timer is runing.
     private var runningCircleScale: CGFloat {
         if timerState == .running {
@@ -76,6 +79,15 @@ struct InstanceView: View {
         }
         .navigationTitle(instance.name)
         .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button {
+                    showingSettings = true
+                } label: {
+                    Image(systemName: "slider.horizontal.3")
+                }
+            }
+        }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(
             ZStack {
@@ -165,6 +177,10 @@ struct InstanceView: View {
             if !isPresented {
                 timerState = .stopped
             }
+        }
+        
+        NavigationLink(destination: InstanceSettings(instance: instance), isActive: $showingSettings){
+            EmptyView()
         }
     }
     
