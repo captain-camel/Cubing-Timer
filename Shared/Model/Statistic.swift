@@ -130,7 +130,7 @@ struct Statistic {
         
         // MARK: Properties
         /// Stylized version of the statistic's name.
-        var stylizedName: String {
+        var formattedName: String {
             return self.rawValue.capitalized
         }
     }
