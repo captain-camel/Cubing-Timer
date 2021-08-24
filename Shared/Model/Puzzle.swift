@@ -5,8 +5,6 @@
 //  Created by Cameron Delong on 8/5/21.
 //
 
-import Foundation
-
 /// Any twisty puzzle.
 enum Puzzle: Hashable, CaseIterable {
     static var allCases: [Puzzle] = (2...7).map { cube($0) } + [pyraminx, megaminx, skewb, square_1, other("")]

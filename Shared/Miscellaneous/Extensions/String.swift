@@ -5,8 +5,6 @@
 //  Created by Cameron Delong on 8/17/21.
 //
 
-import Foundation
-
 extension StringProtocol {
     subscript(offset: Int) -> Character { self[index(startIndex, offsetBy: offset)] }
     subscript(range: Range<Int>) -> SubSequence {

@@ -6,7 +6,6 @@
 //
 //
 
-import Foundation
 import CoreData
 
 /// A `class `describing an "Instance," allowing the user to keep track of different puzzles with different timers.

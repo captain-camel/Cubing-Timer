@@ -6,7 +6,6 @@
 //
 //
 
-import Foundation
 import CoreData
 
 /// A `class` describing a solve timed in the app.

@@ -5,8 +5,6 @@
 //  Created by Cameron Delong on 8/5/21.
 //
 
-import Foundation
-
 struct Statistic {
     // MARK: Properties
     /// The type of `Statistic` being tracked.
