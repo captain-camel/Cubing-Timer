@@ -58,7 +58,9 @@ struct AddInstanceSheet: View {
                     TextEditor(text: $notes)
                 }
                 
-                Toggle("Inspection", isOn: $inspection)
+                Section(header: Text("Inspection")) {
+                    Toggle("Inspection", isOn: $inspection)
+                }
             }
             .navigationBarTitle("New Instance", displayMode: .inline)
             .toolbar {
