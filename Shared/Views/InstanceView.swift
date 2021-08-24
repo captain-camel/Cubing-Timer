@@ -16,6 +16,9 @@ struct InstanceView: View {
     /// The `Instance` displayed by the `InstanceView`.
     @ObservedObject var instance: Instance
     
+    /// The presentation mode of the view.
+    @Environment(\.presentationMode) var presentationMode
+    
     /// The state of any drag gesture in progress.
     @State private var gestureState: GestureState = .none
     
@@ -71,6 +74,8 @@ struct InstanceView: View {
                 StatisticView($instance.secondaryStatistic)
             }
         }
+        .navigationTitle(instance.name)
+        .navigationBarTitleDisplayMode(.inline)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(
             ZStack {
@@ -156,6 +161,11 @@ struct InstanceView: View {
                     gestureState = .none
                 }
         )
+        .onChange(of: presentationMode.wrappedValue.isPresented) { isPresented in
+            if !isPresented {
+                timerState = .stopped
+            }
+        }
     }
     
     // MARK: Types
