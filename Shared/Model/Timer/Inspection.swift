@@ -11,20 +11,24 @@ import Foundation
 class Inspection: ObservableObject {
     // MARK: Properties
     /// The seconds remaining in the `Inspection`.
-    @Published var secondsRemaining = 0
+    @Published var secondsRemaining: Double
     
     /// The duration of the `Inspection`.
     let duration: Int
     
     /// Whether the `Inspection` is running.
     private var running = false
-    /// The `Swift` `Timer` that updates `secondsRemaining` every second.
-    private var timer = Foundation.Timer()
+    /// The exaxt time that the timer started.
+    private var startTime = Date()
+    /// The `Timer` that updates `secondsRemaining` every second.
+    private var timer = Timer()
     
     // MARK: Initializers
     /// Creates an `Inspection` of a specified duration.
     init(duration: Int) {
         self.duration = duration
+        
+        self.secondsRemaining = Double(duration)
     }
     
     // MARK: Types
@@ -43,10 +47,10 @@ class Inspection: ObservableObject {
             throw InspectionError.alreadyRunning
         }
         
-        secondsRemaining = duration
-        
-        timer = Foundation.Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
-            self.secondsRemaining -= 1
+        startTime = Date()
+
+        timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { _ in
+            self.secondsRemaining = Double(self.duration) - Date().timeIntervalSince(self.startTime)
         }
         
         running = true
@@ -60,7 +64,7 @@ class Inspection: ObservableObject {
         
         timer.invalidate()
         
-        secondsRemaining = duration
+        secondsRemaining = Double(duration)
         
         running = false
     }
