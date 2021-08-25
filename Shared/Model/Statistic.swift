@@ -39,7 +39,7 @@ struct Statistic {
     var modifierTitle: String? {
         switch kind {
         case .average:
-            return "Average of:"
+            return "Average of"
         default:
             return nil
         }
