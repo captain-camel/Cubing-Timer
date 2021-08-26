@@ -61,6 +61,8 @@
 		DD0E676926CD994500E1C444 /* PopoverRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0E676726CD994500E1C444 /* PopoverRow.swift */; };
 		DD0E676B26CDCB4400E1C444 /* ListSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0E676A26CDCB4400E1C444 /* ListSheet.swift */; };
 		DD0E676C26CDCB4400E1C444 /* ListSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0E676A26CDCB4400E1C444 /* ListSheet.swift */; };
+		DD2A938526D5C17F00F93897 /* NumberField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2A938426D5C17F00F93897 /* NumberField.swift */; };
+		DD2A938626D5C17F00F93897 /* NumberField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2A938426D5C17F00F93897 /* NumberField.swift */; };
 		DD4F1A0026CAD2B7008A1022 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4F19FF26CAD2B7008A1022 /* TimerView.swift */; };
 		DD4F1A0126CAD2B7008A1022 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4F19FF26CAD2B7008A1022 /* TimerView.swift */; };
 		DD4F1A0626CC1306008A1022 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4F1A0526CC1305008A1022 /* String.swift */; };
@@ -116,6 +118,7 @@
 		DD090A4A26C3698200DEAC82 /* Cube.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cube.swift; sourceTree = "<group>"; };
 		DD0E676726CD994500E1C444 /* PopoverRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverRow.swift; sourceTree = "<group>"; };
 		DD0E676A26CDCB4400E1C444 /* ListSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListSheet.swift; sourceTree = "<group>"; };
+		DD2A938426D5C17F00F93897 /* NumberField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberField.swift; sourceTree = "<group>"; };
 		DD4F19FF26CAD2B7008A1022 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		DD4F1A0526CC1305008A1022 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		DD7809F826D051AC00E716F3 /* CGSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGSize.swift; sourceTree = "<group>"; };
@@ -217,6 +220,7 @@
 				DDF6C79926CA35A000B505B9 /* AddInstanceSheet.swift */,
 				DD090A3126BF3AC900DEAC82 /* InstanceView.swift */,
 				DDAD68F026D4B1B4005750A5 /* InstanceSettings.swift */,
+				DD2A938426D5C17F00F93897 /* NumberField.swift */,
 				DD4F19FF26CAD2B7008A1022 /* TimerView.swift */,
 				DD090A2426BF3A0A00DEAC82 /* StatisticView.swift */,
 				DD090A2E26BF3AB700DEAC82 /* ListPopover.swift */,
@@ -419,6 +423,7 @@
 				DD0909EC26BF09C800DEAC82 /* InstanceList.swift in Sources */,
 				DDF6C78326C782E900B505B9 /* Algorithm.swift in Sources */,
 				DDAD68F126D4B1B4005750A5 /* InstanceSettings.swift in Sources */,
+				DD2A938526D5C17F00F93897 /* NumberField.swift in Sources */,
 				DD4F1A0026CAD2B7008A1022 /* TimerView.swift in Sources */,
 				DD090A3B26BF3EB000DEAC82 /* View.swift in Sources */,
 				DD090A0526BF0C9100DEAC82 /* Instance+CoreDataProperties.swift in Sources */,
@@ -462,6 +467,7 @@
 				DD0909ED26BF09C800DEAC82 /* InstanceList.swift in Sources */,
 				DDF6C78426C782E900B505B9 /* Algorithm.swift in Sources */,
 				DDAD68F226D4B1B4005750A5 /* InstanceSettings.swift in Sources */,
+				DD2A938626D5C17F00F93897 /* NumberField.swift in Sources */,
 				DD4F1A0126CAD2B7008A1022 /* TimerView.swift in Sources */,
 				DD090A3C26BF3EB000DEAC82 /* View.swift in Sources */,
 				DD090A0626BF0C9100DEAC82 /* Instance+CoreDataProperties.swift in Sources */,
