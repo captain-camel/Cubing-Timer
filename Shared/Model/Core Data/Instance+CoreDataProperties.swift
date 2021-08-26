@@ -49,10 +49,10 @@ extension Instance {
     /// The puzzle assigned to the `Instance`.
     var puzzle: Puzzle {
         get {
-            return Puzzle(puzzleRawValue)
+            return Puzzle(serialized: puzzleRawValue)
         }
         set {
-            puzzleRawValue = String(newValue)
+            puzzleRawValue = newValue.serialized
         }
     }
     
