@@ -29,7 +29,6 @@ enum Puzzle: CaseIterable, Hashable {
     
     /// Serialized `String` representing the `Puzzle`.
     var serialized: String {
-        print(description + "<-")
         switch self {
         case .other:
             return "_\(description)"
