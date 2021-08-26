@@ -23,34 +23,25 @@ struct AddInstanceSheet: View {
     
     /// The presentation mode of the sheet.
     @Environment(\.presentationMode) var presentationMode
-    
+
     // MARK: Body
     var body: some View {
-        let puzzleString = Binding(
-            get: {
-                return String(puzzle)
-            },
-            set: {
-                puzzle = Puzzle($0)
-            }
-        )
-        
-        return NavigationView {
+        NavigationView {
             Form {
                 Section(header: Text("Name")) {
                     TextField("Name", text: $name)
                 }
                 
                 Section(header: Text("Puzzle")) {
-                    Picker(selection: $puzzle, label: Text("Puzzle")) {
+                    Picker(selection: $puzzle.kind, label: Text("Puzzle")) {
                         ForEach(Puzzle.allCases, id: \.self) { puzzle in
-                            Text(puzzle.displayName)
+                            Text(String(puzzle.displayName))
                                 .tag(puzzle)
                         }
                     }
                     
-                    if case .other(_) = puzzle {
-                        TextField("Puzzle", text: puzzleString)
+                    if case .other = puzzle {
+                        TextField("Puzzle", text: $puzzle.other)
                     }
                 }
                 
@@ -83,7 +74,7 @@ struct AddInstanceSheet: View {
                         
                         presentationMode.wrappedValue.dismiss()
                     }
-                    .disabled(name == "" || puzzleString.wrappedValue == "")
+                    .disabled(name == "" || puzzle == "")
                 }
             }
         }
