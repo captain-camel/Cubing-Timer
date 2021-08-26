@@ -29,7 +29,7 @@ struct AddInstanceSheet: View {
         NavigationView {
             Form {
                 Section(header: Text("Name")) {
-                    TextField("Name", text: $name)
+                    TextField(String(puzzle), text: $name)
                 }
                 
                 Section(header: Text("Puzzle")) {
