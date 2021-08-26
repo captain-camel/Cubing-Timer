@@ -15,6 +15,23 @@ struct InstanceSettings: View {
     // MARK: Body
     var body: some View {
         Form {
+            Section(header: Text("Name")) {
+                TextField(String(instance.puzzle), text: $instance.name)
+            }
+            
+            Section(header: Text("Puzzle")) {
+                Picker(selection: $instance.puzzle.kind, label: Text("Puzzle")) {
+                    ForEach(Puzzle.allCases, id: \.self) { puzzle in
+                        Text(puzzle.displayName)
+                            .tag(puzzle)
+                    }
+                }
+                
+                if case .other = instance.puzzle {
+                    TextField("Puzzle", text: $instance.puzzle.other)
+                }
+            }
+            
             Section(header: Text("Primary Statistic")) {
                 Picker(selection: $instance.primaryStatistic.kind, label: Text("Type")) {
                     ForEach(Statistic.Kind.allCases, id: \.self) { statistic in
