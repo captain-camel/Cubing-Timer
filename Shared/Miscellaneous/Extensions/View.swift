@@ -28,8 +28,8 @@ extension View {
     ///   - devices: The devices on which the transformation should be applied.
     ///   - transform: The transform to apply to the source `View`.
     /// - Returns: Either the original `View` or the modified `View` if the current device is listed in `devices`.
-    @ViewBuilder func onDevice<Content: View>(_ devices: Device.Kind..., transform: (Self) -> Content) -> some View {
-        if devices.contains(Device.shared.currentDevice) {
+    @ViewBuilder func onDevice<Content: View>(_ devices: Device..., transform: (Self) -> Content) -> some View {
+        if devices.contains(Device()) {
             transform(self)
         } else {
             self

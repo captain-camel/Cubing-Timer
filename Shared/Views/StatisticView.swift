@@ -47,13 +47,13 @@ struct StatisticView: View {
             }
             .buttonStyle(StatisticButtonStyle())
             .disabled(statistic.details!.isEmpty)
-            .if(Device.shared.currentDevice == .pad) { view in
+            .if(Device() == .pad) { view in
                 view.popover(isPresented: $showingDetails) {
                     ListPopover(values: statistic.details!, limit: 10, action: statistic.action, actionSymbol: statistic.actionSymbol)
                         .fixedSize()
                 }
             }
-            .if(Device.shared.currentDevice == .phone) { view in
+            .if(Device() == .phone) { view in
                 view.sheet(isPresented: $showingDetails) {
                     ListSheet(title: statistic.longName, values: statistic.details!, action: statistic.action, actionSymbol: statistic.actionSymbol)
                 }
