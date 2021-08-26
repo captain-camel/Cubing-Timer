@@ -9,6 +9,7 @@ import SwiftUI
 
 ///A `TextField` with a `Stepper` to the left to allow `Int` inputs.
 struct NumberField: View {
+    // MARK: Properties
     /// The title of the `NumberField`.
     var title: String
     
@@ -21,13 +22,7 @@ struct NumberField: View {
     /// The `String` entered into the `TextField`.
     @State var string: String
     
-    /// A `NumberFormatter` for the `TextField`.
-    static private let numberFormatter: NumberFormatter = {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .decimal
-        return formatter
-    }()
-
+    // MARK: Initializers
     init(title: String = "", value: Binding<Int>, in range: ClosedRange<Int>) {
         self.title = title
         
@@ -37,6 +32,7 @@ struct NumberField: View {
         self.range = range
     }
     
+    // MARK: Body
     var body: some View {
         HStack {
             Text("\(title)")
