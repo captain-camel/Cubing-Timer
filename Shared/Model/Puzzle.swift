@@ -6,7 +6,7 @@
 //
 
 /// Any twisty puzzle.
-enum Puzzle: Hashable, CaseIterable {
+enum Puzzle: CaseIterable, Hashable {
     // MARK: Cases
     /// A cube with the same number of pieces on each edge.
     case cube(Int)
@@ -26,6 +26,17 @@ enum Puzzle: Hashable, CaseIterable {
     // MARK: Properties
     /// All WCA puzzles and `.other`.
     static var allCases: [Puzzle] = (2...7).map { cube($0) } + [pyraminx, megaminx, skewb, square_1, other("")]
+    
+    /// Serialized `String` representing the `Puzzle`.
+    var serialized: String {
+        print(description + "<-")
+        switch self {
+        case .other:
+            return "_\(description)"
+        default:
+            return ".\(description)"
+        }
+    }
     
     /// The name of the `Puzzle` to be displayed while creating a new `Instance`.
     var displayName: String {
@@ -47,13 +58,28 @@ enum Puzzle: Hashable, CaseIterable {
         }
     }
     
-    /// Serialized `String` representing the `Puzzle`.
-    var serialized: String {
-        switch self {
-        case let .other(name):
-            return "_\(name)"
-        default:
-            return ".\(description)"
+    /// A computed property to set the name of an `.other` `Puzzle`.
+    var other: String {
+        get {
+            return String(self)
+        }
+        set {
+            self = .other(newValue)
+        }
+    }
+    
+    /// The kind of the `Puzzle`, not including associated values.
+    var kind: Puzzle {
+        get {
+            switch self {
+            case .other:
+                return .other("")
+            default:
+                return self
+            }
+        }
+        set {
+            self = newValue
         }
     }
     
@@ -124,12 +150,6 @@ extension Puzzle: LosslessStringConvertible {
         default:
             self = .other(description)
         }
-    }
-}
-
-extension Puzzle: Equatable {
-    static func == (lhs: Puzzle, rhs: Puzzle) -> Bool {
-        return lhs.displayName == rhs.displayName
     }
 }
 
