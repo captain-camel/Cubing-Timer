@@ -7,8 +7,6 @@
 
 /// Any twisty puzzle.
 enum Puzzle: Hashable, CaseIterable {
-    static var allCases: [Puzzle] = (2...7).map { cube($0) } + [pyraminx, megaminx, skewb, square_1, other("")]
-    
     // MARK: Cases
     /// A cube with the same number of pieces on each edge.
     case cube(Int)
@@ -24,6 +22,10 @@ enum Puzzle: Hashable, CaseIterable {
     
     /// Some other puzzle that is not listed.
     case other(String)
+    
+    // MARK: Properties
+    /// All WCA puzzles and `.other`.
+    static var allCases: [Puzzle] = (2...7).map { cube($0) } + [pyraminx, megaminx, skewb, square_1, other("")]
     
     /// The name of the `Puzzle` to be displayed while creating a new `Instance`.
     var displayName: String {
@@ -42,6 +44,42 @@ enum Puzzle: Hashable, CaseIterable {
             
         case .other:
             return "Other"
+        }
+    }
+    
+    /// Serialized `String` representing the `Puzzle`.
+    var serialized: String {
+        switch self {
+        case let .other(name):
+            return "_\(name)"
+        default:
+            return ".\(description)"
+        }
+    }
+    
+    // MARK: Initializers
+    /// Creates a `Puzzle` from a serialized `String`.
+    init(serialized: String) {
+        let name = String(serialized.dropFirst())
+        
+        if serialized.first == "_" {
+            self = .other(name)
+        } else {
+            switch name {
+            case _ where name.count == 3 && (Int(String(name.first!)) != nil) && (Int(String(name.last!)) != nil) && name[1] == "x":
+                self = .cube(Int(String(name.first!))!)
+            case "Pyraminx":
+                self = .pyraminx
+            case "Megaminx":
+                self = .megaminx
+            case "Skewb":
+                self = .skewb
+            case "Square-1":
+                self = .square_1
+                
+            default:
+                self = .other(name)
+            }
         }
     }
 }
