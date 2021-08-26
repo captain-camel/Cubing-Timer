@@ -40,7 +40,7 @@ struct InstanceSettings: View {
                     }
                 }
                 
-                if instance.primaryStatistic.modifier != nil {
+                if instance.primaryStatistic.modifierTitle != nil && instance.primaryStatistic.modifier != nil {
                     NumberField(title: instance.primaryStatistic.modifierTitle!, value: Binding($instance.primaryStatistic.modifier)!, in: 3...Int.max)
                 }
             }
@@ -53,7 +53,7 @@ struct InstanceSettings: View {
                     }
                 }
                 
-                if instance.secondaryStatistic.modifier != nil {
+                if instance.secondaryStatistic.modifierTitle != nil && instance.secondaryStatistic.modifier != nil {
                     NumberField(title: instance.secondaryStatistic.modifierTitle!, value: Binding($instance.secondaryStatistic.modifier)!, in: 3...Int.max)
                 }
             }
