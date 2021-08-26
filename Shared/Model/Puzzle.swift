@@ -89,6 +89,12 @@ extension Puzzle: LosslessStringConvertible {
     }
 }
 
+extension Puzzle: Equatable {
+    static func == (lhs: Puzzle, rhs: Puzzle) -> Bool {
+        return lhs.displayName == rhs.displayName
+    }
+}
+
 extension Puzzle: ExpressibleByStringLiteral {
     // MARK: Initializers
     init(stringLiteral value: String) {
