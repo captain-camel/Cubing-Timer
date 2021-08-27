@@ -11,12 +11,12 @@ import Foundation
 class Inspection: ObservableObject {
     // MARK: Properties
     /// The seconds remaining in the `Inspection`.
-    @Published var secondsRemaining: Double
+    @Published var secondsRemaining: Int
     
     /// The duration of the `Inspection`.
     var duration: Int {
         didSet {
-            secondsRemaining = Double(duration)
+            secondsRemaining = duration
         }
     }
     
@@ -32,7 +32,7 @@ class Inspection: ObservableObject {
     init(duration: Int) {
         self.duration = duration
         
-        self.secondsRemaining = Double(duration)
+        self.secondsRemaining = duration
     }
     
     // MARK: Types
@@ -54,7 +54,7 @@ class Inspection: ObservableObject {
         startTime = Date()
 
         timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { _ in
-            self.secondsRemaining = Double(self.duration) - Date().timeIntervalSince(self.startTime)
+            self.secondsRemaining -= 1
         }
         
         running = true
@@ -68,7 +68,7 @@ class Inspection: ObservableObject {
         
         timer.invalidate()
         
-        secondsRemaining = Double(duration)
+        secondsRemaining = duration
         
         running = false
     }
