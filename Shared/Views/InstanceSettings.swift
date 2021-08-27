@@ -12,6 +12,16 @@ struct InstanceSettings: View {
     /// The `Instance` being edited.
     @ObservedObject var instance: Instance
     
+    /// The `Instance`'s `doInspection` property.
+    @State private var doInspection: Bool
+    
+    // MARK: Initializers
+    init(instance: Instance) {
+        self.instance = instance
+        
+        doInspection = instance.doInspection
+    }
+
     // MARK: Body
     var body: some View {
         Form {
@@ -61,7 +71,7 @@ struct InstanceSettings: View {
             Section(header: Text("Inspection")) {
                 Toggle("Inspection", isOn: $instance.doInspection)
                 
-                if instance.doInspection {
+                if doInspection {
                     NumberField(title: "Duration", value: Binding(
                         get: { Int(instance.inspectionDuration) },
                         set: { instance.inspectionDuration = Int64($0) }
@@ -70,5 +80,10 @@ struct InstanceSettings: View {
             }
         }
         .navigationTitle("\(instance.name) - Settings")
+        .onChange(of: instance.doInspection) { doInspection in
+            withAnimation {
+                self.doInspection = doInspection
+            }
+        }
     }
 }
