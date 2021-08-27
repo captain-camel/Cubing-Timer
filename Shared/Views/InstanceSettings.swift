@@ -59,9 +59,9 @@ struct InstanceSettings: View {
             }
             
             Section(header: Text("Inspection")) {
-                Toggle("Inspection", isOn: $instance.inspection)
+                Toggle("Inspection", isOn: $instance.doInspection)
                 
-                if instance.inspection {
+                if instance.doInspection {
                     NumberField(title: "Duration", value: Binding(
                         get: { Int(instance.inspectionDuration) },
                         set: { instance.inspectionDuration = Int64($0) }

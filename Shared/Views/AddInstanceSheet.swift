@@ -16,7 +16,7 @@ struct AddInstanceSheet: View {
     /// Notes about the new `Instance`.
     @State var notes = ""
     /// Whether the new `Instance` should have inspection.
-    @State var inspection = true
+    @State var doInspection = true
     /// The duration of the inspection of the new `Instance`.
     @State var inspectionDuration = 15
     
@@ -52,9 +52,9 @@ struct AddInstanceSheet: View {
                 }
                 
                 Section(header: Text("Inspection")) {
-                    Toggle("Inspection", isOn: $inspection.animation())
+                    Toggle("Inspection", isOn: $doInspection.animation())
                     
-                    if inspection {
+                    if doInspection {
                         NumberField(title: "Duration", value: $inspectionDuration, in: 1...Int.max)
                     }
                 }
@@ -75,7 +75,7 @@ struct AddInstanceSheet: View {
                             notes == ""
                                 ? nil
                                 : notes,
-                            inspection ? inspectionDuration : nil
+                            doInspection ? inspectionDuration : nil
                         )
                         
                         presentationMode.wrappedValue.dismiss()

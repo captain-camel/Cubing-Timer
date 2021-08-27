@@ -31,7 +31,7 @@ extension Instance {
     @NSManaged public var secondaryStatisticRawValue: String
     
     /// Whether the instance has an inspection countdown before the timer starts.
-    @NSManaged public var inspection: Bool
+    @NSManaged public var doInspection: Bool
     /// The length of the inspection before the timer starts.
     @NSManaged public var inspectionDuration: Int64
     
@@ -77,7 +77,7 @@ extension Instance {
     
     var wrappedInspectionDuration: Int? {
         get {
-            if inspection {
+            if doInspection {
                 return Int(inspectionDuration)
             }
             
@@ -87,11 +87,11 @@ extension Instance {
             if newValue != nil {
                 inspectionDuration = Int64(newValue!)
                 
-                inspection = true
+                doInspection = true
             } else {
                 inspectionDuration = 15
                 
-                inspection = false
+                doInspection = false
             }
         }
     }

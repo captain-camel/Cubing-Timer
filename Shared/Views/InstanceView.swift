@@ -35,7 +35,7 @@ struct InstanceView: View {
     private var runningCircleScale: CGFloat {
         if timerState == .running {
             return 3
-        } else if timerState == .ready && !instance.inspection {
+        } else if timerState == .ready && !instance.doInspection {
             return 0.7
         } else {
             return 0.0001
@@ -44,9 +44,9 @@ struct InstanceView: View {
     
     /// The scale of the circle behind the timer that is displayed during inspection.
     private var inspectionCircleScale: CGFloat {
-        if (timerState == .inspection || timerState == .running) && instance.inspection {
+        if (timerState == .inspection || timerState == .running) && instance.doInspection {
             return 3
-        } else if timerState == .ready && instance.inspection {
+        } else if timerState == .ready && instance.doInspection {
             return 0.7
         } else {
             return 0.0001
