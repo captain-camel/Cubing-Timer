@@ -44,12 +44,12 @@ struct InstanceList: View {
         }
         .navigationViewStyle(StackNavigationViewStyle())
         .sheet(isPresented: $showingAddInstanceSheet) {
-            AddInstanceSheet { name, puzzle, notes, inspection in
+            AddInstanceSheet { name, puzzle, notes, inspectionDuration in
                 InstanceStorage.add(
                     name: name,
                     puzzle: puzzle,
                     notes: notes,
-                    inspectionDuration: inspection ? 15 : nil
+                    inspectionDuration: inspectionDuration
                 )
             }
         }
