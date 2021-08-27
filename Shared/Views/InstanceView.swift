@@ -68,7 +68,7 @@ struct InstanceView: View {
     // MARK: Body
     var body: some View {
         VStack {
-            TimerView(timerState: $timerState, inspectionDuration: $instance.inspectionDuration) { time in
+            TimerView(timerState: $timerState, inspectionDuration: $instance.wrappedInspectionDuration) { time in
                 instance.addSolve(time: time)
             }
             
@@ -162,7 +162,7 @@ struct InstanceView: View {
                         print("down")
                     default:
                         if timerState == .ready {
-                            if instance.inspectionDuration != nil {
+                            if instance.wrappedInspectionDuration != nil {
                                 timerState = .inspection
                             } else {
                                 timerState = .running

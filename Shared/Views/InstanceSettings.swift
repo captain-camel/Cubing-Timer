@@ -63,8 +63,8 @@ struct InstanceSettings: View {
                 
                 if instance.inspection {
                     NumberField(title: "Duration", value: Binding(
-                        get: { Int(instance.inspectionDurationRawValue) },
-                        set: { instance.inspectionDurationRawValue = Int64($0) }
+                        get: { Int(instance.inspectionDuration) },
+                        set: { instance.inspectionDuration = Int64($0) }
                     ), in: 1...Int.max)
                 }
             }

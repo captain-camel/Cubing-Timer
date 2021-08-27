@@ -33,7 +33,7 @@ extension Instance {
     /// Whether the instance has an inspection countdown before the timer starts.
     @NSManaged public var inspection: Bool
     /// The length of the inspection before the timer starts.
-    @NSManaged public var inspectionDurationRawValue: Int64
+    @NSManaged public var inspectionDuration: Int64
     
     /// The set of all the `Solve`s in the `Instance`.
     @NSManaged public var solves: NSSet?
@@ -75,21 +75,21 @@ extension Instance {
         }
     }
     
-    var inspectionDuration: Int? {
+    var wrappedInspectionDuration: Int? {
         get {
             if inspection {
-                return Int(inspectionDurationRawValue)
+                return Int(inspectionDuration)
             }
             
             return nil
         }
         set {
             if newValue != nil {
-                inspectionDurationRawValue = Int64(newValue!)
+                inspectionDuration = Int64(newValue!)
                 
                 inspection = true
             } else {
-                inspectionDurationRawValue = 15
+                inspectionDuration = 15
                 
                 inspection = false
             }
