@@ -53,7 +53,7 @@ class Inspection: ObservableObject {
         
         startTime = Date()
 
-        timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { _ in
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
             self.secondsRemaining -= 1
         }
         
