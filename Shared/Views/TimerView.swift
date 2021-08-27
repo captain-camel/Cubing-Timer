@@ -29,7 +29,7 @@ struct TimerView: View {
     @Binding var inspectionDuration: Int?
     
     /// The `TimerView`'s most recent time.
-    @State var previousSolve: Solve
+    @State var previousSolve: Solve?
     
     /// The displayed time.
     private var time: String {
@@ -40,7 +40,7 @@ struct TimerView: View {
         } else if timerState == .running {
             return Solve.formatTime(stopwatch.secondsElapsed, places: 1)
         } else {
-            return Solve.formatTime(previousSolve.time)
+            return Solve.formatTime(previousSolve?.time)
         }
     }
     
@@ -61,7 +61,7 @@ struct TimerView: View {
         
         self.timerStoppedAction = timerStoppedAction
         
-        self.previousTime = previousTime
+        self.previousSolve = previousSolve
         
         _countdown = StateObject(wrappedValue: Countdown(duration: countdownDuration))
         _inspection = StateObject(wrappedValue: Inspection(duration: inspectionDuration.wrappedValue ?? 15))
