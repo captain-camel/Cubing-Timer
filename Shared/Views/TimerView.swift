@@ -25,6 +25,8 @@ struct TimerView: View {
     /// Whether inspection should be timed before the timer starts.
     let doInspection: Bool
     
+    @Binding var inspectionDuration: Int?
+    
     /// The displayed time.
     private var time: String {
         if timerState == .ready {
@@ -50,15 +52,16 @@ struct TimerView: View {
     }
 
     // MARK: Initializers
-    init(timerState: Binding<TimerState>, countdownDuration: Double = 0.5, inspectionDuration: Int? = 15, timerStoppedAction: @escaping (_ time: Double) -> Void) {
+    init(timerState: Binding<TimerState>, countdownDuration: Double = 0.5, inspectionDuration: Binding<Int?> = .constant(15), timerStoppedAction: @escaping (_ time: Double) -> Void) {
         self._timerState = timerState
         
         self.timerStoppedAction = timerStoppedAction
         
         _countdown = StateObject(wrappedValue: Countdown(duration: countdownDuration))
-        _inspection = StateObject(wrappedValue: Inspection(duration: inspectionDuration ?? 15))
+        _inspection = StateObject(wrappedValue: Inspection(duration: inspectionDuration.wrappedValue ?? 15))
         
-        doInspection = inspectionDuration != nil
+        doInspection = inspectionDuration.wrappedValue != nil
+        self._inspectionDuration = inspectionDuration
     }
     
     // MARK: Body
@@ -105,6 +108,9 @@ struct TimerView: View {
                 default:
                     break
                 }
+            }
+            .onChange(of: inspectionDuration) { inspectionDuration in
+                inspection.duration = inspectionDuration ?? 15
             }
     }
     

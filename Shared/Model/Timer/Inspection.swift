@@ -14,7 +14,11 @@ class Inspection: ObservableObject {
     @Published var secondsRemaining: Double
     
     /// The duration of the `Inspection`.
-    var duration: Int
+    var duration: Int {
+        didSet {
+            secondsRemaining = Double(duration)
+        }
+    }
     
     /// Whether the `Inspection` is running.
     private var running = false
