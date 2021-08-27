@@ -57,6 +57,17 @@ struct InstanceSettings: View {
                     NumberField(title: instance.secondaryStatistic.modifierTitle!, value: Binding($instance.secondaryStatistic.modifier)!, in: 3...Int.max)
                 }
             }
+            
+            Section(header: Text("Inspection")) {
+                Toggle("Inspection", isOn: $instance.inspection)
+                
+                if instance.inspection {
+                    NumberField(title: "Duration", value: Binding(
+                        get: { Int(instance.inspectionDurationRawValue) },
+                        set: { instance.inspectionDurationRawValue = Int64($0) }
+                    ), in: 1...Int.max)
+                }
+            }
         }
         .navigationTitle("\(instance.name) - Settings")
     }
