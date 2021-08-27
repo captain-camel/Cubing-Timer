@@ -30,7 +30,7 @@ struct TimerView: View {
     @Binding var inspectionDuration: Int?
     
     /// The `TimerView`'s most recent time.
-    @State private var previousSolve: Solve?
+    @ObservedOptionalObject private var previousSolve: Solve?
     
     /// The displayed time.
     private var time: String {
@@ -62,7 +62,7 @@ struct TimerView: View {
         
         self.timerStoppedAction = timerStoppedAction
         
-        self.previousSolve = previousSolve
+        self._previousSolve = ObservedOptionalObject(initialValue: previousSolve)
         
         _countdown = StateObject(wrappedValue: Countdown(duration: countdownDuration))
         _inspection = StateObject(wrappedValue: Inspection(duration: inspectionDuration.wrappedValue ?? 15))
