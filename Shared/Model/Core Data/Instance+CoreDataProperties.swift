@@ -89,7 +89,7 @@ extension Instance {
                 
                 inspection = true
             } else {
-                inspectionDurationRawValue = 0
+                inspectionDurationRawValue = 15
                 
                 inspection = false
             }
