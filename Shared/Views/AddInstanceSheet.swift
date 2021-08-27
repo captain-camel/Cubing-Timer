@@ -10,15 +10,15 @@ import SwiftUI
 struct AddInstanceSheet: View {
     // MARK: Properties
     /// The name of the new `Instance`.
-    @State var name = ""
+    @State private var name = ""
     /// The `Puzzle` assigned to the new `Instance`.
-    @State var puzzle: Puzzle = .cube(3)
+    @State private var puzzle: Puzzle = .cube(3)
     /// Notes about the new `Instance`.
-    @State var notes = ""
+    @State private var notes = ""
     /// Whether the new `Instance` should have inspection.
-    @State var doInspection = true
+    @State private var doInspection = true
     /// The duration of the inspection of the new `Instance`.
-    @State var inspectionDuration = 15
+    @State private var inspectionDuration = 15
     
     /// A callback that is called when the button to create the new `Instance` is pressed.
     let createAction: (_ name: String, _ puzzle: Puzzle, _ notes: String?, _ inspectionDuration: Int?) -> Void

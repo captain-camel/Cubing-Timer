@@ -29,7 +29,7 @@ struct TimerView: View {
     @Binding var inspectionDuration: Int?
     
     /// The `TimerView`'s most recent time.
-    @State var previousSolve: Solve?
+    @State private var previousSolve: Solve?
     
     /// The displayed time.
     private var time: String {

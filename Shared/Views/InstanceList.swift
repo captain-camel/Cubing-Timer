@@ -13,7 +13,7 @@ struct InstanceList: View {
     var instances: FetchedResults<Instance>
     
     /// Whether the sheet to add a new instance is displayed.
-    @State var showingAddInstanceSheet = false
+    @State private var showingAddInstanceSheet = false
 
     // MARK: Body
     var body: some View {

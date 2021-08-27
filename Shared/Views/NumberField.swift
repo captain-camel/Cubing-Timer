@@ -20,7 +20,7 @@ struct NumberField: View {
     var range: ClosedRange<Int>
     
     /// The `String` entered into the `TextField`.
-    @State var string: String
+    @State private var string: String
     
     // MARK: Initializers
     init(title: String = "", value: Binding<Int>, in range: ClosedRange<Int>) {
