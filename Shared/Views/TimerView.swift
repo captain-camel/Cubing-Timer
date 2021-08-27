@@ -25,18 +25,22 @@ struct TimerView: View {
     /// Whether inspection should be timed before the timer starts.
     let doInspection: Bool
     
+    /// The duration of the `TimerView`'s inspection.
     @Binding var inspectionDuration: Int?
+    
+    /// The `TimerView`'s most recent time.
+    @State var previousTime: Double
     
     /// The displayed time.
     private var time: String {
         if timerState == .ready {
             return doInspection ? String(inspection.duration) : "0.0"
         } else if timerState == .inspection {
-            return Solve.formatTime(inspection.secondsRemaining, places: 0)
+            return Solve.formatTime(Double(inspection.secondsRemaining), places: 0, secondsOnly: true)
         } else if timerState == .running {
             return Solve.formatTime(stopwatch.secondsElapsed, places: 1)
         } else {
-            return Solve.formatTime(stopwatch.secondsElapsed)
+            return Solve.formatTime(previousTime)
         }
     }
     
@@ -52,10 +56,12 @@ struct TimerView: View {
     }
 
     // MARK: Initializers
-    init(timerState: Binding<TimerState>, countdownDuration: Double = 0.5, inspectionDuration: Binding<Int?> = .constant(15), timerStoppedAction: @escaping (_ time: Double) -> Void) {
+    init(timerState: Binding<TimerState>, previousTime: Double = 0, countdownDuration: Double = 0.5, inspectionDuration: Binding<Int?> = .constant(15), timerStoppedAction: @escaping (_ time: Double) -> Void) {
         self._timerState = timerState
         
         self.timerStoppedAction = timerStoppedAction
+        
+        self.previousTime = previousTime
         
         _countdown = StateObject(wrappedValue: Countdown(duration: countdownDuration))
         _inspection = StateObject(wrappedValue: Inspection(duration: inspectionDuration.wrappedValue ?? 15))
