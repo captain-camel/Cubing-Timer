@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// A view for timing solves.
 struct TimerView: View {
     // MARK: Properties
     /// The state of the timer.

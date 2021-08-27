@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// A list of `Instance`s.
 struct InstanceList: View {
     // MARK: Properties
     /// All of the `Instance`s to display.

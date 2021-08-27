@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// A view to edit the properties of an `Instance`.
 struct InstanceSettings: View {
     // MARK: Properties
     /// The `Instance` being edited.

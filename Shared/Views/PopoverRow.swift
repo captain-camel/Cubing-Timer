@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// A row of a popover with `Statistic` details.
 struct PopoverRow: View {
     /// The `Int` shown at the start of the row.
     var index: Int?

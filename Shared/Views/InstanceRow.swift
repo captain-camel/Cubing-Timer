@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-/// A row to be displayed in a `NavigationView`, with the name, puzzle, and one statistic about an instance
+/// A row to be displayed in a `NavigationView`, with the name, puzzle, and one statistic about an instance.
 struct InstanceRow: View {
     // MARK: Properties
     /// The `Instance` described by the `InstanceRow`.

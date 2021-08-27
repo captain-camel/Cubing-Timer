@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// A sheet to create a new `Instance`.
 struct AddInstanceSheet: View {
     // MARK: Properties
     /// The name of the new `Instance`.
