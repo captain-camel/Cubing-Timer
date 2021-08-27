@@ -35,8 +35,12 @@ extension Solve {
     
     // MARK: Methods
     /// Returns a `Double` formatted into hours, minutes, seconds, and hundredths of seconds.
-    static func formatTime(_ time: Double?, places: Int = 2) -> String {
+    static func formatTime(_ time: Double?, places: Int = 2, secondsOnly: Bool = false) -> String {
         if time != nil {
+            if secondsOnly {
+                return String(format: "%.\(places)f", time!)
+            }
+            
             let hours = Int(time!) / 3600
             let minutes = Int(time!) / 60 % 60
             let seconds = time!.truncatingRemainder(dividingBy: 60)
@@ -54,10 +58,9 @@ extension Solve {
             }
             
             return "\(hoursString)\(minutesString)\(secondsString)"
-            
-        } else {
-            return "--.--"
         }
+        
+        return "--.--"
     }
     
     /// Deletes the `Solve`.
