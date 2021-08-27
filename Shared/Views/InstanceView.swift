@@ -128,9 +128,11 @@ struct InstanceView: View {
                                 
                                 timerState = .stopped
                             } else {
-                                timerState = .counting
-                                
-                                gestureState = .stationary
+                                if case .moved = gestureState {} else {
+                                    timerState = .counting
+                                    
+                                    gestureState = .stationary
+                                }
                             }
                             
                         case .inspection:
