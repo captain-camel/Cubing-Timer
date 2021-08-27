@@ -68,7 +68,7 @@ struct InstanceView: View {
     // MARK: Body
     var body: some View {
         VStack {
-            TimerView(timerState: $timerState, inspectionDuration: $instance.wrappedInspectionDuration) { time in
+            TimerView(timerState: $timerState, previousSolve: solves.last, inspectionDuration: $instance.wrappedInspectionDuration) { time in
                 instance.addSolve(time: time)
             }
             
