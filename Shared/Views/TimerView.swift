@@ -30,12 +30,16 @@ struct TimerView: View {
     @Binding var inspectionDuration: Int?
     
     /// The `TimerView`'s most recent time.
-    @ObservedOptionalObject private var previousSolve: Solve?
+    @ObservedOptionalObject private var solve: Solve?
     
     /// The horizontal size of the view.
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
     
+    /// The size of the timer text.
     @State private var textSize: CGSize = CGSize(width: 0, height: 0)
+    
+    /// Whether the value of `solve` changed since the timer started.
+    @State private var solveChanged = true
     
     /// The displayed time.
     private var timerText: String {
@@ -46,7 +50,7 @@ struct TimerView: View {
         } else if timerState == .running {
             return Solve.formatTime(stopwatch.secondsElapsed, places: 1)
         } else {
-            return previousSolve != nil ? Solve.formatTime(previousSolve!.adjustedTime) : "0.00"
+            return solve != nil ? Solve.formatTime(solve!.adjustedTime) : "0.00"
         }
     }
     
@@ -56,7 +60,7 @@ struct TimerView: View {
             return .white
         } else if timerState == .counting {
             return .yellow
-        } else if previousSolve?.penalty == .dnf {
+        } else if solve?.penalty == .dnf {
             return .secondary
         } else {
             return .primary
@@ -69,7 +73,7 @@ struct TimerView: View {
         
         self.timerStoppedAction = timerStoppedAction
         
-        self._previousSolve = ObservedOptionalObject(initialValue: previousSolve)
+        self._solve = ObservedOptionalObject(initialValue: previousSolve)
         
         _countdown = StateObject(wrappedValue: Countdown(duration: countdownDuration))
         _inspection = StateObject(wrappedValue: Inspection(duration: inspectionDuration.wrappedValue ?? 15))
@@ -82,7 +86,7 @@ struct TimerView: View {
     var body: some View {
         ZStack {
             Rectangle()
-                .frame(width: timerState == .stopped && previousSolve?.penalty == .dnf ? textSize.width : 0, height: 5)
+                .frame(width: timerState == .stopped && solve?.penalty == .dnf && solveChanged ? textSize.width : 0, height: 5)
                 .shadow(radius: 5)
             
             Text(timerText)
@@ -134,6 +138,8 @@ struct TimerView: View {
                         try? inspection.reset()
                         
                         try? stopwatch.start()
+                        
+                        solveChanged = false
                     default:
                         break
                     }
@@ -141,8 +147,8 @@ struct TimerView: View {
                 .onChange(of: inspectionDuration) { inspectionDuration in
                     inspection.duration = inspectionDuration ?? 15
                 }
-                .onChange(of: textSize) { _ in
-                    print(textSize)
+                .onChange(of: solve) { _ in
+                    solveChanged = true
                 }
         }
     }
