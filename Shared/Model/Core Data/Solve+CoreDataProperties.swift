@@ -98,7 +98,7 @@ extension Solve {
     
     // MARK: Types
     /// Possible penalties on a `Solve`.
-    enum Penalty {
+    enum Penalty: Equatable {
         /// No penalty.
         case none
         /// The solve was unfinished.
