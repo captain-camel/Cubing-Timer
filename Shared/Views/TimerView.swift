@@ -12,10 +12,10 @@ struct TimerView: View {
     // MARK: Properties
     /// The state of the timer.
     @Binding var timerState: TimerState
-
+    
     /// A callback that is called when a the timer is stopped, with the time on the timer.
     let timerStoppedAction: (_ time: Double) -> Void
-
+    
     /// A stopwatch to time solves.
     @StateObject var stopwatch = Stopwatch()
     /// A countdown to start timing solves.
@@ -35,7 +35,7 @@ struct TimerView: View {
     /// The horizontal size of the view.
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
     
-    @State private var timerTextSize: CGSize = CGSize(width: 0, height: 0)
+    @State private var textSize: CGSize = CGSize(width: 0, height: 0)
     
     /// The displayed time.
     private var timerText: String {
@@ -46,7 +46,7 @@ struct TimerView: View {
         } else if timerState == .running {
             return Solve.formatTime(stopwatch.secondsElapsed, places: 1)
         } else {
-            return Solve.formatTime(previousSolve?.time)
+            return previousSolve != nil ? Solve.formatTime(previousSolve!.time + Double(previousSolve!.penalty.length ?? 0)) : "0.00"
         }
     }
     
@@ -56,6 +56,8 @@ struct TimerView: View {
             return .white
         } else if timerState == .counting {
             return .yellow
+        } else if previousSolve?.penalty == .dnf {
+            return .secondary
         } else {
             return .primary
         }
@@ -78,63 +80,71 @@ struct TimerView: View {
     
     // MARK: Body
     var body: some View {
-        Text(timerText)
-            .font(.system(size: 100, design: .monospaced))
-            .minimumScaleFactor(0.01)
-            .lineLimit(1)
-            .if(horizontalSizeClass == .compact) { view in
-                view.padding(.vertical, -timerTextSize.height / 6)
-            }
-            .if(horizontalSizeClass == .regular) { view in
-                view.padding(.vertical, -20)
-            }
-            .foregroundColor(.white)
-            .colorMultiply(timeColor)
-            .animation(.easeInOut, value: timerState)
-            .background(SizeReader(size: $timerTextSize))
-            .onChange(of: countdown.complete) { isComplete in
-                if isComplete {
-                    withAnimation(.spring(response: 0.5, dampingFraction: 0.5, blendDuration: 0.5)) {
-                        timerState = .ready
+        ZStack {
+            Rectangle()
+                .frame(width: timerState == .stopped && previousSolve?.penalty == .dnf ? textSize.width : 0, height: 5)
+                .shadow(radius: 5)
+            
+            Text(timerText)
+                .animation(nil)
+                .scaleEffect()
+                .font(.system(size: 100, design: .monospaced))
+                .minimumScaleFactor(0.01)
+                .lineLimit(1)
+                .if(horizontalSizeClass == .compact) { view in
+                    view.padding(.vertical, -textSize.height / 6)
+                }
+                .if(horizontalSizeClass == .regular) { view in
+                    view.padding(.vertical, -20)
+                }
+                .foregroundColor(.white)
+                .colorMultiply(timeColor)
+                .animation(.easeInOut, value: timerState)
+                .readSize(size: $textSize)
+                .onChange(of: countdown.complete) { isComplete in
+                    if isComplete {
+                        withAnimation(.spring(response: 0.5, dampingFraction: 0.5, blendDuration: 0.5)) {
+                            timerState = .ready
+                        }
                     }
                 }
-            }
-            .onChange(of: timerState) { [timerState] newValue in
-                switch newValue {
-                case .stopped:
-                    if timerState == .running {
-                        try? stopwatch.stop()
-
-                        timerStoppedAction(stopwatch.secondsElapsed)
-                    } else if timerState == .inspection {
-                        try? inspection.reset()
-                    } else {
+                .onChange(of: timerState) { [timerState] newValue in
+                    switch newValue {
+                    case .stopped:
+                        if timerState == .running {
+                            try? stopwatch.stop()
+                            
+                            timerStoppedAction(stopwatch.secondsElapsed)
+                        } else if timerState == .inspection {
+                            try? inspection.reset()
+                        } else {
+                            try? countdown.reset()
+                        }
+                    case .counting:
+                        try? countdown.start()
+                    case .inspection:
                         try? countdown.reset()
+                        
+                        try? inspection.start()
+                    case .running:
+                        stopwatch.reset()
+                        
+                        try? countdown.reset()
+                        
+                        try? inspection.reset()
+                        
+                        try? stopwatch.start()
+                    default:
+                        break
                     }
-                case .counting:
-                    try? countdown.start()
-                case .inspection:
-                    try? countdown.reset()
-                    
-                    try? inspection.start()
-                case .running:
-                    stopwatch.reset()
-                    
-                    try? countdown.reset()
-                    
-                    try? inspection.reset()
-                    
-                    try? stopwatch.start()
-                default:
-                    break
                 }
-            }
-            .onChange(of: inspectionDuration) { inspectionDuration in
-                inspection.duration = inspectionDuration ?? 15
-            }
-            .onChange(of: timerTextSize) { _ in
-                print(timerTextSize)
-            }
+                .onChange(of: inspectionDuration) { inspectionDuration in
+                    inspection.duration = inspectionDuration ?? 15
+                }
+                .onChange(of: textSize) { _ in
+                    print(textSize)
+                }
+        }
     }
     
     /// Possible states of a `TimerView`.
