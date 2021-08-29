@@ -18,23 +18,31 @@ struct TimerActions: View {
         Group {
             Button {
                 withAnimation {
-                    solve!.plusTwo.toggle()
+                    if solve!.penalty.length != nil {
+                        solve!.penalty = .none
+                    } else {
+                        solve!.penalty = .some(2)
+                    }
                 }
             } label: {
-                Text("+2")
-                    .if(solve?.plusTwo ?? false) { $0.bold() }
+                Text("+\(solve?.penalty.length ?? 2)")
+                    .if(solve?.penalty.length != nil) { $0.bold() }
             }
-            .buttonStyle(TimerActionButtonStyle(isActive: solve?.plusTwo ?? false))
+            .buttonStyle(TimerActionButtonStyle(isActive: solve?.penalty.length != nil))
             
             Button {
                 withAnimation {
-                    solve!.dnf.toggle()
+                    if solve!.penalty == .dnf {
+                        solve!.penalty = .none
+                    } else {
+                        solve!.penalty = .dnf
+                    }
                 }
             } label: {
                 Text("DNF")
-                    .if(solve?.dnf ?? false) { $0.bold() }
+                    .if(solve?.penalty == .dnf) { $0.bold() }
             }
-            .buttonStyle(TimerActionButtonStyle(isActive: solve?.dnf ?? false))
+            .buttonStyle(TimerActionButtonStyle(isActive: solve?.penalty == .dnf))
             
             Button {
                 SolveStorage.delete(solve!)
