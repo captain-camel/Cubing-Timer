@@ -65,14 +65,18 @@ struct Statistic {
             var foundMax = false
             
             return instance.solveArray.suffix(modifier ?? 5).map { solve in
+                if solve.penalty == .dnf {
+                    return "(DNF)"
+                }
+                
                 if (solve.time == times.min() && !foundMin) || (solve.time == times.max() && !foundMax) {
                     foundMin = solve.time == times.min()
                     foundMax = solve.time == times.max()
                     
                     return "(\(solve.formattedTime))"
-                } else {
-                    return solve.formattedTime
                 }
+                
+                return solve.formattedTime
             }.reversed()
         default:
             return nil

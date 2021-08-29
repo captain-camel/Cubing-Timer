@@ -106,11 +106,14 @@ extension Instance {
     
     /// Returns the average time of the last solves. (Fastest and slowest times excluded.) The number of solves is determinted by the paramter `count`.
     func average(of count: Int) -> Double? {
-        let tempSolveArray = solveArray
+        let tempSolveArray = solveArray.filter { $0.penalty != .dnf }
+        
         if tempSolveArray.count >= count && count >= 3 {
-            var times = tempSolveArray.suffix(count).map { $0.time }
+            var times = tempSolveArray.suffix(count).map { $0.adjustedTime }
+            
             let minIndex = times.firstIndex(of: times.min() ?? 0) ?? 0
             times.remove(at: minIndex)
+            
             let maxIndex = times.firstIndex(of: times.max() ?? 0) ?? 0
             times.remove(at: maxIndex)
             
