@@ -18,10 +18,6 @@ extension Solve {
     @NSManaged public var time: Double
     /// The time and date the solve was recorded.
     @NSManaged public var date: Date
-//    /// Whether the solve has a +2 second penalty.
-//    @NSManaged public var plusTwo: Bool
-//    /// Whether the solve was not completed.
-//    @NSManaged public var dnf: Bool
     /// Serialized representation of the `Solve`'s `Penalty`.
     @NSManaged public var penaltyRawValue: String
     /// The scramble that was solved. (`nil` if the puzzle doesn't have a scrambler or if there is no scramble for any reason)
