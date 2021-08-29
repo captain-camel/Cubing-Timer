@@ -85,30 +85,20 @@ struct InstanceView: View {
                     }
                     .frame(width: timerSize.width)
                     .opacity(timerState == .stopped ? 1 : 0)
-                    //.animation(.default, value: timerState == .stopped)
-//                    .animation(.default)
-                    
                 }
                 
-//                if timerState != .running && timerState != .inspection {
-                    HStack {
-                            StatisticView($instance.primaryStatistic)
-                            StatisticView($instance.secondaryStatistic)
-                        }
-                        .padding(.horizontal)
-                        .opacity(timerState == .stopped ? 1 : 0)
-                        //.animation(.default, value: timerState == .stopped)
-//                }
-                //                .frame(width: timerSize.width)
+                HStack {
+                    StatisticView($instance.primaryStatistic)
+                    StatisticView($instance.secondaryStatistic)
+                }
+                .padding(.horizontal)
+                .opacity(timerState == .stopped ? 1 : 0)
             }
-            //            .background(Color.green)
             
             if horizontalSizeClass == .regular && timerState == .stopped {
                 VStack {
                     TimerActions(solve: solves.last)
                         .frame(width: 100)
-                        .opacity(timerState == .stopped ? 1 : 0)
-//                        .animation(.default, value: timerState == .stopped)
                         .transition(.opacity)
                 }
             }

@@ -86,7 +86,7 @@ struct TimerView: View {
                 view.padding(.vertical, -timerTextSize.height / 6)
             }
             .if(horizontalSizeClass == .regular) { view in
-                view.padding(.vertical, -20)//want only in regular size class
+                view.padding(.vertical, -20)
             }
             .foregroundColor(.white)
             .colorMultiply(timeColor)
