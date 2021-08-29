@@ -30,6 +30,11 @@ extension Solve {
     /// The `Instance` containing the solve.
     @NSManaged public var instance: Instance?
     
+    /// The `Solve`'s `time` adjusted to include any penalties.
+    var adjustedTime: Double {
+        return time + Double(penalty.length ?? 0)
+    }
+    
     /// The `Solve`'s `Penalty`.
     var penalty: Penalty {
         get {

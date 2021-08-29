@@ -46,7 +46,7 @@ struct TimerView: View {
         } else if timerState == .running {
             return Solve.formatTime(stopwatch.secondsElapsed, places: 1)
         } else {
-            return previousSolve != nil ? Solve.formatTime(previousSolve!.time + Double(previousSolve!.penalty.length ?? 0)) : "0.00"
+            return previousSolve != nil ? Solve.formatTime(previousSolve!.adjustedTime) : "0.00"
         }
     }
     
