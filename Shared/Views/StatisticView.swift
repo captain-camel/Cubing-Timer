@@ -33,6 +33,7 @@ struct StatisticView: View {
                     .foregroundColor(.secondary)
                 Text(statistic.value)
             }
+            .animation(nil)
             .lineLimit(1)
         } else {
             Button {
@@ -43,6 +44,7 @@ struct StatisticView: View {
                         .foregroundColor(.secondary)
                     Text(statistic.value)
                 }
+                .animation(nil)
                 .lineLimit(1)
             }
             .buttonStyle(StatisticButtonStyle())
