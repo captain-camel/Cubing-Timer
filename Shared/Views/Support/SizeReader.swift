@@ -14,10 +14,14 @@ struct SizeReader: View {
         GeometryReader { geometry in
             Color.clear
                 .onAppear {
-                    size = geometry.size
+                    DispatchQueue.main.async {
+                        size = geometry.size
+                    }
                 }
                 .onChange(of: geometry.size) { _ in
-                    size = geometry.size
+                    DispatchQueue.main.async {
+                        size = geometry.size
+                    }
                 }
         }
     }
