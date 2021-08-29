@@ -34,6 +34,7 @@ struct InstanceView: View {
     /// Whether the `Instance`'s settings are displayed.
     @State private var showingSettings = false
     
+    /// The size of the `TimerView`.
     @State private var timerSize = CGSize(width: 0, height: 0)
     
     /// The scale of the circle behind the timer that is displayed when the timer is runing.
