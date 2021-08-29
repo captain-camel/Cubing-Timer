@@ -77,7 +77,7 @@ struct InstanceView: View {
                 TimerView(timerState: $timerState, previousSolve: solves.last, inspectionDuration: $instance.wrappedInspectionDuration) { time in
                     instance.addSolve(time: time)
                 }
-                .background(SizeReader(size: $timerSize))
+                .readSize(size: $timerSize)
                 
                 if horizontalSizeClass == .compact {
                     HStack {
