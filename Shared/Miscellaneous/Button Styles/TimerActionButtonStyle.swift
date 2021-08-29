@@ -19,6 +19,7 @@ struct TimerActionButtonStyle: ButtonStyle {
     // MARK: Body
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
+            .lineLimit(1)
             .font(.system(size: 15))
             .padding(.vertical, 6)
             .frame(maxWidth: .infinity)
