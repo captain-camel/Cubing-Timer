@@ -20,8 +20,6 @@ struct Statistic {
         switch kind {
         case .average:
             return "ao\(modifier ?? 5)"
-        case .haha:
-            return "haha"
         }
     }
     
@@ -30,8 +28,6 @@ struct Statistic {
         switch kind {
         case .average:
             return "Average of \(modifier ?? 5)"
-        case .haha:
-            return "Haha(long)"
         }
     }
     
@@ -50,8 +46,6 @@ struct Statistic {
         switch kind {
         case .average:
             return Solve.formatTime(instance.average(of: modifier ?? 5))
-        case .haha:
-            return "haha(val)"
         }
     }
     
@@ -129,8 +123,6 @@ struct Statistic {
         // MARK: Cases
         /// The mean of the most recent `n` solves, excluding the fastest and slowest.
         case average = "average"
-        /// A temporary test example.
-        case haha = "haha"
         
         // MARK: Properties
         /// Stylized version of the statistic's name.
@@ -153,8 +145,6 @@ extension Statistic: CustomStringConvertible {
         switch kind {
         case .average:
             return "average:\(modifier ?? 5)"
-        case .haha:
-            return "haha"
         }
     }
 }
