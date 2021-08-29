@@ -18,15 +18,41 @@ extension Solve {
     @NSManaged public var time: Double
     /// The time and date the solve was recorded.
     @NSManaged public var date: Date
-    /// Whether the solve has a +2 second penalty.
-    @NSManaged public var plusTwo: Bool
-    /// Whether the solve was not completed.
-    @NSManaged public var dnf: Bool
+//    /// Whether the solve has a +2 second penalty.
+//    @NSManaged public var plusTwo: Bool
+//    /// Whether the solve was not completed.
+//    @NSManaged public var dnf: Bool
+    /// Serialized representation of the `Solve`'s `Penalty`.
+    @NSManaged public var penaltyRawValue: String
     /// The scramble that was solved. (`nil` if the puzzle doesn't have a scrambler or if there is no scramble for any reason)
     @NSManaged public var scramble: String?
     
     /// The `Instance` containing the solve.
     @NSManaged public var instance: Instance?
+    
+    /// The `Solve`'s `Penalty`.
+    var penalty: Penalty {
+        get {
+            switch penaltyRawValue {
+            case "none":
+                return .none
+            case "dnf":
+                return .dnf
+            default:
+                return Int(penaltyRawValue) != nil ? .some(Int(penaltyRawValue)!) : .none
+            }
+        }
+        set {
+            switch newValue {
+            case .none:
+                penaltyRawValue = "none"
+            case .dnf:
+                penaltyRawValue = "dnf"
+            case let .some(seconds):
+                penaltyRawValue = String(seconds)
+            }
+        }
+    }
     
     /// The solve's time formatted into hours, minutes, seconds, and hundredths of seconds.
     var formattedTime: String {
@@ -68,6 +94,17 @@ extension Solve {
         PersistenceController.viewContext.delete(self)
         
         PersistenceController.save()
+    }
+    
+    // MARK: Types
+    /// Possible penalties on a `Solve`.
+    enum Penalty {
+        /// No penalty.
+        case none
+        /// The solve was unfinished.
+        case dnf
+        /// A penalty of some number of seconds.
+        case some(Int)
     }
 }
 

@@ -14,14 +14,13 @@
     </entity>
     <entity name="Solve" representedClassName="Solve" syncable="YES">
         <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="dnf" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="plusTwo" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="penaltyRawValue" attributeType="String"/>
         <attribute name="scramble" optional="YES" attributeType="String"/>
         <attribute name="time" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <relationship name="instance" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Instance" inverseName="solves" inverseEntity="Instance"/>
     </entity>
     <elements>
         <element name="Instance" positionX="-63" positionY="-18" width="128" height="179"/>
-        <element name="Solve" positionX="-54" positionY="45" width="128" height="119"/>
+        <element name="Solve" positionX="-54" positionY="45" width="128" height="104"/>
     </elements>
 </model>
