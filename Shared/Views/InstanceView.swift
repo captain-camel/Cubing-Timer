@@ -74,7 +74,7 @@ struct InstanceView: View {
     var body: some View {
         HStack {
             VStack {
-                TimerView(timerState: $timerState, previousSolve: solves.last, inspectionDuration: $instance.wrappedInspectionDuration) { time in
+                TimerView(timerState: $timerState, solve: solves.last, inspectionDuration: $instance.wrappedInspectionDuration) { time in
                     instance.addSolve(time: time)
                 }
                 .readSize(size: $timerSize)

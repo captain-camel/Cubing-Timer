@@ -68,12 +68,12 @@ struct TimerView: View {
     }
     
     // MARK: Initializers
-    init(timerState: Binding<TimerState>, previousSolve: Solve? = nil, countdownDuration: Double = 0.5, inspectionDuration: Binding<Int?> = .constant(15), timerStoppedAction: @escaping (_ time: Double) -> Void) {
+    init(timerState: Binding<TimerState>, solve: Solve? = nil, countdownDuration: Double = 0.5, inspectionDuration: Binding<Int?> = .constant(15), timerStoppedAction: @escaping (_ time: Double) -> Void) {
         self._timerState = timerState
         
         self.timerStoppedAction = timerStoppedAction
         
-        self._solve = ObservedOptionalObject(initialValue: previousSolve)
+        self._solve = ObservedOptionalObject(initialValue: solve)
         
         _countdown = StateObject(wrappedValue: Countdown(duration: countdownDuration))
         _inspection = StateObject(wrappedValue: Inspection(duration: inspectionDuration.wrappedValue ?? 15))
