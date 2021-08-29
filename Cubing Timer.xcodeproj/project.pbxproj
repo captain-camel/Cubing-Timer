@@ -67,6 +67,8 @@
 		DD44620826D892E70085CA18 /* TimerActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD44620626D892E70085CA18 /* TimerActions.swift */; };
 		DD44620D26D89C200085CA18 /* ObservedOptionalObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD44620C26D89C200085CA18 /* ObservedOptionalObject.swift */; };
 		DD44620E26D89C200085CA18 /* ObservedOptionalObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD44620C26D89C200085CA18 /* ObservedOptionalObject.swift */; };
+		DD44621126D9D4B00085CA18 /* SizeReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD44621026D9D4B00085CA18 /* SizeReader.swift */; };
+		DD44621226D9D4B00085CA18 /* SizeReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD44621026D9D4B00085CA18 /* SizeReader.swift */; };
 		DD4F1A0026CAD2B7008A1022 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4F19FF26CAD2B7008A1022 /* TimerView.swift */; };
 		DD4F1A0126CAD2B7008A1022 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4F19FF26CAD2B7008A1022 /* TimerView.swift */; };
 		DD4F1A0626CC1306008A1022 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4F1A0526CC1305008A1022 /* String.swift */; };
@@ -125,6 +127,7 @@
 		DD2A938426D5C17F00F93897 /* NumberField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberField.swift; sourceTree = "<group>"; };
 		DD44620626D892E70085CA18 /* TimerActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerActions.swift; sourceTree = "<group>"; };
 		DD44620C26D89C200085CA18 /* ObservedOptionalObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservedOptionalObject.swift; sourceTree = "<group>"; };
+		DD44621026D9D4B00085CA18 /* SizeReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeReader.swift; sourceTree = "<group>"; };
 		DD4F19FF26CAD2B7008A1022 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		DD4F1A0526CC1305008A1022 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		DD7809F826D051AC00E716F3 /* CGSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGSize.swift; sourceTree = "<group>"; };
@@ -226,13 +229,13 @@
 				DDF6C79926CA35A000B505B9 /* AddInstanceSheet.swift */,
 				DD090A3126BF3AC900DEAC82 /* InstanceView.swift */,
 				DDAD68F026D4B1B4005750A5 /* InstanceSettings.swift */,
-				DD2A938426D5C17F00F93897 /* NumberField.swift */,
 				DD4F19FF26CAD2B7008A1022 /* TimerView.swift */,
 				DD44620626D892E70085CA18 /* TimerActions.swift */,
 				DD090A2426BF3A0A00DEAC82 /* StatisticView.swift */,
 				DD090A2E26BF3AB700DEAC82 /* ListPopover.swift */,
 				DD0E676A26CDCB4400E1C444 /* ListSheet.swift */,
 				DD0E676726CD994500E1C444 /* PopoverRow.swift */,
+				DD44620F26D9D43E0085CA18 /* Support */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -290,6 +293,15 @@
 				DDF6C78226C782E900B505B9 /* Algorithm.swift */,
 			);
 			path = Cube;
+			sourceTree = "<group>";
+		};
+		DD44620F26D9D43E0085CA18 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				DD2A938426D5C17F00F93897 /* NumberField.swift */,
+				DD44621026D9D4B00085CA18 /* SizeReader.swift */,
+			);
+			path = Support;
 			sourceTree = "<group>";
 		};
 		DDF6C78B26C97EC200B505B9 /* Timer */ = {
@@ -408,6 +420,7 @@
 				DD090A2526BF3A0A00DEAC82 /* StatisticView.swift in Sources */,
 				DD090A2926BF3A6A00DEAC82 /* TimerActionButtonStyle.swift in Sources */,
 				DD0E676826CD994500E1C444 /* PopoverRow.swift in Sources */,
+				DD44621126D9D4B00085CA18 /* SizeReader.swift in Sources */,
 				DD0E676B26CDCB4400E1C444 /* ListSheet.swift in Sources */,
 				DD090A0926BF0C9100DEAC82 /* Solve+CoreDataProperties.swift in Sources */,
 				DD090A0726BF0C9100DEAC82 /* Solve+CoreDataClass.swift in Sources */,
@@ -454,6 +467,7 @@
 				DD090A2626BF3A0A00DEAC82 /* StatisticView.swift in Sources */,
 				DD090A2A26BF3A6A00DEAC82 /* TimerActionButtonStyle.swift in Sources */,
 				DD0E676926CD994500E1C444 /* PopoverRow.swift in Sources */,
+				DD44621226D9D4B00085CA18 /* SizeReader.swift in Sources */,
 				DD0E676C26CDCB4400E1C444 /* ListSheet.swift in Sources */,
 				DD090A0A26BF0C9100DEAC82 /* Solve+CoreDataProperties.swift in Sources */,
 				DD090A0826BF0C9100DEAC82 /* Solve+CoreDataClass.swift in Sources */,
