@@ -104,6 +104,7 @@ extension Solve {
     // MARK: Types
     /// Possible penalties on a `Solve`.
     enum Penalty: Equatable {
+        // MARK: Cases
         /// No penalty.
         case none
         /// The solve was unfinished.
@@ -111,6 +112,7 @@ extension Solve {
         /// A penalty of some number of seconds.
         case some(Int)
         
+        // MARK: Properties
         /// The length of the `Penalty` in seconds.
         var length: Int? {
             switch self {
