@@ -105,6 +105,16 @@ extension Solve {
         case dnf
         /// A penalty of some number of seconds.
         case some(Int)
+        
+        /// The length of the `Penalty` in seconds.
+        var length: Int? {
+            switch self {
+            case let .some(seconds):
+                return seconds
+            default:
+                return nil
+            }
+        }
     }
 }
 
