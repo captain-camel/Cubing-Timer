@@ -103,6 +103,7 @@ struct InstanceView: View {
                 }
             }
         }
+        .animation(.linear(duration: 0.25), value: gestureState.translation)
         .navigationTitle(instance.name)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
