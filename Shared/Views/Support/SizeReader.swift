@@ -7,9 +7,13 @@
 
 import SwiftUI
 
+/// A view with a binding to its own size.
 struct SizeReader: View {
+    // MARK: Properties
+    /// The size of the view.
     @Binding var size: CGSize
     
+    // MARK: Body
     var body: some View {
         GeometryReader { geometry in
             Color.clear
