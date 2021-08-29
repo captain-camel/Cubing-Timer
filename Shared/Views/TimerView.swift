@@ -32,8 +32,13 @@ struct TimerView: View {
     /// The `TimerView`'s most recent time.
     @ObservedOptionalObject private var previousSolve: Solve?
     
+    /// The horizontal size of the view.
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
+    
+    @State private var timerTextSize: CGSize = CGSize(width: 0, height: 0)
+    
     /// The displayed time.
-    private var time: String {
+    private var timerText: String {
         if timerState == .ready {
             return doInspection ? String(inspection.duration) : "0.0"
         } else if timerState == .inspection {
@@ -73,17 +78,25 @@ struct TimerView: View {
     
     // MARK: Body
     var body: some View {
-        Text(time)
+        Text(timerText)
             .font(.system(size: 100, design: .monospaced))
             .minimumScaleFactor(0.01)
             .lineLimit(1)
-            .padding(.horizontal)
+            .if(horizontalSizeClass == .compact) { view in
+                view.padding(.vertical, -timerTextSize.height / 6)
+            }
+            .if(horizontalSizeClass == .regular) { view in
+                view.padding(.vertical, -20)//want only in regular size class
+            }
             .foregroundColor(.white)
             .colorMultiply(timeColor)
-            .animation(.easeInOut, value: timeColor)
+            .animation(.easeInOut, value: timerState)
+            .background(SizeReader(size: $timerTextSize))
             .onChange(of: countdown.complete) { isComplete in
                 if isComplete {
-                    timerState = .ready
+                    withAnimation(.spring(response: 0.5, dampingFraction: 0.5, blendDuration: 0.5)) {
+                        timerState = .ready
+                    }
                 }
             }
             .onChange(of: timerState) { [timerState] newValue in
@@ -118,6 +131,9 @@ struct TimerView: View {
             }
             .onChange(of: inspectionDuration) { inspectionDuration in
                 inspection.duration = inspectionDuration ?? 15
+            }
+            .onChange(of: timerTextSize) { _ in
+                print(timerTextSize)
             }
     }
     

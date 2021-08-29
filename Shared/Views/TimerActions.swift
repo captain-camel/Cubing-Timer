@@ -15,7 +15,7 @@ struct TimerActions: View {
     
     // MARK: Body
     var body: some View {
-        VStack {
+        Group {
             Button {
                 withAnimation {
                     solve!.plusTwo.toggle()

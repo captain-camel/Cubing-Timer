@@ -10,14 +10,17 @@ import SwiftUI
 /// A view opened by a `NavigationView` showing details about an `Instance` and a timer to add solves to it.
 struct InstanceView: View {
     // MARK: Properties
-    /// The color of the circle behind the timer.
-    static let circleColor = Color(red: 0.27, green: 0.95, blue: 0.65)
-    
     /// The `Instance` displayed by the `InstanceView`.
     @ObservedObject var instance: Instance
     
+    /// The color of the circle behind the timer.
+    static let circleColor = Color(red: 0.27, green: 0.95, blue: 0.65)
+    
     /// The presentation mode of the view.
     @Environment(\.presentationMode) var presentationMode
+    
+    /// The horizontal size of the view.
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
     
     /// The state of any drag gesture in progress.
     @State private var gestureState: GestureState = .none
@@ -30,6 +33,8 @@ struct InstanceView: View {
     
     /// Whether the `Instance`'s settings are displayed.
     @State private var showingSettings = false
+    
+    @State private var timerSize = CGSize(width: 0, height: 0)
     
     /// The scale of the circle behind the timer that is displayed when the timer is runing.
     private var runningCircleScale: CGFloat {
@@ -67,14 +72,45 @@ struct InstanceView: View {
     
     // MARK: Body
     var body: some View {
-        VStack {
-            TimerView(timerState: $timerState, previousSolve: solves.last, inspectionDuration: $instance.wrappedInspectionDuration) { time in
-                instance.addSolve(time: time)
+        HStack {
+            VStack {
+                TimerView(timerState: $timerState, previousSolve: solves.last, inspectionDuration: $instance.wrappedInspectionDuration) { time in
+                    instance.addSolve(time: time)
+                }
+                .background(SizeReader(size: $timerSize))
+                
+                if horizontalSizeClass == .compact {
+                    HStack {
+                        TimerActions(solve: solves.last)
+                    }
+                    .frame(width: timerSize.width)
+                    .opacity(timerState == .stopped ? 1 : 0)
+                    //.animation(.default, value: timerState == .stopped)
+//                    .animation(.default)
+                    
+                }
+                
+//                if timerState != .running && timerState != .inspection {
+                    HStack {
+                            StatisticView($instance.primaryStatistic)
+                            StatisticView($instance.secondaryStatistic)
+                        }
+                        .padding(.horizontal)
+                        .opacity(timerState == .stopped ? 1 : 0)
+                        //.animation(.default, value: timerState == .stopped)
+//                }
+                //                .frame(width: timerSize.width)
             }
+            //            .background(Color.green)
             
-            HStack {
-                StatisticView($instance.primaryStatistic)
-                StatisticView($instance.secondaryStatistic)
+            if horizontalSizeClass == .regular && timerState == .stopped {
+                VStack {
+                    TimerActions(solve: solves.last)
+                        .frame(width: 100)
+                        .opacity(timerState == .stopped ? 1 : 0)
+//                        .animation(.default, value: timerState == .stopped)
+                        .transition(.opacity)
+                }
             }
         }
         .navigationTitle(instance.name)
@@ -94,16 +130,13 @@ struct InstanceView: View {
                 Circle()
                     .foregroundColor(.yellow)
                     .scaleEffect(inspectionCircleScale)
-                    .animation(timerState == .ready ? .spring(response: 0.5, dampingFraction: 0.5, blendDuration: 0.5) : .easeIn, value: inspectionCircleScale)
                 
                 Circle()
                     .foregroundColor(Self.circleColor)
                     .scaleEffect(runningCircleScale)
-                    .animation(timerState == .ready ? .spring(response: 0.5, dampingFraction: 0.5, blendDuration: 0.5) : .easeIn, value: runningCircleScale)
             }
         )
         .offset(gestureState.translation)
-        .animation(.easeIn, value: gestureState.translation)
         .contentShape(Rectangle())
         .gesture(
             DragGesture(minimumDistance: 0)
@@ -126,22 +159,30 @@ struct InstanceView: View {
                                     }
                                 }
                                 
-                                timerState = .stopped
+                                withAnimation {
+                                    timerState = .stopped
+                                }
                             } else {
                                 if case .moved = gestureState {} else {
-                                    timerState = .counting
+                                    withAnimation {
+                                        timerState = .counting
+                                    }
                                     
                                     gestureState = .stationary
                                 }
                             }
                             
                         case .inspection:
-                            timerState = .running
+                            withAnimation {
+                                timerState = .running
+                            }
                             
                             gestureState = .complete
                             
                         case .running:
-                            timerState = .stopped
+                            withAnimation {
+                                timerState = .stopped
+                            }
                             
                             gestureState = .complete
                             
@@ -162,13 +203,19 @@ struct InstanceView: View {
                         print("down")
                     default:
                         if timerState == .ready {
-                            if instance.wrappedInspectionDuration != nil {
-                                timerState = .inspection
+                            if instance.doInspection {
+                                withAnimation {
+                                    timerState = .inspection
+                                }
                             } else {
-                                timerState = .running
+                                withAnimation {
+                                    timerState = .running
+                                }
                             }
                         } else if timerState == .counting {
-                            timerState = .stopped
+                            withAnimation {
+                                timerState = .stopped
+                            }
                         }
                     }
                     
@@ -177,7 +224,9 @@ struct InstanceView: View {
         )
         .onChange(of: presentationMode.wrappedValue.isPresented) { isPresented in
             if !isPresented {
-                timerState = .stopped
+                withAnimation {
+                    timerState = .stopped
+                }
             }
         }
         
