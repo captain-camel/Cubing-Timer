@@ -28,3 +28,24 @@ extension Array where Element: BinaryFloatingPoint {
         }
     }
 }
+
+extension Array where Element: BinaryFloatingPoint {
+    /// Returns the `Array` with the largest and smallest `n` values removed.
+    func removingOutliers(_ count: Int) -> [Element] {
+        if count * 2 > self.count {
+            return []
+        }
+        
+        var elements = self
+        
+        for _ in 0..<count {
+            elements.remove(at: elements.firstIndex(of: elements.max()!)!)
+        }
+        
+        for _ in 0..<count {
+            elements.remove(at: elements.firstIndex(of: elements.min()!)!)
+        }
+        
+        return elements
+    }
+}
