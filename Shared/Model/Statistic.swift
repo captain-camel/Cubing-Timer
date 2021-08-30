@@ -20,6 +20,8 @@ struct Statistic {
         switch kind {
         case .average:
             return "ao\(modifier ?? 5)"
+        case .haha:
+            return "haha"
         }
     }
     
@@ -28,6 +30,8 @@ struct Statistic {
         switch kind {
         case .average:
             return "Average of \(modifier ?? 5)"
+        case .haha:
+            return "Haha(long)"
         }
     }
     
@@ -46,6 +50,8 @@ struct Statistic {
         switch kind {
         case .average:
             return Solve.formatTime(instance.average(of: modifier ?? 5))
+        case .haha:
+            return "haha(val)"
         }
     }
     
@@ -53,25 +59,32 @@ struct Statistic {
     var details: [String]? {
         switch kind {
         case .average:
-            let times = instance.solveArray.suffix(modifier ?? 5).map { $0.time }
+            let solves = instance.solveArray
             
-            var foundMin = false
-            var foundMax = false
+            let outliers = max(solves.count / 5, 1)
             
-            return instance.solveArray.suffix(modifier ?? 5).map { solve in
-                if solve.penalty == .dnf {
-                    return "(DNF)"
+            let sorted = solves.sorted {
+                if $0.penalty == .dnf {
+                    return false
                 }
                 
-                if (solve.time == times.min() && !foundMin) || (solve.time == times.max() && !foundMax) {
-                    foundMin = solve.time == times.min()
-                    foundMax = solve.time == times.max()
-                    
+                if $1.penalty == .dnf {
+                    return true
+                }
+                
+                return $0.adjustedTime < $1.adjustedTime
+            }
+            
+            let outlierArray = sorted.prefix(outliers) + sorted.suffix(outliers)
+
+            return solves.map { solve -> String in
+                if outlierArray.contains(solve) {
                     return "(\(solve.formattedTime))"
                 }
                 
                 return solve.formattedTime
             }.reversed()
+            
         default:
             return nil
         }
@@ -123,6 +136,8 @@ struct Statistic {
         // MARK: Cases
         /// The mean of the most recent `n` solves, excluding the fastest and slowest.
         case average = "average"
+        /// A temporary test example.
+        case haha = "haha"
         
         // MARK: Properties
         /// Stylized version of the statistic's name.
@@ -145,6 +160,8 @@ extension Statistic: CustomStringConvertible {
         switch kind {
         case .average:
             return "average:\(modifier ?? 5)"
+        case .haha:
+            return "haha"
         }
     }
 }
