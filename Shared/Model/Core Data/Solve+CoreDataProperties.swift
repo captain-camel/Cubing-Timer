@@ -55,9 +55,13 @@ extension Solve {
         }
     }
     
-    /// The solve's time formatted into hours, minutes, seconds, and hundredths of seconds.
+    /// The `Solve`'s adjusted time formatted into hours, minutes, seconds, and hundredths of seconds.
     var formattedTime: String {
-        return Solve.formatTime(time)
+        if penalty == .dnf {
+            return "DNF"
+        }
+        
+        return Solve.formatTime(adjustedTime)
     }
     
     // MARK: Methods
