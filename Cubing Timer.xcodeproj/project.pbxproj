@@ -175,7 +175,7 @@
 				DD0909FA26BF0B5900DEAC82 /* Model */,
 				DD0909FB26BF0B7400DEAC82 /* Views */,
 				DD090A1326BF0E6400DEAC82 /* Miscellaneous */,
-				DD0909D726BF09C800DEAC82 /* Assets.xcassets */,
+				DD6F51C326DD885900F3E0B3 /* Resources */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -302,6 +302,14 @@
 				DD44621026D9D4B00085CA18 /* SizeReader.swift */,
 			);
 			path = Support;
+			sourceTree = "<group>";
+		};
+		DD6F51C326DD885900F3E0B3 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				DD0909D726BF09C800DEAC82 /* Assets.xcassets */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		DDF6C78B26C97EC200B505B9 /* Timer */ = {
