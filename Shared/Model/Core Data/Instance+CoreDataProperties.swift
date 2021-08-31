@@ -106,21 +106,24 @@ extension Instance {
     
     /// Returns the average time of the last solves. (Fastest and slowest times excluded.) The number of solves is determinted by the paramter `count`.
     func average(of count: Int) -> Double? {
-        let tempSolveArray = solveArray.filter { $0.penalty != .dnf }
+        let outliers = max(count / 5, 1)
         
-        if tempSolveArray.count >= count && count >= 3 {
-            var times = tempSolveArray.suffix(count).map { $0.adjustedTime }
-            
-            let minIndex = times.firstIndex(of: times.min() ?? 0) ?? 0
-            times.remove(at: minIndex)
-            
-            let maxIndex = times.firstIndex(of: times.max() ?? 0) ?? 0
-            times.remove(at: maxIndex)
-            
-            return times.average
+        if solves?.count ?? 0 >= count && solves!.filter({ ($0 as! Solve).penalty == .dnf }).count <= outliers && count >= 3 {
+            return solveArray.suffix(count).map { $0.penalty == .dnf ? Double.greatestFiniteMagnitude : $0.adjustedTime }.removingOutliers(outliers).average
         } else {
             return nil
         }
+    }
+    
+    /// Returns the average time of the last solves, formatted into a `String`.
+    func formattedAverage(of count: Int) -> String {
+        let outliers = max(count / 5, 1)
+        
+        if solveArray.filter({ $0.penalty == .dnf }).count > outliers {
+            return "DNF"
+        }
+        
+        return Solve.formatTime(average(of: count))
     }
 }
 
