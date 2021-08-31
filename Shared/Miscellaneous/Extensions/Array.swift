@@ -19,7 +19,7 @@ extension Array where Element: BinaryInteger {
 
 extension Array where Element: BinaryFloatingPoint {
     /// The average value of all the items in the array.
-    var average: Double {
+    var mean: Double {
         if self.isEmpty {
             return 0.0
         } else {
