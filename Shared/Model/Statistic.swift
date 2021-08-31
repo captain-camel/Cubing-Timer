@@ -49,7 +49,7 @@ struct Statistic {
     var value: String {
         switch kind {
         case .average:
-            return Solve.formatTime(instance.average(of: modifier ?? 5))
+            return instance.formattedAverage(of: modifier ?? 5)
         case .haha:
             return "haha(val)"
         }
@@ -59,7 +59,7 @@ struct Statistic {
     var details: [String]? {
         switch kind {
         case .average:
-            let solves = instance.solveArray
+            let solves = instance.solveArray.suffix(modifier ?? 5)
             
             let outliers = max(solves.count / 5, 1)
             
