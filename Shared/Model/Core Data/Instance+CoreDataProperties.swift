@@ -46,6 +46,11 @@ extension Instance {
         }
     }
     
+    /// Safely unwrapped value of `solves`.
+    var unwrappedSolves: NSSet {
+        return solves ?? []
+    }
+    
     /// The puzzle assigned to the `Instance`.
     var puzzle: Puzzle {
         get {
@@ -108,7 +113,7 @@ extension Instance {
     func average(of count: Int) -> Double? {
         let outliers = max(count / 5, 1)
         
-        if solves?.count ?? 0 >= count && solves?.filter({ ($0 as! Solve).penalty == .dnf }).count ?? 0 <= outliers && count >= 3 {
+        if unwrappedSolves.count >= count && unwrappedSolves.filter({ ($0 as? Solve)?.penalty == .dnf }).count <= outliers && count >= 3 {
             return solveArray.suffix(count).map { $0.penalty == .dnf ? Double.greatestFiniteMagnitude : $0.adjustedTime }.removingOutliers(outliers).mean
         }
         
@@ -119,7 +124,7 @@ extension Instance {
     func formattedAverage(of count: Int) -> String {
         let outliers = max(count / 5, 1)
         
-        if solveArray.filter({ $0.penalty == .dnf }).count > outliers {
+        if unwrappedSolves.filter({ ($0 as? Solve)?.penalty == .dnf }).count > outliers {
             return "DNF"
         }
         

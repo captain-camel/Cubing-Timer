@@ -95,8 +95,8 @@ struct Statistic {
         switch kind {
         case .average:
             return { index in
-                if instance.solveArray.count > index {
-                    if instance.solveArray.count > index {
+                if instance.unwrappedSolves.count > index {
+                    if instance.unwrappedSolves.count > index {
                         SolveStorage.delete(instance.solveArray.suffix(index + 1).first!)
                     }
                 }
@@ -104,8 +104,8 @@ struct Statistic {
             
         case .mean:
             return { index in
-                if instance.solveArray.count > index {
-                    if instance.solveArray.count > index {
+                if instance.unwrappedSolves.count > index {
+                    if instance.unwrappedSolves.count > index {
                         SolveStorage.delete(instance.solveArray.suffix(index + 1).first!)
                     }
                 }
