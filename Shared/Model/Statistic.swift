@@ -20,8 +20,8 @@ struct Statistic {
         switch kind {
         case .average:
             return "ao\(modifier ?? 5)"
-        case .haha:
-            return "haha"
+        case .mean:
+            return "mo\(modifier ?? 5)"
         }
     }
     
@@ -30,8 +30,8 @@ struct Statistic {
         switch kind {
         case .average:
             return "Average of \(modifier ?? 5)"
-        case .haha:
-            return "Haha(long)"
+        case .mean:
+            return "Mean of \(modifier ?? 5)"
         }
     }
     
@@ -40,8 +40,8 @@ struct Statistic {
         switch kind {
         case .average:
             return "Average of"
-        default:
-            return nil
+        case .mean:
+            return "Mean of"
         }
     }
     
@@ -50,8 +50,8 @@ struct Statistic {
         switch kind {
         case .average:
             return instance.formattedAverage(of: modifier ?? 5)
-        case .haha:
-            return "haha(val)"
+        case .mean:
+            return instance.formattedMean(of: modifier ?? 5)
         }
     }
     
@@ -85,8 +85,8 @@ struct Statistic {
                 return solve.formattedTime
             }.reversed()
             
-        default:
-            return nil
+        case .mean:
+            return instance.solveArray.filter { $0.penalty != .dnf }.suffix(modifier ?? 5).map { Solve.formatTime($0.adjustedTime) }
         }
     }
     
@@ -96,12 +96,20 @@ struct Statistic {
         case .average:
             return { index in
                 if instance.solveArray.count > index {
-                    //self.instance.deleteSolve(self.instance.solves.suffix(index + 1).first!)
-                    print(index)
+                    if instance.solveArray.count > index {
+                        SolveStorage.delete(instance.solveArray.suffix(index + 1).first!)
+                    }
                 }
             }
-        default:
-            return nil
+            
+        case .mean:
+            return { index in
+                if instance.solveArray.count > index {
+                    if instance.solveArray.count > index {
+                        SolveStorage.delete(instance.solveArray.suffix(index + 1).first!)
+                    }
+                }
+            }
         }
     }
     
@@ -110,8 +118,8 @@ struct Statistic {
         switch kind {
         case .average:
             return "trash"
-        default:
-            return nil
+        case .mean:
+            return "trash"
         }
     }
     
@@ -136,8 +144,8 @@ struct Statistic {
         // MARK: Cases
         /// The mean of the most recent `n` solves, excluding the fastest and slowest.
         case average = "average"
-        /// A temporary test example.
-        case haha = "haha"
+        /// The mean of the most recent `n` solves.
+        case mean = "mean"
         
         // MARK: Properties
         /// Stylized version of the statistic's name.
@@ -160,8 +168,8 @@ extension Statistic: CustomStringConvertible {
         switch kind {
         case .average:
             return "average:\(modifier ?? 5)"
-        case .haha:
-            return "haha"
+        case .mean:
+            return "mean:\(modifier ?? 5)"
         }
     }
 }
