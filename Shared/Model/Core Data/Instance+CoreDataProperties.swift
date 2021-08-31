@@ -126,6 +126,7 @@ extension Instance {
         return Solve.formatTime(average(of: count))
     }
     
+    /// Returns the mean of the last solves.
     func mean(of count: Int) -> Double? {
         if solves?.filter({ ($0 as! Solve).penalty != .dnf }).count ?? 0 >= count {
             return solveArray.filter { $0.penalty != .dnf }.suffix(count).map { $0.adjustedTime }.mean
@@ -134,6 +135,7 @@ extension Instance {
         return nil
     }
     
+    /// Returns the mean of th elast solves, formatted into a `String`.
     func formattedMean(of count: Int) -> String {
         return Solve.formatTime(mean(of: count))
     }
