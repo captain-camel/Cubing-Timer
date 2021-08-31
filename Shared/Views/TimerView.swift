@@ -85,9 +85,12 @@ struct TimerView: View {
     // MARK: Body
     var body: some View {
         ZStack {
-            Rectangle()
-                .frame(width: timerState == .stopped && solve?.penalty == .dnf && solveChanged ? textSize.width : 0, height: 5)
-                .shadow(radius: 5)
+            if timerState == .stopped {
+                Rectangle()
+                    .frame(width: timerState == .stopped && solve?.penalty == .dnf && solveChanged ? textSize.width : 0, height: 5)
+                    .shadow(radius: 5)
+                    .transition(.asymmetric(insertion: .identity, removal: .opacity))
+            }
             
             Text(timerText)
                 .animation(nil)
