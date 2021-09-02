@@ -45,8 +45,8 @@ struct InstanceSettings: View {
             
             Section(header: Text("Primary Statistic")) {
                 Picker(selection: $instance.primaryStatistic.kind, label: Text("Type")) {
-                    ForEach(Statistic.Kind.allCases, id: \.self) { statistic in
-                        Text(statistic.rawValue)
+                    ForEach(Statistic.allCases, id: \.self) { statistic in
+                        Text(statistic.kindName)
                             .tag(statistic)
                     }
                 }
@@ -54,12 +54,13 @@ struct InstanceSettings: View {
                 if instance.primaryStatistic.modifierTitle != nil && instance.primaryStatistic.modifier != nil {
                     NumberField(title: instance.primaryStatistic.modifierTitle!, value: Binding($instance.primaryStatistic.modifier)!, in: 3...Int.max)
                 }
+
             }
             
             Section(header: Text("Secondary Statistic")) {
                 Picker(selection: $instance.secondaryStatistic.kind, label: Text("Type")) {
-                    ForEach(Statistic.Kind.allCases, id: \.self) { statistic in
-                        Text(statistic.rawValue)
+                    ForEach(Statistic.allCases, id: \.self) { statistic in
+                        Text(statistic.kindName)
                             .tag(statistic)
                     }
                 }

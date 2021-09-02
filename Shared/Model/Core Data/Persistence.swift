@@ -21,8 +21,8 @@ struct PersistenceController {
             newInstance.name = "name"
             newInstance.puzzle = .cube(3)
             newInstance.order = Int16(i)
-            newInstance.primaryStatistic = Statistic(kind: .average, modifier: 5)
-            newInstance.secondaryStatistic = Statistic(kind: .average, modifier: 12)
+            newInstance.primaryStatistic = .average(5)
+            newInstance.secondaryStatistic = .average(12)
         }
         
         PersistenceController.save()

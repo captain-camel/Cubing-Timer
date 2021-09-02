@@ -12,6 +12,8 @@ struct StatisticView: View {
     // MARK: Properties
     /// The `Statistic` described by the `StatisticView`.
     @Binding var statistic: Statistic
+    /// The `Instance` who's `Statistic` is displayed.
+    @ObservedObject var instance: Instance
     
     /// Whether the `StatisticView` shows a popover when pressed if applicable.
     var popover: Bool
@@ -20,18 +22,20 @@ struct StatisticView: View {
     @State private var showingDetails = false
     
     // MARK: Initializers
-    init(_ statistic: Binding<Statistic>, popover: Bool = true) {
+    init(_ statistic: Binding<Statistic>, instance: Instance, popover: Bool = true) {
         self._statistic = statistic
+        self.instance = instance
+        
         self.popover = popover
     }
     
     // MARK: Body
     var body: some View {
-        if statistic.details == nil || !popover {
+        if statistic.details(of: instance) == nil || !popover {
             HStack {
                 Text("\(statistic.shortName):")
                     .foregroundColor(.secondary)
-                Text(statistic.value)
+                Text(statistic.value(of: instance))
             }
             .animation(nil)
             .lineLimit(1)
@@ -42,22 +46,22 @@ struct StatisticView: View {
                 HStack {
                     Text("\(statistic.shortName):")
                         .foregroundColor(.secondary)
-                    Text(statistic.value)
+                    Text(statistic.value(of: instance))
                 }
                 .animation(nil)
                 .lineLimit(1)
             }
             .buttonStyle(StatisticButtonStyle())
-            .disabled(statistic.details!.isEmpty)
+            .disabled(statistic.details(of: instance)!.isEmpty)
             .if(Device() == .pad) { view in
                 view.popover(isPresented: $showingDetails) {
-                    ListPopover(values: statistic.details!, limit: 10, action: statistic.action, actionSymbol: statistic.actionSymbol)
+                    ListPopover(values: statistic.details(of: instance)!, limit: 10, action: statistic.action(of: instance), actionSymbol: statistic.actionSymbol)
                         .fixedSize()
                 }
             }
             .if(Device() == .phone) { view in
                 view.sheet(isPresented: $showingDetails) {
-                    ListSheet(title: statistic.longName, values: statistic.details!, action: statistic.action, actionSymbol: statistic.actionSymbol)
+                    ListSheet(title: statistic.longName, values: statistic.details(of: instance)!, action: statistic.action(of: instance), actionSymbol: statistic.actionSymbol)
                 }
             }
         }

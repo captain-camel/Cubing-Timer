@@ -64,22 +64,23 @@ extension Instance {
     /// The first statistic displayed by the instance.
     var primaryStatistic: Statistic {
         get {
-            return Statistic(primaryStatisticRawValue, instance: self)
+            return Statistic(serialized: primaryStatisticRawValue) ?? .average(5)
         }
         set {
-            primaryStatisticRawValue = newValue.description
+            primaryStatisticRawValue = newValue.serialized
         }
     }
     
     /// The second statistic displayed by the instance.
     var secondaryStatistic: Statistic {
         get {
-            return Statistic(secondaryStatisticRawValue, instance: self)
+            return Statistic(serialized: secondaryStatisticRawValue) ?? .average(12)
         } set {
-            secondaryStatisticRawValue = newValue.description
+            secondaryStatisticRawValue = newValue.serialized
         }
     }
     
+    /// The duration of the `Instance`'s inspection, as an `Optional`.
     var wrappedInspectionDuration: Int? {
         get {
             if doInspection {

@@ -89,8 +89,8 @@ struct InstanceView: View {
                 }
                 
                 HStack {
-                    StatisticView($instance.primaryStatistic)
-                    StatisticView($instance.secondaryStatistic)
+                    StatisticView($instance.primaryStatistic, instance: instance)
+                    StatisticView($instance.secondaryStatistic, instance: instance)
                 }
                 .padding(.horizontal)
                 .opacity(timerState == .stopped ? 1 : 0)
