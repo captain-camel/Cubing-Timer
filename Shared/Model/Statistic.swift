@@ -237,30 +237,6 @@ enum Statistic: CaseIterable, Hashable {
     // MARK: Properties
     /// All possible `Statistic`s.
     static var allCases: [Statistic] = [.average(5), .mean(5), .personalBest]
-    
-    /// The `Statistic`'s modifier, if it has one.
-    var modifier: Int? {
-        get {
-            switch self {
-            case let .average(modifier):
-                return modifier
-            case let .mean(modifier):
-                return modifier
-            default:
-                return nil
-            }
-        }
-        set {
-            switch self {
-            case .average:
-                self = .average(newValue ?? 5)
-            case .mean:
-                self = .mean(newValue ?? 5)
-            default:
-                break
-            }
-        }
-    }
 
     /// Abbreviated version of the `Statistic`'s name.
     var shortName: String {
@@ -286,18 +262,6 @@ enum Statistic: CaseIterable, Hashable {
         }
     }
 
-    /// Full name of `Statistic`'s extra option. (`nil` if no additional option)
-    var modifierTitle: String? {
-        switch self {
-        case .average:
-            return "Average of"
-        case .mean:
-            return "Mean of"
-        default:
-            return nil
-        }
-    }
-    
     /// The system image on the button that performs the action.
     var actionSymbol: String? {
         switch self {

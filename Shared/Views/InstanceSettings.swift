@@ -51,10 +51,40 @@ struct InstanceSettings: View {
                     }
                 }
                 
-                if instance.primaryStatistic.modifierTitle != nil && instance.primaryStatistic.modifier != nil {
-                    NumberField(title: instance.primaryStatistic.modifierTitle!, value: Binding($instance.primaryStatistic.modifier)!, in: 3...Int.max)
+                switch instance.primaryStatistic {
+                case .average:
+                    NumberField(title: "Average of", value: Binding(
+                        get: {
+                            switch instance.primaryStatistic {
+                            case let .mean(solves):
+                                return solves
+                            default:
+                                return 5
+                            }
+                        },
+                        set: {
+                            instance.primaryStatistic = .mean($0)
+                            
+                        }
+                    ), in: 3...Int.max)
+                case .mean:
+                    NumberField(title: "Mean of", value: Binding(
+                        get: {
+                            switch instance.primaryStatistic {
+                            case let .mean(solves):
+                                return solves
+                            default:
+                                return 5
+                            }
+                        },
+                        set: {
+                            instance.primaryStatistic = .mean($0)
+                            
+                        }
+                    ), in: 1...Int.max)
+                default:
+                    EmptyView()
                 }
-
             }
             
             Section(header: Text("Secondary Statistic")) {
@@ -65,9 +95,44 @@ struct InstanceSettings: View {
                     }
                 }
                 
-                if instance.secondaryStatistic.modifierTitle != nil && instance.secondaryStatistic.modifier != nil {
-                    NumberField(title: instance.secondaryStatistic.modifierTitle!, value: Binding($instance.secondaryStatistic.modifier)!, in: 3...Int.max)
+                switch instance.secondaryStatistic {
+                case .average:
+                    NumberField(title: "Average of", value: Binding(
+                        get: {
+                            switch instance.secondaryStatistic {
+                            case let .mean(solves):
+                                return solves
+                            default:
+                                return 5
+                            }
+                        },
+                        set: {
+                            instance.secondaryStatistic = .mean($0)
+                            
+                        }
+                    ), in: 3...Int.max)
+                case .mean:
+                    NumberField(title: "Mean of", value: Binding(
+                        get: {
+                            switch instance.secondaryStatistic {
+                            case let .mean(solves):
+                                return solves
+                            default:
+                                return 5
+                            }
+                        },
+                        set: {
+                            instance.secondaryStatistic = .mean($0)
+                            
+                        }
+                    ), in: 1...Int.max)
+                default:
+                    EmptyView()
                 }
+                
+//                if instance.secondaryStatistic.modifierTitle != nil && instance.secondaryStatistic.modifier != nil {
+//                    NumberField(title: instance.secondaryStatistic.modifierTitle!, value: Binding($instance.secondaryStatistic.modifier)!, in: 3...Int.max)
+//                }
             }
             
             Section(header: Text("Inspection")) {
