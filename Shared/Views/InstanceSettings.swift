@@ -46,7 +46,7 @@ struct InstanceSettings: View {
             Section(header: Text("Primary Statistic")) {
                 Picker(selection: $instance.primaryStatistic.kind, label: Text("Type")) {
                     ForEach(Statistic.Kind.allCases, id: \.self) { statistic in
-                        Text(statistic.formattedName)
+                        Text(statistic.rawValue)
                             .tag(statistic)
                     }
                 }
@@ -59,7 +59,7 @@ struct InstanceSettings: View {
             Section(header: Text("Secondary Statistic")) {
                 Picker(selection: $instance.secondaryStatistic.kind, label: Text("Type")) {
                     ForEach(Statistic.Kind.allCases, id: \.self) { statistic in
-                        Text(statistic.formattedName)
+                        Text(statistic.rawValue)
                             .tag(statistic)
                     }
                 }
