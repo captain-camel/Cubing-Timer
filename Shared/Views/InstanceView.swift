@@ -22,6 +22,9 @@ struct InstanceView: View {
     /// The horizontal size of the view.
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
     
+    // The current phase of the scene.
+    @Environment(\.scenePhase) private var scenePhase
+    
     /// The state of any drag gesture in progress.
     @State private var gestureState: GestureState = .none
     
@@ -104,7 +107,6 @@ struct InstanceView: View {
                 }
             }
         }
-        .animation(.linear(duration: 0.25), value: gestureState.translation)
         .navigationTitle(instance.name)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
@@ -128,7 +130,6 @@ struct InstanceView: View {
                     .scaleEffect(runningCircleScale)
             }
         )
-        .offset(gestureState.translation)
         .contentShape(Rectangle())
         .gesture(
             DragGesture(minimumDistance: 0)
@@ -136,7 +137,10 @@ struct InstanceView: View {
                     if gestureState != .complete {
                         switch timerState {
                         case .stopped, .counting:
-                            if gesture.translation.distance > 15 && gestureState == .stationary {
+                            if gesture.translation.distance > 50 && gestureState == .stationary {
+                                let impactHeavy = UIImpactFeedbackGenerator(style: .heavy)
+                                impactHeavy.impactOccurred()
+                                
                                 if abs(gesture.translation.width) > abs(gesture.translation.height) {
                                     if gesture.translation.width < 0 {
                                         gestureState = .moved(.left)
@@ -156,7 +160,7 @@ struct InstanceView: View {
                                 }
                             } else {
                                 if case .moved = gestureState {} else {
-                                    withAnimation {
+                                    withAnimation(.default.delay(0.3)) {
                                         timerState = .counting
                                     }
                                     
@@ -220,6 +224,10 @@ struct InstanceView: View {
                     timerState = .stopped
                 }
             }
+        }
+        .onChange(of: scenePhase) { _ in
+            timerState = .stopped
+            gestureState = .none
         }
         
         NavigationLink(destination: InstanceSettings(instance: instance), isActive: $showingSettings){
