@@ -46,5 +46,11 @@ struct TimerActionButtonStyle: ButtonStyle {
                     : 1
             )
             .animation(.easeOut(duration: 0.2), value: configuration.isPressed)
+            .onChange(of: configuration.isPressed) { isPressed in
+                if !isPressed {
+                    let impactHeavy = UIImpactFeedbackGenerator(style: .heavy)
+                    impactHeavy.impactOccurred()
+                }
+            }
     }
 }
