@@ -44,7 +44,7 @@ class InstanceStorage {
     }
     
     /// Creates a new `Instance` and saves it to Core Data.
-    static func add(name: String, puzzle: Puzzle, notes: String? = nil, primaryStatistic: Statistic = .average(5), secondaryStatistic: Statistic = .average(12), inspectionDuration: Int? = 15, order: Int? = nil, id: UUID = UUID()) {
+    static func add(name: String, puzzle: Puzzle, notes: String? = nil, primaryStatistic: Statistic = .average(5), secondaryStatistic: Statistic = .average(12), inspectionDuration: Int? = 15, showScramble: Bool = true, customScrambleAlgorithm: String? = nil, order: Int? = nil, id: UUID = UUID()) {
         let newInstance = Instance(context: PersistenceController.viewContext)
         
         newInstance.name = name
@@ -54,10 +54,10 @@ class InstanceStorage {
         newInstance.primaryStatisticRawValue = primaryStatistic.serialized
         newInstance.secondaryStatisticRawValue = secondaryStatistic.serialized
         
-//        newInstance.primaryStatistic.setInstance(to: newInstance)
-//        newInstance.secondaryStatistic.setInstance(to: newInstance)
-        
         newInstance.wrappedInspectionDuration = inspectionDuration
+        
+        newInstance.showScramble = showScramble
+        newInstance.customScrambleAlgorithm = customScrambleAlgorithm
 
         if order == nil {
             newInstance.order = (Self.shared.instances.map { $0.order }.max() ?? -1) + 1

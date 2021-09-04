@@ -35,6 +35,11 @@ extension Instance {
     /// The length of the inspection before the timer starts.
     @NSManaged public var inspectionDuration: Int64
     
+    /// Whether the `Instance` shows a scramble.
+    @NSManaged public var showScramble: Bool
+    /// A cutom scramble algorithm written in javascript.
+    @NSManaged public var customScrambleAlgorithm: String?
+    
     /// The set of all the `Solve`s in the `Instance`.
     @NSManaged public var solves: NSSet?
     
