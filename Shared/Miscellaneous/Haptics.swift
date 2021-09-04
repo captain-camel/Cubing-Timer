@@ -7,6 +7,7 @@
 
 import CoreHaptics
 import AudioToolbox.AudioServices
+import UIKit
 
 /// A `struct` containng different haptic feedback patterns.
 struct Haptics {
@@ -31,6 +32,12 @@ struct Haptics {
     /// A soft pop.
     func pop() {
         AudioServicesPlaySystemSound(SystemSoundID(1520))
+    }
+    
+    /// A light tap.
+    func tap() {
+        let impact = UIImpactFeedbackGenerator(style: .medium)
+        impact.impactOccurred()
     }
     
     /// A buzz that fades out with small sharp pops.
