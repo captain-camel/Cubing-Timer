@@ -54,19 +54,28 @@ struct Move {
         }
     }
     
-    /// `Error`s that can be thrown by an `Algorithm`.
+    /// `Error`s that can be thrown by a `Move`.
     enum MoveError: Error {
         /// Thrown when initializing a `Move` with invalid layers.
         case invalidMoveLayers
     }
-}
-
-extension Move: LosslessStringConvertible {
-    // MARK: Properties
-    /// A `String`describing of the `Move`.
-    var description: String {
+    
+    // MARK: Methods
+    /// Returns the `String` description of the `Move`
+    func getDescription(as puzzle: Puzzle = .cube(3)) -> String {
         if layers == 0...0 {
             return face.rawValue
+        } else if layers == 0...1 {
+            return face.rawValue.lowercased()
+        } else if layers == 1...1 && puzzle == .cube(3) {
+            switch face {
+            case .up, .down:
+                return "E"
+            case .front, .back:
+                return "S"
+            case .right, .left:
+                return "M"
+            }
         } else if layers.count == 1 {
             return "\(layers.first! + 1)\(face.rawValue)\(direction.rawValue)"
         } else if layers.contains(0) {
@@ -74,6 +83,14 @@ extension Move: LosslessStringConvertible {
         } else {
             return "\(layers.upperBound)-\(layers.lowerBound)\(face.rawValue)\(direction.rawValue)"
         }
+    }
+}
+
+extension Move: LosslessStringConvertible {
+    // MARK: Properties
+    /// A `String`describing of the `Move`.
+    var description: String {
+        return getDescription()
     }
     
     // MARK: Initializers
@@ -102,14 +119,14 @@ extension Move: LosslessStringConvertible {
                     if character.isLowercase {
                         layers = 0...1
                     }
-                } else if character == "M" {
-                    face = .left
-                    layers = 1...1
                 } else if character == "E" {
-                    face = .down
+                    face = .up
                     layers = 1...1
                 } else if character == "S" {
                     face = .front
+                    layers = 1...1
+                } else if character == "M" {
+                    face = .right
                     layers = 1...1
                 }
             }
