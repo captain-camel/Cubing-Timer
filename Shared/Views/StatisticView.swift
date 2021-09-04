@@ -36,6 +36,11 @@ struct StatisticView: View {
                 Text("\(statistic.shortName):")
                     .foregroundColor(.secondary)
                 Text(statistic.value(of: instance))
+                
+                if let systemName = statistic.symbol(of: instance) {
+                    Image(systemName: systemName)
+                        .foregroundColor(statistic.symbolColor(of: instance))
+                }
             }
             .lineLimit(1)
         } else {
@@ -46,6 +51,11 @@ struct StatisticView: View {
                     Text("\(statistic.shortName):")
                         .foregroundColor(.secondary)
                     Text(statistic.value(of: instance))
+                    
+                    if let systemName = statistic.symbol(of: instance) {
+                        Image(systemName: systemName)
+                            .foregroundColor(statistic.symbolColor(of: instance))
+                    }
                 }
                 .lineLimit(1)
             }
