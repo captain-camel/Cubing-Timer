@@ -93,6 +93,9 @@ struct TimerView: View {
             }
             
             Text(timerText)
+                .foregroundColor(.white)
+                .colorMultiply(timeColor)
+                .animation(.default, value: timeColor)
                 .animation(nil)
                 .scaleEffect()
                 .font(.system(size: 100, design: .monospaced))
@@ -104,15 +107,14 @@ struct TimerView: View {
                 .if(horizontalSizeClass == .regular) { view in
                     view.padding(.vertical, -20)
                 }
-                .foregroundColor(.white)
-                .colorMultiply(timeColor)
-                .animation(.easeInOut, value: timerState)
                 .readSize(size: $textSize)
                 .onChange(of: countdown.complete) { isComplete in
                     if isComplete {
                         withAnimation(.spring(response: 0.5, dampingFraction: 0.5, blendDuration: 0.5)) {
                             timerState = .ready
                         }
+                        
+                        Haptics.shared.pop()
                     }
                 }
                 .onChange(of: timerState) { [timerState] newValue in
