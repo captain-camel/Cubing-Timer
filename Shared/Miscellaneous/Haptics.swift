@@ -72,4 +72,9 @@ struct Haptics {
             print(error.localizedDescription)
         }
     }
+    
+    /// Three sharp taps.
+    func error() {
+        UINotificationFeedbackGenerator().notificationOccurred(.error)
+    }
 }
