@@ -8,6 +8,8 @@
 /// A series of `Moves` forming an `Algorithm` that can be performed on a `Cube`.
 struct Algorithm {
     // MARK: Properties
+    static var algorithms: [Algorithm] = [""]
+    
     /// The `Move`s making up the `Algorithm`.
     var moves: [Move] = []
     
@@ -26,6 +28,30 @@ struct Algorithm {
     init(_ moves: [Move]) {
         self.moves = moves
     }
+    
+    // MARK: Methods
+    /// Returns an `Algorithm` to scramble a `Puzzle`.
+    static func scramble(puzzle: Puzzle) -> Self? {
+        switch puzzle {
+        case let .cube(size):
+            var scramble = Algorithm()
+            
+            for _ in 1...size * 12 - 15 {
+                scramble.moves.append(
+                    Move(
+                        face: Cube.Tile.allCases.randomElement()!,
+                        direction: Move.Direction.allCases.randomElement()!,
+                        layers: 0...Int.random(in: 0...size / 2)
+                    )!
+                )
+            }
+            
+            return scramble
+            
+        default:
+            return nil
+        }
+    }
 }
 
 extension Algorithm: LosslessStringConvertible {
@@ -37,12 +63,12 @@ extension Algorithm: LosslessStringConvertible {
     
     // MARK: Initializers
     /// Creates an `Algorithm` from a `String`.
-    init?(_ description: String) {
+    init(_ description: String) {
         let moves = description.split(separator: " ")
         
         for move in moves {
             guard let toAppend = Move(String(move)) else {
-                return nil
+                break
             }
             
             self.moves.append(toAppend)
@@ -53,7 +79,7 @@ extension Algorithm: LosslessStringConvertible {
 extension Algorithm: ExpressibleByStringLiteral {
     // MARK: Initializers
     init(stringLiteral value: String) {
-        self.init(value)!
+        self.init(value)
     }
 }
 
