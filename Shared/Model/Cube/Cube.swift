@@ -68,7 +68,7 @@ struct Cube {
     
     // MARK: Types
     /// A side of a `Cube`, or a single tile on the side of a `Cube`.
-    enum Tile: String {
+    enum Tile: String, CaseIterable {
         // MARK: Cases
         /// The "up" face of a `Cube`.
         case up = "U"
