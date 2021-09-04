@@ -121,6 +121,17 @@ extension Instance {
         return nil
     }
     
+    /// Returns the average time of a range of solves.
+    func average(indices: ClosedRange<Int>) -> Double? {
+        let outliers = max(indices.count / 5, 1)
+        
+        if unwrappedSolves.count >= indices.count && solveArray.suffix(indices.last! + 1).prefix(indices.count).filter({ $0.penalty == .dnf }).count <= outliers && indices.count >= 3 {
+            return solveArray.suffix(indices.last! + 1).prefix(indices.count).map { $0.penalty == .dnf ? Double.greatestFiniteMagnitude : $0.adjustedTime }.removingOutliers(outliers).mean
+        }
+        
+        return nil
+    }
+    
     /// Returns the average time of the last solves, formatted into a `String`.
     func formattedAverage(of count: Int) -> String {
         let outliers = max(count / 5, 1)
