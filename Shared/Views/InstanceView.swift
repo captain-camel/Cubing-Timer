@@ -212,13 +212,33 @@ struct InstanceView: View {
                 .onEnded { gesture in
                     switch gestureState.direction {
                     case .right:
-                        print("right")
+                        withAnimation {
+                            if instance.solveArray.last?.penalty.length != nil {
+                                instance.solveArray.last?.penalty = .none
+                            } else {
+                                instance.solveArray.last?.penalty = .some(2)
+                            }
+                        }
+                        
+                        if instance.solveArray.isEmpty {
+                            Haptics.shared.error()
+                        }
+                        
                     case .left:
-                        print("left")
+                        if !instance.solveArray.isEmpty {
+                            SolveStorage.delete(instance.solveArray.last!)
+                            
+                            showHUD(title: "Solve Deleted", systemName: "trash", iconColor: .red)
+                        } else {
+                            Haptics.shared.error()
+                        }
+                        
                     case .up:
                         print("up")
+                        
                     case .down:
                         print("down")
+                        
                     default:
                         if timerState == .ready {
                             if instance.doInspection {
@@ -256,6 +276,7 @@ struct InstanceView: View {
         .hud(isPresented: $showingHUD, timeout: 3) {
             Label {
                 Text(HUDTitle)
+                    .bold()
             } icon: {
                 Image(systemName: HUDIconSystemName)
                     .foregroundColor(HUDIconColor)
