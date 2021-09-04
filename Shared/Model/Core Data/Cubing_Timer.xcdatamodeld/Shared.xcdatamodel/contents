@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20G95" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19197" systemVersion="20G95" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Instance" representedClassName="Instance" syncable="YES">
-        <attribute name="doInspection" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="doInspection" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="inspectionDuration" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="name" attributeType="String"/>
+        <attribute name="name" attributeType="String" defaultValueString=""/>
         <attribute name="notes" optional="YES" attributeType="String"/>
         <attribute name="order" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="primaryStatisticRawValue" attributeType="String"/>
-        <attribute name="puzzleRawValue" attributeType="String"/>
-        <attribute name="secondaryStatisticRawValue" attributeType="String"/>
+        <attribute name="primaryStatisticRawValue" attributeType="String" defaultValueString=""/>
+        <attribute name="puzzleRawValue" attributeType="String" defaultValueString=""/>
+        <attribute name="secondaryStatisticRawValue" attributeType="String" defaultValueString=""/>
         <relationship name="solves" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Solve" inverseName="instance" inverseEntity="Solve"/>
     </entity>
     <entity name="Solve" representedClassName="Solve" syncable="YES">
-        <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="penaltyRawValue" attributeType="String"/>
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="penaltyRawValue" attributeType="String" defaultValueString=""/>
         <attribute name="scramble" optional="YES" attributeType="String"/>
         <attribute name="time" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <relationship name="instance" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Instance" inverseName="solves" inverseEntity="Instance"/>
