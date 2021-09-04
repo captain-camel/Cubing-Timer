@@ -114,7 +114,7 @@ extension Instance {
     func average(of count: Int) -> Double? {
         let outliers = max(count / 5, 1)
         
-        if unwrappedSolves.count >= count && unwrappedSolves.filter({ ($0 as? Solve)?.penalty == .dnf }).count <= outliers && count >= 3 {
+        if unwrappedSolves.count >= count && solveArray.suffix(count).filter({ $0.penalty == .dnf }).count <= outliers && count >= 3 {
             return solveArray.suffix(count).map { $0.penalty == .dnf ? Double.greatestFiniteMagnitude : $0.adjustedTime }.removingOutliers(outliers).mean
         }
         
@@ -125,7 +125,7 @@ extension Instance {
     func formattedAverage(of count: Int) -> String {
         let outliers = max(count / 5, 1)
         
-        if unwrappedSolves.filter({ ($0 as? Solve)?.penalty == .dnf }).count > outliers {
+        if solveArray.suffix(count).filter({ $0.penalty == .dnf }).count > outliers {
             return "DNF"
         }
         
@@ -134,7 +134,7 @@ extension Instance {
     
     /// Returns the mean of the last solves.
     func mean(of count: Int) -> Double? {
-        if solves?.filter({ ($0 as! Solve).penalty != .dnf }).count ?? 0 >= count {
+        if solveArray.suffix(count).filter({ $0.penalty != .dnf }).count >= count {
             return solveArray.filter { $0.penalty != .dnf }.suffix(count).map { $0.adjustedTime }.mean
         }
         
