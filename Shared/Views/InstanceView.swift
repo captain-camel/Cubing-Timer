@@ -40,8 +40,17 @@ struct InstanceView: View {
     /// The size of the `TimerView`.
     @State private var timerSize = CGSize(width: 0, height: 0)
     
-    /// Whether the `HUD` that displays when a new personal best is achieved is showing.
-    @State private var showingNewPersonalBestHUD = false
+    /// Whether a `HUD` is currently displayed.
+    @State private var showingHUD = false
+    
+    /// The title of the `HUD`.
+    @State private var HUDTitle = ""
+    
+    /// The system name of the icon displayed on the `HUD`.
+    @State private var HUDIconSystemName = ""
+    
+    /// The color of the `HUD`.
+    @State private var HUDIconColor: Color = .black
     
     /// The scale of the circle behind the timer that is displayed when the timer is runing.
     private var runningCircleScale: CGFloat {
@@ -82,6 +91,12 @@ struct InstanceView: View {
         HStack {
             VStack {
                 TimerView(timerState: $timerState, solve: solves.last, inspectionDuration: $instance.wrappedInspectionDuration) { time in
+                    if time < instance.unwrappedSolves.map({ ($0 as? Solve)?.adjustedTime ?? 0 }).min() ?? 0 {
+                        showHUD(title: "New personal best!", systemName: "sparkles", iconColor: .yellow)
+                        
+                        Haptics.shared.fireworks()
+                    }
+                    
                     instance.addSolve(time: time)
                 }
                 .readSize(size: $timerSize)
@@ -238,12 +253,12 @@ struct InstanceView: View {
             timerState = .stopped
             gestureState = .none
         }
-        .hud(isPresented: $showingNewPersonalBestHUD, timeout: 3) {
+        .hud(isPresented: $showingHUD, timeout: 3) {
             Label {
-                Text("New personal best!")
+                Text(HUDTitle)
             } icon: {
-                Image(systemName: "sparkles")
-                    .foregroundColor(.yellow)
+                Image(systemName: HUDIconSystemName)
+                    .foregroundColor(HUDIconColor)
             }
         }
         
@@ -305,5 +320,17 @@ struct InstanceView: View {
         case up
         /// Down.
         case down
+    }
+    
+    // MARK: Methods
+    /// Shows a `HUD` with a title and icon.
+    func showHUD(title: String, systemName: String, iconColor: Color) {
+        HUDTitle = title
+        HUDIconSystemName = systemName
+        HUDIconColor = iconColor
+        
+        withAnimation {
+            showingHUD = true
+        }
     }
 }
