@@ -40,6 +40,9 @@ struct InstanceView: View {
     /// The size of the `TimerView`.
     @State private var timerSize = CGSize(width: 0, height: 0)
     
+    /// Whether the `HUD` that displays when a new personal best is achieved is showing.
+    @State private var showingNewPersonalBestHUD = false
+    
     /// The scale of the circle behind the timer that is displayed when the timer is runing.
     private var runningCircleScale: CGFloat {
         if timerState == .running {
@@ -175,12 +178,16 @@ struct InstanceView: View {
                             
                             gestureState = .complete
                             
+                            Haptics.shared.tap()
+                            
                         case .running:
                             withAnimation {
                                 timerState = .stopped
                             }
                             
                             gestureState = .complete
+                            
+                            Haptics.shared.tap()
                             
                         default:
                             break
@@ -208,6 +215,8 @@ struct InstanceView: View {
                                     timerState = .running
                                 }
                             }
+                            
+                            Haptics.shared.tap()
                         } else if timerState == .counting {
                             withAnimation {
                                 timerState = .stopped
@@ -228,6 +237,14 @@ struct InstanceView: View {
         .onChange(of: scenePhase) { _ in
             timerState = .stopped
             gestureState = .none
+        }
+        .hud(isPresented: $showingNewPersonalBestHUD, timeout: 3) {
+            Label {
+                Text("New personal best!")
+            } icon: {
+                Image(systemName: "sparkles")
+                    .foregroundColor(.yellow)
+            }
         }
         
         NavigationLink(destination: InstanceSettings(instance: instance), isActive: $showingSettings){
