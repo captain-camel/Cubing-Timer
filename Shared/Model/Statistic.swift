@@ -224,6 +224,8 @@
 //    }
 //}
 
+import SwiftUI
+
 /// Different statistics that an `Instance` can track.
 enum Statistic: CaseIterable, Hashable {
     // MARK: Cases
@@ -366,6 +368,74 @@ enum Statistic: CaseIterable, Hashable {
             return instance.formattedMean(of: solves)
         case .personalBest:
             return Solve.formatTime(instance.unwrappedSolves.map { ($0 as? Solve)?.adjustedTime ?? 0 }.min())
+        }
+    }
+    
+    /// Returns the name of the SF Symbol of the `Statistic`.
+    func symbol(of instance: Instance) -> String? {
+        switch self {
+        case let .average(solves):
+            if instance.unwrappedSolves.count < solves + 1 {
+                return nil
+            }
+            
+            if instance.average(of: solves) ?? .greatestFiniteMagnitude < instance.average(indices: 1...solves) ?? .greatestFiniteMagnitude {
+                return "chevron.up"
+            } else if instance.average(of: solves) ?? .greatestFiniteMagnitude > instance.average(indices: 1...solves) ?? .greatestFiniteMagnitude {
+                return "chevron.down"
+            } else {
+                return "equal"
+            }
+            
+        case let .mean(solves):
+            if instance.unwrappedSolves.count < solves + 1 {
+                return nil
+            }
+            
+            if instance.average(of: solves) ?? .greatestFiniteMagnitude < instance.average(indices: 1...solves) ?? .greatestFiniteMagnitude {
+                return "chevron.up"
+            } else if instance.average(of: solves) ?? .greatestFiniteMagnitude > instance.average(indices: 1...solves) ?? .greatestFiniteMagnitude {
+                return "chevron.down"
+            } else {
+                return "equal"
+            }
+            
+        default:
+            return nil
+        }
+    }
+    
+    /// Returns the color of the SF Symbol of the `Statistic`.
+    func symbolColor(of instance: Instance) -> Color? {
+        switch self {
+        case let .average(solves):
+            if instance.unwrappedSolves.count < solves + 1 {
+                return nil
+            }
+            
+            if instance.average(of: solves) ?? .greatestFiniteMagnitude < instance.average(indices: 1...solves) ?? .greatestFiniteMagnitude {
+                return .green
+            } else if instance.average(of: solves) ?? .greatestFiniteMagnitude > instance.average(indices: 1...solves) ?? .greatestFiniteMagnitude {
+                return .red
+            } else {
+                return .secondary
+            }
+            
+        case let .mean(solves):
+            if instance.unwrappedSolves.count < solves + 1 {
+                return nil
+            }
+            
+            if instance.average(of: solves) ?? .greatestFiniteMagnitude < instance.average(indices: 1...solves) ?? .greatestFiniteMagnitude {
+                return .green
+            } else if instance.average(of: solves) ?? .greatestFiniteMagnitude > instance.average(indices: 1...solves) ?? .greatestFiniteMagnitude {
+                return .red
+            } else {
+                return .secondary
+            }
+            
+        default:
+            return nil
         }
     }
     
