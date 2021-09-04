@@ -34,7 +34,7 @@ struct Move {
     
     // MARK: Types
     /// Possible direction a `Move` can turn.
-    enum Direction: String {
+    enum Direction: String, CaseIterable {
         /// Rotating a face clockwise.
         case clockwise = ""
         /// Rotating a face counterclockwise.
