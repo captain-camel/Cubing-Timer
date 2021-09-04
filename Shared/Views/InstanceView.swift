@@ -237,7 +237,17 @@ struct InstanceView: View {
                         print("up")
                         
                     case .down:
-                        print("down")
+                        withAnimation {
+                            if instance.solveArray.last?.penalty == .dnf {
+                                instance.solveArray.last?.penalty = .none
+                            } else {
+                                instance.solveArray.last?.penalty = .dnf
+                            }
+                        }
+                        
+                        if instance.solveArray.isEmpty {
+                            Haptics.shared.error()
+                        }
                         
                     default:
                         if timerState == .ready {
