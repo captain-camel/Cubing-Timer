@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Sourceful
 
 /// A view to edit the properties of an `Instance`.
 struct InstanceSettings: View {
@@ -15,6 +16,9 @@ struct InstanceSettings: View {
     
     /// The `Instance`'s `doInspection` property.
     @State private var doInspection: Bool
+    
+    /// Whether the code editor sheet is displayed.
+    @State private var showingCodeEditorSheet = false
     
     // MARK: Initializers
     init(instance: Instance) {
@@ -129,10 +133,6 @@ struct InstanceSettings: View {
                 default:
                     EmptyView()
                 }
-                
-//                if instance.secondaryStatistic.modifierTitle != nil && instance.secondaryStatistic.modifier != nil {
-//                    NumberField(title: instance.secondaryStatistic.modifierTitle!, value: Binding($instance.secondaryStatistic.modifier)!, in: 3...Int.max)
-//                }
             }
             
             Section(header: Text("Inspection")) {
@@ -145,12 +145,25 @@ struct InstanceSettings: View {
                     ), in: 1...Int.max)
                 }
             }
+            
+            Section(header: Text("Scramble")) {
+                Toggle("Show Scramble", isOn: $instance.showScramble)
+                
+                if instance.showScramble && Algorithm.scramble(puzzle: instance.puzzle) == nil {
+                    Button("Create Custom Scrambler") {
+                        showingCodeEditorSheet = true
+                    }
+                }
+            }
         }
         .navigationTitle("\(instance.name) - Settings")
         .onChange(of: instance.doInspection) { doInspection in
             withAnimation {
                 self.doInspection = doInspection
             }
+        }
+        .sheet(isPresented: $showingCodeEditorSheet) {
+            Text("placeholder")
         }
     }
 }
