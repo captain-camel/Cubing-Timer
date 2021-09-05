@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -93,7 +93,6 @@
 		DDF6C79426C97F5C00B505B9 /* Inspection.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF6C79226C97F5C00B505B9 /* Inspection.swift */; };
 		DDF6C79A26CA35A000B505B9 /* AddInstanceSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF6C79926CA35A000B505B9 /* AddInstanceSheet.swift */; };
 		DDF6C79B26CA35A000B505B9 /* AddInstanceSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF6C79926CA35A000B505B9 /* AddInstanceSheet.swift */; };
-		DDFB1DBE26E45A6D0054E7DE /* CodeViewer in Frameworks */ = {isa = PBXBuildFile; productRef = DDFB1DBD26E45A6D0054E7DE /* CodeViewer */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -152,7 +151,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DDFB1DBE26E45A6D0054E7DE /* CodeViewer in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -349,7 +347,6 @@
 			);
 			name = "Cubing Timer (iOS)";
 			packageProductDependencies = (
-				DDFB1DBD26E45A6D0054E7DE /* CodeViewer */,
 			);
 			productName = "Cubing Timer (iOS)";
 			productReference = DD0909DC26BF09C800DEAC82 /* Cubing Timer.app */;
@@ -399,7 +396,6 @@
 			);
 			mainGroup = DD0909CC26BF09C500DEAC82;
 			packageReferences = (
-				DDFB1DBC26E45A6D0054E7DE /* XCRemoteSwiftPackageReference "CodeViewer" */,
 			);
 			productRefGroup = DD0909DD26BF09C800DEAC82 /* Products */;
 			projectDirPath = "";
@@ -767,25 +763,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		DDFB1DBC26E45A6D0054E7DE /* XCRemoteSwiftPackageReference "CodeViewer" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/dwarvesf/CodeViewer";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		DDFB1DBD26E45A6D0054E7DE /* CodeViewer */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = DDFB1DBC26E45A6D0054E7DE /* XCRemoteSwiftPackageReference "CodeViewer" */;
-			productName = CodeViewer;
-		};
-/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		DD0909D226BF09C500DEAC82 /* Cubing_Timer.xcdatamodeld */ = {
