@@ -38,7 +38,7 @@ extension Instance {
     /// Whether the `Instance` shows a scramble.
     @NSManaged public var showScramble: Bool
     /// A cutom scramble algorithm written in javascript.
-    @NSManaged public var customScrambleAlgorithm: String?
+    @NSManaged public var customScrambleAlgorithm: String
     
     /// The set of all the `Solve`s in the `Instance`.
     @NSManaged public var solves: NSSet?
