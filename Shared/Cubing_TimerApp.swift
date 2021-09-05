@@ -24,6 +24,8 @@ struct Cubing_TimerApp: App {
         }
         .onChange(of: scenePhase) { _ in
             PersistenceController.save()
+            
+            Haptics.shared = Haptics()
         }
     }
 }
