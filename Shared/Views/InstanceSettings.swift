@@ -104,14 +104,14 @@ struct InstanceSettings: View {
                     NumberField(title: "Average of", value: Binding(
                         get: {
                             switch instance.secondaryStatistic {
-                            case let .mean(solves):
+                            case let .average(solves):
                                 return solves
                             default:
                                 return 5
                             }
                         },
                         set: {
-                            instance.secondaryStatistic = .mean($0)
+                            instance.secondaryStatistic = .average($0)
                             
                         }
                     ), in: 3...Int.max)
@@ -146,11 +146,11 @@ struct InstanceSettings: View {
                 }
             }
             
-            Section(header: Text("Scramble")) {
+            Section(header: Text("Scramble"), footer: Text(instance.showScramble && Algorithm.scramble(puzzle: instance.puzzle) == nil ? "hellotest" : "")) {
                 Toggle("Show Scramble", isOn: $instance.showScramble)
                 
                 if instance.showScramble && Algorithm.scramble(puzzle: instance.puzzle) == nil {
-                    Button("Create Custom Scrambler") {
+                    Button(instance.customScrambleAlgorithm == "" ? "Create Custom Scrambler" : "Edit Custom Scrambler") {
                         showingCodeEditorSheet = true
                     }
                 }
@@ -163,7 +163,13 @@ struct InstanceSettings: View {
             }
         }
         .sheet(isPresented: $showingCodeEditorSheet) {
-            Text("placeholder")
+            NavigationView {
+                TextEditor(text: $instance.customScrambleAlgorithm)
+                    .padding(.top)
+                    .font(.system(.body, design: .monospaced))
+                    .navigationTitle("\(instance.name)")
+                    .navigationBarTitleDisplayMode(.inline)
+            }
         }
     }
 }
