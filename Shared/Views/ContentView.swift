@@ -20,6 +20,9 @@ struct ContentView: View {
     
     // MARK: Body
     var body: some View {
-        InstanceList(instances: instances)
+        NavigationView {
+            InstanceList(instances: instances)
+        }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
