@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Sourceful
 
 /// A view to edit the properties of an `Instance`.
 struct InstanceSettings: View {
