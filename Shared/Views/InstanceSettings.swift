@@ -47,7 +47,7 @@ struct InstanceSettings: View {
             }
             
             Section(header: Text("Notes")) {
-                TextEditor(text: Binding($instance.notes)!)
+                TextEditor(text: $instance.notes)
             }
             
             Section(header: Text("Primary Statistic")) {
