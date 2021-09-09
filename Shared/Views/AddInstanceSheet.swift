@@ -22,7 +22,7 @@ struct AddInstanceSheet: View {
     @State private var inspectionDuration = 15
     
     /// A callback that is called when the button to create the new `Instance` is pressed.
-    let createAction: (_ name: String, _ puzzle: Puzzle, _ notes: String?, _ inspectionDuration: Int?) -> Void
+    let createAction: (_ name: String, _ puzzle: Puzzle, _ notes: String, _ inspectionDuration: Int?) -> Void
     
     /// The presentation mode of the sheet.
     @Environment(\.presentationMode) var presentationMode
@@ -73,9 +73,7 @@ struct AddInstanceSheet: View {
                         createAction(
                             name,
                             puzzle,
-                            notes == ""
-                                ? nil
-                                : notes,
+                            notes,
                             doInspection ? inspectionDuration : nil
                         )
                         
