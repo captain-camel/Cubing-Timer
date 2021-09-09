@@ -46,6 +46,10 @@ struct InstanceSettings: View {
                 }
             }
             
+            Section(header: Text("Notes")) {
+                TextEditor(text: Binding($instance.notes)!)
+            }
+            
             Section(header: Text("Primary Statistic")) {
                 Picker(selection: $instance.primaryStatistic.kind, label: Text("Type")) {
                     ForEach(Statistic.allCases, id: \.self) { statistic in
@@ -111,7 +115,6 @@ struct InstanceSettings: View {
                         },
                         set: {
                             instance.secondaryStatistic = .average($0)
-                            
                         }
                     ), in: 3...Int.max)
                 case .mean:
@@ -126,7 +129,6 @@ struct InstanceSettings: View {
                         },
                         set: {
                             instance.secondaryStatistic = .mean($0)
-                            
                         }
                     ), in: 1...Int.max)
                 default:
