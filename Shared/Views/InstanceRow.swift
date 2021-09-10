@@ -29,7 +29,7 @@ struct InstanceRow: View {
             
             Spacer()
             
-            StatisticView($instance.primaryStatistic, instance: instance, popover: false)
+            StatisticView(instance.primaryStatistic, instance: instance, popover: false)
         }
     }
 }

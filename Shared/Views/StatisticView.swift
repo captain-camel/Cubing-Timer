@@ -11,7 +11,7 @@ import SwiftUI
 struct StatisticView: View {
     // MARK: Properties
     /// The `Statistic` described by the `StatisticView`.
-    @Binding var statistic: Statistic
+    var statistic: Statistic
     /// The `Instance` who's `Statistic` is displayed.
     @ObservedObject var instance: Instance
     
@@ -22,8 +22,8 @@ struct StatisticView: View {
     @State private var showingDetails = false
     
     // MARK: Initializers
-    init(_ statistic: Binding<Statistic>, instance: Instance, popover: Bool = true) {
-        self._statistic = statistic
+    init(_ statistic: Statistic, instance: Instance, popover: Bool = true) {
+        self.statistic = statistic
         self.instance = instance
         
         self.popover = popover
