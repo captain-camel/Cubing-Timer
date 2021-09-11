@@ -18,7 +18,7 @@ extension Instance {
     @NSManaged public var name: String
     /// Serialized string of the puzzle assigned to the `Instance`.
     @NSManaged public var puzzleRawValue: String
-    /// Notes about the  `Instance`.
+    /// Notes about the `Instance`.
     @NSManaged public var notes: String
     /// The position that the `Instance` appears in when all `Instance`s are listed.
     @NSManaged public var order: Int16
