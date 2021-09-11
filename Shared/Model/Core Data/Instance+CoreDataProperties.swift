@@ -7,6 +7,7 @@
 //
 
 import CoreData
+import JavaScriptCore
 
 extension Instance {
     // MARK: Properties
@@ -158,6 +159,33 @@ extension Instance {
     /// Returns the mean of th elast solves, formatted into a `String`.
     func formattedMean(of count: Int) -> String {
         return Solve.formatTime(mean(of: count))
+    }
+    
+    /// Returns a scramble based on the `puzzle` or `customScrambleAlgorithm`.
+    func getScramble() -> String {
+        if let scramble = Algorithm.scramble(puzzle: puzzle) {
+            return String(scramble)
+        }
+        
+        if customScrambleAlgorithm == "" {
+            return ""
+        }
+        
+        let context = JSContext()
+        
+        context?.evaluateScript(
+            "var getScramble = function() { \(customScrambleAlgorithm) }"
+        )
+        
+        let getScramble = context?.objectForKeyedSubscript("getScramble")
+        
+        let result = getScramble?.call(withArguments: []).toString()
+        
+        if let error = context?.exception?.toString() {
+            return error
+        }
+
+        return result ?? ""
     }
 }
 
