@@ -28,6 +28,32 @@ struct TimerActions: View {
                 Text("+\(solve?.penalty.length ?? 2)")
                     .if(solve?.penalty.length != nil) { $0.bold() }
             }
+            .contentShape(RoundedRectangle(cornerRadius: 8))
+            .contextMenu {
+                Button("+2") {
+                    withAnimation {
+                        solve?.penalty = .some(2)
+                    }
+                }
+                
+                Button("+4") {
+                    withAnimation {
+                        solve?.penalty = .some(4)
+                    }
+                }
+                
+                Button("+6") {
+                    withAnimation {
+                        solve?.penalty = .some(6)
+                    }
+                }
+                
+                Button("+8") {
+                    withAnimation {
+                        solve?.penalty = .some(8)
+                    }
+                }
+            }
             .buttonStyle(TimerActionButtonStyle(isActive: solve?.penalty.length != nil))
             
             Button {
