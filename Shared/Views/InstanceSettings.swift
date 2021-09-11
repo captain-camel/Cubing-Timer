@@ -45,11 +45,7 @@ struct InstanceSettings: View {
                     TextField("Puzzle", text: $instance.puzzle.other)
                 }
             }
-            
-            Section(header: Text("Notes")) {
-                TextEditor(text: $instance.notes)
-            }
-            
+
             Section(header: Text("Primary Statistic")) {
                 Picker(selection: $instance.primaryStatistic.kind, label: Text("Type")) {
                     ForEach(Statistic.allCases, id: \.self) { statistic in

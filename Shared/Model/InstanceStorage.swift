@@ -44,12 +44,11 @@ class InstanceStorage {
     }
     
     /// Creates a new `Instance` and saves it to Core Data.
-    static func add(name: String, puzzle: Puzzle, notes: String = "", primaryStatistic: Statistic = .average(5), secondaryStatistic: Statistic = .average(12), inspectionDuration: Int? = 15, showScramble: Bool = true, customScrambleAlgorithm: String = "", order: Int? = nil, id: UUID = UUID()) {
+    static func add(name: String, puzzle: Puzzle, primaryStatistic: Statistic = .average(5), secondaryStatistic: Statistic = .average(12), inspectionDuration: Int? = 15, showScramble: Bool = true, customScrambleAlgorithm: String = "", order: Int? = nil, id: UUID = UUID()) {
         let newInstance = Instance(context: PersistenceController.viewContext)
         
         newInstance.name = name
         newInstance.puzzle = puzzle
-        newInstance.notes = notes
         
         newInstance.primaryStatisticRawValue = primaryStatistic.serialized
         newInstance.secondaryStatisticRawValue = secondaryStatistic.serialized

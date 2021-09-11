@@ -14,15 +14,13 @@ struct AddInstanceSheet: View {
     @State private var name = ""
     /// The `Puzzle` assigned to the new `Instance`.
     @State private var puzzle: Puzzle = .cube(3)
-    /// Notes about the new `Instance`.
-    @State private var notes = ""
     /// Whether the new `Instance` should have inspection.
     @State private var doInspection = true
     /// The duration of the inspection of the new `Instance`.
     @State private var inspectionDuration = 15
     
     /// A callback that is called when the button to create the new `Instance` is pressed.
-    let createAction: (_ name: String, _ puzzle: Puzzle, _ notes: String, _ inspectionDuration: Int?) -> Void
+    let createAction: (_ name: String, _ puzzle: Puzzle, _ inspectionDuration: Int?) -> Void
     
     /// The presentation mode of the sheet.
     @Environment(\.presentationMode) var presentationMode
@@ -47,11 +45,7 @@ struct AddInstanceSheet: View {
                         TextField("Puzzle", text: $puzzle.other)
                     }
                 }
-                
-                Section(header: Text("Notes")) {
-                    TextEditor(text: $notes)
-                }
-                
+
                 Section(header: Text("Inspection")) {
                     Toggle("Inspection", isOn: $doInspection.animation())
                     
@@ -73,7 +67,6 @@ struct AddInstanceSheet: View {
                         createAction(
                             name,
                             puzzle,
-                            notes,
                             doInspection ? inspectionDuration : nil
                         )
                         
