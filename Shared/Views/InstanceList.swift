@@ -16,30 +16,12 @@ struct InstanceList: View {
     /// Whether the sheet to add a new instance is displayed.
     @State private var showingAddInstanceSheet = false
     
-    /// The instance currently displayed.
-    @State private var selectedInstance: Instance?
-    
     // MARK: Body
     var body: some View {
         List {
             ForEach(instances, id: \.self) { instance in
-                NavigationLink(destination: InstanceView(instance: instance), tag: instance, selection: $selectedInstance) {
+                NavigationLink(destination: InstanceView(instance: instance)) {
                     InstanceRow(instance: instance)
-                        .contextMenu {
-                            StatisticView(instance.primaryStatistic, instance: instance)
-                            
-                            Button {
-                                selectedInstance = instance
-                            } label: {
-                                Label("Open", systemImage: "arrow.up.forward.app")
-                            }
-                            
-                            Button {
-                                InstanceStorage.delete(instance)
-                            } label: {
-                                Label("Delete", systemImage: "trash")
-                            }
-                        }
                 }
             }
             .onDelete(perform: InstanceStorage.delete)
@@ -70,11 +52,10 @@ struct InstanceList: View {
             }
         }
         .sheet(isPresented: $showingAddInstanceSheet) {
-            AddInstanceSheet { name, puzzle, notes, inspectionDuration in
+            AddInstanceSheet { name, puzzle, inspectionDuration in
                 InstanceStorage.add(
                     name: name,
                     puzzle: puzzle,
-                    notes: notes,
                     inspectionDuration: inspectionDuration
                 )
             }
