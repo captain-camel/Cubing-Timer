@@ -13,9 +13,6 @@ struct InstanceView: View {
     /// The `Instance` displayed by the `InstanceView`.
     @ObservedObject var instance: Instance
     
-    /// The color of the circle behind the timer.
-    static let circleColor = Color(red: 0.27, green: 0.95, blue: 0.65)
-    
     /// The presentation mode of the view.
     @Environment(\.presentationMode) var presentationMode
     
@@ -55,7 +52,12 @@ struct InstanceView: View {
     /// The color of the `HUD`.
     @State private var HUDIconColor: Color = .black
     
-    /// The scale of the circle behind the timer that is displayed when the timer is runing.
+    /// The color of the background when the timer is running.
+    @AppStorage("runningColor") var runningColor = Color(red: 0.27, green: 0.95, blue: 0.65)
+    /// The color of the background during inspection.
+    @AppStorage("inspectionColor") var inspectionColor = Color.yellow
+    
+    /// The scale of the circle behind the timer that is displayed when the timer is running.
     private var runningCircleScale: CGFloat {
         if timerState == .running {
             return 3
@@ -87,23 +89,30 @@ struct InstanceView: View {
             predicate: NSPredicate(format: "instance == %@", instance),
             animation: .easeInOut
         )
-        
-        scramble = Algorithm.scramble(puzzle: instance.puzzle)?.description ?? instance.customScrambleAlgorithm
     }
     
     // MARK: Body
     var body: some View {
-        VStack {
-//            Text(String(Algorithm(Move(face: .right, direction: .clockwise, layers: 0...1)!)))
-//                .foregroundColor(.secondary)
-//                .bold()
+        ZStack {
+            VStack {
+                if instance.showScramble {
+                    Text(scramble)
+                        .bold()
+                        .foregroundColor(.secondary)
+                        .multilineTextAlignment(.center)
+                        .onAppear {
+                            scramble = instance.getScramble()
+                        }
+                }
+                
+                Spacer()
+            }
             
             HStack {
                 VStack {
                     TimerView(timerState: $timerState, solve: solves.last, inspectionDuration: $instance.wrappedInspectionDuration) { time in
                         if time < instance.unwrappedSolves.map({ ($0 as? Solve)?.adjustedTime ?? 0 }).min() ?? 0 {
                             showHUD(title: "New personal best!", systemName: "sparkles", iconColor: .yellow)
-                            
                             Haptics.shared.fireworks()
                         }
                         
@@ -120,8 +129,8 @@ struct InstanceView: View {
                     }
                     
                     HStack {
-                        StatisticView($instance.primaryStatistic, instance: instance)
-                        StatisticView($instance.secondaryStatistic, instance: instance)
+                        StatisticView(instance.primaryStatistic, instance: instance)
+                        StatisticView(instance.secondaryStatistic, instance: instance)
                     }
                     .padding(.horizontal)
                     .opacity(timerState == .stopped ? 1 : 0)
@@ -150,11 +159,11 @@ struct InstanceView: View {
             .background(
                 ZStack {
                     Circle()
-                        .foregroundColor(.yellow)
+                        .foregroundColor(inspectionColor)
                         .scaleEffect(inspectionCircleScale)
                     
                     Circle()
-                        .foregroundColor(Self.circleColor)
+                        .foregroundColor(runningColor)
                         .scaleEffect(runningCircleScale)
                 }
             )
@@ -166,8 +175,7 @@ struct InstanceView: View {
                             switch timerState {
                             case .stopped, .counting:
                                 if gesture.translation.distance > 50 && gestureState == .stationary {
-                                    let impactHeavy = UIImpactFeedbackGenerator(style: .heavy)
-                                    impactHeavy.impactOccurred()
+                                    Haptics.shared.tap()
                                     
                                     if abs(gesture.translation.width) > abs(gesture.translation.height) {
                                         if gesture.translation.width < 0 {
@@ -208,6 +216,8 @@ struct InstanceView: View {
                             case .running:
                                 withAnimation {
                                     timerState = .stopped
+                                    
+                                    scramble = instance.getScramble()
                                 }
                                 
                                 gestureState = .complete
