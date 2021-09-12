@@ -33,7 +33,7 @@ struct SettingsView: View {
         .navigationTitle("Settings")
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
-                Button("Restore Default") {
+                Button("Restore Defaults") {
                     withAnimation {
                         runningColor = Color(red: 0.27, green: 0.95, blue: 0.65)
                         inspectionColor = Color.yellow
