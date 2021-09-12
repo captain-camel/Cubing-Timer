@@ -25,19 +25,15 @@ class JavaScript {
         
         let executeCode = context?.objectForKeyedSubscript("executeCode")
         
-        guard let result = executeCode?.call(withArguments: []) else {
+        guard let result = executeCode?.call(withArguments: [])?.toObject() else {
             if let error = context?.exception?.toString() {
                 throw JavaScriptError.runtimeError(error)
             }
             
-            throw JavaScriptError.unknownError
-        }
-        
-        guard let resultObject = result.toObject() else {
             throw JavaScriptError.typeError
         }
         
-        return resultObject
+        return result
     }
     
     // MARK: Types
@@ -47,7 +43,5 @@ class JavaScript {
         case runtimeError(String)
         /// The Javascript code returned an unsupported type.
         case typeError
-        /// An unknown error.
-        case unknownError
     }
 }
