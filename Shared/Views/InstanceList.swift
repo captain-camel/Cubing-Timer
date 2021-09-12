@@ -16,9 +16,6 @@ struct InstanceList: View {
     /// Whether the sheet to add a new instance is displayed.
     @State private var showingAddInstanceSheet = false
     
-    /// The `UIKit` `UINavigationController` behind the `NavigationView`.
-    @State private var navigationController: UINavigationController?
-    
     // MARK: Body
     var body: some View {
         List {
@@ -62,12 +59,6 @@ struct InstanceList: View {
                     inspectionDuration: inspectionDuration
                 )
             }
-        }
-        .introspectNavigationController { navigationController in
-            self.navigationController = navigationController
-        }
-        .onAppear {
-            navigationController?.interactivePopGestureRecognizer?.isEnabled = true
         }
     }
 }
