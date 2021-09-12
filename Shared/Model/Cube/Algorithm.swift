@@ -37,11 +37,21 @@ struct Algorithm {
             var scramble = Algorithm()
             
             for _ in 1...size * 12 - 15 {
+                let face: Cube.Tile
+                let direction = Move.Direction.allCases.randomElement()!
+                let layers = 0...Int.random(in: 0...size / 2)
+                
+                if layers == scramble.moves.last?.layers {
+                    face = Cube.Tile.allCases.filter { $0 != scramble.moves.last?.face }.randomElement()!
+                } else {
+                    face = Cube.Tile.allCases.randomElement()!
+                }
+                
                 scramble.moves.append(
                     Move(
-                        face: Cube.Tile.allCases.randomElement()!,
-                        direction: Move.Direction.allCases.randomElement()!,
-                        layers: 0...Int.random(in: 0...size / 2)
+                        face: face,
+                        direction: direction,
+                        layers: layers
                     )!
                 )
             }
