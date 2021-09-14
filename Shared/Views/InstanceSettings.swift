@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Introspect
 
 /// A view to edit the properties of an `Instance`.
 struct InstanceSettings: View {
@@ -143,7 +144,7 @@ struct InstanceSettings: View {
                 }
             }
             
-            Section(header: Text("Scramble"), footer: Text(instance.showScramble && Algorithm.scramble(puzzle: instance.puzzle) == nil ? "hellotest" : "")) {
+            Section(header: Text("Scramble"), footer: Text(instance.showScramble && Algorithm.scramble(puzzle: instance.puzzle) == nil ? "If a puzzle doesn't have a build in scramble generator, you can create your own using Javascript. Simply return a string which should be displayed as the scramble." : "")) {
                 Toggle("Show Scramble", isOn: $instance.showScramble)
                 
                 if instance.showScramble && Algorithm.scramble(puzzle: instance.puzzle) == nil {
@@ -160,13 +161,20 @@ struct InstanceSettings: View {
             }
         }
         .sheet(isPresented: $showingCodeEditorSheet) {
-            NavigationView {
-                TextEditor(text: $instance.customScrambleAlgorithm)
-                    .padding(.top)
-                    .font(.system(.body, design: .monospaced))
-                    .navigationTitle("\(instance.name)")
-                    .navigationBarTitleDisplayMode(.inline)
-            }
+//            NavigationView {
+//                TextEditor(text: $instance.customScrambleAlgorithm)
+//                    .padding(.top)
+//                    .font(.system(.body, design: .monospaced))
+//                    .navigationTitle("\(instance.name)")
+//                    .navigationBarTitleDisplayMode(.inline)
+//                    .introspectTextView { textView in
+//                        textView.autocapitalizationType = .none
+//                        textView.smartQuotesType = .no
+//                        textView.smartDashesType = .no
+//                        textView.autocorrectionType = .no
+//                    }
+//            }
+            JavaScriptEditor("", code: $instance.customScrambleAlgorithm)
         }
     }
 }
