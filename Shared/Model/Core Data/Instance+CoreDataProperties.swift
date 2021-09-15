@@ -14,7 +14,7 @@ extension Instance {
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Instance> {
         return NSFetchRequest<Instance>(entityName: "Instance")
     }
-
+    
     /// The name of the `Instance`.
     @NSManaged public var name: String
     /// Serialized string of the puzzle assigned to the `Instance`.
@@ -171,41 +171,35 @@ extension Instance {
             return ""
         }
         
-        let context = JSContext()
-        
-        context?.evaluateScript(
-            "var getScramble = function() { \(customScrambleAlgorithm) }"
-        )
-        
-        let getScramble = context?.objectForKeyedSubscript("getScramble")
-        
-        let result = getScramble?.call(withArguments: []).toString()
-        
-        if let error = context?.exception?.toString() {
+        do {
+            return try JavaScript.shared.execute(customScrambleAlgorithm) as? String ?? "TypeError: Code must return a string"
+        } catch let JavaScript.JavaScriptError.runtimeError(error) {
             return error
+        } catch JavaScript.JavaScriptError.typeError {
+            return "TypeError"
+        } catch {
+            return "Error"
         }
-
-        return result ?? ""
     }
 }
 
 // MARK: Generated accessors for solves
 extension Instance {
-
+    
     @objc(addSolvesObject:)
     @NSManaged public func addToSolves(_ value: Solve)
-
+    
     @objc(removeSolvesObject:)
     @NSManaged public func removeFromSolves(_ value: Solve)
-
+    
     @objc(addSolves:)
     @NSManaged public func addToSolves(_ values: NSSet)
-
+    
     @objc(removeSolves:)
     @NSManaged public func removeFromSolves(_ values: NSSet)
-
+    
 }
 
 extension Instance: Identifiable {
-
+    
 }
