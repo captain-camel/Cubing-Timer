@@ -23,6 +23,9 @@ struct JavaScriptEditor: View {
     /// Whether the alert showing the result of the code is presented.
     @State var showingResultAlert = false
     
+    /// The presentation mode of the sheet.
+    @Environment(\.presentationMode) var presentationMode
+    
     // MARK: Initializers
     init(_ title: String, code: Binding<String>) {
         self.title = title
@@ -37,11 +40,11 @@ struct JavaScriptEditor: View {
                 .padding(.top)
                 .font(.system(.body, design: .monospaced))
                 .introspectTextView { textView in
-                    textView.autocapitalizationType = .none
                     textView.smartQuotesType = .no
                     textView.smartDashesType = .no
-                    textView.autocorrectionType = .no
                 }
+                .autocapitalization(.none)
+                .disableAutocorrection(true)
                 .navigationTitle(title)
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
@@ -54,8 +57,16 @@ struct JavaScriptEditor: View {
                             } catch {
                                 result = "Error"
                             }
+                            
+                            showingResultAlert = true
                         } label: {
                             Image(systemName: "play")
+                        }
+                    }
+                    
+                    ToolbarItem(placement: .confirmationAction) {
+                        Button("Done") {
+                            presentationMode.wrappedValue.dismiss()
                         }
                     }
                 }
@@ -68,6 +79,6 @@ struct JavaScriptEditor: View {
 
 struct JavaScriptEditor_Previews: PreviewProvider {
     static var previews: some View {
-        JavaScriptEditor("Editor", code: .constant("print('hello world')"))
+        JavaScriptEditor("Editor", code: .constant("return 'hello world';"))
     }
 }
