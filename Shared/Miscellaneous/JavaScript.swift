@@ -14,11 +14,13 @@ class JavaScript {
     static var shared = JavaScript()
     
     /// The `JSContext` to run the Javascript code.
-    let context = JSContext()
+    var context = JSContext()
     
     // MARK: Methods
     /// Executes Javascript code and returns its return.
     func execute(_ code: String) throws -> Any {
+        context = JSContext()
+        
         context?.evaluateScript(
             "var executeCode = function() { \(code) }"
         )
