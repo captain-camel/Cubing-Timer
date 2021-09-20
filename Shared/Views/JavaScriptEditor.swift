@@ -18,10 +18,13 @@ struct JavaScriptEditor: View {
     @Binding var code: String
     
     /// The result of the code.
-    @State var result: CustomStringConvertible = ""
+    @State private var result: CustomStringConvertible = ""
     
     /// Whether the alert showing the result of the code is presented.
-    @State var showingResultAlert = false
+    @State private var showingResultAlert = false
+    
+    /// Whether the help sheet is presented.
+    @State private var showingHelpSheet = false
     
     /// The presentation mode of the sheet.
     @Environment(\.presentationMode) var presentationMode
@@ -62,6 +65,16 @@ struct JavaScriptEditor: View {
                         } label: {
                             Image(systemName: "play")
                         }
+                        
+                        
+                    }
+                    
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button {
+                            ()
+                        } label: {
+                            Image(systemName: "questionmark.circle")
+                        }
                     }
                     
                     ToolbarItem(placement: .confirmationAction) {
@@ -72,6 +85,9 @@ struct JavaScriptEditor: View {
                 }
                 .alert(isPresented: $showingResultAlert) {
                     Alert(title: Text("Result"), message: Text(result.description), dismissButton: .default(Text("OK")))
+                }
+                .sheet(isPresented: $showingHelpSheet) {
+                    
                 }
         }
     }
