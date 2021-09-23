@@ -149,7 +149,7 @@ extension Instance {
     
     /// Returns the mean of the last solves.
     func mean(of count: Int) -> Double? {
-        if solveArray.suffix(count).filter({ $0.penalty != .dnf }).count >= count {
+        if solveArray.filter({ $0.penalty != .dnf }).count >= count {
             return solveArray.filter { $0.penalty != .dnf }.suffix(count).map { $0.adjustedTime }.mean
         }
         
