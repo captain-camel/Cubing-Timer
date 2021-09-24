@@ -5,11 +5,13 @@
 //  Created by Cameron Delong on 8/10/21.
 //
 
+import SwiftUI
+
 /// A struct describing an cube shaped twisty puzzle with the same number of pieces on each edge.
 struct Cube {
     // MARK: Properties
     /// The state of all the tiles of the cube.
-    private var cubeState: [Tile: Face]
+    var cubeState: CubeState
     
     /// The number of pieces on each edge of the `Cube`.
     let size: Int
@@ -67,6 +69,8 @@ struct Cube {
     }
     
     // MARK: Types
+    typealias CubeState = [Tile: Face]
+    
     /// A side of a `Cube`, or a single tile on the side of a `Cube`.
     enum Tile: String, CaseIterable {
         // MARK: Cases
@@ -85,7 +89,26 @@ struct Cube {
 
         // MARK: Properties
         /// The color associated with the `Tile`.
-        var color: String {
+        var color: Color {
+            switch self {
+            case .up:
+                return .yellow
+            case .front:
+                return .blue
+            case .right:
+                return .red
+            case .down:
+                return Color(.systemGray5)
+            case .back:
+                return .green
+            case .left:
+                return .orange
+            }
+        }
+        
+        
+        /// An emoji of the color associated with the `Tile`.
+        var colorEmoji: String {
             switch self {
             case .up:
                 return "🟨"
@@ -252,7 +275,7 @@ struct Cube {
         for row in (0..<size).reversed() {
             print(
                 String(repeating: colored ? "◻️" : " ", count: size),
-                cubeState[.back]!.tiles[row].map { colored ? $0.color : $0.rawValue }.reversed().joined(),
+                cubeState[.back]!.tiles[row].map { colored ? $0.colorEmoji : $0.rawValue }.reversed().joined(),
                 String(repeating: colored ? "◻️" : " ", count: size * 2),
                 separator: ""
             )
@@ -260,10 +283,10 @@ struct Cube {
         
         for row in 0..<size {
             print(
-                cubeState[.left]!.tiles.map { colored ? $0[row].color : $0[row].rawValue }.reversed().joined(),
-                cubeState[.up]!.tiles[row].map { colored ? $0.color : $0.rawValue }.joined(),
-                cubeState[.right]!.tiles.map { colored ? $0.reversed()[row].color : $0.reversed()[row].rawValue }.joined(),
-                cubeState[.down]!.tiles.reversed()[row].map { colored ? $0.color : $0.rawValue }.reversed().joined(),
+                cubeState[.left]!.tiles.map { colored ? $0[row].colorEmoji : $0[row].rawValue }.reversed().joined(),
+                cubeState[.up]!.tiles[row].map { colored ? $0.colorEmoji : $0.rawValue }.joined(),
+                cubeState[.right]!.tiles.map { colored ? $0.reversed()[row].colorEmoji : $0.reversed()[row].rawValue }.joined(),
+                cubeState[.down]!.tiles.reversed()[row].map { colored ? $0.colorEmoji : $0.rawValue }.reversed().joined(),
                 separator: ""
             )
         }
@@ -271,7 +294,7 @@ struct Cube {
         for row in 0..<size {
             print(
                 String(repeating: colored ? "◻️" : " ", count: size),
-                cubeState[.front]!.tiles[row].map { colored ? $0.color : $0.rawValue }.joined(),
+                cubeState[.front]!.tiles[row].map { colored ? $0.colorEmoji : $0.rawValue }.joined(),
                 String(repeating: colored ? "◻️" : " ", count: size * 2),
                 separator: ""
             )
