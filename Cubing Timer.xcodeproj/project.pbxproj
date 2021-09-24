@@ -66,6 +66,10 @@
 		DD2A938526D5C17F00F93897 /* NumberField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2A938426D5C17F00F93897 /* NumberField.swift */; };
 		DD2A938626D5C17F00F93897 /* NumberField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2A938426D5C17F00F93897 /* NumberField.swift */; };
 		DD36907E26ED762700924946 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = DD36907D26ED762700924946 /* Introspect */; };
+		DD3FE46826FD123100FE7408 /* CubeSideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3FE46726FD123100FE7408 /* CubeSideView.swift */; };
+		DD3FE46926FD123100FE7408 /* CubeSideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3FE46726FD123100FE7408 /* CubeSideView.swift */; };
+		DD3FE46B26FD123A00FE7408 /* CubeTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3FE46A26FD123A00FE7408 /* CubeTileView.swift */; };
+		DD3FE46C26FD123A00FE7408 /* CubeTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3FE46A26FD123A00FE7408 /* CubeTileView.swift */; };
 		DD44620726D892E70085CA18 /* TimerActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD44620626D892E70085CA18 /* TimerActions.swift */; };
 		DD44620826D892E70085CA18 /* TimerActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD44620626D892E70085CA18 /* TimerActions.swift */; };
 		DD44620D26D89C200085CA18 /* ObservedOptionalObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD44620C26D89C200085CA18 /* ObservedOptionalObject.swift */; };
@@ -80,6 +84,8 @@
 		DD6DB3E426E92BCB003F2CA8 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6DB3E226E92BCB003F2CA8 /* SettingsView.swift */; };
 		DD7809F926D051AC00E716F3 /* CGSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7809F826D051AC00E716F3 /* CGSize.swift */; };
 		DD7809FA26D051AC00E716F3 /* CGSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7809F826D051AC00E716F3 /* CGSize.swift */; };
+		DD7FE51C26FBA7AF006B8ADF /* JavaScriptEditorHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7FE51B26FBA7AF006B8ADF /* JavaScriptEditorHelp.swift */; };
+		DD7FE51D26FBA7AF006B8ADF /* JavaScriptEditorHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7FE51B26FBA7AF006B8ADF /* JavaScriptEditorHelp.swift */; };
 		DD8DC39226E1E37000DCCDC2 /* HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8DC39126E1E37000DCCDC2 /* HUD.swift */; };
 		DD8DC39326E1E37000DCCDC2 /* HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8DC39126E1E37000DCCDC2 /* HUD.swift */; };
 		DDAD68F126D4B1B4005750A5 /* InstanceSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDAD68F026D4B1B4005750A5 /* InstanceSettings.swift */; };
@@ -141,6 +147,8 @@
 		DD0E676A26CDCB4400E1C444 /* ListSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListSheet.swift; sourceTree = "<group>"; };
 		DD155F0926E312A7006D91BA /* Haptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
 		DD2A938426D5C17F00F93897 /* NumberField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberField.swift; sourceTree = "<group>"; };
+		DD3FE46726FD123100FE7408 /* CubeSideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubeSideView.swift; sourceTree = "<group>"; };
+		DD3FE46A26FD123A00FE7408 /* CubeTileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubeTileView.swift; sourceTree = "<group>"; };
 		DD44620626D892E70085CA18 /* TimerActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerActions.swift; sourceTree = "<group>"; };
 		DD44620C26D89C200085CA18 /* ObservedOptionalObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservedOptionalObject.swift; sourceTree = "<group>"; };
 		DD44621026D9D4B00085CA18 /* SizeReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeReader.swift; sourceTree = "<group>"; };
@@ -148,6 +156,7 @@
 		DD4F1A0526CC1305008A1022 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		DD6DB3E226E92BCB003F2CA8 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		DD7809F826D051AC00E716F3 /* CGSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGSize.swift; sourceTree = "<group>"; };
+		DD7FE51B26FBA7AF006B8ADF /* JavaScriptEditorHelp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JavaScriptEditorHelp.swift; sourceTree = "<group>"; };
 		DD8DC39126E1E37000DCCDC2 /* HUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUD.swift; sourceTree = "<group>"; };
 		DDAD68F026D4B1B4005750A5 /* InstanceSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstanceSettings.swift; sourceTree = "<group>"; };
 		DDB0D88526EEB853007DCEF8 /* JavaScriptEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JavaScriptEditor.swift; sourceTree = "<group>"; };
@@ -254,12 +263,15 @@
 				DD090A3126BF3AC900DEAC82 /* InstanceView.swift */,
 				DDAD68F026D4B1B4005750A5 /* InstanceSettings.swift */,
 				DDB0D88526EEB853007DCEF8 /* JavaScriptEditor.swift */,
+				DD7FE51B26FBA7AF006B8ADF /* JavaScriptEditorHelp.swift */,
 				DD4F19FF26CAD2B7008A1022 /* TimerView.swift */,
 				DD44620626D892E70085CA18 /* TimerActions.swift */,
 				DD090A2426BF3A0A00DEAC82 /* StatisticView.swift */,
 				DD090A2E26BF3AB700DEAC82 /* ListPopover.swift */,
 				DD0E676A26CDCB4400E1C444 /* ListSheet.swift */,
 				DD0E676726CD994500E1C444 /* PopoverRow.swift */,
+				DD3FE46726FD123100FE7408 /* CubeSideView.swift */,
+				DD3FE46A26FD123A00FE7408 /* CubeTileView.swift */,
 				DD44620F26D9D43E0085CA18 /* Support */,
 			);
 			path = Views;
@@ -470,6 +482,7 @@
 				DD090A0926BF0C9100DEAC82 /* Solve+CoreDataProperties.swift in Sources */,
 				DDE1451626E98E19009796D7 /* Color.swift in Sources */,
 				DDC6FC2C26F9517100998645 /* CodeView.swift in Sources */,
+				DD3FE46B26FD123A00FE7408 /* CubeTileView.swift in Sources */,
 				DD090A0726BF0C9100DEAC82 /* Solve+CoreDataClass.swift in Sources */,
 				DD0909E826BF09C800DEAC82 /* Cubing_Timer.xcdatamodeld in Sources */,
 				DD090A3226BF3AC900DEAC82 /* InstanceView.swift in Sources */,
@@ -483,6 +496,8 @@
 				DD090A2226BF355800DEAC82 /* InstanceRow.swift in Sources */,
 				DDF6C78026C782C200B505B9 /* Move.swift in Sources */,
 				DDF6C78D26C97ED100B505B9 /* Stopwatch.swift in Sources */,
+				DD7FE51C26FBA7AF006B8ADF /* JavaScriptEditorHelp.swift in Sources */,
+				DD3FE46826FD123100FE7408 /* CubeSideView.swift in Sources */,
 				DD090A0326BF0C9100DEAC82 /* Instance+CoreDataClass.swift in Sources */,
 				DDB0D88926EEBB86007DCEF8 /* JavaScript.swift in Sources */,
 				DDF6C79326C97F5C00B505B9 /* Inspection.swift in Sources */,
@@ -524,6 +539,7 @@
 				DD090A0A26BF0C9100DEAC82 /* Solve+CoreDataProperties.swift in Sources */,
 				DDE1451726E98E19009796D7 /* Color.swift in Sources */,
 				DDC6FC2D26F9517100998645 /* CodeView.swift in Sources */,
+				DD3FE46C26FD123A00FE7408 /* CubeTileView.swift in Sources */,
 				DD090A0826BF0C9100DEAC82 /* Solve+CoreDataClass.swift in Sources */,
 				DD0909E926BF09C800DEAC82 /* Cubing_Timer.xcdatamodeld in Sources */,
 				DD090A3326BF3AC900DEAC82 /* InstanceView.swift in Sources */,
@@ -537,6 +553,8 @@
 				DD090A2326BF355800DEAC82 /* InstanceRow.swift in Sources */,
 				DDF6C78126C782C200B505B9 /* Move.swift in Sources */,
 				DDF6C78E26C97ED100B505B9 /* Stopwatch.swift in Sources */,
+				DD7FE51D26FBA7AF006B8ADF /* JavaScriptEditorHelp.swift in Sources */,
+				DD3FE46926FD123100FE7408 /* CubeSideView.swift in Sources */,
 				DD090A0426BF0C9100DEAC82 /* Instance+CoreDataClass.swift in Sources */,
 				DDB0D88A26EEBB86007DCEF8 /* JavaScript.swift in Sources */,
 				DDF6C79426C97F5C00B505B9 /* Inspection.swift in Sources */,
