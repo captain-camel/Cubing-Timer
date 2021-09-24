@@ -28,6 +28,15 @@ struct Cube {
          .left: [(.up, .left, .back, .right), (.back, .right, .down, .left), (.down, .left, .front, .left), (.front, .left, .up, .left)]
     ]
     
+    static var surroundingSides: [Tile: (Tile, Tile, Tile, Tile)] = [
+        .up: (.back, .right, .front, .left),
+        .front: (.up, .right, .down, .left),
+        .right: (.up, .back, .down, .front),
+        .down: (.front, .right, .back, .left),
+        .back: (.up, .left, .down, .right),
+        .left: (.up, .front, .down, .back),
+    ]
+    
     /// Creates a `Cube` of a specified size.
     init?(size: Int = 3) {
         if size <= 1 {
