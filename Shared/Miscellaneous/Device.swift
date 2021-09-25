@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-/// The different types of device the app can run on
+/// The different types of device the app can run on.
 enum Device {
     // MARK: Cases
     /// Phone shaped devices, like iPhone and iPod Touch.
