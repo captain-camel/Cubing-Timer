@@ -31,6 +31,10 @@ struct InstanceList: View {
                     Label("Settings", systemImage: "gear")
                 }
                 
+                NavigationLink(destination: AlgorithmCategoryList()) {
+                    Label("Algorithms", systemImage: "square.grid.3x3.fill")
+                }
+                
                 NavigationLink(destination: Text("help")) {
                     Label("Help", systemImage: "questionmark")
                 }
