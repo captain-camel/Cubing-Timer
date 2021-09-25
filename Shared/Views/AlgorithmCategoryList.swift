@@ -14,7 +14,7 @@ struct AlgorithmCategoryList: View {
         List(Algorithm.algorithms.elements, id: \.key) { puzzle in
             Section(header: Text(puzzle.key)) {
                 ForEach(puzzle.value.elements, id: \.key) { category in
-                    NavigationLink(destination: AlgorithmList(category.value)) {
+                    NavigationLink(destination: AlgorithmList(category.value, title: category.key)) {
                         Text(category.key)
                     }
                 }

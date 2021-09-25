@@ -14,9 +14,14 @@ struct AlgorithmList: View {
     /// The algorithms to display.
     let algorithms: OrderedDictionary<String, [[Algorithm]]>
     
+    /// The title of the view.
+    let title: String
+    
     // MARK: Initializers
-    init(_ algorithms: OrderedDictionary<String, [[Algorithm]]>) {
+    init(_ algorithms: OrderedDictionary<String, [[Algorithm]]>, title: String) {
         self.algorithms = algorithms
+        
+        self.title = title
     }
     
     // MARK: Body
@@ -28,5 +33,6 @@ struct AlgorithmList: View {
                 }
             }
         }
+        .navigationTitle(title)
     }
 }
