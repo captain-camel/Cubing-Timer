@@ -54,7 +54,8 @@ struct AddInstanceSheet: View {
                     }
                 }
             }
-            .navigationBarTitle("New Instance", displayMode: .inline)
+            .navigationTitle("New Instance")
+            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Cancel") {
