@@ -11,7 +11,32 @@ import Foundation
 /// A series of `Moves` forming an `Algorithm` that can be performed on a `Cube`.
 struct Algorithm: Codable {
     // MARK: Properties
-    static var algorithms: [Algorithm] = [""]
+    /// A dictionary of various algorithms for a number of puzzles.
+    static var algorithms: OrderedDictionary<String, OrderedDictionary<String, [(name: String, algorithms: [Algorithm], category: String)]>> = [
+        "3x3": [
+            "2-look OLL": [
+                ("1", ["R U R' U' M' U R U' r'"], "Edges"),
+                ("2", ["R L F L", "R R R"], "Edges")
+            ],
+            "2-look PLL": [
+                
+            ],
+            "OLL": [
+                ("1", ["R U2 R2 F R F' U2 R' F R F'"], "Dot"),
+                ("2", ["r U r' U2 r U2 R' U2 R U' r'", "y' F R U R' U' F' f R U R' U' f'", "y' F R U R' U' S R U R' U' f'"], "Dot"),
+                ("3", ["r' R2 U R' U r U2 r' U M'", "y F U R U' R' F' U F R U R' U' F'", "y' f R U R' U' f' U' F R U R' U' F'"], "Dot"),
+                ("4", ["M U' r U2 r' U' R U' R' M'", "y F U R U' R' F' U' F R U R' U' F'", "y' f R U R' U' f' U F R U R' U' F'"], "Dot"),
+            ],
+            "PLL": [
+                ("1", ["R R R"], "h")
+            ]
+        ],
+        "4x4": [
+            "Parity": [
+                
+            ]
+        ]
+    ]
     
     /// The `Move`s making up the `Algorithm`.
     var moves: [Move] = []
