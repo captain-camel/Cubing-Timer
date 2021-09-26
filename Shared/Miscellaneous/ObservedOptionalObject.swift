@@ -2,7 +2,7 @@
 //  ObservedOptionalObject.swift
 //  Cubing Timer
 //
-//  Created by Cameron Delong on 8/26/21.
+//  CREDIT: https://github.com/fourplusone/observed-optional-object
 //
 
 import Combine
@@ -36,7 +36,7 @@ import SwiftUI
 @propertyWrapper public struct ObservedOptionalObject<T: ObservableObject>: DynamicProperty {
     @StateObject private var proxy = Proxy()
     
-    /// The Proxy class holds the optional observed object and republisheds it's `objectWillChange`
+    /// The Proxy class holds the optional observed object and republishes it's `objectWillChange`
     /// events.
     private class Proxy: ObservableObject {
         var wrappedObject: T? {
