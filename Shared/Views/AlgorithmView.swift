@@ -11,7 +11,7 @@ import SwiftUI
 struct AlgorithmView: View {
     // MARK: Properties
     /// The `Algorithm` to display.
-    let algorithm: Algorithm
+    let algorithms: [Algorithm]
     
     /// The name of the algorithm.
     let name: String
@@ -22,9 +22,12 @@ struct AlgorithmView: View {
     /// The `Cube` to display.
     var cube: Cube
     
+    /// The selected `Algorithm` out of `algorithms`.
+    @AppStorage private var selectedAlgorithm: Algorithm
+    
     // MARK: Initializers
     init(_ algorithm: Algorithm, name: String, category: String? = nil) {
-        self.algorithm = algorithm
+        self.algorithms = [algorithm]
         
         self.name = name
         
@@ -37,6 +40,26 @@ struct AlgorithmView: View {
         cube = Cube()!
         
         try? cube.applyAlgorithm(algorithm.reversed)
+        
+        _selectedAlgorithm = AppStorage(wrappedValue: algorithms.first ?? Algorithm(), algorithms.description)
+    }
+    
+    init(_ algorithms: [Algorithm], name: String, category: String? = nil) {
+        self.algorithms = algorithms
+        
+        self.name = name
+        
+        if let unwrapped = category {
+            self.category = " - \(unwrapped)"
+        } else {
+            self.category = ""
+        }
+        
+        cube = Cube()!
+        
+        try? cube.applyAlgorithm(algorithms.first?.reversed ?? "")
+        
+        _selectedAlgorithm = AppStorage(wrappedValue: algorithms.first ?? Algorithm(), algorithms.description)
     }
     
     // MARK: Body
@@ -51,11 +74,23 @@ struct AlgorithmView: View {
                     .bold() +
                 Text(category)
                     .foregroundColor(.secondary)
-                
-                Text(String(algorithm))
+
+                Text(String(selectedAlgorithm))
                     .foregroundColor(.secondary)
             }
             .padding(5)
+            
+            Spacer()
+            
+            Menu {
+                ForEach(algorithms, id: \.self) { algorithm in
+                    Button(String(algorithm)) {
+                        selectedAlgorithm = algorithm
+                    }
+                }
+            } label: {
+                Image(systemName: "pencil")
+            }
         }
     }
 }
@@ -65,8 +100,7 @@ struct AlgorithmView_Previews: PreviewProvider {
         List {
             AlgorithmView("M2 U' M U2 M' U' M2", name: "name", category: "category")
             
-            AlgorithmView(Algorithm("F R U' R' U' R U R' F' R U R' U' R' F R F'").reversed, name: "name")
-
+            AlgorithmView(["R", "R", "R"], name: "name")
         }
     }
 }
