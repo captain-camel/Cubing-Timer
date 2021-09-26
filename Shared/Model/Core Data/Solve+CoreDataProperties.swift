@@ -52,6 +52,8 @@ extension Solve {
             case let .some(seconds):
                 penaltyRawValue = String(seconds)
             }
+            
+            instance?.objectWillChange.send()
         }
     }
     
