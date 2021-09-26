@@ -88,8 +88,8 @@
 		DD7FE51D26FBA7AF006B8ADF /* JavaScriptEditorHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7FE51B26FBA7AF006B8ADF /* JavaScriptEditorHelp.swift */; };
 		DD8DC39226E1E37000DCCDC2 /* HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8DC39126E1E37000DCCDC2 /* HUD.swift */; };
 		DD8DC39326E1E37000DCCDC2 /* HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8DC39126E1E37000DCCDC2 /* HUD.swift */; };
-		DDA4F14626FF925A0072E4F3 /* AlgorithmCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA4F14526FF925A0072E4F3 /* AlgorithmCategoryView.swift */; };
-		DDA4F14726FF925A0072E4F3 /* AlgorithmCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA4F14526FF925A0072E4F3 /* AlgorithmCategoryView.swift */; };
+		DDA4F14626FF925A0072E4F3 /* AlgorithmList.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA4F14526FF925A0072E4F3 /* AlgorithmList.swift */; };
+		DDA4F14726FF925A0072E4F3 /* AlgorithmList.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA4F14526FF925A0072E4F3 /* AlgorithmList.swift */; };
 		DDAD68F126D4B1B4005750A5 /* InstanceSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDAD68F026D4B1B4005750A5 /* InstanceSettings.swift */; };
 		DDAD68F226D4B1B4005750A5 /* InstanceSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDAD68F026D4B1B4005750A5 /* InstanceSettings.swift */; };
 		DDB0D88626EEB853007DCEF8 /* JavaScriptEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB0D88526EEB853007DCEF8 /* JavaScriptEditor.swift */; };
@@ -98,10 +98,8 @@
 		DDB0D88A26EEBB86007DCEF8 /* JavaScript.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB0D88826EEBB85007DCEF8 /* JavaScript.swift */; };
 		DDC6FC2C26F9517100998645 /* CodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC6FC2B26F9517100998645 /* CodeView.swift */; };
 		DDC6FC2D26F9517100998645 /* CodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC6FC2B26F9517100998645 /* CodeView.swift */; };
-		DDD6953C26FE70C1006A069C /* AlgorithmStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD6953B26FE70C1006A069C /* AlgorithmStorage.swift */; };
-		DDD6953D26FE70C1006A069C /* AlgorithmStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD6953B26FE70C1006A069C /* AlgorithmStorage.swift */; };
-		DDD6954226FF89BD006A069C /* AlgorithmList.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD6954126FF89BD006A069C /* AlgorithmList.swift */; };
-		DDD6954326FF89BD006A069C /* AlgorithmList.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD6954126FF89BD006A069C /* AlgorithmList.swift */; };
+		DDD6954226FF89BD006A069C /* AlgorithmCategoryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD6954126FF89BD006A069C /* AlgorithmCategoryList.swift */; };
+		DDD6954326FF89BD006A069C /* AlgorithmCategoryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD6954126FF89BD006A069C /* AlgorithmCategoryList.swift */; };
 		DDD6954626FF8C9B006A069C /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = DDD6954526FF8C9B006A069C /* OrderedCollections */; };
 		DDE1095626FE3F23006E1626 /* AlgorithmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE1095526FE3F23006E1626 /* AlgorithmView.swift */; };
 		DDE1095726FE3F23006E1626 /* AlgorithmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE1095526FE3F23006E1626 /* AlgorithmView.swift */; };
@@ -167,13 +165,12 @@
 		DD7809F826D051AC00E716F3 /* CGSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGSize.swift; sourceTree = "<group>"; };
 		DD7FE51B26FBA7AF006B8ADF /* JavaScriptEditorHelp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JavaScriptEditorHelp.swift; sourceTree = "<group>"; };
 		DD8DC39126E1E37000DCCDC2 /* HUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUD.swift; sourceTree = "<group>"; };
-		DDA4F14526FF925A0072E4F3 /* AlgorithmCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlgorithmCategoryView.swift; sourceTree = "<group>"; };
+		DDA4F14526FF925A0072E4F3 /* AlgorithmList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlgorithmList.swift; sourceTree = "<group>"; };
 		DDAD68F026D4B1B4005750A5 /* InstanceSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstanceSettings.swift; sourceTree = "<group>"; };
 		DDB0D88526EEB853007DCEF8 /* JavaScriptEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JavaScriptEditor.swift; sourceTree = "<group>"; };
 		DDB0D88826EEBB85007DCEF8 /* JavaScript.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JavaScript.swift; sourceTree = "<group>"; };
 		DDC6FC2B26F9517100998645 /* CodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeView.swift; sourceTree = "<group>"; };
-		DDD6953B26FE70C1006A069C /* AlgorithmStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlgorithmStorage.swift; sourceTree = "<group>"; };
-		DDD6954126FF89BD006A069C /* AlgorithmList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlgorithmList.swift; sourceTree = "<group>"; };
+		DDD6954126FF89BD006A069C /* AlgorithmCategoryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlgorithmCategoryList.swift; sourceTree = "<group>"; };
 		DDE1095526FE3F23006E1626 /* AlgorithmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlgorithmView.swift; sourceTree = "<group>"; };
 		DDE1451526E98E19009796D7 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		DDF6C77F26C782C200B505B9 /* Move.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Move.swift; sourceTree = "<group>"; };
@@ -260,7 +257,6 @@
 				DD090A3426BF3BCE00DEAC82 /* SolveStorage.swift */,
 				DD090A0C26BF0D4200DEAC82 /* Puzzle.swift */,
 				DD090A0F26BF0D9C00DEAC82 /* Statistic.swift */,
-				DDD6953B26FE70C1006A069C /* AlgorithmStorage.swift */,
 				DDF6C78B26C97EC200B505B9 /* Timer */,
 				DD090A4926C3695F00DEAC82 /* Cube */,
 			);
@@ -288,8 +284,8 @@
 				DD3FE46726FD123100FE7408 /* CubeSideView.swift */,
 				DD3FE46A26FD123A00FE7408 /* CubeTileView.swift */,
 				DDE1095526FE3F23006E1626 /* AlgorithmView.swift */,
-				DDD6954126FF89BD006A069C /* AlgorithmList.swift */,
-				DDA4F14526FF925A0072E4F3 /* AlgorithmCategoryView.swift */,
+				DDD6954126FF89BD006A069C /* AlgorithmCategoryList.swift */,
+				DDA4F14526FF925A0072E4F3 /* AlgorithmList.swift */,
 				DD44620F26D9D43E0085CA18 /* Support */,
 			);
 			path = Views;
@@ -487,7 +483,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DDA4F14626FF925A0072E4F3 /* AlgorithmCategoryView.swift in Sources */,
+				DDA4F14626FF925A0072E4F3 /* AlgorithmList.swift in Sources */,
 				DD155F0A26E312A7006D91BA /* Haptics.swift in Sources */,
 				DD0909FD26BF0B8D00DEAC82 /* InstanceStorage.swift in Sources */,
 				DD090A2F26BF3AB700DEAC82 /* ListPopover.swift in Sources */,
@@ -521,13 +517,12 @@
 				DD7FE51C26FBA7AF006B8ADF /* JavaScriptEditorHelp.swift in Sources */,
 				DD3FE46826FD123100FE7408 /* CubeSideView.swift in Sources */,
 				DD090A0326BF0C9100DEAC82 /* Instance+CoreDataClass.swift in Sources */,
-				DDD6953C26FE70C1006A069C /* AlgorithmStorage.swift in Sources */,
 				DDB0D88926EEBB86007DCEF8 /* JavaScript.swift in Sources */,
 				DDF6C79326C97F5C00B505B9 /* Inspection.swift in Sources */,
 				DD090A3526BF3BCE00DEAC82 /* SolveStorage.swift in Sources */,
 				DD090A1026BF0D9C00DEAC82 /* Statistic.swift in Sources */,
 				DDB0D88626EEB853007DCEF8 /* JavaScriptEditor.swift in Sources */,
-				DDD6954226FF89BD006A069C /* AlgorithmList.swift in Sources */,
+				DDD6954226FF89BD006A069C /* AlgorithmCategoryList.swift in Sources */,
 				DD090A4B26C3698200DEAC82 /* Cube.swift in Sources */,
 				DD090A1626BF0EA100DEAC82 /* Array.swift in Sources */,
 				DD090A4126C0937200DEAC82 /* Collection.swift in Sources */,
@@ -548,7 +543,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DDA4F14726FF925A0072E4F3 /* AlgorithmCategoryView.swift in Sources */,
+				DDA4F14726FF925A0072E4F3 /* AlgorithmList.swift in Sources */,
 				DD155F0B26E312A7006D91BA /* Haptics.swift in Sources */,
 				DD0909FE26BF0B8D00DEAC82 /* InstanceStorage.swift in Sources */,
 				DD090A3026BF3AB700DEAC82 /* ListPopover.swift in Sources */,
@@ -582,13 +577,12 @@
 				DD7FE51D26FBA7AF006B8ADF /* JavaScriptEditorHelp.swift in Sources */,
 				DD3FE46926FD123100FE7408 /* CubeSideView.swift in Sources */,
 				DD090A0426BF0C9100DEAC82 /* Instance+CoreDataClass.swift in Sources */,
-				DDD6953D26FE70C1006A069C /* AlgorithmStorage.swift in Sources */,
 				DDB0D88A26EEBB86007DCEF8 /* JavaScript.swift in Sources */,
 				DDF6C79426C97F5C00B505B9 /* Inspection.swift in Sources */,
 				DD090A3626BF3BCE00DEAC82 /* SolveStorage.swift in Sources */,
 				DD090A1126BF0D9C00DEAC82 /* Statistic.swift in Sources */,
 				DDB0D88726EEB853007DCEF8 /* JavaScriptEditor.swift in Sources */,
-				DDD6954326FF89BD006A069C /* AlgorithmList.swift in Sources */,
+				DDD6954326FF89BD006A069C /* AlgorithmCategoryList.swift in Sources */,
 				DD090A4C26C3698200DEAC82 /* Cube.swift in Sources */,
 				DD090A1726BF0EA100DEAC82 /* Array.swift in Sources */,
 				DD090A4226C0937200DEAC82 /* Collection.swift in Sources */,
