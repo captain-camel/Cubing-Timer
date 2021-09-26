@@ -100,6 +100,7 @@ struct InstanceView: View {
                         .bold()
                         .foregroundColor(.secondary)
                         .multilineTextAlignment(.center)
+                        .padding()
                         .onAppear {
                             scramble = instance.getScramble()
                         }
@@ -166,130 +167,16 @@ struct InstanceView: View {
                         .foregroundColor(runningColor)
                         .scaleEffect(runningCircleScale)
                 }
+                    .offset(y: -10)
             )
             .contentShape(Rectangle())
             .gesture(
                 DragGesture(minimumDistance: 0)
                     .onChanged { gesture in
-                        if gestureState != .complete {
-                            switch timerState {
-                            case .stopped, .counting:
-                                if gesture.translation.distance > 50 && gestureState == .stationary {
-                                    Haptics.shared.tap()
-                                    
-                                    if abs(gesture.translation.width) > abs(gesture.translation.height) {
-                                        if gesture.translation.width < 0 {
-                                            gestureState = .moved(.left)
-                                        } else {
-                                            gestureState = .moved(.right)
-                                        }
-                                    } else {
-                                        if gesture.translation.height < 0 {
-                                            gestureState = .moved(.up)
-                                        } else {
-                                            gestureState = .moved(.down)
-                                        }
-                                    }
-                                    
-                                    withAnimation {
-                                        timerState = .stopped
-                                    }
-                                } else {
-                                    if case .moved = gestureState {} else {
-                                        withAnimation(.default.delay(0.3)) {
-                                            timerState = .counting
-                                        }
-                                        
-                                        gestureState = .stationary
-                                    }
-                                }
-                                
-                            case .inspection:
-                                withAnimation {
-                                    timerState = .running
-                                }
-                                
-                                gestureState = .complete
-                                
-                                Haptics.shared.tap()
-                                
-                            case .running:
-                                withAnimation {
-                                    timerState = .stopped
-                                    
-                                    scramble = instance.getScramble()
-                                }
-                                
-                                gestureState = .complete
-                                
-                                Haptics.shared.tap()
-                                
-                            default:
-                                break
-                            }
-                        }
+                        gestureChanged(gesture: gesture)
                     }
                     .onEnded { gesture in
-                        switch gestureState.direction {
-                        case .right:
-                            withAnimation {
-                                if instance.solveArray.last?.penalty.length != nil {
-                                    instance.solveArray.last?.penalty = .none
-                                } else {
-                                    instance.solveArray.last?.penalty = .some(2)
-                                }
-                            }
-                            
-                            if instance.solveArray.isEmpty {
-                                Haptics.shared.error()
-                            }
-                            
-                        case .left:
-                            if !instance.solveArray.isEmpty {
-                                SolveStorage.delete(instance.solveArray.last!)
-                                
-                                showHUD(title: "Solve Deleted", systemName: "trash", iconColor: .red)
-                            } else {
-                                Haptics.shared.error()
-                            }
-                            
-                        case .up:
-                            print("up")
-                            
-                        case .down:
-                            withAnimation {
-                                if instance.solveArray.last?.penalty == .dnf {
-                                    instance.solveArray.last?.penalty = .none
-                                } else {
-                                    instance.solveArray.last?.penalty = .dnf
-                                }
-                            }
-                            
-                            if instance.solveArray.isEmpty {
-                                Haptics.shared.error()
-                            }
-                            
-                        default:
-                            if timerState == .ready {
-                                if instance.doInspection {
-                                    withAnimation {
-                                        timerState = .inspection
-                                    }
-                                } else {
-                                    withAnimation {
-                                        timerState = .running
-                                    }
-                                }
-                                
-                                Haptics.shared.tap()
-                            } else if timerState == .counting {
-                                withAnimation {
-                                    timerState = .stopped
-                                }
-                            }
-                        }
-                        
-                        gestureState = .none
+                        gestureEnded(gesture: gesture)
                     }
             )
             .onChange(of: presentationMode.wrappedValue.isPresented) { isPresented in
@@ -297,6 +184,8 @@ struct InstanceView: View {
                     withAnimation {
                         timerState = .stopped
                     }
+                    
+                    gestureState = .none
                 }
             }
             .onChange(of: scenePhase) { _ in
@@ -384,5 +273,130 @@ struct InstanceView: View {
         withAnimation {
             showingHUD = true
         }
+    }
+    
+    /// Logic to handle when a gesture starts or changes.
+    func gestureChanged(gesture: DragGesture.Value) {
+        if gestureState != .complete {
+            switch timerState {
+            case .stopped, .counting:
+                if gesture.translation.distance > 50 && gestureState == .stationary {
+                    Haptics.shared.tap()
+                    
+                    if abs(gesture.translation.width) > abs(gesture.translation.height) {
+                        if gesture.translation.width < 0 {
+                            gestureState = .moved(.left)
+                        } else {
+                            gestureState = .moved(.right)
+                        }
+                    } else {
+                        if gesture.translation.height < 0 {
+                            gestureState = .moved(.up)
+                        } else {
+                            gestureState = .moved(.down)
+                        }
+                    }
+                    
+                    withAnimation {
+                        timerState = .stopped
+                    }
+                } else {
+                    if case .moved = gestureState {} else {
+                        withAnimation(.default.delay(0.3)) {
+                            timerState = .counting
+                        }
+                        
+                        gestureState = .stationary
+                    }
+                }
+                
+            case .inspection:
+                withAnimation {
+                    timerState = .running
+                }
+                
+                gestureState = .complete
+                
+                Haptics.shared.tap()
+                
+            case .running:
+                withAnimation {
+                    timerState = .stopped
+                    
+                    scramble = instance.getScramble()
+                }
+                
+                gestureState = .complete
+                
+                Haptics.shared.tap()
+                
+            default:
+                break
+            }
+        }
+    }
+    
+    /// Logic to handle the end of a gesture.
+    func gestureEnded(gesture: DragGesture.Value) {
+        switch gestureState.direction {
+        case .right:
+            withAnimation {
+                if instance.solveArray.last?.penalty.length != nil {
+                    instance.solveArray.last?.penalty = .none
+                } else {
+                    instance.solveArray.last?.penalty = .some(2)
+                }
+            }
+            
+            if instance.solveArray.isEmpty {
+                Haptics.shared.error()
+            }
+            
+        case .left:
+            if !instance.solveArray.isEmpty {
+                SolveStorage.delete(instance.solveArray.last!)
+                
+                showHUD(title: "Solve Deleted", systemName: "trash", iconColor: .red)
+            } else {
+                Haptics.shared.error()
+            }
+            
+        case .up:
+            print("up")
+            
+        case .down:
+            withAnimation {
+                if instance.solveArray.last?.penalty == .dnf {
+                    instance.solveArray.last?.penalty = .none
+                } else {
+                    instance.solveArray.last?.penalty = .dnf
+                }
+            }
+            
+            if instance.solveArray.isEmpty {
+                Haptics.shared.error()
+            }
+            
+        default:
+            if timerState == .ready {
+                if instance.doInspection {
+                    withAnimation {
+                        timerState = .inspection
+                    }
+                } else {
+                    withAnimation {
+                        timerState = .running
+                    }
+                }
+                
+                Haptics.shared.tap()
+            } else if timerState == .counting {
+                withAnimation {
+                    timerState = .stopped
+                }
+            }
+        }
+        
+        gestureState = .none
     }
 }
