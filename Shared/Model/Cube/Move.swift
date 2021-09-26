@@ -6,7 +6,7 @@
 //
 
 /// A turn that can be performed on a `Cube`.
-struct Move {
+struct Move: Equatable, Hashable, Codable {
     // MARK: Properties
     /// The face that the `Move` acts on.
     var face: Cube.Tile = .up
@@ -34,7 +34,7 @@ struct Move {
     
     // MARK: Types
     /// Possible direction a `Move` can turn.
-    enum Direction: String, CaseIterable {
+    enum Direction: String, CaseIterable, Codable {
         /// Rotating a face clockwise.
         case clockwise = ""
         /// Rotating a face counterclockwise.
@@ -63,26 +63,32 @@ struct Move {
     // MARK: Methods
     /// Returns the `String` description of the `Move`
     func getDescription(as puzzle: Puzzle = .cube(3)) -> String {
+        var description: String
+        
         if layers == 0...0 {
-            return face.rawValue
+            description = face.rawValue
         } else if layers == 0...1 {
-            return face.rawValue.lowercased()
+            description = face.rawValue.lowercased()
         } else if layers == 1...1 && puzzle == .cube(3) {
             switch face {
             case .up, .down:
-                return "E"
+                description = "E"
             case .front, .back:
-                return "S"
+                description = "S"
             case .right, .left:
-                return "M"
+                description = "M"
             }
         } else if layers.count == 1 {
-            return "\(layers.first! + 1)\(face.rawValue)\(direction.rawValue)"
+            description = "\(layers.first! + 1)\(face.rawValue)\(direction.rawValue)"
         } else if layers.contains(0) {
-            return "\(layers.max()! + 1)\(face.rawValue)w\(direction.rawValue)"
+            description = "\(layers.max()! + 1)\(face.rawValue)w\(direction.rawValue)"
         } else {
-            return "\(layers.upperBound)-\(layers.lowerBound)\(face.rawValue)\(direction.rawValue)"
+            description = "\(layers.upperBound)-\(layers.lowerBound)\(face.rawValue)\(direction.rawValue)"
         }
+        
+        description += direction.rawValue
+        
+        return description
     }
 }
 
@@ -120,13 +126,13 @@ extension Move: LosslessStringConvertible {
                         layers = 0...1
                     }
                 } else if character == "E" {
-                    face = .up
+                    face = .down
                     layers = 1...1
                 } else if character == "S" {
                     face = .front
                     layers = 1...1
                 } else if character == "M" {
-                    face = .right
+                    face = .left
                     layers = 1...1
                 }
             }
