@@ -81,7 +81,7 @@ struct Cube {
     typealias CubeState = [Tile: Face]
     
     /// A side of a `Cube`, or a single tile on the side of a `Cube`.
-    enum Tile: String, CaseIterable {
+    enum Tile: String, CaseIterable, Codable {
         // MARK: Cases
         /// The "up" face of a `Cube`.
         case up = "U"
