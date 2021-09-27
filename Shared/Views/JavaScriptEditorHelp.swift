@@ -17,13 +17,10 @@ struct JavaScriptEditorHelp: View {
     var body: some View {
         NavigationView {
             VStack(alignment: .leading) {
-                Text("If a puzzle doesn't have a build in scramble generator, you can create your own using Javascript")
-                Text("Just return a string containing a scramble to display. Press the play button to test your code.")
-                Text("Example")
-                    .font(.headline)
-                CodeView("testesttt\n\ntestest\ntest")
-                    .padding()
-                
+                Text("If a puzzle doesn't have a build in scramble generator, you can create your own using Javascript\n\nJust return a string containing a scramble to display.")
+                CodeView("let moves = ['R', 'L']\nlet scramble = \"\"\n\nfor (let i = 0; i < 10; i++) {\n    scramble += moves[Math.floor(Math.random()\n*moves.length)] // get random item from `moves`\n}\n\nreturn scramble")
+                    .padding(.vertical)
+                Text("Press the play button to test your code. Once you use the timer, your custom scramles will appear like normal.")
                 Spacer()
             }
             .padding()
