@@ -27,6 +27,10 @@ struct JavaScriptEditorHelp: View {
             .multilineTextAlignment(.leading)
             .navigationTitle("Custom Scramble Help")
             .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Link("JS Documentation", destination: URL(string: "https://developer.mozilla.org/en-US/docs/Web/JavaScript")!)
+                }
+                
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Done") {
                         presentationMode.wrappedValue.dismiss()
