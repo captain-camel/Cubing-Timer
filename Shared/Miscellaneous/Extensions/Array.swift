@@ -49,3 +49,14 @@ extension Array where Element: BinaryFloatingPoint {
         return elements
     }
 }
+
+extension Array where Element: Equatable {
+    /// Returns the provided value if it exists in the array, otherwise returns `nil`.
+    func instance(of value: Element) -> Element? {
+        if contains(value) {
+            return value
+        } else {
+            return nil
+        }
+    }
+}
