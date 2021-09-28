@@ -11,10 +11,10 @@ import SwiftUI
 struct CubeTileView: View {
     // MARK: Properties
     /// The tile displayed.
-    let tile: Cube.Tile
+    let tile: Cube.Tile?
     
     // MARK: Initializers
-    init(_ tile: Cube.Tile) {
+    init(_ tile: Cube.Tile?) {
         self.tile = tile
     }
     
@@ -22,7 +22,7 @@ struct CubeTileView: View {
     var body: some View {
         GeometryReader { geometry in
             Rectangle()
-                .foregroundColor(tile.color)
+                .foregroundColor(tile?.color ?? .secondary)
                 .cornerRadius(max(geometry.size.width, geometry.size.height) / 5)
         }
     }
