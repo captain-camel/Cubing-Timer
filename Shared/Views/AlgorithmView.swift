@@ -22,29 +22,18 @@ struct AlgorithmView: View {
     /// The `Cube` to display.
     var cube: Cube
     
+    /// Tiles to highlight on the cube.
+    let highlightedTiles: [Cube.Tile]
+    
     /// The selected `Algorithm` out of `algorithms`.
-    @AppStorage private var selectedAlgorithm: Algorithm
+    @AppStorage private var selectedAlgorithm: String
     
     // MARK: Initializers
-    init(_ algorithm: Algorithm, name: String, category: String? = nil) {
-        self.algorithms = [algorithm]
-        
-        self.name = name
-        
-        if let unwrapped = category {
-            self.category = " - \(unwrapped)"
-        } else {
-            self.category = ""
-        }
-        
-        cube = Cube()!
-        
-        try? cube.applyAlgorithm(algorithm.reversed)
-        
-        _selectedAlgorithm = AppStorage(wrappedValue: algorithms.first ?? Algorithm(), algorithms.description)
+    init(_ algorithm: Algorithm, name: String, category: String? = nil, highlightedTiles: [Cube.Tile] = Cube.Tile.allCases, puzzle: Puzzle = .cube(3)) {
+        self.init([algorithm], name: name, category: category, highlightedTiles: highlightedTiles, puzzle: puzzle)
     }
     
-    init(_ algorithms: [Algorithm], name: String, category: String? = nil) {
+    init(_ algorithms: [Algorithm], name: String, category: String? = nil, highlightedTiles: [Cube.Tile] = Cube.Tile.allCases, puzzle: Puzzle = .cube(3)) {
         self.algorithms = algorithms
         
         self.name = name
@@ -55,17 +44,19 @@ struct AlgorithmView: View {
             self.category = ""
         }
         
-        cube = Cube()!
+        cube = Cube(puzzle: puzzle) ?? Cube()
         
-        try? cube.applyAlgorithm(algorithms.first?.reversed ?? "")
+        try? cube.applyAlgorithm((algorithms.first ?? "").reversed)
         
-        _selectedAlgorithm = AppStorage(wrappedValue: algorithms.first ?? Algorithm(), algorithms.description)
+        _selectedAlgorithm = AppStorage(wrappedValue: String(algorithms.first ?? ""), algorithms.description)
+        
+        self.highlightedTiles = highlightedTiles
     }
     
     // MARK: Body
     var body: some View {
         HStack {
-            CubeSideView(cube)
+            CubeSideView(cube, highlightedTiles: highlightedTiles)
                 .frame(width: 50, height: 50)
                 .padding(.vertical, 5)
             
@@ -75,7 +66,7 @@ struct AlgorithmView: View {
                 Text(category)
                     .foregroundColor(.secondary)
 
-                Text(String(selectedAlgorithm))
+                Text(selectedAlgorithm)
                     .foregroundColor(.secondary)
             }
             .padding(5)
@@ -84,8 +75,14 @@ struct AlgorithmView: View {
             
             Menu {
                 ForEach(algorithms, id: \.self) { algorithm in
-                    Button(String(algorithm)) {
-                        selectedAlgorithm = algorithm
+                    Button {
+                        selectedAlgorithm = String(algorithm)
+                    } label: {
+                        if selectedAlgorithm == String(algorithm) {
+                            Label(String(algorithm), systemImage: "checkmark")
+                        } else {
+                            Text(String(algorithm))
+                        }
                     }
                 }
             } label: {
