@@ -29,7 +29,7 @@ struct CodeView: View {
             HStack {
                 Text(text)
                     .multilineTextAlignment(.leading)
-                    .font(.system(.body, design: .monospaced))
+                    .font(.system(size: 15, design: .monospaced))
                     .padding()
                 
                 Spacer()
