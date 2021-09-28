@@ -16,10 +16,14 @@ struct CubeSideView: View {
     /// Which face of the `Cube` to display.
     let face: Cube.Tile
     
+    /// Tiles to highlight on the cube.
+    let highlightedTiles: [Cube.Tile]
+    
     // MARK: Initializers
-    init(_ cube: Cube, face: Cube.Tile = .up) {
+    init(_ cube: Cube, face: Cube.Tile = .up, highlightedTiles: [Cube.Tile] = Cube.Tile.allCases) {
         self.cube = cube
         self.face = face
+        self.highlightedTiles = highlightedTiles
     }
     
     // MARK: Body
@@ -30,52 +34,40 @@ struct CubeSideView: View {
                     Rectangle()
                         .foregroundColor(.clear)
                         .frame(width: geometry.size.width / 12)
-                    CubeTileView(cube.cubeState[Cube.surroundingSides[face]!.0]!.tiles[0][2])
-                    CubeTileView(cube.cubeState[Cube.surroundingSides[face]!.0]!.tiles[0][1])
-                    CubeTileView(cube.cubeState[Cube.surroundingSides[face]!.0]!.tiles[0][0])
+                    
+                    ForEach(cube.cubeState[Cube.surroundingSides[face]!.0]!.tiles[0].reversed(), id: \.self) { tile in
+                        CubeTileView(highlightedTiles.instance(of: tile))
+                    }
+                    
                     Rectangle()
                         .foregroundColor(.clear)
                         .frame(width: geometry.size.width / 12)
                 }
                 .frame(height: geometry.size.width / 12)
                 
-                HStack(spacing: geometry.size.width / 50) {
-                    CubeTileView(cube.cubeState[Cube.surroundingSides[face]!.3]!.tiles[0][0])
-                        .frame(width: geometry.size.width / 12)
-                    CubeTileView(cube.cubeState[face]!.tiles[0][0])
-                    CubeTileView(cube.cubeState[face]!.tiles[0][1])
-                    CubeTileView(cube.cubeState[face]!.tiles[0][2])
-                    CubeTileView(cube.cubeState[Cube.surroundingSides[face]!.1]!.tiles[0][2])
-                        .frame(width: geometry.size.width / 12)
-                }
-                
-                HStack(spacing: geometry.size.width / 50) {
-                    CubeTileView(cube.cubeState[Cube.surroundingSides[face]!.3]!.tiles[0][1])
-                        .frame(width: geometry.size.width / 12)
-                    CubeTileView(cube.cubeState[face]!.tiles[1][0])
-                    CubeTileView(cube.cubeState[face]!.tiles[1][1])
-                    CubeTileView(cube.cubeState[face]!.tiles[1][2])
-                    CubeTileView(cube.cubeState[Cube.surroundingSides[face]!.1]!.tiles[0][1])
-                        .frame(width: geometry.size.width / 12)
-                }
-                
-                HStack(spacing: geometry.size.width / 50) {
-                    CubeTileView(cube.cubeState[Cube.surroundingSides[face]!.3]!.tiles[0][2])
-                        .frame(width: geometry.size.width / 12)
-                    CubeTileView(cube.cubeState[face]!.tiles[2][0])
-                    CubeTileView(cube.cubeState[face]!.tiles[2][1])
-                    CubeTileView(cube.cubeState[face]!.tiles[2][2])
-                    CubeTileView(cube.cubeState[Cube.surroundingSides[face]!.1]!.tiles[0][0])
-                        .frame(width: geometry.size.width / 12)
+                ForEach(0..<cube.size) { row in
+                    HStack(spacing: geometry.size.width / 50) {
+                        CubeTileView(highlightedTiles.instance(of: cube.cubeState[Cube.surroundingSides[face]!.3]!.tiles[0][row]))
+                            .frame(width: geometry.size.width / 12)
+                        
+                        ForEach(cube.cubeState[face]!.tiles[row], id: \.self) { tile in
+                            CubeTileView(highlightedTiles.instance(of: tile))
+                        }
+                        
+                        CubeTileView(highlightedTiles.instance(of: cube.cubeState[Cube.surroundingSides[face]!.1]!.tiles[0][cube.size - (row + 1)]))
+                            .frame(width: geometry.size.width / 12)
+                    }
                 }
                 
                 HStack(spacing: geometry.size.width / 50) {
                     Rectangle()
                         .foregroundColor(.clear)
                         .frame(width: geometry.size.width / 12)
-                    CubeTileView(cube.cubeState[Cube.surroundingSides[face]!.2]!.tiles[0][0])
-                    CubeTileView(cube.cubeState[Cube.surroundingSides[face]!.2]!.tiles[0][1])
-                    CubeTileView(cube.cubeState[Cube.surroundingSides[face]!.2]!.tiles[0][2])
+                    
+                    ForEach(cube.cubeState[Cube.surroundingSides[face]!.2]!.tiles[0], id: \.self) { tile in
+                        CubeTileView(highlightedTiles.instance(of: tile))
+                    }
+                    
                     Rectangle()
                         .foregroundColor(.clear)
                         .frame(width: geometry.size.width / 12)
@@ -93,7 +85,7 @@ struct CubeSideView_Previews: PreviewProvider {
     var cube: Cube
     
     init() {
-        cube = Cube()!
+        cube = Cube()
         
         try! cube.applyAlgorithm("R U' R' F' U F R U R' U R U' R'")
     }
