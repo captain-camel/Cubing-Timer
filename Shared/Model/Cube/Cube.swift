@@ -139,6 +139,24 @@ struct Cube {
                 return "🟧"
             }
         }
+        
+        /// The `Tile` opposite to this `Tile`.
+        var opposite: Tile {
+            switch self {
+            case .up:
+                return .down
+            case .front:
+                return .back
+            case .right:
+                return .left
+            case .down:
+                return .up
+            case .back:
+                return .front
+            case .left:
+                return .right
+            }
+        }
     }
 
     /// A side of a `Cube` made up of `Tile`s.
