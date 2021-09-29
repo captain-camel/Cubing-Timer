@@ -12,27 +12,28 @@ import OrderedCollections
 struct AlgorithmList: View {
     // MARK: Properties
     /// The algorithms to display.
-    let algorithms: OrderedDictionary<String, [[Algorithm]]>
+    let algorithms: [(name: String, algorithms: [Algorithm], category: String?, highlightedTiles: [Cube.Tile])]
     
-    /// The title of the view.
-    let title: String
+    /// The category of the `Algorithm`s.
+    let category: String
+    
+    /// The `Puzzle` of the `Algorithm`s.
+    let puzzle: Puzzle
     
     // MARK: Initializers
-    init(_ algorithms: OrderedDictionary<String, [[Algorithm]]>, title: String) {
+    init(_ algorithms: [(name: String, algorithms: [Algorithm], category: String?, highlightedTiles: [Cube.Tile])], category: String, puzzle: Puzzle) {
         self.algorithms = algorithms
-        
-        self.title = title
+        self.category = category
+        self.puzzle = puzzle
     }
     
     // MARK: Body
     var body: some View {
-        List(algorithms.elements, id: \.key) { section in
-            Section(header: Text(section.key)) {
-                ForEach(section.value, id: \.self) { algorithm in
-                    Text(algorithm.description)
-                }
+        List(algorithms, id: \.algorithms) { algorithmSet in
+            HStack {
+                AlgorithmView(algorithmSet.algorithms, name: algorithmSet.name, category: algorithmSet.category, highlightedTiles: algorithmSet.highlightedTiles, puzzle: puzzle)
             }
         }
-        .navigationTitle(title)
+        .navigationTitle("\(puzzle.displayName) - \(category)")
     }
 }
