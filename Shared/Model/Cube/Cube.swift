@@ -295,6 +295,18 @@ struct Cube {
         }
     }
     
+    /// Solves the `Cube`.
+    mutating func solve() {
+        cubeState = [
+            .up: Face(tile: .up, size: size),
+            .front: Face(tile: .front, size: size),
+            .right: Face(tile: .right, size: size),
+            .down: Face(tile: .down, size: size),
+            .back: Face(tile: .back, size: size),
+            .left: Face(tile: .left, size: size),
+        ]
+    }
+    
     /// Prints the state of the `Cube`.
     func printState(colored: Bool = false) {
         for row in (0..<size).reversed() {
