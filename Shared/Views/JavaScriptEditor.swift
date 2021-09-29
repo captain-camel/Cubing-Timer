@@ -63,15 +63,13 @@ struct JavaScriptEditor: View {
                             
                             showingResultAlert = true
                         } label: {
-                            Image(systemName: "play")
+                            Image(systemName: "play.fill")
                         }
-                        
-                        
                     }
                     
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button {
-                            ()
+                            showingHelpSheet = true
                         } label: {
                             Image(systemName: "questionmark.circle")
                         }
@@ -87,7 +85,7 @@ struct JavaScriptEditor: View {
                     Alert(title: Text("Result"), message: Text(result.description), dismissButton: .default(Text("OK")))
                 }
                 .sheet(isPresented: $showingHelpSheet) {
-                    
+                    JavaScriptEditorHelp()
                 }
         }
     }
