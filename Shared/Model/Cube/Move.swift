@@ -14,10 +14,15 @@ struct Move: Equatable, Hashable, Codable {
     var direction: Direction = .clockwise
     /// The layers to be rotated.
     var layers: ClosedRange<Int> = 0...0
+    /// Whether the move is a while cube rotation.
+    var isWholeCubeRotation = false
     
     /// The reverse of the move.
     var reversed: Move {
-        return Move(face: face, direction: direction.reversed, layers: layers)!
+        var reversedMove = self
+        reversedMove.direction = direction.reversed
+        
+        return reversedMove
     }
     
     // MARK: Initializers
@@ -65,7 +70,16 @@ struct Move: Equatable, Hashable, Codable {
     func getDescription(as puzzle: Puzzle = .cube(3)) -> String {
         var description: String
         
-        if layers == 0...0 {
+        if isWholeCubeRotation {
+            switch face {
+            case .right, .left:
+                description = "x"
+            case .up, .down:
+                description = "y"
+            case .front, .back:
+                description = "z"
+            }
+        } else if layers == 0...0 {
             description = face.rawValue
         } else if layers == 0...1 {
             description = face.rawValue.lowercased()
@@ -79,13 +93,13 @@ struct Move: Equatable, Hashable, Codable {
                 description = "M"
             }
         } else if layers.count == 1 {
-            description = "\(layers.first! + 1)\(face.rawValue)\(direction.rawValue)"
+            description = "\(layers.first! + 1)\(face.rawValue)"
         } else if layers.contains(0) {
-            description = "\(layers.max()! + 1)\(face.rawValue)w\(direction.rawValue)"
+            description = "\(layers.max()! + 1)\(face.rawValue)w"
         } else {
-            description = "\(layers.upperBound)-\(layers.lowerBound)\(face.rawValue)\(direction.rawValue)"
+            description = "\(layers.upperBound)-\(layers.lowerBound)\(face.rawValue)"
         }
-        
+
         description += direction.rawValue
         
         return description
@@ -134,6 +148,15 @@ extension Move: LosslessStringConvertible {
                 } else if character == "M" {
                     face = .left
                     layers = 1...1
+                } else if character == "x" {
+                    face = .right
+                    isWholeCubeRotation = true
+                } else if character == "y" {
+                    face = .up
+                    isWholeCubeRotation = true
+                } else if character == "z" {
+                    face = .front
+                    isWholeCubeRotation = true
                 }
             }
         }
@@ -147,7 +170,7 @@ extension Move: LosslessStringConvertible {
         }
         
         if description.contains("w") {
-            layers = 0...(Int(lowerBound) ?? 0)
+            layers = 0...(Int(lowerBound) ?? 1)
         } else if lowerBound != "" {
             if lowerBound == "" {
                 lowerBound = "0"
@@ -155,6 +178,7 @@ extension Move: LosslessStringConvertible {
             } else if upperBound == "" {
                 upperBound = lowerBound
             }
+            
             layers = Int(lowerBound)! - 1...Int(upperBound)! - 1
         }
         
