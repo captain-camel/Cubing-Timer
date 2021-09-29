@@ -37,8 +37,14 @@ struct Cube {
         .left: (.up, .front, .down, .back),
     ]
     
+    // MARK: Initializers
+    /// Creates a 3x3 `Cube`.
+    init() {
+        self.init(size: 3)!
+    }
+    
     /// Creates a `Cube` of a specified size.
-    init?(size: Int = 3) {
+    init?(size: Int) {
         if size <= 1 {
             return nil
         }
@@ -57,6 +63,7 @@ struct Cube {
         puzzle = Puzzle.cube(size)
     }
     
+    /// Creates a `Cube` from a `Puzzle`.
     init?(puzzle: Puzzle) {
         switch puzzle {
         case let .cube(size):
@@ -81,7 +88,7 @@ struct Cube {
     typealias CubeState = [Tile: Face]
     
     /// A side of a `Cube`, or a single tile on the side of a `Cube`.
-    enum Tile: String, CaseIterable, Codable {
+    enum Tile: String, CaseIterable, Codable, Hashable {
         // MARK: Cases
         /// The "up" face of a `Cube`.
         case up = "U"
@@ -114,7 +121,6 @@ struct Cube {
                 return .orange
             }
         }
-        
         
         /// An emoji of the color associated with the `Tile`.
         var colorEmoji: String {
@@ -239,19 +245,29 @@ struct Cube {
         
         var previousCubeState = cubeState
         
-        if move.layers.contains(0) {
-            cubeState[move.face]!.rotate(move.direction)
+        var updatedMove = move
+        
+        if move.isWholeCubeRotation {
+            updatedMove.layers = 0...size - 1
         }
         
-        if move.direction == .clockwise {
-            for layer in move.layers {
-                for value in Self.moveTable[move.face]! {
+        if updatedMove.layers.contains(0) {
+            cubeState[updatedMove.face]!.rotate(updatedMove.direction)
+        }
+        
+        if updatedMove.layers.contains(size - 1) {
+            cubeState[updatedMove.face.opposite]!.rotate(updatedMove.direction.reversed)
+        }
+        
+        if updatedMove.direction == .clockwise {
+            for layer in updatedMove.layers {
+                for value in Self.moveTable[updatedMove.face]! {
                     cubeState[value.0]!.setSlice(value.1, layer: layer, value: previousCubeState[value.2]!.getSlice(value.3, layer: layer))
                 }
             }
         } else {
-            for layer in move.layers {
-                for value in Self.moveTable[move.face]! {
+            for layer in updatedMove.layers {
+                for value in Self.moveTable[updatedMove.face]! {
                     cubeState[value.2]!.setSlice(value.3, layer: layer, value: previousCubeState[value.0]!.getSlice(value.1, layer: layer))
                 }
             }
@@ -259,9 +275,9 @@ struct Cube {
         
         previousCubeState = cubeState
         
-        if move.direction == .double {
-            for layer in move.layers {
-                for value in Self.moveTable[move.face]! {
+        if updatedMove.direction == .double {
+            for layer in updatedMove.layers {
+                for value in Self.moveTable[updatedMove.face]! {
                     cubeState[value.2]!.setSlice(value.3, layer: layer, value: previousCubeState[value.0]!.getSlice(value.1, layer: layer))
                 }
             }
