@@ -12,8 +12,8 @@ import Foundation
 struct Algorithm: Codable {
     // MARK: Properties
     /// A dictionary of various algorithms for a number of puzzles.
-    static var algorithms: OrderedDictionary<String, OrderedDictionary<String, [(name: String, algorithms: [Algorithm], category: String, highlightedTiles: [Cube.Tile])]>> = [
-        "3x3": [
+    static var algorithms: OrderedDictionary<Puzzle, OrderedDictionary<String, [(name: String, algorithms: [Algorithm], category: String?, highlightedTiles: [Cube.Tile])]>> = [
+        .cube(3): [
             "2-look OLL": [
                 ("Dot", ["F (R U R' U') F' f (R U R' U') f'"], "Edges", [.up]),
                 ("I-Shape", ["F (R U R' U') F'", "(R U R' U') M' (U R U' r')"], "Edges", [.up]),
@@ -94,12 +94,32 @@ struct Algorithm: Codable {
                 ("57", ["(R U R' U') M' (U R U' r')"], "Corners Oriented", [.up])
             ],
             "PLL": [
-                ("1", ["R R R"], "h", [.up])
+                ("Aa", ["x L2 D2 (L' U' L) D2 (L' U L') x'", "y' x' (L' U L') D2 (L U' L') D2 L2 x y", "y x (R' U R') D2 (R U' R') D2 R2 x' y'", "y2 x' R2 D2 (R' U' R) D2 (R' U R') x y2"], "Adjacent Corner Swap", Cube.Tile.allCases),
+                ("Ab", ["x' L2 D2 (L U L') D2 (L U' L) x", "y x (L U' L) D2 (L' U L) D2 L2 x' y'", "y2 x R2 D2 (R U R') D2 (R U' R) x' y2", "y' x' (R U' R) D2 (R' U R) D2 R2 x y"], "Adjacent Corner Swap", Cube.Tile.allCases),
+                ("F", ["R' U' F' (R U R' U') R' F (R2 U' R' U') (R U R' U) R"], "Adjacent Corner Swap", Cube.Tile.allCases),
+                ("Ga", ["(R2 U R' U) (R' U' R U') R2 (U' D) (R' U R) D'", "R2 u (R' U R' U') R u' R2 y' (R' U R) y"], "Adjacent Corner Swap", Cube.Tile.allCases),
+                ("Gb", ["(R' U' R) (U D') (R2 U R' U) (R U' R U') R2 D", "y F' U' F R2 u (R' U R U') R u' R2 y'"], "Adjacent Corner Swap", Cube.Tile.allCases),
+                ("Gc", ["(R2 U' R U') (R U R' U) R2 (U D') (R U' R') D", "y2 R2 F2 (R U2 R U2) R' F (R U R' U') R' F R2 y2", "R2 u' (R U' R U) R' u R2 y (R U' R') y'"], "Adjacent Corner Swap", Cube.Tile.allCases),
+                ("Gd", ["(R U R') (U' D) (R2 U' R U') (R' U R' U) R2 D'", "(R U R') y' R2 u' (R U' R' U) R' u R2 y"], "Adjacent Corner Swap", Cube.Tile.allCases),
+                ("Ja", ["x R2 F R F' (R U2 r' U) r U2 x'", "y2 (L' U' L) F (L' U' L U) L F' (L2 U L) y2", "y' (R' U L' U2) (R U' R' U2) R L y"], "Adjacent Corner Swap", Cube.Tile.allCases),
+                ("Jb", ["(R U R') F' (R U R' U') R' F (R2 U' R')"], "Adjacent Corner Swap", Cube.Tile.allCases),
+                ("Ra", ["(R U' R' U') (R U R) D (R' U' R) D' (R' U2 R')", "(R U R') F' (R U2 R' U2) R' F (R U R U2) R'", "y' (L U2 L' U2) L F' (L' U' L U) L F L2 y"], "Adjacent Corner Swap", Cube.Tile.allCases),
+                ("Rb", ["R2 F (R U R U') R' F' (R U2 R' U2) R", "y' (R' U2 R U2) R' F (R U R' U') R' F' R2 y", "(R' U2 R') D' (R U' R') D (R U R U') (R' U' R)"], "Adjacent Corner Swap", Cube.Tile.allCases),
+                ("T", ["(R U R' U') R' F (R2 U' R' U') (R U R') F'"], "Adjacent Corner Swap", Cube.Tile.allCases),
+                ("E", ["x' (L' U L) D' (L' U' L) D (L' U' L) D' (L' U L) D x", "x' (R U' R') D (R U R') D' (R U R') D (R U' R') D' x"], "Diagonal Corner Swap", Cube.Tile.allCases),
+                ("Na", ["(R U R' U) (R U R') F' (R U R' U') R' F (R2 U' R' U2) (R U' R')", "z U R' D (R2 U' R) D' U R' D (R2 U' R) D' z'"], "Diagonal Corner Swap", Cube.Tile.allCases),
+                ("Nb", ["R' (U R U' R') F' U' F (R U R') (F R' F' R) U' R", "z D' R U' R2 D R' U D' R U' R2 D R' U z'"], "Diagonal Corner Swap", Cube.Tile.allCases),
+                ("V", ["(R' U R' U') y R' F' (R2 U' R' U) R' F R F y'", "(R' U R' U') R D' R' D R' U D' R2 U' R2 D R2", "z D' R2 D (R2 U R') D' (R U' R U) R' D R U' z'", "(R U2 R') D (R U' R U') R U R2 D (R' U' R) D2", "x' (R' F R F') (U R U2 R') (U' R U' R') (U2 R U R') U' x"], "Diagonal Corner Swap", Cube.Tile.allCases),
+                ("Y", ["F (R U' R' U') (R U R') F' (R U R' U') (R' F R F')", "F R' F (R2 U' R' U') (R U R') F' (R U R' U') F'"], "Diagonal Corner Swap", Cube.Tile.allCases),
+                ("H", ["M2 U M2 U2 M2 U M2", "M2 U' M2 U2 M2 U' M2"], "Edges Only", Cube.Tile.allCases),
+                ("Ua", ["M2 U M U2 M' U M2", "(R U' R U) (R U R U') R' U' R2", "y2 (R2 U' R' U') (R U R U) (R U' R) y2"], "Edges Only", Cube.Tile.allCases),
+                ("Ub", ["M2 U' M U2 M' U' M2", "R2 U (R U R' U') (R' U' R' U) R'", "y2 (R' U R' U') R' U' (R' U R U) R2 y2", "y2 (R' U R' U') R3 U' (R' U R U) R2 y2"], "Edges Only", Cube.Tile.allCases),
+                ("Z", ["M' U M2 U M2 U M' U2 M2", "y M' U' M2 U' M2 U' M' U2 M2 y'", "y M2 U M2 U M' U2 M2 U2 M' y'", "M2 U' M2 U' M' U2 M2 U2 M'"], "Edges Only", Cube.Tile.allCases)
             ]
         ],
-        "4x4": [
+        .cube(4): [
             "Parity": [
-                
+                ("OLL Parity", ["Rw U2 x Rw U2 Rw U2 Rw' U2 Lw U2 Rw' U2 Rw U2 Rw' U2 Rw'", "r' U2 l F2 l' F2 r2 U2 r U2 r' U2 F2 r2 F2"], nil, Cube.Tile.allCases)
             ]
         ]
     ]
@@ -177,6 +197,10 @@ extension Algorithm: LosslessStringConvertible {
             }
             
             elements.append(String(move))
+        }
+        
+        for _ in triggerIndices.filter({ $0 == moves.count }) {
+            elements.append(triggerCharacter)
         }
         
         var description = ""
