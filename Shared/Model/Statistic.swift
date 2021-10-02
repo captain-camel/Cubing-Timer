@@ -16,10 +16,14 @@ enum Statistic: CaseIterable, Hashable {
     case mean(Int)
     /// The best time of the `Instance`.
     case personalBest
+    /// The number of solves in the `Instance`.
+    case solveCount
 
     // MARK: Properties
-    /// All possible `Statistic`s.
-    static var allCases: [Statistic] = [.average(5), .mean(5), .personalBest]
+    /// `Statistic`s that the user can chose in settings.
+    static var allCases: [Statistic] = [.average(5), .mean(5), .personalBest, .solveCount]
+    /// `Statistic`s shows in `InstanceDetailSheet`.
+    static var defaultCases: [Statistic] = [.personalBest, .average(5), .average(12), .average(50), .average(100), .average(1000), .solveCount]
 
     /// Abbreviated version of the `Statistic`'s name.
     var shortName: String {
@@ -30,6 +34,8 @@ enum Statistic: CaseIterable, Hashable {
             return "mo\(solves)"
         case .personalBest:
             return "pb"
+        case .solveCount:
+            return "solves:"
         }
     }
 
@@ -42,6 +48,8 @@ enum Statistic: CaseIterable, Hashable {
             return "Mean of \(solves)"
         case .personalBest:
             return "Personal Best"
+        case .solveCount:
+            return "Total Solves"
         }
     }
 
@@ -66,6 +74,8 @@ enum Statistic: CaseIterable, Hashable {
             return "mean:\(solves)"
         case .personalBest:
             return "personalBest"
+        case .solveCount:
+            return "solveCount"
         }
     }
     
@@ -79,6 +89,8 @@ enum Statistic: CaseIterable, Hashable {
             return "Mean"
         case .personalBest:
             return "Personal Best"
+        case .solveCount:
+            return "Solve Count"
         }
     }
     
@@ -133,6 +145,9 @@ enum Statistic: CaseIterable, Hashable {
 
         case "personalBest":
             self = .personalBest
+            
+        case "solveCount":
+            self = .solveCount
 
         default:
             return nil
@@ -149,6 +164,8 @@ enum Statistic: CaseIterable, Hashable {
             return instance.formattedMean(of: solves)
         case .personalBest:
             return Solve.formatTime(instance.unwrappedSolves.map { ($0 as? Solve)?.adjustedTime ?? 0 }.min())
+        case .solveCount:
+            return String(instance.unwrappedSolves.count)
         }
     }
     
