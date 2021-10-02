@@ -76,12 +76,18 @@
 		DD44620E26D89C200085CA18 /* ObservedOptionalObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD44620C26D89C200085CA18 /* ObservedOptionalObject.swift */; };
 		DD44621126D9D4B00085CA18 /* SizeReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD44621026D9D4B00085CA18 /* SizeReader.swift */; };
 		DD44621226D9D4B00085CA18 /* SizeReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD44621026D9D4B00085CA18 /* SizeReader.swift */; };
+		DD4B87F62704F78D0003FE83 /* StatisticCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4B87F52704F78C0003FE83 /* StatisticCard.swift */; };
+		DD4B87F72704F78D0003FE83 /* StatisticCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4B87F52704F78C0003FE83 /* StatisticCard.swift */; };
+		DD4B87F9270683D90003FE83 /* SolveRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4B87F8270683D90003FE83 /* SolveRow.swift */; };
+		DD4B87FA270683D90003FE83 /* SolveRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4B87F8270683D90003FE83 /* SolveRow.swift */; };
 		DD4F1A0026CAD2B7008A1022 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4F19FF26CAD2B7008A1022 /* TimerView.swift */; };
 		DD4F1A0126CAD2B7008A1022 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4F19FF26CAD2B7008A1022 /* TimerView.swift */; };
 		DD4F1A0626CC1306008A1022 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4F1A0526CC1305008A1022 /* String.swift */; };
 		DD4F1A0726CC1306008A1022 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4F1A0526CC1305008A1022 /* String.swift */; };
 		DD6DB3E326E92BCB003F2CA8 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6DB3E226E92BCB003F2CA8 /* SettingsView.swift */; };
 		DD6DB3E426E92BCB003F2CA8 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6DB3E226E92BCB003F2CA8 /* SettingsView.swift */; };
+		DD751E242704128B0059EA49 /* InstanceDetailSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD751E232704128B0059EA49 /* InstanceDetailSheet.swift */; };
+		DD751E252704128B0059EA49 /* InstanceDetailSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD751E232704128B0059EA49 /* InstanceDetailSheet.swift */; };
 		DD7809F926D051AC00E716F3 /* CGSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7809F826D051AC00E716F3 /* CGSize.swift */; };
 		DD7809FA26D051AC00E716F3 /* CGSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7809F826D051AC00E716F3 /* CGSize.swift */; };
 		DD7FE51C26FBA7AF006B8ADF /* JavaScriptEditorHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7FE51B26FBA7AF006B8ADF /* JavaScriptEditorHelp.swift */; };
@@ -159,9 +165,12 @@
 		DD44620626D892E70085CA18 /* TimerActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerActions.swift; sourceTree = "<group>"; };
 		DD44620C26D89C200085CA18 /* ObservedOptionalObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservedOptionalObject.swift; sourceTree = "<group>"; };
 		DD44621026D9D4B00085CA18 /* SizeReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeReader.swift; sourceTree = "<group>"; };
+		DD4B87F52704F78C0003FE83 /* StatisticCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticCard.swift; sourceTree = "<group>"; };
+		DD4B87F8270683D90003FE83 /* SolveRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolveRow.swift; sourceTree = "<group>"; };
 		DD4F19FF26CAD2B7008A1022 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		DD4F1A0526CC1305008A1022 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		DD6DB3E226E92BCB003F2CA8 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		DD751E232704128B0059EA49 /* InstanceDetailSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstanceDetailSheet.swift; sourceTree = "<group>"; };
 		DD7809F826D051AC00E716F3 /* CGSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGSize.swift; sourceTree = "<group>"; };
 		DD7FE51B26FBA7AF006B8ADF /* JavaScriptEditorHelp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JavaScriptEditorHelp.swift; sourceTree = "<group>"; };
 		DD8DC39126E1E37000DCCDC2 /* HUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUD.swift; sourceTree = "<group>"; };
@@ -272,6 +281,9 @@
 				DD090A2126BF355800DEAC82 /* InstanceRow.swift */,
 				DDF6C79926CA35A000B505B9 /* AddInstanceSheet.swift */,
 				DD090A3126BF3AC900DEAC82 /* InstanceView.swift */,
+				DD751E232704128B0059EA49 /* InstanceDetailSheet.swift */,
+				DD4B87F8270683D90003FE83 /* SolveRow.swift */,
+				DD4B87F52704F78C0003FE83 /* StatisticCard.swift */,
 				DDAD68F026D4B1B4005750A5 /* InstanceSettings.swift */,
 				DDB0D88526EEB853007DCEF8 /* JavaScriptEditor.swift */,
 				DD7FE51B26FBA7AF006B8ADF /* JavaScriptEditorHelp.swift */,
@@ -501,6 +513,7 @@
 				DDE1451626E98E19009796D7 /* Color.swift in Sources */,
 				DDC6FC2C26F9517100998645 /* CodeView.swift in Sources */,
 				DD3FE46B26FD123A00FE7408 /* CubeTileView.swift in Sources */,
+				DD4B87F9270683D90003FE83 /* SolveRow.swift in Sources */,
 				DD090A0726BF0C9100DEAC82 /* Solve+CoreDataClass.swift in Sources */,
 				DD0909E826BF09C800DEAC82 /* Cubing_Timer.xcdatamodeld in Sources */,
 				DD090A3226BF3AC900DEAC82 /* InstanceView.swift in Sources */,
@@ -510,6 +523,7 @@
 				DD44620D26D89C200085CA18 /* ObservedOptionalObject.swift in Sources */,
 				DD090A3826BF3D8000DEAC82 /* Device.swift in Sources */,
 				DD7809F926D051AC00E716F3 /* CGSize.swift in Sources */,
+				DD751E242704128B0059EA49 /* InstanceDetailSheet.swift in Sources */,
 				DD0909EA26BF09C800DEAC82 /* Cubing_TimerApp.swift in Sources */,
 				DD090A2226BF355800DEAC82 /* InstanceRow.swift in Sources */,
 				DDF6C78026C782C200B505B9 /* Move.swift in Sources */,
@@ -522,6 +536,7 @@
 				DD090A3526BF3BCE00DEAC82 /* SolveStorage.swift in Sources */,
 				DD090A1026BF0D9C00DEAC82 /* Statistic.swift in Sources */,
 				DDB0D88626EEB853007DCEF8 /* JavaScriptEditor.swift in Sources */,
+				DD4B87F62704F78D0003FE83 /* StatisticCard.swift in Sources */,
 				DDD6954226FF89BD006A069C /* AlgorithmCategoryList.swift in Sources */,
 				DD090A4B26C3698200DEAC82 /* Cube.swift in Sources */,
 				DD090A1626BF0EA100DEAC82 /* Array.swift in Sources */,
@@ -561,6 +576,7 @@
 				DDE1451726E98E19009796D7 /* Color.swift in Sources */,
 				DDC6FC2D26F9517100998645 /* CodeView.swift in Sources */,
 				DD3FE46C26FD123A00FE7408 /* CubeTileView.swift in Sources */,
+				DD4B87FA270683D90003FE83 /* SolveRow.swift in Sources */,
 				DD090A0826BF0C9100DEAC82 /* Solve+CoreDataClass.swift in Sources */,
 				DD0909E926BF09C800DEAC82 /* Cubing_Timer.xcdatamodeld in Sources */,
 				DD090A3326BF3AC900DEAC82 /* InstanceView.swift in Sources */,
@@ -570,6 +586,7 @@
 				DD44620E26D89C200085CA18 /* ObservedOptionalObject.swift in Sources */,
 				DD090A3926BF3D8000DEAC82 /* Device.swift in Sources */,
 				DD7809FA26D051AC00E716F3 /* CGSize.swift in Sources */,
+				DD751E252704128B0059EA49 /* InstanceDetailSheet.swift in Sources */,
 				DD0909EB26BF09C800DEAC82 /* Cubing_TimerApp.swift in Sources */,
 				DD090A2326BF355800DEAC82 /* InstanceRow.swift in Sources */,
 				DDF6C78126C782C200B505B9 /* Move.swift in Sources */,
@@ -582,6 +599,7 @@
 				DD090A3626BF3BCE00DEAC82 /* SolveStorage.swift in Sources */,
 				DD090A1126BF0D9C00DEAC82 /* Statistic.swift in Sources */,
 				DDB0D88726EEB853007DCEF8 /* JavaScriptEditor.swift in Sources */,
+				DD4B87F72704F78D0003FE83 /* StatisticCard.swift in Sources */,
 				DDD6954326FF89BD006A069C /* AlgorithmCategoryList.swift in Sources */,
 				DD090A4C26C3698200DEAC82 /* Cube.swift in Sources */,
 				DD090A1726BF0EA100DEAC82 /* Array.swift in Sources */,
