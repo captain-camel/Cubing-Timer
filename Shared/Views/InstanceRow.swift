@@ -13,6 +13,11 @@ struct InstanceRow: View {
     /// The `Instance` described by the `InstanceRow`.
     @ObservedObject var instance: Instance
     
+    // MARK: Initializers
+    init(_ instance: Instance) {
+        self.instance = instance
+    }
+    
     // MARK: Body
     var body: some View {
         HStack {

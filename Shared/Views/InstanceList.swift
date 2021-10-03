@@ -21,7 +21,7 @@ struct InstanceList: View {
         List {
             ForEach(instances, id: \.self) { instance in
                 NavigationLink(destination: InstanceView(instance: instance)) {
-                    InstanceRow(instance: instance)
+                    InstanceRow(instance)
                 }
             }
             .onDelete(perform: InstanceStorage.delete)
