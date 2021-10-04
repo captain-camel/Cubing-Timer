@@ -20,7 +20,7 @@ struct HUD<Content: View>: View {
             .padding(16)
             .background(
                 Capsule()
-                    .foregroundColor(Color.white)
+                    .foregroundColor(Color(.systemBackground))
                     .shadow(color: Color(.black).opacity(0.16), radius: 12, x: 0, y: 5)
             )
     }
