@@ -35,7 +35,7 @@ struct InstanceList: View {
                     Label("Algorithms", systemImage: "square.grid.3x3.fill")
                 }
                 
-                NavigationLink(destination: Text("help")) {
+                NavigationLink(destination: HelpView()) {
                     Label("Help", systemImage: "questionmark")
                 }
             }
