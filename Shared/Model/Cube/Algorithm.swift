@@ -156,7 +156,7 @@ struct Algorithm: Codable {
             for _ in 1...size * 12 - 15 {
                 let face: Cube.Tile
                 let direction = Move.Direction.allCases.randomElement()!
-                let layers = 0...Int.random(in: 0...size / 2)
+                let layers = 0...Int.random(in: 0...(size / 2)-1)
                 
                 if layers == scramble.moves.last?.layers {
                     face = Cube.Tile.allCases.filter { $0 != scramble.moves.last?.face }.randomElement()!
