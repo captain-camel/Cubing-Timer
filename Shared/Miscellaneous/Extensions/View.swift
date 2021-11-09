@@ -70,27 +70,3 @@ extension View {
             .background(SizeReader(size: size))
     }
 }
-
-extension View {
-    /// Shows a `HUD` when `isPresented` is `true`.
-    func hud<Content: View>(isPresented: Binding<Bool>, timeout: Double? = nil, @ViewBuilder content: () -> Content) -> some View {
-        ZStack(alignment: .top) {
-            self
-            
-            if isPresented.wrappedValue {
-                HUD(content: content)
-                    .transition(AnyTransition.move(edge: .top).combined(with: .opacity))
-                    .onAppear {
-                        if timeout != nil {
-                            DispatchQueue.main.asyncAfter(deadline: .now() + timeout!) {
-                                withAnimation {
-                                    isPresented.wrappedValue = false
-                                }
-                            }
-                        }
-                    }
-                    .zIndex(1)
-            }
-        }
-    }
-}
