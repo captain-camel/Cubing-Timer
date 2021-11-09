@@ -13,6 +13,8 @@ struct InstanceView: View {
     /// The `Instance` displayed by the `InstanceView`.
     @ObservedObject var instance: Instance
     
+    @EnvironmentObject var hudManager: HUDManager
+    
     /// The presentation mode of the view.
     @Environment(\.presentationMode) var presentationMode
     
@@ -40,17 +42,8 @@ struct InstanceView: View {
     /// The size of the `TimerView`.
     @State private var timerSize = CGSize(width: 0, height: 0)
     
-    /// Whether a `HUD` is currently displayed.
-    @State private var showingHUD = false
-    
-    /// The title of the `HUD`.
-    @State private var HUDTitle = ""
-    
-    /// The system name of the icon displayed on the `HUD`.
-    @State private var HUDIconSystemName = ""
-    
-    /// The color of the `HUD`.
-    @State private var HUDIconColor: Color = .black
+    /// Whether the details sheet is showing.
+    @State private var showingDetailSheet = false
     
     /// The color of the background when the timer is running.
     @AppStorage("runningColor") var runningColor = Color(red: 0.27, green: 0.95, blue: 0.65)
@@ -71,7 +64,7 @@ struct InstanceView: View {
     /// The scale of the circle behind the timer that is displayed during inspection.
     private var inspectionCircleScale: CGFloat {
         if (timerState == .inspection || timerState == .running) && instance.doInspection {
-            return 3
+            return 4
         } else if timerState == .ready && instance.doInspection {
             return 0.7
         } else {
@@ -107,19 +100,44 @@ struct InstanceView: View {
                 }
                 
                 Spacer()
+                
+                Button {
+                    Haptics.shared.tap()
+                    
+                    showingDetailSheet = true
+                } label: {
+                    Image(systemName: "chevron.compact.up")
+                        .font(.system(size: 60))
+                        .foregroundColor(.secondary)
+                        .padding()
+                        .offset(y: min(gestureState.rawTranslation.height, 0))
+                        .animation(.default)
+                }
+                .highPriorityGesture(
+                    DragGesture(minimumDistance: 20)
+                        .onChanged { gesture in
+                            gestureChanged(gesture)
+                        }
+                        .onEnded { gesture in
+                            gestureEnded(gesture)
+                        }
+                )
             }
             
             HStack {
                 VStack {
                     TimerView(timerState: $timerState, solve: solves.last, inspectionDuration: $instance.wrappedInspectionDuration) { time in
                         if time < instance.unwrappedSolves.map({ ($0 as? Solve)?.adjustedTime ?? 0 }).min() ?? 0 {
-                            showHUD(title: "New personal best!", systemName: "sparkles", iconColor: .yellow)
+                            hudManager.showHUD(text: "New personal best!", systemImage: "sparkles", imageColor: .yellow)
+                            
                             Haptics.shared.fireworks()
                         }
                         
                         instance.addSolve(time: time)
                     }
                     .readSize(size: $timerSize)
+                    .offset(gestureState.translation)
+                    .animation(.default, value: gestureState.translation)
                     
                     if horizontalSizeClass == .compact {
                         HStack {
@@ -173,12 +191,13 @@ struct InstanceView: View {
             .gesture(
                 DragGesture(minimumDistance: 0)
                     .onChanged { gesture in
-                        gestureChanged(gesture: gesture)
+                        gestureChanged(gesture)
                     }
                     .onEnded { gesture in
-                        gestureEnded(gesture: gesture)
+                        gestureEnded(gesture)
                     }
             )
+            .padding(.bottom, 50)
             .onChange(of: presentationMode.wrappedValue.isPresented) { isPresented in
                 if !isPresented {
                     withAnimation {
@@ -192,15 +211,9 @@ struct InstanceView: View {
                 timerState = .stopped
                 gestureState = .none
             }
-            .hud(isPresented: $showingHUD, timeout: 3) {
-                Label {
-                    Text(HUDTitle)
-                        .bold()
-                } icon: {
-                    Image(systemName: HUDIconSystemName)
-                        .foregroundColor(HUDIconColor)
-                }
-            }
+        }
+        .sheet(isPresented: $showingDetailSheet) {
+            InstanceDetailSheet(instance: instance)
         }
         
         NavigationLink(destination: InstanceSettings(instance: instance), isActive: $showingSettings) {
@@ -215,26 +228,46 @@ struct InstanceView: View {
         /// No gesture in progress.
         case none
         /// Gesture started but not moved.
-        case stationary
+        case stationary(CGSize)
         /// Gesture moved.
-        case moved(GestureDirection)
+        case moved(CGSize)
         /// The gesture is complete.
         case complete
         
         /// The translation of the gesture in a single direction.
         var translation: CGSize {
             switch self {
-            case let .moved(direction):
+            case let .stationary(translation):
+                return translation
+                
+            case let .moved(translation):
                 switch direction {
                 case .left:
-                    return CGSize(width: -15, height: 0)
+                    return CGSize(width: translation.width, height: 0)
                 case .right:
-                    return CGSize(width: 15, height: 0)
+                    return CGSize(width: translation.width, height: 0)
                 case .up:
-                    return CGSize(width: 0, height: -15)
+                    return CGSize.zero
                 case .down:
-                    return CGSize(width: 0, height: 15)
+                    return CGSize(width: 0, height: translation.height)
+                default:
+                    return CGSize.zero
                 }
+                
+            default:
+                return CGSize.zero
+            }
+        }
+        
+        /// The raw translation of the gesture.
+        var rawTranslation: CGSize {
+            switch self {
+            case let .stationary(translation):
+                return translation
+                
+            case let .moved(translation):
+                return translation
+                
             default:
                 return CGSize.zero
             }
@@ -243,8 +276,21 @@ struct InstanceView: View {
         /// The direction of the gesture.
         var direction: GestureDirection? {
             switch self {
-            case let .moved(direction):
-                return direction
+            case let .moved(translation):
+                if abs(translation.width) > abs(translation.height) {
+                    if translation.width < 0 {
+                        return .left
+                    } else {
+                        return .right
+                    }
+                } else {
+                    if translation.height < 0 {
+                        return .up
+                    } else {
+                        return .down
+                    }
+                }
+                
             default:
                 return nil
             }
@@ -264,49 +310,28 @@ struct InstanceView: View {
     }
     
     // MARK: Methods
-    /// Shows a `HUD` with a title and icon.
-    func showHUD(title: String, systemName: String, iconColor: Color) {
-        HUDTitle = title
-        HUDIconSystemName = systemName
-        HUDIconColor = iconColor
-        
-        withAnimation {
-            showingHUD = true
-        }
-    }
-    
     /// Logic to handle when a gesture starts or changes.
-    func gestureChanged(gesture: DragGesture.Value) {
+    func gestureChanged(_ gesture: DragGesture.Value) {
         if gestureState != .complete {
             switch timerState {
             case .stopped, .counting:
-                if gesture.translation.distance > 50 && gestureState == .stationary {
-                    Haptics.shared.tap()
-                    
-                    if abs(gesture.translation.width) > abs(gesture.translation.height) {
-                        if gesture.translation.width < 0 {
-                            gestureState = .moved(.left)
-                        } else {
-                            gestureState = .moved(.right)
+                if gesture.translation.distance < 100 {
+                    if case .stationary = gestureState, gesture.translation.distance > 25 {
+                        Haptics.shared.tap()
+                        
+                        gestureState = .moved(gesture.translation)
+                        
+                        withAnimation {
+                            timerState = .stopped
                         }
                     } else {
-                        if gesture.translation.height < 0 {
-                            gestureState = .moved(.up)
-                        } else {
-                            gestureState = .moved(.down)
+                        if case .moved = gestureState {} else {
+                            withAnimation(.default.delay(0.3)) {
+                                timerState = .counting
+                            }
+                            
+                            gestureState = .stationary(gesture.translation)
                         }
-                    }
-                    
-                    withAnimation {
-                        timerState = .stopped
-                    }
-                } else {
-                    if case .moved = gestureState {} else {
-                        withAnimation(.default.delay(0.3)) {
-                            timerState = .counting
-                        }
-                        
-                        gestureState = .stationary
                     }
                 }
                 
@@ -337,7 +362,7 @@ struct InstanceView: View {
     }
     
     /// Logic to handle the end of a gesture.
-    func gestureEnded(gesture: DragGesture.Value) {
+    func gestureEnded(_ gesture: DragGesture.Value) {
         switch gestureState.direction {
         case .right:
             withAnimation {
@@ -356,13 +381,13 @@ struct InstanceView: View {
             if !instance.solveArray.isEmpty {
                 SolveStorage.delete(instance.solveArray.last!)
                 
-                showHUD(title: "Solve Deleted", systemName: "trash", iconColor: .red)
+                hudManager.showHUD(text: "Solve deleted.", systemImage: "trash", imageColor: .red)
             } else {
                 Haptics.shared.error()
             }
             
         case .up:
-            print("up")
+            showingDetailSheet = true
             
         case .down:
             withAnimation {
