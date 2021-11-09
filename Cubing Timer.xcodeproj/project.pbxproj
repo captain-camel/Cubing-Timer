@@ -65,6 +65,8 @@
 		DD155F0B26E312A7006D91BA /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD155F0926E312A7006D91BA /* Haptics.swift */; };
 		DD2A938526D5C17F00F93897 /* NumberField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2A938426D5C17F00F93897 /* NumberField.swift */; };
 		DD2A938626D5C17F00F93897 /* NumberField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2A938426D5C17F00F93897 /* NumberField.swift */; };
+		DD2C8FFD270A226C00A4ABE1 /* HELP.md in Resources */ = {isa = PBXBuildFile; fileRef = DDD112F9270A1E81002471C1 /* HELP.md */; };
+		DD2C8FFE270A226D00A4ABE1 /* HELP.md in Resources */ = {isa = PBXBuildFile; fileRef = DDD112F9270A1E81002471C1 /* HELP.md */; };
 		DD36907E26ED762700924946 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = DD36907D26ED762700924946 /* Introspect */; };
 		DD3FE46826FD123100FE7408 /* CubeSideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3FE46726FD123100FE7408 /* CubeSideView.swift */; };
 		DD3FE46926FD123100FE7408 /* CubeSideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3FE46726FD123100FE7408 /* CubeSideView.swift */; };
@@ -76,6 +78,7 @@
 		DD44620E26D89C200085CA18 /* ObservedOptionalObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD44620C26D89C200085CA18 /* ObservedOptionalObject.swift */; };
 		DD44621126D9D4B00085CA18 /* SizeReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD44621026D9D4B00085CA18 /* SizeReader.swift */; };
 		DD44621226D9D4B00085CA18 /* SizeReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD44621026D9D4B00085CA18 /* SizeReader.swift */; };
+		DD4AFBED270B6D6300B8E200 /* MarkdownUI in Frameworks */ = {isa = PBXBuildFile; productRef = DD4AFBEC270B6D6300B8E200 /* MarkdownUI */; };
 		DD4B87F62704F78D0003FE83 /* StatisticCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4B87F52704F78C0003FE83 /* StatisticCard.swift */; };
 		DD4B87F72704F78D0003FE83 /* StatisticCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4B87F52704F78C0003FE83 /* StatisticCard.swift */; };
 		DD4B87F9270683D90003FE83 /* SolveRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4B87F8270683D90003FE83 /* SolveRow.swift */; };
@@ -84,6 +87,8 @@
 		DD4F1A0126CAD2B7008A1022 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4F19FF26CAD2B7008A1022 /* TimerView.swift */; };
 		DD4F1A0626CC1306008A1022 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4F1A0526CC1305008A1022 /* String.swift */; };
 		DD4F1A0726CC1306008A1022 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4F1A0526CC1305008A1022 /* String.swift */; };
+		DD65C1E92739A8D600AC66B6 /* HUDManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD65C1E82739A8D600AC66B6 /* HUDManager.swift */; };
+		DD65C1EA2739A8D600AC66B6 /* HUDManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD65C1E82739A8D600AC66B6 /* HUDManager.swift */; };
 		DD6DB3E326E92BCB003F2CA8 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6DB3E226E92BCB003F2CA8 /* SettingsView.swift */; };
 		DD6DB3E426E92BCB003F2CA8 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6DB3E226E92BCB003F2CA8 /* SettingsView.swift */; };
 		DD751E242704128B0059EA49 /* InstanceDetailSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD751E232704128B0059EA49 /* InstanceDetailSheet.swift */; };
@@ -104,6 +109,9 @@
 		DDB0D88A26EEBB86007DCEF8 /* JavaScript.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB0D88826EEBB85007DCEF8 /* JavaScript.swift */; };
 		DDC6FC2C26F9517100998645 /* CodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC6FC2B26F9517100998645 /* CodeView.swift */; };
 		DDC6FC2D26F9517100998645 /* CodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC6FC2B26F9517100998645 /* CodeView.swift */; };
+		DDCFF0C62739AE51005A1043 /* CoreCharts in Frameworks */ = {isa = PBXBuildFile; productRef = DDCFF0C52739AE51005A1043 /* CoreCharts */; };
+		DDD112F4270A1C27002471C1 /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD112F3270A1C27002471C1 /* HelpView.swift */; };
+		DDD112F5270A1C27002471C1 /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD112F3270A1C27002471C1 /* HelpView.swift */; };
 		DDD6954226FF89BD006A069C /* AlgorithmCategoryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD6954126FF89BD006A069C /* AlgorithmCategoryList.swift */; };
 		DDD6954326FF89BD006A069C /* AlgorithmCategoryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD6954126FF89BD006A069C /* AlgorithmCategoryList.swift */; };
 		DDD6954626FF8C9B006A069C /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = DDD6954526FF8C9B006A069C /* OrderedCollections */; };
@@ -111,6 +119,8 @@
 		DDE1095726FE3F23006E1626 /* AlgorithmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE1095526FE3F23006E1626 /* AlgorithmView.swift */; };
 		DDE1451626E98E19009796D7 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE1451526E98E19009796D7 /* Color.swift */; };
 		DDE1451726E98E19009796D7 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE1451526E98E19009796D7 /* Color.swift */; };
+		DDE65FEF270A3C8D00419BD9 /* InstanceStatisticView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE65FEE270A3C8D00419BD9 /* InstanceStatisticView.swift */; };
+		DDE65FF0270A3C8D00419BD9 /* InstanceStatisticView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE65FEE270A3C8D00419BD9 /* InstanceStatisticView.swift */; };
 		DDF6C78026C782C200B505B9 /* Move.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF6C77F26C782C200B505B9 /* Move.swift */; };
 		DDF6C78126C782C200B505B9 /* Move.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF6C77F26C782C200B505B9 /* Move.swift */; };
 		DDF6C78326C782E900B505B9 /* Algorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF6C78226C782E900B505B9 /* Algorithm.swift */; };
@@ -124,6 +134,19 @@
 		DDF6C79A26CA35A000B505B9 /* AddInstanceSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF6C79926CA35A000B505B9 /* AddInstanceSheet.swift */; };
 		DDF6C79B26CA35A000B505B9 /* AddInstanceSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF6C79926CA35A000B505B9 /* AddInstanceSheet.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		DD50D5A6270A84A9006B1FF1 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		DD0909D326BF09C500DEAC82 /* Shared.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Shared.xcdatamodel; sourceTree = "<group>"; };
@@ -169,6 +192,7 @@
 		DD4B87F8270683D90003FE83 /* SolveRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolveRow.swift; sourceTree = "<group>"; };
 		DD4F19FF26CAD2B7008A1022 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		DD4F1A0526CC1305008A1022 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		DD65C1E82739A8D600AC66B6 /* HUDManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUDManager.swift; sourceTree = "<group>"; };
 		DD6DB3E226E92BCB003F2CA8 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		DD751E232704128B0059EA49 /* InstanceDetailSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstanceDetailSheet.swift; sourceTree = "<group>"; };
 		DD7809F826D051AC00E716F3 /* CGSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGSize.swift; sourceTree = "<group>"; };
@@ -179,9 +203,12 @@
 		DDB0D88526EEB853007DCEF8 /* JavaScriptEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JavaScriptEditor.swift; sourceTree = "<group>"; };
 		DDB0D88826EEBB85007DCEF8 /* JavaScript.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JavaScript.swift; sourceTree = "<group>"; };
 		DDC6FC2B26F9517100998645 /* CodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeView.swift; sourceTree = "<group>"; };
+		DDD112F3270A1C27002471C1 /* HelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpView.swift; sourceTree = "<group>"; };
+		DDD112F9270A1E81002471C1 /* HELP.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = HELP.md; sourceTree = "<group>"; };
 		DDD6954126FF89BD006A069C /* AlgorithmCategoryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlgorithmCategoryList.swift; sourceTree = "<group>"; };
 		DDE1095526FE3F23006E1626 /* AlgorithmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlgorithmView.swift; sourceTree = "<group>"; };
 		DDE1451526E98E19009796D7 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		DDE65FEE270A3C8D00419BD9 /* InstanceStatisticView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstanceStatisticView.swift; sourceTree = "<group>"; };
 		DDF6C77F26C782C200B505B9 /* Move.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Move.swift; sourceTree = "<group>"; };
 		DDF6C78226C782E900B505B9 /* Algorithm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Algorithm.swift; sourceTree = "<group>"; };
 		DDF6C78C26C97ED100B505B9 /* Stopwatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stopwatch.swift; sourceTree = "<group>"; };
@@ -195,6 +222,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDCFF0C62739AE51005A1043 /* CoreCharts in Frameworks */,
+				DD4AFBED270B6D6300B8E200 /* MarkdownUI in Frameworks */,
 				DDD6954626FF8C9B006A069C /* OrderedCollections in Frameworks */,
 				DD36907E26ED762700924946 /* Introspect in Frameworks */,
 			);
@@ -277,11 +306,13 @@
 			children = (
 				DD090A4326C1B1A000DEAC82 /* ContentView.swift */,
 				DD0909D526BF09C500DEAC82 /* InstanceList.swift */,
+				DDD112F3270A1C27002471C1 /* HelpView.swift */,
 				DD6DB3E226E92BCB003F2CA8 /* SettingsView.swift */,
 				DD090A2126BF355800DEAC82 /* InstanceRow.swift */,
 				DDF6C79926CA35A000B505B9 /* AddInstanceSheet.swift */,
 				DD090A3126BF3AC900DEAC82 /* InstanceView.swift */,
 				DD751E232704128B0059EA49 /* InstanceDetailSheet.swift */,
+				DDE65FEE270A3C8D00419BD9 /* InstanceStatisticView.swift */,
 				DD4B87F8270683D90003FE83 /* SolveRow.swift */,
 				DD4B87F52704F78C0003FE83 /* StatisticCard.swift */,
 				DDAD68F026D4B1B4005750A5 /* InstanceSettings.swift */,
@@ -323,6 +354,7 @@
 				DD44620C26D89C200085CA18 /* ObservedOptionalObject.swift */,
 				DD155F0926E312A7006D91BA /* Haptics.swift */,
 				DDB0D88826EEBB85007DCEF8 /* JavaScript.swift */,
+				DD65C1E82739A8D600AC66B6 /* HUDManager.swift */,
 				DD090A2726BF3A4D00DEAC82 /* Button Styles */,
 				DD090A1426BF0E8900DEAC82 /* Extensions */,
 			);
@@ -376,6 +408,7 @@
 			isa = PBXGroup;
 			children = (
 				DD0909D726BF09C800DEAC82 /* Assets.xcassets */,
+				DDD112F9270A1E81002471C1 /* HELP.md */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -400,6 +433,7 @@
 				DD0909D826BF09C800DEAC82 /* Sources */,
 				DD0909D926BF09C800DEAC82 /* Frameworks */,
 				DD0909DA26BF09C800DEAC82 /* Resources */,
+				DD50D5A6270A84A9006B1FF1 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
@@ -409,6 +443,8 @@
 			packageProductDependencies = (
 				DD36907D26ED762700924946 /* Introspect */,
 				DDD6954526FF8C9B006A069C /* OrderedCollections */,
+				DD4AFBEC270B6D6300B8E200 /* MarkdownUI */,
+				DDCFF0C52739AE51005A1043 /* CoreCharts */,
 			);
 			productName = "Cubing Timer (iOS)";
 			productReference = DD0909DC26BF09C800DEAC82 /* Cubing Timer.app */;
@@ -437,7 +473,7 @@
 		DD0909CD26BF09C500DEAC82 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1250;
+				LastSwiftUpdateCheck = 1300;
 				LastUpgradeCheck = 1300;
 				TargetAttributes = {
 					DD0909DB26BF09C800DEAC82 = {
@@ -460,6 +496,8 @@
 			packageReferences = (
 				DD36907C26ED762700924946 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
 				DDD6954426FF8C9B006A069C /* XCRemoteSwiftPackageReference "swift-collections" */,
+				DD4AFBEB270B6D6300B8E200 /* XCRemoteSwiftPackageReference "MarkdownUI" */,
+				DDCFF0C42739AE51005A1043 /* XCRemoteSwiftPackageReference "CoreCharts" */,
 			);
 			productRefGroup = DD0909DD26BF09C800DEAC82 /* Products */;
 			projectDirPath = "";
@@ -477,6 +515,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DD0B59482701066100E3E144 /* Assets.xcassets in Resources */,
+				DD2C8FFE270A226D00A4ABE1 /* HELP.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -485,6 +524,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DD0909F126BF09C800DEAC82 /* Assets.xcassets in Resources */,
+				DD2C8FFD270A226C00A4ABE1 /* HELP.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -534,9 +574,11 @@
 				DDB0D88926EEBB86007DCEF8 /* JavaScript.swift in Sources */,
 				DDF6C79326C97F5C00B505B9 /* Inspection.swift in Sources */,
 				DD090A3526BF3BCE00DEAC82 /* SolveStorage.swift in Sources */,
+				DD65C1E92739A8D600AC66B6 /* HUDManager.swift in Sources */,
 				DD090A1026BF0D9C00DEAC82 /* Statistic.swift in Sources */,
 				DDB0D88626EEB853007DCEF8 /* JavaScriptEditor.swift in Sources */,
 				DD4B87F62704F78D0003FE83 /* StatisticCard.swift in Sources */,
+				DDE65FEF270A3C8D00419BD9 /* InstanceStatisticView.swift in Sources */,
 				DDD6954226FF89BD006A069C /* AlgorithmCategoryList.swift in Sources */,
 				DD090A4B26C3698200DEAC82 /* Cube.swift in Sources */,
 				DD090A1626BF0EA100DEAC82 /* Array.swift in Sources */,
@@ -544,6 +586,7 @@
 				DD0909EC26BF09C800DEAC82 /* InstanceList.swift in Sources */,
 				DDF6C78326C782E900B505B9 /* Algorithm.swift in Sources */,
 				DDAD68F126D4B1B4005750A5 /* InstanceSettings.swift in Sources */,
+				DDD112F4270A1C27002471C1 /* HelpView.swift in Sources */,
 				DD2A938526D5C17F00F93897 /* NumberField.swift in Sources */,
 				DD8DC39226E1E37000DCCDC2 /* HUD.swift in Sources */,
 				DD4F1A0026CAD2B7008A1022 /* TimerView.swift in Sources */,
@@ -597,9 +640,11 @@
 				DDB0D88A26EEBB86007DCEF8 /* JavaScript.swift in Sources */,
 				DDF6C79426C97F5C00B505B9 /* Inspection.swift in Sources */,
 				DD090A3626BF3BCE00DEAC82 /* SolveStorage.swift in Sources */,
+				DD65C1EA2739A8D600AC66B6 /* HUDManager.swift in Sources */,
 				DD090A1126BF0D9C00DEAC82 /* Statistic.swift in Sources */,
 				DDB0D88726EEB853007DCEF8 /* JavaScriptEditor.swift in Sources */,
 				DD4B87F72704F78D0003FE83 /* StatisticCard.swift in Sources */,
+				DDE65FF0270A3C8D00419BD9 /* InstanceStatisticView.swift in Sources */,
 				DDD6954326FF89BD006A069C /* AlgorithmCategoryList.swift in Sources */,
 				DD090A4C26C3698200DEAC82 /* Cube.swift in Sources */,
 				DD090A1726BF0EA100DEAC82 /* Array.swift in Sources */,
@@ -607,6 +652,7 @@
 				DD0909ED26BF09C800DEAC82 /* InstanceList.swift in Sources */,
 				DDF6C78426C782E900B505B9 /* Algorithm.swift in Sources */,
 				DDAD68F226D4B1B4005750A5 /* InstanceSettings.swift in Sources */,
+				DDD112F5270A1C27002471C1 /* HelpView.swift in Sources */,
 				DD2A938626D5C17F00F93897 /* NumberField.swift in Sources */,
 				DD8DC39326E1E37000DCCDC2 /* HUD.swift in Sources */,
 				DD4F1A0126CAD2B7008A1022 /* TimerView.swift in Sources */,
@@ -734,10 +780,11 @@
 		DD0909F526BF09C800DEAC82 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = HYK393S488;
+				DEVELOPMENT_TEAM = R96YVS7VK5;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -745,7 +792,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "net.camelcode.Cubing-Timer";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.camelcode.Cubing-Timer-";
 				PRODUCT_NAME = "Cubing Timer";
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
@@ -756,10 +803,11 @@
 		DD0909F626BF09C800DEAC82 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = HYK393S488;
+				DEVELOPMENT_TEAM = R96YVS7VK5;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -767,7 +815,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "net.camelcode.Cubing-Timer";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.camelcode.Cubing-Timer-";
 				PRODUCT_NAME = "Cubing Timer";
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
@@ -867,6 +915,22 @@
 				minimumVersion = 0.1.3;
 			};
 		};
+		DD4AFBEB270B6D6300B8E200 /* XCRemoteSwiftPackageReference "MarkdownUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/gonzalezreal/MarkdownUI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.5.2;
+			};
+		};
+		DDCFF0C42739AE51005A1043 /* XCRemoteSwiftPackageReference "CoreCharts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/captain-camel/CoreCharts";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		DDD6954426FF8C9B006A069C /* XCRemoteSwiftPackageReference "swift-collections" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apple/swift-collections.git";
@@ -882,6 +946,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = DD36907C26ED762700924946 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
 			productName = Introspect;
+		};
+		DD4AFBEC270B6D6300B8E200 /* MarkdownUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DD4AFBEB270B6D6300B8E200 /* XCRemoteSwiftPackageReference "MarkdownUI" */;
+			productName = MarkdownUI;
+		};
+		DDCFF0C52739AE51005A1043 /* CoreCharts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DDCFF0C42739AE51005A1043 /* XCRemoteSwiftPackageReference "CoreCharts" */;
+			productName = CoreCharts;
 		};
 		DDD6954526FF8C9B006A069C /* OrderedCollections */ = {
 			isa = XCSwiftPackageProductDependency;
