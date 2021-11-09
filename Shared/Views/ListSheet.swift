@@ -59,7 +59,7 @@ struct ListSheet: View {
             .padding()
             .navigationBarTitle(title, displayMode: .inline)
             .toolbar {
-                ToolbarItem(placement: .primaryAction) {
+                ToolbarItem(placement: .confirmationAction) {
                     Button("Done") {
                         presentationMode.wrappedValue.dismiss()
                     }
