@@ -23,10 +23,10 @@ struct StatisticCard: View {
     
     // MARK: Body
     var body: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 25, style: .continuous)
-                .fill(Color.white)
-                .shadow(radius: 10)
+        ZStack(alignment: .leading) {
+            RoundedRectangle(cornerRadius: 12, style: .continuous)
+                .fill(Color(.systemBackground))
+                .shadow(radius: 3)
             
             VStack(alignment: .leading) {
                 HStack {
@@ -44,6 +44,7 @@ struct StatisticCard: View {
                     .font(.title)
                     .fontWeight(.black)
             }
+            .padding()
         }
     }
 }
