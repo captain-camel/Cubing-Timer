@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreCharts
 
 /// A view containing statistics about an `Instance`.
 struct InstanceStatisticView: View {
@@ -26,9 +27,8 @@ struct InstanceStatisticView: View {
     // MARK: Body
     var body: some View {
         ScrollView {
-            InstanceLineChart(instance)
-                .frame(height: 320)
-                .padding(.horizontal)
+            LineChart(data: instance.solveArray.map(\.time))
+                .padding()
             
             LazyVGrid(columns: columns) {
                 ForEach(Statistic.defaultCases, id: \.self) { statistic in
