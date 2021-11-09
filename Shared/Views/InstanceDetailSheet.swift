@@ -13,14 +13,15 @@ struct InstanceDetailSheet: View {
     /// The presentation mode of the sheet.
     @Environment(\.presentationMode) var presentationMode
     
-    /// The instance displayed.
+    /// The `Instance` displayed.
     @ObservedObject var instance: Instance
     
     /// Which tab is selected.
     @State private var selectedTab = "Solves"
 
+    /// Columns of the `LazyVGrid`.
     let columns = [
-        GridItem(.adaptive(minimum: 150))
+        GridItem(.adaptive(minimum: 180))
     ]
     
     // MARK: Body
@@ -35,15 +36,7 @@ struct InstanceDetailSheet: View {
                 }
                 .tag("Solves")
                 
-                ScrollView {
-                    LazyVGrid(columns: columns) {
-                        ForEach(Statistic.defaultCases, id: \.self) { statistic in
-                            StatisticCard(statistic, instance: instance)
-                                .padding(5)
-                        }
-                    }
-                    .padding(.horizontal)
-                }
+                InstanceStatisticView(instance)
                 .tabItem {
                     Label("Statistics", systemImage: "chart.bar.xaxis")
                 }
