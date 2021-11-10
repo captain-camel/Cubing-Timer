@@ -68,6 +68,8 @@
 		DD2C8FFD270A226C00A4ABE1 /* HELP.md in Resources */ = {isa = PBXBuildFile; fileRef = DDD112F9270A1E81002471C1 /* HELP.md */; };
 		DD2C8FFE270A226D00A4ABE1 /* HELP.md in Resources */ = {isa = PBXBuildFile; fileRef = DDD112F9270A1E81002471C1 /* HELP.md */; };
 		DD36907E26ED762700924946 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = DD36907D26ED762700924946 /* Introspect */; };
+		DD39D666273C8C4100DD25F8 /* Algorithms.plist in Resources */ = {isa = PBXBuildFile; fileRef = DD39D665273C8C4100DD25F8 /* Algorithms.plist */; };
+		DD39D667273C8C4100DD25F8 /* Algorithms.plist in Resources */ = {isa = PBXBuildFile; fileRef = DD39D665273C8C4100DD25F8 /* Algorithms.plist */; };
 		DD3FE46826FD123100FE7408 /* CubeSideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3FE46726FD123100FE7408 /* CubeSideView.swift */; };
 		DD3FE46926FD123100FE7408 /* CubeSideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3FE46726FD123100FE7408 /* CubeSideView.swift */; };
 		DD3FE46B26FD123A00FE7408 /* CubeTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3FE46A26FD123A00FE7408 /* CubeTileView.swift */; };
@@ -183,6 +185,7 @@
 		DD0E676A26CDCB4400E1C444 /* ListSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListSheet.swift; sourceTree = "<group>"; };
 		DD155F0926E312A7006D91BA /* Haptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
 		DD2A938426D5C17F00F93897 /* NumberField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberField.swift; sourceTree = "<group>"; };
+		DD39D665273C8C4100DD25F8 /* Algorithms.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Algorithms.plist; sourceTree = "<group>"; };
 		DD3FE46726FD123100FE7408 /* CubeSideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubeSideView.swift; sourceTree = "<group>"; };
 		DD3FE46A26FD123A00FE7408 /* CubeTileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubeTileView.swift; sourceTree = "<group>"; };
 		DD44620626D892E70085CA18 /* TimerActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerActions.swift; sourceTree = "<group>"; };
@@ -409,6 +412,7 @@
 			children = (
 				DD0909D726BF09C800DEAC82 /* Assets.xcassets */,
 				DDD112F9270A1E81002471C1 /* HELP.md */,
+				DD39D665273C8C4100DD25F8 /* Algorithms.plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -515,6 +519,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DD0B59482701066100E3E144 /* Assets.xcassets in Resources */,
+				DD39D666273C8C4100DD25F8 /* Algorithms.plist in Resources */,
 				DD2C8FFE270A226D00A4ABE1 /* HELP.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -524,6 +529,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DD0909F126BF09C800DEAC82 /* Assets.xcassets in Resources */,
+				DD39D667273C8C4100DD25F8 /* Algorithms.plist in Resources */,
 				DD2C8FFD270A226C00A4ABE1 /* HELP.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
