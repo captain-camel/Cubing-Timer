@@ -26,6 +26,7 @@ struct SolveRow: View {
                 if let scramble = solve.scramble {
                     Text(scramble)
                         .foregroundColor(.gray)
+                        .font(.caption)
                 }
             }
             
@@ -39,4 +40,27 @@ struct SolveRow: View {
             .buttonStyle(BorderlessButtonStyle())
         }
     }
+    
 }
+
+//This crashes Xcode. I don't think it likes me making a CoreData object for a preview
+/*
+struct SolveRow_Previews: PreviewProvider {
+    static var shared = Self()
+    
+    var solve: Solve
+    
+    init() {
+        solve = Solve()
+        
+        solve.time = 29.9111
+        solve.date = Date()
+        solve.scramble = "R U R D R U2 D2 B2 F U' F2"
+    }
+    
+    static var previews: some View {
+        SolveRow(shared.solve)
+            
+    }
+}
+*/
