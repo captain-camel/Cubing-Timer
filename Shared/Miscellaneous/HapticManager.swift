@@ -1,5 +1,5 @@
 //
-//  Haptics.swift
+//  HapticManager.swift
 //  Haptics
 //
 //  Created by Cameron Delong on 9/3/21.
@@ -9,13 +9,10 @@ import CoreHaptics
 import AudioToolbox.AudioServices
 import UIKit
 
-/// A `struct` containng different haptic feedback patterns.
-struct Haptics {
+/// A `struct` containing different haptic feedback patterns.
+class HapticManager: ObservableObject {
     // MARK: Properties
-    /// A singleton instance of `Haptics`.
-    static var shared = Haptics()
-    
-    /// The haptic engine.
+    /// The haptic engine to perform haptic feedback.
     var engine: CHHapticEngine?
     
     // MARK: Initializers
@@ -25,7 +22,6 @@ struct Haptics {
         
         engine = try? CHHapticEngine()
         try? engine?.start()
-        
     }
     
     // MARK: Methods

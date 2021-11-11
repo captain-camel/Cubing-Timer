@@ -18,7 +18,11 @@ struct ContentView: View {
         ]
     ) var instances: FetchedResults<Instance>
     
+    /// An object to handle showing app-wide notifications through HUDs.
     @StateObject var hudManager = HUDManager()
+    
+    /// An object to handle haptics.
+    @StateObject var hapticManager = HapticManager()
     
     // MARK: Body
     var body: some View {
@@ -28,15 +32,21 @@ struct ContentView: View {
         .navigationViewStyle(StackNavigationViewStyle())
         .overlay(
             VStack {
-                ForEach(hudManager.huds, id: \.self) { hud in
-                    HUD {
-                        if let systemImage = hud.systemImage {
-                            Label(hud.text, systemImage: systemImage)
-                        } else {
-                            Text(hud.text)
+                ZStack {
+                    ForEach(hudManager.huds, id: \.self) { hud in
+                        HUD {
+                            if let systemImage = hud.systemImage, let imageColor = hud.imageColor {
+                                HStack {
+                                    Image(systemName: systemImage)
+                                        .foregroundColor(imageColor)
+                                    Text(hud.text)
+                                }
+                            } else {
+                                Text(hud.text)
+                            }
                         }
+                        .transition(.move(edge: .top).combined(with: .opacity))
                     }
-                    .transition(.move(edge: .top).combined(with: .opacity))
                 }
                 
                 Spacer()
@@ -44,5 +54,6 @@ struct ContentView: View {
                 .animation(.easeInOut(duration: 0.4))
         )
         .environmentObject(hudManager)
+        .environmentObject(hapticManager)
     }
 }

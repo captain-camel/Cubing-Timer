@@ -61,8 +61,8 @@
 		DD0E676926CD994500E1C444 /* PopoverRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0E676726CD994500E1C444 /* PopoverRow.swift */; };
 		DD0E676B26CDCB4400E1C444 /* ListSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0E676A26CDCB4400E1C444 /* ListSheet.swift */; };
 		DD0E676C26CDCB4400E1C444 /* ListSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0E676A26CDCB4400E1C444 /* ListSheet.swift */; };
-		DD155F0A26E312A7006D91BA /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD155F0926E312A7006D91BA /* Haptics.swift */; };
-		DD155F0B26E312A7006D91BA /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD155F0926E312A7006D91BA /* Haptics.swift */; };
+		DD155F0A26E312A7006D91BA /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD155F0926E312A7006D91BA /* HapticManager.swift */; };
+		DD155F0B26E312A7006D91BA /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD155F0926E312A7006D91BA /* HapticManager.swift */; };
 		DD2A938526D5C17F00F93897 /* NumberField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2A938426D5C17F00F93897 /* NumberField.swift */; };
 		DD2A938626D5C17F00F93897 /* NumberField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2A938426D5C17F00F93897 /* NumberField.swift */; };
 		DD2C8FFD270A226C00A4ABE1 /* HELP.md in Resources */ = {isa = PBXBuildFile; fileRef = DDD112F9270A1E81002471C1 /* HELP.md */; };
@@ -182,7 +182,7 @@
 		DD090A4A26C3698200DEAC82 /* Cube.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cube.swift; sourceTree = "<group>"; };
 		DD0E676726CD994500E1C444 /* PopoverRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverRow.swift; sourceTree = "<group>"; };
 		DD0E676A26CDCB4400E1C444 /* ListSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListSheet.swift; sourceTree = "<group>"; };
-		DD155F0926E312A7006D91BA /* Haptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
+		DD155F0926E312A7006D91BA /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
 		DD2A938426D5C17F00F93897 /* NumberField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberField.swift; sourceTree = "<group>"; };
 		DD39D665273C8C4100DD25F8 /* Algorithms.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Algorithms.plist; sourceTree = "<group>"; };
 		DD3FE46726FD123100FE7408 /* CubeSideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubeSideView.swift; sourceTree = "<group>"; };
@@ -353,7 +353,7 @@
 			children = (
 				DD090A3726BF3D8000DEAC82 /* Device.swift */,
 				DD44620C26D89C200085CA18 /* ObservedOptionalObject.swift */,
-				DD155F0926E312A7006D91BA /* Haptics.swift */,
+				DD155F0926E312A7006D91BA /* HapticManager.swift */,
 				DDB0D88826EEBB85007DCEF8 /* JavaScript.swift */,
 				DD65C1E82739A8D600AC66B6 /* HUDManager.swift */,
 				DD090A2726BF3A4D00DEAC82 /* Button Styles */,
@@ -538,7 +538,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DDA4F14626FF925A0072E4F3 /* AlgorithmList.swift in Sources */,
-				DD155F0A26E312A7006D91BA /* Haptics.swift in Sources */,
+				DD155F0A26E312A7006D91BA /* HapticManager.swift in Sources */,
 				DD0909FD26BF0B8D00DEAC82 /* InstanceStorage.swift in Sources */,
 				DD090A2F26BF3AB700DEAC82 /* ListPopover.swift in Sources */,
 				DDF6C79A26CA35A000B505B9 /* AddInstanceSheet.swift in Sources */,
@@ -604,7 +604,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DDA4F14726FF925A0072E4F3 /* AlgorithmList.swift in Sources */,
-				DD155F0B26E312A7006D91BA /* Haptics.swift in Sources */,
+				DD155F0B26E312A7006D91BA /* HapticManager.swift in Sources */,
 				DD0909FE26BF0B8D00DEAC82 /* InstanceStorage.swift in Sources */,
 				DD090A3026BF3AB700DEAC82 /* ListPopover.swift in Sources */,
 				DDF6C79B26CA35A000B505B9 /* AddInstanceSheet.swift in Sources */,

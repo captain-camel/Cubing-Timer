@@ -8,7 +8,7 @@
 import SwiftUI
 import MarkdownUI
 
-/// A view that
+/// A view displaying help on how to use the app.
 struct HelpView: View {
     // MARK: Properties
     /// Markdown to display when help file fails to load.

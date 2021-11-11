@@ -13,6 +13,9 @@ struct TimerView: View {
     /// The state of the timer.
     @Binding var timerState: TimerState
     
+    /// A manager to handle haptic feedback.
+    @EnvironmentObject var hapticManager: HapticManager
+    
     /// A callback that is called when a the timer is stopped, with the time on the timer.
     let timerStoppedAction: (_ time: Double) -> Void
     
@@ -113,7 +116,7 @@ struct TimerView: View {
                             timerState = .ready
                         }
                         
-                        Haptics.shared.pop()
+                        hapticManager.pop()
                     }
                 }
                 .onChange(of: timerState) { [timerState] newValue in

@@ -13,7 +13,11 @@ struct InstanceView: View {
     /// The `Instance` displayed by the `InstanceView`.
     @ObservedObject var instance: Instance
     
+    /// A manager to handle HUD notifications.
     @EnvironmentObject var hudManager: HUDManager
+    
+    /// A manager to handle haptic feedback.
+    @EnvironmentObject var hapticManager: HapticManager
     
     /// The presentation mode of the view.
     @Environment(\.presentationMode) var presentationMode
@@ -102,7 +106,7 @@ struct InstanceView: View {
                 Spacer()
                 
                 Button {
-                    Haptics.shared.tap()
+                    hapticManager.tap()
                     
                     showingDetailSheet = true
                 } label: {
@@ -130,7 +134,7 @@ struct InstanceView: View {
                         if time < instance.unwrappedSolves.map({ ($0 as? Solve)?.adjustedTime ?? 0 }).min() ?? 0 {
                             hudManager.showHUD(text: "New personal best!", systemImage: "sparkles", imageColor: .yellow)
                             
-                            Haptics.shared.fireworks()
+                            hapticManager.fireworks()
                         }
                         
                         instance.addSolve(time: time)
@@ -176,7 +180,7 @@ struct InstanceView: View {
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(
-                ZStack {
+                ZStack {// TODO: Use frame instad of scale, and calculate the radius with pythagoran thoemre. Also use CGFloat.leastnonzero for small
                     Circle()
                         .foregroundColor(inspectionColor)
                         .scaleEffect(inspectionCircleScale)
@@ -317,7 +321,7 @@ struct InstanceView: View {
             case .stopped, .counting:
                 if gesture.translation.distance < 100 {
                     if case .stationary = gestureState, gesture.translation.distance > 25 {
-                        Haptics.shared.tap()
+                        hapticManager.tap()
                         
                         gestureState = .moved(gesture.translation)
                         
@@ -342,7 +346,7 @@ struct InstanceView: View {
                 
                 gestureState = .complete
                 
-                Haptics.shared.tap()
+                hapticManager.tap()
                 
             case .running:
                 withAnimation {
@@ -353,7 +357,7 @@ struct InstanceView: View {
                 
                 gestureState = .complete
                 
-                Haptics.shared.tap()
+                hapticManager.tap()
                 
             default:
                 break
@@ -374,16 +378,16 @@ struct InstanceView: View {
             }
             
             if instance.solveArray.isEmpty {
-                Haptics.shared.error()
+                hapticManager.error()
             }
             
         case .left:
-            if !instance.solveArray.isEmpty {
-                SolveStorage.delete(instance.solveArray.last!)
+            if let lastSolve = instance.solveArray.last {
+                SolveStorage.delete(lastSolve)
                 
                 hudManager.showHUD(text: "Solve deleted.", systemImage: "trash", imageColor: .red)
             } else {
-                Haptics.shared.error()
+                hapticManager.error()
             }
             
         case .up:
@@ -399,7 +403,7 @@ struct InstanceView: View {
             }
             
             if instance.solveArray.isEmpty {
-                Haptics.shared.error()
+                hapticManager.error()
             }
             
         default:
@@ -414,7 +418,7 @@ struct InstanceView: View {
                     }
                 }
                 
-                Haptics.shared.tap()
+                hapticManager.tap()
             } else if timerState == .counting {
                 withAnimation {
                     timerState = .stopped
