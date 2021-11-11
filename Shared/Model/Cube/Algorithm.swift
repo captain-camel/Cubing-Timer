@@ -5,125 +5,20 @@
 //  Created by Cameron Delong on 8/13/21.
 //
 
-import OrderedCollections
 import Foundation
 
 /// A series of `Moves` forming an `Algorithm` that can be performed on a `Cube`.
-struct Algorithm: Codable {
+struct Algorithm {
     // MARK: Properties
     /// A dictionary of various algorithms for a number of puzzles.
-    static var algorithms: OrderedDictionary<Puzzle, OrderedDictionary<String, [(name: String, algorithms: [Algorithm], category: String?, highlightedTiles: [Cube.Tile])]>> = [
-        .cube(3): [
-            "2-look OLL": [
-                ("Dot", ["F (R U R' U') F' f (R U R' U') f'"], "Edges", [.up]),
-                ("I-Shape", ["F (R U R' U') F'", "(R U R' U') M' (U R U' r')"], "Edges", [.up]),
-                ("L-Shape", ["f (R U R' U') f'", "y2 F (U R U' R') F'", "y2 (r U R' U') r' R (U R U' R')"], "Edges", [.up]),
-                ("Antisune", ["(R U2 R' U') (R U' R')", "y' (R' U' R U') (R' U2 R)", "y (L' U' L U') (L' U2 L)"], "Corners", [.up]),
-                ("H", ["(R U R' U) (R U' R' U) (R U2 R')", "y F (R U R' U') (R U R' U') (R U R' U') F'"], "Corners", [.up]),
-                ("L", ["(F R' F' r) (U R U' r')"], "Corners", [.up]),
-                ("Pi", ["R U2 (R2 U' R2 U' R2) U2 R"], "Corners", [.up]),
-                ("Sune", ["(R U R' U) (R U2 R')", "y' R' U2 (R U R' U) R"], "Corners", [.up]),
-                ("T", ["(r U R' U') (r' F R F')"], "Corners", [.up]),
-                ("U", ["R2 D (R' U2 R) D' (R' U2 R')"], "Corners", [.up])
-            ],
-            "2-look PLL": [
-                ("Diagonal", ["F (R U' R' U') (R U R') F' (R U R' U') (R' F R F')"], "Corners", Cube.Tile.allCases),
-                ("Headlights", ["(R U R' U') R' F (R2 U' R' U') (R U R') F'"], "Corners", Cube.Tile.allCases),
-                ("H", ["M2 U M2 U2 M2 U M2", "M2 U' M2 U2 M2 U' M2"], "Edges", Cube.Tile.allCases),
-                ("Ua", ["R U' (R U R U) (R U' R' U') R2", "M2 U M U2 M' U M2"], "Edges", Cube.Tile.allCases),
-                ("Ub", ["R2 U (R U R' U') (R' U' R' U) R'", "(L' U L' U') (L' U' L' U) L U L2", "M2 U' M U2 M' U' M2"], "Edges", Cube.Tile.allCases),
-                ("Z", ["M' U (M2 U M2 U) M' U2 M2", "M' U' (M2 U' M2 U') M' U2 M2"], "Edges", Cube.Tile.allCases)
-            ],
-            "OLL": [
-                ("1", ["(R U2 R') (R' F R F') U2 (R' F R F')"], "Dot", [.up]),
-                ("2", ["(r U r' U2) (r U2 R' U2) (R U' r')", "y' F (R U R' U') F' f (R U R' U') f'", "y' F (R U R' U') S (R U R' U') f'"], "Dot", [.up]),
-                ("3", ["r' (R2 U R' U) (r U2 r' U) M'", "y F (U R U' R') F' U F (R U R' U') F'", "y' f (R U R' U') f' U' F (R U R' U') F'"], "Dot", [.up]),
-                ("4", ["M (U' r U2 r') (U' R U' R') M'", "y F (U R U' R') F' U' F (R U R' U') F'", "y' f (R U R' U') f' U F (R U R' U') F'"], "Dot", [.up]),
-                ("5", ["(l' U2 L U) (L' U l)", "y2 (r' U2 R U) (R' U r)"], "Square Shape", [.up]),
-                ("6", ["(r U2 R' U') (R U' r')"], "Square Shape", [.up]),
-                ("7", ["(r U R' U) (R U2 r')"], "Small Lightning Bolt", [.up]),
-                ("8", ["(l' U' L U') (L' U2 l)", "(R U2 R' U2) (R' F R F')", "y2 (r' U' R U') (R' U2 r)"], "Small Lightning Bolt", [.up]),
-                ("9", ["(R U R' U') R' F (R2 U R' U') F'"], "Fish Shape", [.up]),
-                ("10", ["(R U R' U) (R' F R F') (R U2 R')", "y2 (r U R' U) (R U' R' U') r' R (U R U' R')"], "Fish Shape", [.up]),
-                ("11", ["(r U R' U) (R' F R F') (R U2 r')", "y2 r' (R2 U R' U) (R U2 R' U) M'"], "Small Lightning Bolt", [.up]),
-                ("12", ["M' (R' U' R U') (R' U2 R U') R r'"], "Small Lightning Bolt", [.up]),
-                ("13", ["F (U R U' R2) F' (R U R U') R'", "(r U' r' U') (r U r') y' (R' U R)"], "Knight Move Shape", [.up]),
-                ("14", ["R' F (R U R') F' R F U' F'"], "Knight Move Shape", [.up]),
-                ("15", ["(l' U' l) (L' U' L U) (l' U l)", "y2 (r' U' r) (R' U' R U) (r' U r)"], "Knight Move Shape", [.up]),
-                ("16", ["(r U r') (R U R' U') (r U' r')"], "Knight Move Shape", [.up]),
-                ("17", ["F R' F' R2 (r' U R U') R' U' M'", "y2 (R U R' U) (R' F R F') U2 (R' F R F')"], "Dot", [.up]),
-                ("18", ["(r U R' U) (R U2 r') (r' U' R U') (R' U2 r)", "y (R U2 R') (R' F R F') U2 M' (U R U' r')"], "Dot", [.up]),
-                ("19", ["r' (R U R U) R' U' M' (R' F R F')"], "Dot", [.up]),
-                ("20", ["(r U R' U') M2 (U R U' R') U' M'", "r' R U (R U R' U') M2 (U R U' r')"], "Dot", [.up]),
-                ("21", ["(R U2 R' U') (R U R' U') (R U' R')", "y (R U R' U) (R U' R' U) (R U2 R')"], "Cross", [.up]),
-                ("22", ["R U2 (R2 U' R2 U' R2) U2 R"], "Cross", [.up]),
-                ("23", ["R2 D' (R U2 R') D (R U2 R)", "y2 R2 D (R' U2 R) D' (R' U2 R')"], "Cross", [.up]),
-                ("24", ["(r U R' U') (r' F R F')", "y (R U R) D (R' U' R) D' R2"], "Cross", [.up]),
-                ("25", ["F' (r U R' U') r' F R", "y' R' F R B' R' F' R B"], "Cross", [.up]),
-                ("26", ["(R U2 R') (U' R U' R')", "y' (R' U' R U') (R' U2 R)"], "Cross", [.up]),
-                ("27", ["(R U R' U) (R U2 R')", "y' R' U2 (R U R' U) R"], "Cross", [.up]),
-                ("28", ["(r U R' U') r' (R U R U') R'"], "Corners Oriented", [.up]),
-                ("29", ["(R U R' U') (R U' R') F' U' F (R U R')"], "Awkward Shape", [.up]),
-                ("30", ["F R' F (R2 U' R' U') (R U R') F2", "F U (R U2 R' U') (R U2 R' U') F'"], "Awkward Shape", [.up]),
-                ("31", ["R' U' F (U R U' R') F' R"], "P Shape", [.up]),
-                ("32", ["L U F' (U' L' U L) F L'", "y2 S (R U R' U') (R' F R f')"], "P Shape", [.up]),
-                ("33", ["(R U R' U') (R' F R F')"], "T Shape", [.up]),
-                ("34", ["R U (R2 U' R') F (R U R U') F'", "(R U R' U') B' (R' F R F') B"], "C Shapee", [.up]),
-                ("35", ["(R U2 R') (R' F R F') (R U2 R')"], "Fish Shape", [.up]),
-                ("36", ["(L' U' L U') (L' U L U) (L F' L' F)", "y2 (R' U' R U') (R' U R U) R B' R' B"], "W Shape", [.up]),
-                ("37", ["(F R' F' R) (U R U' R')", "F (R U' R' U') (R U R') F'"], "Fish Shape", [.up]),
-                ("38", ["(R U R' U) (R U' R' U') (R' F R F')"], "W Shape", [.up]),
-                ("39", ["L F' (L' U' L U) F U' L'", "y2 R B' (R' U' R U) B U' R'"], "Big Lightning Bolt", [.up]),
-                ("40", ["R' F (R U R' U') F' U R"], "Big Lightning Bolt", [.up]),
-                ("41", ["(R U R' U) (R U2 R') F (R U R' U') F'"], "Awkward Shape", [.up]),
-                ("42", ["(R' U' R U') (R' U2 R) F (R U R' U') F'"], "Awkward Shape", [.up]),
-                ("43", ["F' (U' L' U L) F", "R' U' (F R' F' R) U R"], "P Shape", [.up]),
-                ("44", ["F (U R U' R') F'", "y2 f (R U R' U') f'"], "P Shape", [.up]),
-                ("45", ["F (R U R' U') F'"], "T Shape", [.up]),
-                ("46", ["R' U' (R' F R F') U R"], "C Shape", [.up]),
-                ("47", ["R' U' (R' F R F') (R' F R F') U R", "F' (L' U' L U) (L' U' L U) F", "y' F (U R U' R') F' (R U R' U) (R U2 R')"], "Small L Shape", [.up]),
-                ("48", ["F (R U R' U') (R U R' U') F'"], "Small L Shape", [.up]),
-                ("49", ["r U' r2 U r2 U (r2 U' r)"], "Small L Shape", [.up]),
-                ("50", ["r' U r2 U' r2 U' (r2 U r')"], "Small L Shape", [.up]),
-                ("51", ["F (U R U' R') (U R U' R') F'", "y2 f (R U R' U') (R U R' U') f'"], "I Shape", [.up]),
-                ("52", ["(R U R' U) R U' B U' B' R'", "y2 R' F' U' F U' (R U R' U) R", "(R U R' U) R U' y (R U' R') F'"], "I Shape", [.up]),
-                ("53", ["(l' U2 L U) (L' U' L U) (L' U l)", "y2 r' U2 (R U R' U') (R U R' U) r", "y (r' U' R U') (R' U R U') (R' U2 r)"], "Small L Shape", [.up]),
-                ("54", ["(r U2 R' U') (R U R' U') (R U' r')", "y (r U R' U) (R U' R' U) (R U2 r')"], "Small L Shape", [.up]),
-                ("55", ["R' F (R U R U') R2 F' (R2 U' R' U) (R U R')", "y R U2 (R2 U' R U') R' U2 F R F'"], "I Shape", [.up]),
-                ("56", ["(r' U' r) (U' R' U R) (U' R' U R) (r' U r)", "(r U r') (U R U' R') (U R U' R') (r U' r')", "(r U r') (U R U' R') U R U' M' U' r'"], "I Shape", [.up]),
-                ("57", ["(R U R' U') M' (U R U' r')"], "Corners Oriented", [.up])
-            ],
-            "PLL": [
-                ("Aa", ["x L2 D2 (L' U' L) D2 (L' U L') x'", "y' x' (L' U L') D2 (L U' L') D2 L2 x y", "y x (R' U R') D2 (R U' R') D2 R2 x' y'", "y2 x' R2 D2 (R' U' R) D2 (R' U R') x y2"], "Adjacent Corner Swap", Cube.Tile.allCases),
-                ("Ab", ["x' L2 D2 (L U L') D2 (L U' L) x", "y x (L U' L) D2 (L' U L) D2 L2 x' y'", "y2 x R2 D2 (R U R') D2 (R U' R) x' y2", "y' x' (R U' R) D2 (R' U R) D2 R2 x y"], "Adjacent Corner Swap", Cube.Tile.allCases),
-                ("F", ["R' U' F' (R U R' U') R' F (R2 U' R' U') (R U R' U) R"], "Adjacent Corner Swap", Cube.Tile.allCases),
-                ("Ga", ["(R2 U R' U) (R' U' R U') R2 (U' D) (R' U R) D'", "R2 u (R' U R' U') R u' R2 y' (R' U R) y"], "Adjacent Corner Swap", Cube.Tile.allCases),
-                ("Gb", ["(R' U' R) (U D') (R2 U R' U) (R U' R U') R2 D", "y F' U' F R2 u (R' U R U') R u' R2 y'"], "Adjacent Corner Swap", Cube.Tile.allCases),
-                ("Gc", ["(R2 U' R U') (R U R' U) R2 (U D') (R U' R') D", "y2 R2 F2 (R U2 R U2) R' F (R U R' U') R' F R2 y2", "R2 u' (R U' R U) R' u R2 y (R U' R') y'"], "Adjacent Corner Swap", Cube.Tile.allCases),
-                ("Gd", ["(R U R') (U' D) (R2 U' R U') (R' U R' U) R2 D'", "(R U R') y' R2 u' (R U' R' U) R' u R2 y"], "Adjacent Corner Swap", Cube.Tile.allCases),
-                ("Ja", ["x R2 F R F' (R U2 r' U) r U2 x'", "y2 (L' U' L) F (L' U' L U) L F' (L2 U L) y2", "y' (R' U L' U2) (R U' R' U2) R L y"], "Adjacent Corner Swap", Cube.Tile.allCases),
-                ("Jb", ["(R U R') F' (R U R' U') R' F (R2 U' R')"], "Adjacent Corner Swap", Cube.Tile.allCases),
-                ("Ra", ["(R U' R' U') (R U R) D (R' U' R) D' (R' U2 R')", "(R U R') F' (R U2 R' U2) R' F (R U R U2) R'", "y' (L U2 L' U2) L F' (L' U' L U) L F L2 y"], "Adjacent Corner Swap", Cube.Tile.allCases),
-                ("Rb", ["R2 F (R U R U') R' F' (R U2 R' U2) R", "y' (R' U2 R U2) R' F (R U R' U') R' F' R2 y", "(R' U2 R') D' (R U' R') D (R U R U') (R' U' R)"], "Adjacent Corner Swap", Cube.Tile.allCases),
-                ("T", ["(R U R' U') R' F (R2 U' R' U') (R U R') F'"], "Adjacent Corner Swap", Cube.Tile.allCases),
-                ("E", ["x' (L' U L) D' (L' U' L) D (L' U' L) D' (L' U L) D x", "x' (R U' R') D (R U R') D' (R U R') D (R U' R') D' x"], "Diagonal Corner Swap", Cube.Tile.allCases),
-                ("Na", ["(R U R' U) (R U R') F' (R U R' U') R' F (R2 U' R' U2) (R U' R')", "z U R' D (R2 U' R) D' U R' D (R2 U' R) D' z'"], "Diagonal Corner Swap", Cube.Tile.allCases),
-                ("Nb", ["R' (U R U' R') F' U' F (R U R') (F R' F' R) U' R", "z D' R U' R2 D R' U D' R U' R2 D R' U z'"], "Diagonal Corner Swap", Cube.Tile.allCases),
-                ("V", ["(R' U R' U') y R' F' (R2 U' R' U) R' F R F y'", "(R' U R' U') R D' R' D R' U D' R2 U' R2 D R2", "z D' R2 D (R2 U R') D' (R U' R U) R' D R U' z'", "(R U2 R') D (R U' R U') R U R2 D (R' U' R) D2", "x' (R' F R F') (U R U2 R') (U' R U' R') (U2 R U R') U' x"], "Diagonal Corner Swap", Cube.Tile.allCases),
-                ("Y", ["F (R U' R' U') (R U R') F' (R U R' U') (R' F R F')", "F R' F (R2 U' R' U') (R U R') F' (R U R' U') F'"], "Diagonal Corner Swap", Cube.Tile.allCases),
-                ("H", ["M2 U M2 U2 M2 U M2", "M2 U' M2 U2 M2 U' M2"], "Edges Only", Cube.Tile.allCases),
-                ("Ua", ["M2 U M U2 M' U M2", "(R U' R U) (R U R U') R' U' R2", "y2 (R2 U' R' U') (R U R U) (R U' R) y2"], "Edges Only", Cube.Tile.allCases),
-                ("Ub", ["M2 U' M U2 M' U' M2", "R2 U (R U R' U') (R' U' R' U) R'", "y2 (R' U R' U') R' U' (R' U R U) R2 y2", "y2 (R' U R' U') R3 U' (R' U R U) R2 y2"], "Edges Only", Cube.Tile.allCases),
-                ("Z", ["M' U M2 U M2 U M' U2 M2", "y M' U' M2 U' M2 U' M' U2 M2 y'", "y M2 U M2 U M' U2 M2 U2 M' y'", "M2 U' M2 U' M' U2 M2 U2 M'"], "Edges Only", Cube.Tile.allCases)
-            ]
-        ],
-        .cube(4): [
-            "Parity": [
-                ("OLL Parity", ["Rw U2 x Rw U2 Rw U2 Rw' U2 Lw U2 Rw' U2 Rw U2 Rw' U2 Rw'", "r' U2 l F2 l' F2 r2 U2 r U2 r' U2 F2 r2 F2"], nil, Cube.Tile.allCases),
-                ("PLL Parity", ["r2 U2 r2 Uw2 r2 Uw2 U2"], nil, Cube.Tile.allCases)
-            ]
-        ]
-    ]
+
+    static var algorithms: [AlgorithmCategory] {
+        if  let path = Bundle.main.path(forResource: "Algorithms", ofType: "plist"), let xml = FileManager.default.contents(atPath: path) {
+            return (try? PropertyListDecoder().decode([AlgorithmCategory].self, from: xml)) ?? []
+        } else {
+            return []
+        }
+    }
     
     /// The `Move`s making up the `Algorithm`.
     var moves: [Move] = []
@@ -157,7 +52,7 @@ struct Algorithm: Codable {
             for _ in 1...size * 12 - 15 {
                 let face: Cube.Tile
                 let direction = Move.Direction.allCases.randomElement()!
-                let layers = 0...Int.random(in: 0...(size / 2)-1)
+                let layers = 0...Int.random(in: 0...(size / 2) - 1)
                 
                 if layers == scramble.moves.last?.layers {
                     face = Cube.Tile.allCases.filter { $0 != scramble.moves.last?.face }.randomElement()!
@@ -240,6 +135,35 @@ extension Algorithm: LosslessStringConvertible {
             index += 1
         }
     }
+    
+    // MARK: Types
+    /// A category of algorithms based on their `Puzzle`.
+    struct AlgorithmCategory: Decodable {
+        /// The `Puzzle` assigned to the category.
+        var puzzle: Puzzle
+        /// The subcategories in the category.
+        var subcategories: [AlgorithmSubcategory]
+    }
+
+    /// A subcategory of algorithms based on their characteristics.
+    struct AlgorithmSubcategory: Decodable {
+        /// The name of the category.
+        var name: String
+        /// The algorithms in the category.
+        var algorithmSets: [AlgorithmSet]
+    }
+
+    /// A set of algorithms to solve the same case.
+    struct AlgorithmSet: Decodable {
+        /// The name of the case solved by the algorithm.
+        var name: String
+        /// The different algorithms that solve this case.
+        var algorithms: [Algorithm]
+        /// The category of the case.
+        var category: String?
+        /// The tiles to highlight when displaying the case that the algorithms solve.
+        var highlightedTiles: [Cube.Tile]
+    }
 }
 
 extension Algorithm: ExpressibleByStringLiteral {
@@ -260,5 +184,15 @@ extension Algorithm: Hashable {
     // MARK: Methods
     func hash(into hasher: inout Hasher) {
         hasher.combine(moves)
+    }
+}
+
+extension Algorithm: Decodable {
+    // MARK: Initializers
+    init(from decoder: Decoder) throws {
+        let container = try decoder.singleValueContainer()
+        let string = try container.decode(String.self)
+        
+        self.init(string)
     }
 }

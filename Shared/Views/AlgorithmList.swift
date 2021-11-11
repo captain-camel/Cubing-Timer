@@ -6,13 +6,12 @@
 //
 
 import SwiftUI
-import OrderedCollections
 
 /// A list of algorithms of a specific category.
 struct AlgorithmList: View {
     // MARK: Properties
     /// The algorithms to display.
-    let algorithms: [(name: String, algorithms: [Algorithm], category: String?, highlightedTiles: [Cube.Tile])]
+    let algorithms: [Algorithm.AlgorithmSet]
     
     /// The category of the `Algorithm`s.
     let category: String
@@ -21,7 +20,7 @@ struct AlgorithmList: View {
     let puzzle: Puzzle
     
     // MARK: Initializers
-    init(_ algorithms: [(name: String, algorithms: [Algorithm], category: String?, highlightedTiles: [Cube.Tile])], category: String, puzzle: Puzzle) {
+    init(_ algorithms: [Algorithm.AlgorithmSet], category: String, puzzle: Puzzle) {
         self.algorithms = algorithms
         self.category = category
         self.puzzle = puzzle

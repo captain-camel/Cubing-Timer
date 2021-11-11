@@ -8,14 +8,14 @@
 import SwiftUI
 
 /// A tab view with algorithms for various puzzles.
-struct AlgorithmCategoryList: View {
+struct AlgorithmCategoryList: View {    
     // MARK: Body
     var body: some View {
-        List(Algorithm.algorithms.elements, id: \.key) { puzzle in
-            Section(header: Text(puzzle.key.displayName)) {
-                ForEach(puzzle.value.elements, id: \.key) { category in
-                    NavigationLink(destination: AlgorithmList(category.value, category: category.key, puzzle: puzzle.key)) {
-                        Text(category.key)
+        List(Algorithm.algorithms, id: \.puzzle) { puzzle in
+            Section(header: Text(puzzle.puzzle.displayName)) {
+                ForEach(puzzle.subcategories, id: \.name) { category in
+                    NavigationLink(destination: AlgorithmList(category.algorithmSets, category: category.name, puzzle: puzzle.puzzle)) {
+                        Text(category.name)
                     }
                 }
             }
