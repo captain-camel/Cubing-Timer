@@ -6,7 +6,7 @@
 //
 
 /// A turn that can be performed on a `Cube`.
-struct Move: Equatable, Hashable, Codable {
+struct Move: Equatable, Hashable, Decodable {
     // MARK: Properties
     /// The face that the `Move` acts on.
     var face: Cube.Tile = .up
@@ -39,7 +39,7 @@ struct Move: Equatable, Hashable, Codable {
     
     // MARK: Types
     /// Possible direction a `Move` can turn.
-    enum Direction: String, CaseIterable, Codable {
+    enum Direction: String, CaseIterable, Decodable {
         /// Rotating a face clockwise.
         case clockwise = ""
         /// Rotating a face counterclockwise.

@@ -88,7 +88,7 @@ struct Cube {
     typealias CubeState = [Tile: Face]
     
     /// A side of a `Cube`, or a single tile on the side of a `Cube`.
-    enum Tile: String, CaseIterable, Codable, Hashable {
+    enum Tile: String, CaseIterable, Decodable, Hashable {
         // MARK: Cases
         /// The "up" face of a `Cube`.
         case up = "U"
@@ -356,3 +356,23 @@ struct Cube {
         }
     }
 }
+
+//extension Array where Element == Cube.Tile {
+//    // MARK: Initializers
+//    init(from decoder: Decoder) throws {
+//        let container = try decoder.singleValueContainer()
+//        let string = try container.decode(String.self)
+//
+//        if string == "all" {
+//            self = Cube.Tile.allCases
+//        } else {
+//            self = []
+//
+//            for character in string.map({ String($0) }) {
+//                if let tile = Cube.Tile(rawValue: character) {
+//                    self.append(tile)
+//                }
+//            }
+//        }
+//    }
+//}
