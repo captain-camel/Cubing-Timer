@@ -135,8 +135,8 @@ extension Puzzle: LosslessStringConvertible {
     /// Creates a `Puzzle` from a `String`.
     init(_ description: String) {
         switch description {
-        case _ where description.count == 3 && (Int(String(description.first!)) != nil) && (Int(String(description.last!)) != nil) && description[1] == "x":
-            self = .cube(Int(String(description.first!))!)
+        case _ where description.allSatisfy { $0.isNumber || $0 == "x" } && description.split(separator: "x").count == 2:
+            self = .cube(Int(description.split(separator: "x").first!) ?? 3)
         case "Pyraminx":
             self = .pyraminx
         case "Megaminx":
@@ -156,5 +156,15 @@ extension Puzzle: ExpressibleByStringLiteral {
     // MARK: Initializers
     init(stringLiteral value: String) {
         self.init(value)
+    }
+}
+
+extension Puzzle: Decodable {
+    // MARK: Initializers
+    init(from decoder: Decoder) throws {
+        let container = try decoder.singleValueContainer()
+        let string = try container.decode(String.self)
+        
+        self.init(string)
     }
 }
