@@ -137,7 +137,7 @@ struct InstanceView: View {
                             hapticManager.fireworks()
                         }
                         
-                        instance.addSolve(time: time)
+                        instance.addSolve(time: time, scramble: scramble)
                     }
                     .readSize(size: $timerSize)
                     .offset(gestureState.translation)

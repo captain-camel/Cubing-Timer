@@ -41,7 +41,7 @@ struct PersistenceController {
     // MARK: Initializers
     /// Creates an instance of `PersistenceController`.
     init(inMemory: Bool = false) {
-        container = NSPersistentContainer(name: "Cubing_Timer")
+        container = NSPersistentCloudKitContainer(name: "Cubing_Timer")
         if inMemory {
             container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
         }

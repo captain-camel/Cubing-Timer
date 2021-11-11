@@ -11,6 +11,7 @@ import Foundation
 struct Algorithm {
     // MARK: Properties
     /// A dictionary of various algorithms for a number of puzzles.
+
     static var algorithms: [AlgorithmCategory] {
         if  let path = Bundle.main.path(forResource: "Algorithms", ofType: "plist"), let xml = FileManager.default.contents(atPath: path) {
             return (try? PropertyListDecoder().decode([AlgorithmCategory].self, from: xml)) ?? []
