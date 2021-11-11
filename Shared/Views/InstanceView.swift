@@ -133,7 +133,7 @@ struct InstanceView: View {
                             Haptics.shared.fireworks()
                         }
                         
-                        instance.addSolve(time: time)
+                        instance.addSolve(time: time, scramble: scramble)
                     }
                     .readSize(size: $timerSize)
                     .offset(gestureState.translation)

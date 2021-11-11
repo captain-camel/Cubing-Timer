@@ -62,7 +62,6 @@
 		DD0E676B26CDCB4400E1C444 /* ListSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0E676A26CDCB4400E1C444 /* ListSheet.swift */; };
 		DD0E676C26CDCB4400E1C444 /* ListSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0E676A26CDCB4400E1C444 /* ListSheet.swift */; };
 		DD155F0A26E312A7006D91BA /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD155F0926E312A7006D91BA /* Haptics.swift */; };
-		DD155F0B26E312A7006D91BA /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD155F0926E312A7006D91BA /* Haptics.swift */; };
 		DD2A938526D5C17F00F93897 /* NumberField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2A938426D5C17F00F93897 /* NumberField.swift */; };
 		DD2A938626D5C17F00F93897 /* NumberField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2A938426D5C17F00F93897 /* NumberField.swift */; };
 		DD2C8FFD270A226C00A4ABE1 /* HELP.md in Resources */ = {isa = PBXBuildFile; fileRef = DDD112F9270A1E81002471C1 /* HELP.md */; };
@@ -134,6 +133,11 @@
 		DDF6C79426C97F5C00B505B9 /* Inspection.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF6C79226C97F5C00B505B9 /* Inspection.swift */; };
 		DDF6C79A26CA35A000B505B9 /* AddInstanceSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF6C79926CA35A000B505B9 /* AddInstanceSheet.swift */; };
 		DDF6C79B26CA35A000B505B9 /* AddInstanceSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF6C79926CA35A000B505B9 /* AddInstanceSheet.swift */; };
+		FA3F0614273AA65200D0FB7D /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = FA3F0613273AA65200D0FB7D /* OrderedCollections */; };
+		FA3F0616273AA65200D0FB7D /* MarkdownUI in Frameworks */ = {isa = PBXBuildFile; productRef = FA3F0615273AA65200D0FB7D /* MarkdownUI */; };
+		FA3F0618273AA65200D0FB7D /* CoreCharts in Frameworks */ = {isa = PBXBuildFile; productRef = FA3F0617273AA65200D0FB7D /* CoreCharts */; };
+		FA3F061A273AA7ED00D0FB7D /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA3F0619273AA7ED00D0FB7D /* CloudKit.framework */; };
+		FA3F061D273AAA3800D0FB7D /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA3F061C273AAA3800D0FB7D /* CloudKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -217,6 +221,9 @@
 		DDF6C78F26C97F5500B505B9 /* Countdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Countdown.swift; sourceTree = "<group>"; };
 		DDF6C79226C97F5C00B505B9 /* Inspection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inspection.swift; sourceTree = "<group>"; };
 		DDF6C79926CA35A000B505B9 /* AddInstanceSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddInstanceSheet.swift; sourceTree = "<group>"; };
+		FA3F0619273AA7ED00D0FB7D /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		FA3F061B273AAA2D00D0FB7D /* Cubing Timer (iOS).entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Cubing Timer (iOS).entitlements"; sourceTree = "<group>"; };
+		FA3F061C273AAA3800D0FB7D /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.0.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -224,6 +231,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA3F061D273AAA3800D0FB7D /* CloudKit.framework in Frameworks */,
 				DDCFF0C62739AE51005A1043 /* CoreCharts in Frameworks */,
 				DD4AFBED270B6D6300B8E200 /* MarkdownUI in Frameworks */,
 				DD36907E26ED762700924946 /* Introspect in Frameworks */,
@@ -234,6 +242,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA3F0614273AA65200D0FB7D /* OrderedCollections in Frameworks */,
+				FA3F061A273AA7ED00D0FB7D /* CloudKit.framework in Frameworks */,
+				FA3F0618273AA65200D0FB7D /* CoreCharts in Frameworks */,
+				FA3F0616273AA65200D0FB7D /* MarkdownUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,10 +255,12 @@
 		DD0909CC26BF09C500DEAC82 = {
 			isa = PBXGroup;
 			children = (
+				FA3F061B273AAA2D00D0FB7D /* Cubing Timer (iOS).entitlements */,
 				DD0909D126BF09C500DEAC82 /* Shared */,
 				DD0909DE26BF09C800DEAC82 /* iOS */,
 				DD0909E526BF09C800DEAC82 /* macOS */,
 				DD0909DD26BF09C800DEAC82 /* Products */,
+				FA3F0612273AA65200D0FB7D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -425,6 +439,15 @@
 			path = Timer;
 			sourceTree = "<group>";
 		};
+		FA3F0612273AA65200D0FB7D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FA3F061C273AAA3800D0FB7D /* CloudKit.framework */,
+				FA3F0619273AA7ED00D0FB7D /* CloudKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -464,6 +487,11 @@
 			dependencies = (
 			);
 			name = "Cubing Timer (macOS)";
+			packageProductDependencies = (
+				FA3F0613273AA65200D0FB7D /* OrderedCollections */,
+				FA3F0615273AA65200D0FB7D /* MarkdownUI */,
+				FA3F0617273AA65200D0FB7D /* CoreCharts */,
+			);
 			productName = "Cubing Timer (macOS)";
 			productReference = DD0909E426BF09C800DEAC82 /* Cubing Timer.app */;
 			productType = "com.apple.product-type.application";
@@ -604,7 +632,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				DDA4F14726FF925A0072E4F3 /* AlgorithmList.swift in Sources */,
-				DD155F0B26E312A7006D91BA /* Haptics.swift in Sources */,
 				DD0909FE26BF0B8D00DEAC82 /* InstanceStorage.swift in Sources */,
 				DD090A3026BF3AB700DEAC82 /* ListPopover.swift in Sources */,
 				DDF6C79B26CA35A000B505B9 /* AddInstanceSheet.swift in Sources */,
@@ -785,8 +812,9 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Cubing Timer (iOS).entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = R96YVS7VK5;
+				DEVELOPMENT_TEAM = KTJLH9P683;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -794,7 +822,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "net.camelcode.Cubing-Timer-";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.zwiffer.Cubing-Timer-";
 				PRODUCT_NAME = "Cubing Timer";
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
@@ -808,8 +836,9 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Cubing Timer (iOS).entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = R96YVS7VK5;
+				DEVELOPMENT_TEAM = KTJLH9P683;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -817,7 +846,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "net.camelcode.Cubing-Timer-";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.zwiffer.Cubing-Timer-";
 				PRODUCT_NAME = "Cubing Timer";
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
@@ -832,10 +861,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = HYK393S488;
+				DEVELOPMENT_TEAM = KTJLH9P683;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = macOS/Info.plist;
@@ -857,10 +886,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = HYK393S488;
+				DEVELOPMENT_TEAM = KTJLH9P683;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = macOS/Info.plist;
