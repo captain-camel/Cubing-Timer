@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import OrderedCollections
 
 /// A list of algorithms of a specific category.
 struct AlgorithmList: View {
