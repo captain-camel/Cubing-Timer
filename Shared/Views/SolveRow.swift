@@ -21,7 +21,13 @@ struct SolveRow: View {
     // MARK: Body
     var body: some View {
         HStack {
-            Text(solve.formattedTime)
+            VStack(alignment: .leading) {
+                Text(solve.formattedTime)
+                if let scramble = solve.scramble {
+                    Text(scramble)
+                        .foregroundColor(.gray)
+                }
+            }
             
             Spacer()
             

@@ -119,7 +119,8 @@ struct Algorithm: Codable {
         ],
         .cube(4): [
             "Parity": [
-                ("OLL Parity", ["Rw U2 x Rw U2 Rw U2 Rw' U2 Lw U2 Rw' U2 Rw U2 Rw' U2 Rw'", "r' U2 l F2 l' F2 r2 U2 r U2 r' U2 F2 r2 F2"], nil, Cube.Tile.allCases)
+                ("OLL Parity", ["Rw U2 x Rw U2 Rw U2 Rw' U2 Lw U2 Rw' U2 Rw U2 Rw' U2 Rw'", "r' U2 l F2 l' F2 r2 U2 r U2 r' U2 F2 r2 F2"], nil, Cube.Tile.allCases),
+                ("PLL Parity", ["r2 U2 r2 Uw2 r2 Uw2 U2"], nil, Cube.Tile.allCases)
             ]
         ]
     ]
