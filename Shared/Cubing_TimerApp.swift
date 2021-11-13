@@ -17,7 +17,7 @@ struct Cubing_TimerApp: App {
     let persistenceController = PersistenceController.shared
     
     /// An object to manage global app settings.
-    @StateObject var settings = Settings()
+    @StateObject var settings = Settings.shared
     
     /// An object to handle haptics.
     @StateObject var hapticManager = HapticManager()

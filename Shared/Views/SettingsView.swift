@@ -10,13 +10,6 @@ import SwiftUI
 /// A view that displays global settings.
 struct SettingsView: View {
     // MARK: Properties
-    /// The color of the background when the timer is running.
-    @AppStorage("runningColor") var runningColor = Color(red: 0.27, green: 0.95, blue: 0.65)
-    /// The color of the background during inspection.
-    @AppStorage("inspectionColor") var inspectionColor = Color.yellow
-    /// Whether the app should have haptic feedback.
-    @AppStorage("doHaptics") var doHaptics = true
-    
     /// An object containing all of the global settings.
     @EnvironmentObject var settings: Settings
     
@@ -38,10 +31,7 @@ struct SettingsView: View {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button("Restore Defaults") {
                     withAnimation {
-                        runningColor = Color(red: 0.27, green: 0.95, blue: 0.65)
-                        inspectionColor = Color.yellow
-                        
-                        doHaptics = true
+                        settings.restoreDefaults()
                     }
                 }
             }

@@ -93,6 +93,8 @@
 		DD529D3A273F235C00CBF297 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD529D38273F235C00CBF297 /* Settings.swift */; };
 		DD529D3C273F23C200CBF297 /* PropertyNameable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD529D3B273F23C200CBF297 /* PropertyNameable.swift */; };
 		DD529D3D273F23C200CBF297 /* PropertyNameable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD529D3B273F23C200CBF297 /* PropertyNameable.swift */; };
+		DD529D40274032FC00CBF297 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD529D3F274032FB00CBF297 /* AppSettings.swift */; };
+		DD529D41274032FC00CBF297 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD529D3F274032FB00CBF297 /* AppSettings.swift */; };
 		DD65C1E92739A8D600AC66B6 /* HUDManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD65C1E82739A8D600AC66B6 /* HUDManager.swift */; };
 		DD65C1EA2739A8D600AC66B6 /* HUDManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD65C1E82739A8D600AC66B6 /* HUDManager.swift */; };
 		DD6DB3E326E92BCB003F2CA8 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6DB3E226E92BCB003F2CA8 /* SettingsView.swift */; };
@@ -205,6 +207,7 @@
 		DD4F1A0526CC1305008A1022 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		DD529D38273F235C00CBF297 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		DD529D3B273F23C200CBF297 /* PropertyNameable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyNameable.swift; sourceTree = "<group>"; };
+		DD529D3F274032FB00CBF297 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		DD65C1E82739A8D600AC66B6 /* HUDManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUDManager.swift; sourceTree = "<group>"; };
 		DD6DB3E226E92BCB003F2CA8 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		DD751E232704128B0059EA49 /* InstanceDetailSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstanceDetailSheet.swift; sourceTree = "<group>"; };
@@ -375,6 +378,7 @@
 				DD090A3726BF3D8000DEAC82 /* Device.swift */,
 				DD44620C26D89C200085CA18 /* ObservedOptionalObject.swift */,
 				DD529D3B273F23C200CBF297 /* PropertyNameable.swift */,
+				DD529D3F274032FB00CBF297 /* AppSettings.swift */,
 				DD529D3E273F23D700CBF297 /* Managers */,
 				DD090A2726BF3A4D00DEAC82 /* Button Styles */,
 				DD090A1426BF0E8900DEAC82 /* Extensions */,
@@ -633,6 +637,7 @@
 				DDAD68F126D4B1B4005750A5 /* InstanceSettings.swift in Sources */,
 				DDD112F4270A1C27002471C1 /* HelpView.swift in Sources */,
 				DD2A938526D5C17F00F93897 /* NumberField.swift in Sources */,
+				DD529D40274032FC00CBF297 /* AppSettings.swift in Sources */,
 				DD8DC39226E1E37000DCCDC2 /* HUD.swift in Sources */,
 				DD529D39273F235C00CBF297 /* Settings.swift in Sources */,
 				DD4F1A0026CAD2B7008A1022 /* TimerView.swift in Sources */,
@@ -701,6 +706,7 @@
 				DDAD68F226D4B1B4005750A5 /* InstanceSettings.swift in Sources */,
 				DDD112F5270A1C27002471C1 /* HelpView.swift in Sources */,
 				DD2A938626D5C17F00F93897 /* NumberField.swift in Sources */,
+				DD529D41274032FC00CBF297 /* AppSettings.swift in Sources */,
 				DD8DC39326E1E37000DCCDC2 /* HUD.swift in Sources */,
 				DD529D3A273F235C00CBF297 /* Settings.swift in Sources */,
 				DD4F1A0126CAD2B7008A1022 /* TimerView.swift in Sources */,
