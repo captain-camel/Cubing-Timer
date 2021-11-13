@@ -16,11 +16,23 @@ struct Cubing_TimerApp: App {
     /// The singleton instance of `PersistenceController`.
     let persistenceController = PersistenceController.shared
     
+    /// An object to manage global app settings.
+    @StateObject var settings = Settings()
+    
+    /// An object to handle haptics.
+    @StateObject var hapticManager = HapticManager()
+    
+    /// An object to handle showing app-wide notifications through HUDs.
+    @StateObject var hudManager = HUDManager()
+    
     // MARK: Body
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .environmentObject(settings)
+                .environmentObject(hapticManager)
+                .environmentObject(hudManager)
         }
         .onChange(of: scenePhase) { _ in
             PersistenceController.save()

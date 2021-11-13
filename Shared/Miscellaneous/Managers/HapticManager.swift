@@ -27,14 +27,14 @@ class HapticManager: ObservableObject {
     // MARK: Methods
     /// A soft pop.
     func pop() {
-        if UserDefaults.standard.bool(forKey: "doHaptics") {
+        if Settings().doHaptics {
             AudioServicesPlaySystemSound(SystemSoundID(1520))
         }
     }
     
     /// A light tap.
     func tap() {
-        if UserDefaults.standard.bool(forKey: "doHaptics") {
+        if Settings().doHaptics {
             let impact = UIImpactFeedbackGenerator(style: .medium)
             impact.impactOccurred()
         }
@@ -42,7 +42,7 @@ class HapticManager: ObservableObject {
     
     /// A buzz that fades out with small sharp pops.
     func fireworks() {
-        if UserDefaults.standard.bool(forKey: "doHaptics") {
+        if Settings().doHaptics {
             var events = [CHHapticEvent]()
             var curves = [CHHapticParameterCurve]()
             
@@ -77,7 +77,7 @@ class HapticManager: ObservableObject {
     
     /// Three sharp taps.
     func error() {
-        if UserDefaults.standard.bool(forKey: "doHaptics") {
+        if Settings().doHaptics {
             UINotificationFeedbackGenerator().notificationOccurred(.error)
         }
     }

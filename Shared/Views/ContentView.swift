@@ -19,10 +19,7 @@ struct ContentView: View {
     ) var instances: FetchedResults<Instance>
     
     /// An object to handle showing app-wide notifications through HUDs.
-    @StateObject var hudManager = HUDManager()
-    
-    /// An object to handle haptics.
-    @StateObject var hapticManager = HapticManager()
+    @EnvironmentObject var hudManager: HUDManager
     
     // MARK: Body
     var body: some View {
@@ -53,7 +50,6 @@ struct ContentView: View {
             }
                 .animation(.easeInOut(duration: 0.4))
         )
-        .environmentObject(hudManager)
-        .environmentObject(hapticManager)
+        
     }
 }

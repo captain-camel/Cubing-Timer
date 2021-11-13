@@ -17,17 +17,20 @@ struct SettingsView: View {
     /// Whether the app should have haptic feedback.
     @AppStorage("doHaptics") var doHaptics = true
     
+    /// An object containing all of the global settings.
+    @EnvironmentObject var settings: Settings
+    
     // MARK: Body
     var body: some View {
         Form {
             Section(header: Text("Colors"), footer: Text("These are the colors of the background when timing solves.")) {
-                ColorPicker("Timer Background", selection: $runningColor, supportsOpacity: false)
+                ColorPicker("Timer Background", selection: $settings.runningColor, supportsOpacity: false)
                 
-                ColorPicker("Inspection Background", selection: $inspectionColor, supportsOpacity: false)
+                ColorPicker("Inspection Background", selection: $settings.inspectionColor, supportsOpacity: false)
             }
             
             Section(header: Text("Haptic Feedback")) {
-                Toggle("Haptic Feedback", isOn: $doHaptics)
+                Toggle("Haptic Feedback", isOn: $settings.doHaptics)
             }
         }
         .navigationTitle("Settings")
