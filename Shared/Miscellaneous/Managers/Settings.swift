@@ -19,10 +19,6 @@ class Settings: PropertyNameable, ObservableObject {
     @Setting var inspectionColor: Color = .yellow
 }
 
-class Test: PropertyNameable, ObservableObject {
-    @Setting var int = 1
-}
-
 /// A global setting stored in `UserDefaults`.
 @propertyWrapper class Setting<T: Codable> {
     // MARK: Properties
