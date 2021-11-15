@@ -35,7 +35,7 @@ extension AppSettings {
 }
 
 /// A global setting stored in `UserDefaults`.
-@propertyWrapper class Setting<T: Codable>: DefaultRestorable {
+@propertyWrapper class Field<T: Codable>: DefaultRestorable {
     // MARK: Properties
     /// The default value of the setting to use if no value is present.
     private let defaultValue: T
@@ -47,7 +47,7 @@ extension AppSettings {
     static subscript<EnclosingType: AppSettings>(
         _enclosingInstance instance: EnclosingType,
         wrapped wrappedKeyPath: ReferenceWritableKeyPath<EnclosingType, T>,
-        storage storageKeyPath: ReferenceWritableKeyPath<EnclosingType, Setting>
+        storage storageKeyPath: ReferenceWritableKeyPath<EnclosingType, Field>
     ) -> T {
         get {
             let setting: AnyObject = instance[keyPath: storageKeyPath]
@@ -79,7 +79,7 @@ extension AppSettings {
     static subscript<EnclosingType: AppSettings>(
         _enclosingInstance instance: EnclosingType,
         projected wrappedKeyPath: KeyPath<EnclosingType, Binding<T>>,
-        storage storageKeyPath: KeyPath<EnclosingType, Setting>
+        storage storageKeyPath: KeyPath<EnclosingType, Field>
     ) -> Binding<T> {
         get {
             Binding(
