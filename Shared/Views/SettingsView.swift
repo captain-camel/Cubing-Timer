@@ -9,21 +9,17 @@ import SwiftUI
 
 /// A view that displays global settings.
 struct SettingsView: View {
-    // MARK: Properties
-    /// An object containing all of the global settings.
-    @EnvironmentObject var settings: Settings
-    
     // MARK: Body
     var body: some View {
         Form {
             Section(header: Text("Colors"), footer: Text("These are the colors of the background when timing solves.")) {
-                ColorPicker("Timer Background", selection: $settings.runningColor, supportsOpacity: false)
+                ColorPicker("Timer Background", selection: Settings.shared.$runningColor, supportsOpacity: false)
                 
-                ColorPicker("Inspection Background", selection: $settings.inspectionColor, supportsOpacity: false)
+                ColorPicker("Inspection Background", selection: Settings.shared.$inspectionColor, supportsOpacity: false)
             }
             
             Section(header: Text("Haptic Feedback")) {
-                Toggle("Haptic Feedback", isOn: $settings.doHaptics)
+                Toggle("Haptic Feedback", isOn: Settings.shared.$doHaptics)
             }
         }
         .navigationTitle("Settings")
@@ -31,7 +27,7 @@ struct SettingsView: View {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button("Restore Defaults") {
                     withAnimation {
-                        settings.restoreDefaults()
+                        Settings.shared.restoreDefaults()
                     }
                 }
             }
