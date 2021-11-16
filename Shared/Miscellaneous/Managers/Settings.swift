@@ -11,7 +11,7 @@ import SwiftUI
 final class Settings: AppSettings {
     // MARK: Properties
     /// A singleton instance of `AppSettings`.
-    static var shared = Settings()
+    static let shared = Settings()
     
     /// Whether to preform haptic feedback on user interaction.
     @Field var doHaptics = false

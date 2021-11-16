@@ -70,16 +70,16 @@ extension AppSettings {
             
             UserDefaults.standard.set(data, forKey: key)
             
-            let publisher = instance.objectWillChange
-            (publisher as? ObservableObjectPublisher)?.send()
+//            let publisher = instance.objectWillChange
+//            (publisher as? ObservableObjectPublisher)?.send()
         }
     }
     
     /// Returns a binding to the setting.
     static subscript<EnclosingType: AppSettings>(
         _enclosingInstance instance: EnclosingType,
-        projected wrappedKeyPath: KeyPath<EnclosingType, Binding<T>>,
-        storage storageKeyPath: KeyPath<EnclosingType, Field>
+        projected wrappedKeyPath: ReferenceWritableKeyPath<EnclosingType, Binding<T>>,
+        storage storageKeyPath: ReferenceWritableKeyPath<EnclosingType, Field>
     ) -> Binding<T> {
         get {
             Binding(
@@ -104,9 +104,10 @@ extension AppSettings {
                     
                     UserDefaults.standard.set(data, forKey: key)
                     
-                    let publisher = instance.objectWillChange
-                    (publisher as? ObservableObjectPublisher)?.send()
-                })
+//                    let publisher = instance.objectWillChange
+//                    (publisher as? ObservableObjectPublisher)?.send()
+                }
+            )
         }
         set {}
     }
