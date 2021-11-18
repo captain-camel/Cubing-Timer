@@ -61,8 +61,6 @@
 		DD0E676926CD994500E1C444 /* PopoverRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0E676726CD994500E1C444 /* PopoverRow.swift */; };
 		DD0E676B26CDCB4400E1C444 /* ListSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0E676A26CDCB4400E1C444 /* ListSheet.swift */; };
 		DD0E676C26CDCB4400E1C444 /* ListSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD0E676A26CDCB4400E1C444 /* ListSheet.swift */; };
-		DD155F0A26E312A7006D91BA /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD155F0926E312A7006D91BA /* HapticManager.swift */; };
-		DD155F0B26E312A7006D91BA /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD155F0926E312A7006D91BA /* HapticManager.swift */; };
 		DD2A938526D5C17F00F93897 /* NumberField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2A938426D5C17F00F93897 /* NumberField.swift */; };
 		DD2A938626D5C17F00F93897 /* NumberField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2A938426D5C17F00F93897 /* NumberField.swift */; };
 		DD2C8FFD270A226C00A4ABE1 /* HELP.md in Resources */ = {isa = PBXBuildFile; fileRef = DDD112F9270A1E81002471C1 /* HELP.md */; };
@@ -93,8 +91,8 @@
 		DD529D3A273F235C00CBF297 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD529D38273F235C00CBF297 /* Settings.swift */; };
 		DD529D3C273F23C200CBF297 /* PropertyNameable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD529D3B273F23C200CBF297 /* PropertyNameable.swift */; };
 		DD529D3D273F23C200CBF297 /* PropertyNameable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD529D3B273F23C200CBF297 /* PropertyNameable.swift */; };
-		DD529D40274032FC00CBF297 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD529D3F274032FB00CBF297 /* AppSettings.swift */; };
-		DD529D41274032FC00CBF297 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD529D3F274032FB00CBF297 /* AppSettings.swift */; };
+		DD529D40274032FC00CBF297 /* SettingsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD529D3F274032FB00CBF297 /* SettingsStorage.swift */; };
+		DD529D41274032FC00CBF297 /* SettingsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD529D3F274032FB00CBF297 /* SettingsStorage.swift */; };
 		DD65C1E92739A8D600AC66B6 /* HUDManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD65C1E82739A8D600AC66B6 /* HUDManager.swift */; };
 		DD65C1EA2739A8D600AC66B6 /* HUDManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD65C1E82739A8D600AC66B6 /* HUDManager.swift */; };
 		DD6DB3E326E92BCB003F2CA8 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6DB3E226E92BCB003F2CA8 /* SettingsView.swift */; };
@@ -103,6 +101,7 @@
 		DD751E252704128B0059EA49 /* InstanceDetailSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD751E232704128B0059EA49 /* InstanceDetailSheet.swift */; };
 		DD7809F926D051AC00E716F3 /* CGSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7809F826D051AC00E716F3 /* CGSize.swift */; };
 		DD7809FA26D051AC00E716F3 /* CGSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7809F826D051AC00E716F3 /* CGSize.swift */; };
+		DD7A03622744214500CE05E2 /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7A03612744214500CE05E2 /* HapticManager.swift */; };
 		DD7FE51C26FBA7AF006B8ADF /* JavaScriptEditorHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7FE51B26FBA7AF006B8ADF /* JavaScriptEditorHelp.swift */; };
 		DD7FE51D26FBA7AF006B8ADF /* JavaScriptEditorHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7FE51B26FBA7AF006B8ADF /* JavaScriptEditorHelp.swift */; };
 		DD8DC39226E1E37000DCCDC2 /* HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8DC39126E1E37000DCCDC2 /* HUD.swift */; };
@@ -126,6 +125,7 @@
 		DDE1095726FE3F23006E1626 /* AlgorithmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE1095526FE3F23006E1626 /* AlgorithmView.swift */; };
 		DDE1451626E98E19009796D7 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE1451526E98E19009796D7 /* Color.swift */; };
 		DDE1451726E98E19009796D7 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE1451526E98E19009796D7 /* Color.swift */; };
+		DDE363DA27448BDC007ED3D4 /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7A03632744216200CE05E2 /* HapticManager.swift */; };
 		DDE65FEF270A3C8D00419BD9 /* InstanceStatisticView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE65FEE270A3C8D00419BD9 /* InstanceStatisticView.swift */; };
 		DDE65FF0270A3C8D00419BD9 /* InstanceStatisticView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE65FEE270A3C8D00419BD9 /* InstanceStatisticView.swift */; };
 		DDF6C78026C782C200B505B9 /* Move.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF6C77F26C782C200B505B9 /* Move.swift */; };
@@ -193,7 +193,6 @@
 		DD090A4A26C3698200DEAC82 /* Cube.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cube.swift; sourceTree = "<group>"; };
 		DD0E676726CD994500E1C444 /* PopoverRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverRow.swift; sourceTree = "<group>"; };
 		DD0E676A26CDCB4400E1C444 /* ListSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListSheet.swift; sourceTree = "<group>"; };
-		DD155F0926E312A7006D91BA /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
 		DD2A938426D5C17F00F93897 /* NumberField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberField.swift; sourceTree = "<group>"; };
 		DD39D665273C8C4100DD25F8 /* Algorithms.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Algorithms.plist; sourceTree = "<group>"; };
 		DD3FE46726FD123100FE7408 /* CubeSideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubeSideView.swift; sourceTree = "<group>"; };
@@ -207,11 +206,13 @@
 		DD4F1A0526CC1305008A1022 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		DD529D38273F235C00CBF297 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		DD529D3B273F23C200CBF297 /* PropertyNameable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyNameable.swift; sourceTree = "<group>"; };
-		DD529D3F274032FB00CBF297 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
+		DD529D3F274032FB00CBF297 /* SettingsStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStorage.swift; sourceTree = "<group>"; };
 		DD65C1E82739A8D600AC66B6 /* HUDManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUDManager.swift; sourceTree = "<group>"; };
 		DD6DB3E226E92BCB003F2CA8 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		DD751E232704128B0059EA49 /* InstanceDetailSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstanceDetailSheet.swift; sourceTree = "<group>"; };
 		DD7809F826D051AC00E716F3 /* CGSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGSize.swift; sourceTree = "<group>"; };
+		DD7A03612744214500CE05E2 /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
+		DD7A03632744216200CE05E2 /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
 		DD7FE51B26FBA7AF006B8ADF /* JavaScriptEditorHelp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JavaScriptEditorHelp.swift; sourceTree = "<group>"; };
 		DD8DC39126E1E37000DCCDC2 /* HUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUD.swift; sourceTree = "<group>"; };
 		DDA4F14526FF925A0072E4F3 /* AlgorithmList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlgorithmList.swift; sourceTree = "<group>"; };
@@ -298,6 +299,7 @@
 		DD0909DE26BF09C800DEAC82 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
+				DD7A035D274420EF00CE05E2 /* Miscellaneous */,
 				DD0909DF26BF09C800DEAC82 /* Info.plist */,
 			);
 			path = iOS;
@@ -306,6 +308,7 @@
 		DD0909E526BF09C800DEAC82 /* macOS */ = {
 			isa = PBXGroup;
 			children = (
+				DD7A035F2744211A00CE05E2 /* Miscellaneous */,
 				DD0909E626BF09C800DEAC82 /* Info.plist */,
 				DD0909E726BF09C800DEAC82 /* macOS.entitlements */,
 			);
@@ -378,7 +381,7 @@
 				DD090A3726BF3D8000DEAC82 /* Device.swift */,
 				DD44620C26D89C200085CA18 /* ObservedOptionalObject.swift */,
 				DD529D3B273F23C200CBF297 /* PropertyNameable.swift */,
-				DD529D3F274032FB00CBF297 /* AppSettings.swift */,
+				DD529D3F274032FB00CBF297 /* SettingsStorage.swift */,
 				DD529D3E273F23D700CBF297 /* Managers */,
 				DD090A2726BF3A4D00DEAC82 /* Button Styles */,
 				DD090A1426BF0E8900DEAC82 /* Extensions */,
@@ -435,7 +438,6 @@
 				DD529D38273F235C00CBF297 /* Settings.swift */,
 				DD65C1E82739A8D600AC66B6 /* HUDManager.swift */,
 				DDB0D88826EEBB85007DCEF8 /* JavaScript.swift */,
-				DD155F0926E312A7006D91BA /* HapticManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -448,6 +450,38 @@
 				DD39D665273C8C4100DD25F8 /* Algorithms.plist */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		DD7A035D274420EF00CE05E2 /* Miscellaneous */ = {
+			isa = PBXGroup;
+			children = (
+				DD7A035E2744210300CE05E2 /* Managers */,
+			);
+			path = Miscellaneous;
+			sourceTree = "<group>";
+		};
+		DD7A035E2744210300CE05E2 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				DD7A03612744214500CE05E2 /* HapticManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		DD7A035F2744211A00CE05E2 /* Miscellaneous */ = {
+			isa = PBXGroup;
+			children = (
+				DD7A03602744213300CE05E2 /* Managers */,
+			);
+			path = Miscellaneous;
+			sourceTree = "<group>";
+		};
+		DD7A03602744213300CE05E2 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				DD7A03632744216200CE05E2 /* HapticManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 		DDF6C78B26C97EC200B505B9 /* Timer */ = {
@@ -584,7 +618,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				DDA4F14626FF925A0072E4F3 /* AlgorithmList.swift in Sources */,
-				DD155F0A26E312A7006D91BA /* HapticManager.swift in Sources */,
 				DD0909FD26BF0B8D00DEAC82 /* InstanceStorage.swift in Sources */,
 				DD090A2F26BF3AB700DEAC82 /* ListPopover.swift in Sources */,
 				DDF6C79A26CA35A000B505B9 /* AddInstanceSheet.swift in Sources */,
@@ -599,6 +632,7 @@
 				DD0E676B26CDCB4400E1C444 /* ListSheet.swift in Sources */,
 				DD090A0926BF0C9100DEAC82 /* Solve+CoreDataProperties.swift in Sources */,
 				DD529D3C273F23C200CBF297 /* PropertyNameable.swift in Sources */,
+				DD7A03622744214500CE05E2 /* HapticManager.swift in Sources */,
 				DDE1451626E98E19009796D7 /* Color.swift in Sources */,
 				DDC6FC2C26F9517100998645 /* CodeView.swift in Sources */,
 				DD3FE46B26FD123A00FE7408 /* CubeTileView.swift in Sources */,
@@ -637,7 +671,7 @@
 				DDAD68F126D4B1B4005750A5 /* InstanceSettings.swift in Sources */,
 				DDD112F4270A1C27002471C1 /* HelpView.swift in Sources */,
 				DD2A938526D5C17F00F93897 /* NumberField.swift in Sources */,
-				DD529D40274032FC00CBF297 /* AppSettings.swift in Sources */,
+				DD529D40274032FC00CBF297 /* SettingsStorage.swift in Sources */,
 				DD8DC39226E1E37000DCCDC2 /* HUD.swift in Sources */,
 				DD529D39273F235C00CBF297 /* Settings.swift in Sources */,
 				DD4F1A0026CAD2B7008A1022 /* TimerView.swift in Sources */,
@@ -653,7 +687,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				DDA4F14726FF925A0072E4F3 /* AlgorithmList.swift in Sources */,
-				DD155F0B26E312A7006D91BA /* HapticManager.swift in Sources */,
 				DD0909FE26BF0B8D00DEAC82 /* InstanceStorage.swift in Sources */,
 				DD090A3026BF3AB700DEAC82 /* ListPopover.swift in Sources */,
 				DDF6C79B26CA35A000B505B9 /* AddInstanceSheet.swift in Sources */,
@@ -706,13 +739,14 @@
 				DDAD68F226D4B1B4005750A5 /* InstanceSettings.swift in Sources */,
 				DDD112F5270A1C27002471C1 /* HelpView.swift in Sources */,
 				DD2A938626D5C17F00F93897 /* NumberField.swift in Sources */,
-				DD529D41274032FC00CBF297 /* AppSettings.swift in Sources */,
+				DD529D41274032FC00CBF297 /* SettingsStorage.swift in Sources */,
 				DD8DC39326E1E37000DCCDC2 /* HUD.swift in Sources */,
 				DD529D3A273F235C00CBF297 /* Settings.swift in Sources */,
 				DD4F1A0126CAD2B7008A1022 /* TimerView.swift in Sources */,
 				DD090A3C26BF3EB000DEAC82 /* View.swift in Sources */,
 				DD090A0626BF0C9100DEAC82 /* Instance+CoreDataProperties.swift in Sources */,
 				DD6DB3E426E92BCB003F2CA8 /* SettingsView.swift in Sources */,
+				DDE363DA27448BDC007ED3D4 /* HapticManager.swift in Sources */,
 				DDF6C79126C97F5500B505B9 /* Countdown.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -839,7 +873,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Cubing Timer (iOS).entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = KTJLH9P683;
+				DEVELOPMENT_TEAM = R96YVS7VK5;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -847,7 +881,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.zwiffer.Cubing-Timer-";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.camelcode.Cubing-Timer-";
 				PRODUCT_NAME = "Cubing Timer";
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
@@ -863,7 +897,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Cubing Timer (iOS).entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = KTJLH9P683;
+				DEVELOPMENT_TEAM = R96YVS7VK5;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -871,7 +905,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "net.zwiffer.Cubing-Timer-";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.camelcode.Cubing-Timer-";
 				PRODUCT_NAME = "Cubing Timer";
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
@@ -889,7 +923,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = KTJLH9P683;
+				DEVELOPMENT_TEAM = R96YVS7VK5;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = macOS/Info.plist;
@@ -914,7 +948,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = KTJLH9P683;
+				DEVELOPMENT_TEAM = R96YVS7VK5;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = macOS/Info.plist;
