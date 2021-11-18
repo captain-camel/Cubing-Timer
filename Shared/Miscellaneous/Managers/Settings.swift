@@ -8,15 +8,15 @@
 import SwiftUI
 
 /// A class to access all of the global settings of the app.
-final class Settings: AppSettings {
+final class Settings: SettingsStorage {
     // MARK: Properties
     /// A singleton instance of `AppSettings`.
     static let shared = Settings()
     
     /// Whether to preform haptic feedback on user interaction.
-    @Field var doHaptics = false
+    @Parameter var doHaptics = false
     /// The color of the background when the timer is running.
-    @Field var runningColor = Color(red: 0.27, green: 0.95, blue: 0.65)
+    @Parameter var runningColor = Color(red: 0.27, green: 0.95, blue: 0.65)
     /// The color of the background during inspection.
-    @Field var inspectionColor: Color = .yellow
+    @Parameter var inspectionColor: Color = .yellow
 }
