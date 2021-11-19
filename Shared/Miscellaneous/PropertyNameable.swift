@@ -15,7 +15,7 @@ extension PropertyNameable {
         let propertyAddress = Unmanaged.passUnretained(property).toOpaque() // Gets the memory address of the property
         let children = Mirror(reflecting: self).children
         let matchingChildName = children.filter { child in
-            propertyAddress == Unmanaged.passUnretained(child.value as AnyObject).toOpaque() // Gets the child that has the same memory address as the property
+            propertyAddress == Unmanaged.passUnretained(child.value as AnyObject).toOpaque() // Finds the child that has the same memory address as the property
         }.compactMap { $0.label }.first ?? ""
         
         return matchingChildName
