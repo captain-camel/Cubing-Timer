@@ -5,11 +5,11 @@
 //  Created by Cameron Delong on 9/3/21.
 //
 
-import CoreHaptics
-import AudioToolbox.AudioServices
 import UIKit
+import AudioToolbox
+import CoreHaptics
 
-/// A `struct` containing different haptic feedback patterns.
+/// A manager for haptic feedback in the app.
 class HapticManager: ObservableObject {
     // MARK: Properties
     /// The haptic engine to perform haptic feedback.
