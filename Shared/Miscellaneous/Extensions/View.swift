@@ -25,7 +25,7 @@ extension View {
 extension View {
     /// Runs the provided closure when the device's orientation changes.
     /// - Parameters:
-    ///   - action: The closure to run when the device's orientaion changes. Has one parameter, a `UIInterfaceOrientation` determined by the device's current orientation.
+    ///   - action: The closure to run when the device's orientation changes. Has one parameter, a `UIInterfaceOrientation` determined by the device's current orientation.
     @ViewBuilder func onRotate(perform action: @escaping (UIInterfaceOrientation) -> Void) -> some View {
         self
             .onAppear()
