@@ -356,23 +356,3 @@ struct Cube {
         }
     }
 }
-
-//extension Array where Element == Cube.Tile {
-//    // MARK: Initializers
-//    init(from decoder: Decoder) throws {
-//        let container = try decoder.singleValueContainer()
-//        let string = try container.decode(String.self)
-//
-//        if string == "all" {
-//            self = Cube.Tile.allCases
-//        } else {
-//            self = []
-//
-//            for character in string.map({ String($0) }) {
-//                if let tile = Cube.Tile(rawValue: character) {
-//                    self.append(tile)
-//                }
-//            }
-//        }
-//    }
-//}
