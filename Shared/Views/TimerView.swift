@@ -157,6 +157,11 @@ struct TimerView: View {
                 .onChange(of: solve) { _ in
                     solveChanged = true
                 }
+                .onChange(of: inspection.secondsRemaining) { secondsRemaining in
+                    if secondsRemaining == 0 {
+                        timerState = .running
+                    }
+                }
         }
     }
     
