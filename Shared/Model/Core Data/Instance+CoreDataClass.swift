@@ -8,7 +8,7 @@
 
 import CoreData
 
-/// A `class `describing an "Instance," allowing the user to keep track of different puzzles with different timers.
+/// A `class` describing an "Instance," allowing the user to keep track of different puzzles with different timers.
 @objc(Instance)
 public class Instance: NSManagedObject {
     
