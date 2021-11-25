@@ -15,7 +15,7 @@ class Stopwatch: ObservableObject {
     /// Whether the `Stopwatch` is running.
     @Published var running = false
     
-    /// The exaxt time that the timer started.
+    /// The exact time that the timer started running.
     private var startTime = Date()
     /// The `Timer` object that updates `secondsElapsed` every `0.1` seconds.
     private var timer = Timer()
