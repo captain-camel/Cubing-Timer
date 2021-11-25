@@ -20,7 +20,7 @@ struct TimerView: View {
     let timerStoppedAction: (_ time: Double) -> Void
     
     /// A stopwatch to time solves.
-    @StateObject var stopwatch = Stopwatch()
+    @StateObject var stopwatch: Stopwatch
     /// A countdown to start timing solves.
     @StateObject var countdown: Countdown
     /// A timer for inspection.
@@ -78,6 +78,7 @@ struct TimerView: View {
         
         self._solve = ObservedOptionalObject(initialValue: solve)
         
+        _stopwatch = StateObject(wrappedValue: Stopwatch())
         _countdown = StateObject(wrappedValue: Countdown(duration: countdownDuration))
         _inspection = StateObject(wrappedValue: Inspection(duration: inspectionDuration.wrappedValue ?? 15))
         
