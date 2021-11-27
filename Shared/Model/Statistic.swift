@@ -237,7 +237,7 @@ enum Statistic: CaseIterable, Hashable {
         }
     }
     
-    /// Returns a list of details of an `Intsance` based on the statistic.
+    /// Returns a list of details of an `Instance` based on the statistic.
     func details(of instance: Instance) -> [String]? {
         switch self {
         case let .average(solves):
