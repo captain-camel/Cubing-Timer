@@ -22,7 +22,7 @@ class Inspection: ObservableObject {
     
     /// Whether the `Inspection` is running.
     private var running = false
-    /// The exaxt time that the timer started.
+    /// The exact time that the timer started.
     private var startTime = Date()
     /// The `Timer` that updates `secondsRemaining` every second.
     private var timer = Timer()
