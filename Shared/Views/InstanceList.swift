@@ -19,6 +19,20 @@ struct InstanceList: View {
     // MARK: Body
     var body: some View {
         List {
+            if instances.isEmpty {
+                VStack(alignment: .center) {
+                    (
+                        Text("No instances. Press the ") +
+                        Text(Image(systemName: "plus")) +
+                        Text(" button to create one.")
+                    )
+                    .multilineTextAlignment(.center)
+                    .foregroundColor(.secondary)
+                }
+                .frame(maxWidth: .infinity)
+                .listRowBackground(Color.clear)
+            }
+            
             ForEach(instances, id: \.self) { instance in
                 NavigationLink(destination: InstanceView(instance: instance)) {
                     InstanceRow(instance)
