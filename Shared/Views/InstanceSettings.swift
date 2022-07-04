@@ -35,15 +35,38 @@ struct InstanceSettings: View {
             }
             
             Section(header: Text("Puzzle")) {
-                Picker(selection: $instance.puzzle.kind, label: Text("Puzzle")) {
+                Picker(
+                    selection: Binding(
+                        get: {
+                            if case .other = instance.puzzle {
+                                return .other("")
+                            }
+                            return instance.puzzle
+                        },
+                        set: { newValue in
+                            instance.puzzle = newValue
+                        }
+                    ),
+                    label: Text("Puzzle")
+                ) {
                     ForEach(Puzzle.allCases, id: \.self) { puzzle in
-                        Text(puzzle.displayName)
+                        Text(String(puzzle.displayName))
                             .tag(puzzle)
                     }
                 }
                 
                 if case .other = instance.puzzle {
-                    TextField("Puzzle", text: $instance.puzzle.other)
+                    TextField("Name", text: Binding(
+                        get: {
+                            if case .other(let name) = instance.puzzle {
+                                return name
+                            }
+                            return ""
+                        },
+                        set: { newValue in
+                            instance.puzzle = .other(newValue)
+                        }
+                    ))
                 }
             }
 
