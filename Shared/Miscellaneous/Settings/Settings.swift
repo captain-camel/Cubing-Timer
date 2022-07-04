@@ -14,9 +14,9 @@ final class Settings: SettingsStorage {
     static let shared = Settings()
     
     /// Whether to preform haptic feedback on user interaction.
-    @Parameter var doHaptics = true
+    @Parameter("doHaptics") var doHaptics = true
     /// The color of the background when the timer is running.
-    @Parameter var runningColor = Color(red: 0.27, green: 0.95, blue: 0.65)
+    @Parameter("runningColor") var runningColor = Color(red: 0.27, green: 0.95, blue: 0.65)
     /// The color of the background during inspection.
-    @Parameter var inspectionColor: Color = .yellow
+    @Parameter("inspectionColor") var inspectionColor: Color = .yellow
 }

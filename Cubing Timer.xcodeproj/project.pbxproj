@@ -65,8 +65,6 @@
 		DD2A938626D5C17F00F93897 /* NumberField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2A938426D5C17F00F93897 /* NumberField.swift */; };
 		DD2C8FFD270A226C00A4ABE1 /* HELP.md in Resources */ = {isa = PBXBuildFile; fileRef = DDD112F9270A1E81002471C1 /* HELP.md */; };
 		DD2C8FFE270A226D00A4ABE1 /* HELP.md in Resources */ = {isa = PBXBuildFile; fileRef = DDD112F9270A1E81002471C1 /* HELP.md */; };
-		DD36907E26ED762700924946 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = DD36907D26ED762700924946 /* Introspect */; };
-		DD39D666273C8C4100DD25F8 /* Algorithms.plist in Resources */ = {isa = PBXBuildFile; fileRef = DD39D665273C8C4100DD25F8 /* Algorithms.plist */; };
 		DD39D667273C8C4100DD25F8 /* Algorithms.plist in Resources */ = {isa = PBXBuildFile; fileRef = DD39D665273C8C4100DD25F8 /* Algorithms.plist */; };
 		DD3FE46826FD123100FE7408 /* CubeSideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3FE46726FD123100FE7408 /* CubeSideView.swift */; };
 		DD3FE46926FD123100FE7408 /* CubeSideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3FE46726FD123100FE7408 /* CubeSideView.swift */; };
@@ -78,7 +76,6 @@
 		DD44620E26D89C200085CA18 /* ObservedOptionalObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD44620C26D89C200085CA18 /* ObservedOptionalObject.swift */; };
 		DD44621126D9D4B00085CA18 /* SizeReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD44621026D9D4B00085CA18 /* SizeReader.swift */; };
 		DD44621226D9D4B00085CA18 /* SizeReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD44621026D9D4B00085CA18 /* SizeReader.swift */; };
-		DD4AFBED270B6D6300B8E200 /* MarkdownUI in Frameworks */ = {isa = PBXBuildFile; productRef = DD4AFBEC270B6D6300B8E200 /* MarkdownUI */; };
 		DD4B87F62704F78D0003FE83 /* StatisticCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4B87F52704F78C0003FE83 /* StatisticCard.swift */; };
 		DD4B87F72704F78D0003FE83 /* StatisticCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4B87F52704F78C0003FE83 /* StatisticCard.swift */; };
 		DD4B87F9270683D90003FE83 /* SolveRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4B87F8270683D90003FE83 /* SolveRow.swift */; };
@@ -89,10 +86,13 @@
 		DD4F1A0726CC1306008A1022 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4F1A0526CC1305008A1022 /* String.swift */; };
 		DD529D39273F235C00CBF297 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD529D38273F235C00CBF297 /* Settings.swift */; };
 		DD529D3A273F235C00CBF297 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD529D38273F235C00CBF297 /* Settings.swift */; };
-		DD529D3C273F23C200CBF297 /* PropertyNameable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD529D3B273F23C200CBF297 /* PropertyNameable.swift */; };
-		DD529D3D273F23C200CBF297 /* PropertyNameable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD529D3B273F23C200CBF297 /* PropertyNameable.swift */; };
 		DD529D40274032FC00CBF297 /* SettingsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD529D3F274032FB00CBF297 /* SettingsStorage.swift */; };
 		DD529D41274032FC00CBF297 /* SettingsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD529D3F274032FB00CBF297 /* SettingsStorage.swift */; };
+		DD57762E2873781000DC7455 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD57762D2873781000DC7455 /* AppSettings.swift */; };
+		DD57762F2873781000DC7455 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD57762D2873781000DC7455 /* AppSettings.swift */; };
+		DD5776312873781500DC7455 /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5776302873781500DC7455 /* Setting.swift */; };
+		DD5776322873781500DC7455 /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5776302873781500DC7455 /* Setting.swift */; };
+		DD596CA2279377A800B7ED3A /* Algorithms.plist in Resources */ = {isa = PBXBuildFile; fileRef = DD39D665273C8C4100DD25F8 /* Algorithms.plist */; };
 		DD65C1E92739A8D600AC66B6 /* HUDManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD65C1E82739A8D600AC66B6 /* HUDManager.swift */; };
 		DD65C1EA2739A8D600AC66B6 /* HUDManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD65C1E82739A8D600AC66B6 /* HUDManager.swift */; };
 		DD6DB3E326E92BCB003F2CA8 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6DB3E226E92BCB003F2CA8 /* SettingsView.swift */; };
@@ -117,7 +117,6 @@
 		DDB0D88A26EEBB86007DCEF8 /* JavaScript.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB0D88826EEBB85007DCEF8 /* JavaScript.swift */; };
 		DDC6FC2C26F9517100998645 /* CodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC6FC2B26F9517100998645 /* CodeView.swift */; };
 		DDC6FC2D26F9517100998645 /* CodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC6FC2B26F9517100998645 /* CodeView.swift */; };
-		DDCFF0C62739AE51005A1043 /* CoreCharts in Frameworks */ = {isa = PBXBuildFile; productRef = DDCFF0C52739AE51005A1043 /* CoreCharts */; };
 		DDD112F4270A1C27002471C1 /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD112F3270A1C27002471C1 /* HelpView.swift */; };
 		DDD112F5270A1C27002471C1 /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD112F3270A1C27002471C1 /* HelpView.swift */; };
 		DDD6954226FF89BD006A069C /* AlgorithmCategoryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD6954126FF89BD006A069C /* AlgorithmCategoryList.swift */; };
@@ -126,6 +125,8 @@
 		DDE1095726FE3F23006E1626 /* AlgorithmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE1095526FE3F23006E1626 /* AlgorithmView.swift */; };
 		DDE1451626E98E19009796D7 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE1451526E98E19009796D7 /* Color.swift */; };
 		DDE1451726E98E19009796D7 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE1451526E98E19009796D7 /* Color.swift */; };
+		DDE63B70281E0D6B0004D71B /* CoreCharts in Frameworks */ = {isa = PBXBuildFile; productRef = DDE63B6F281E0D6B0004D71B /* CoreCharts */; };
+		DDE63B73281E0D890004D71B /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = DDE63B72281E0D890004D71B /* Introspect */; };
 		DDE65FEF270A3C8D00419BD9 /* InstanceStatisticView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE65FEE270A3C8D00419BD9 /* InstanceStatisticView.swift */; };
 		DDE65FF0270A3C8D00419BD9 /* InstanceStatisticView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE65FEE270A3C8D00419BD9 /* InstanceStatisticView.swift */; };
 		DDF6C78026C782C200B505B9 /* Move.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF6C77F26C782C200B505B9 /* Move.swift */; };
@@ -205,8 +206,9 @@
 		DD4F19FF26CAD2B7008A1022 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		DD4F1A0526CC1305008A1022 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		DD529D38273F235C00CBF297 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
-		DD529D3B273F23C200CBF297 /* PropertyNameable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyNameable.swift; sourceTree = "<group>"; };
 		DD529D3F274032FB00CBF297 /* SettingsStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsStorage.swift; sourceTree = "<group>"; };
+		DD57762D2873781000DC7455 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
+		DD5776302873781500DC7455 /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
 		DD65C1E82739A8D600AC66B6 /* HUDManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUDManager.swift; sourceTree = "<group>"; };
 		DD6DB3E226E92BCB003F2CA8 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		DD751E232704128B0059EA49 /* InstanceDetailSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstanceDetailSheet.swift; sourceTree = "<group>"; };
@@ -241,10 +243,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDE63B70281E0D6B0004D71B /* CoreCharts in Frameworks */,
+				DDE63B73281E0D890004D71B /* Introspect in Frameworks */,
 				FA3F061D273AAA3800D0FB7D /* CloudKit.framework in Frameworks */,
-				DDCFF0C62739AE51005A1043 /* CoreCharts in Frameworks */,
-				DD4AFBED270B6D6300B8E200 /* MarkdownUI in Frameworks */,
-				DD36907E26ED762700924946 /* Introspect in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -375,10 +376,9 @@
 		DD090A1326BF0E6400DEAC82 /* Miscellaneous */ = {
 			isa = PBXGroup;
 			children = (
+				DD57762C287377C400DC7455 /* Settings */,
 				DD090A3726BF3D8000DEAC82 /* Device.swift */,
 				DD44620C26D89C200085CA18 /* ObservedOptionalObject.swift */,
-				DD529D3B273F23C200CBF297 /* PropertyNameable.swift */,
-				DD529D3F274032FB00CBF297 /* SettingsStorage.swift */,
 				DD529D3E273F23D700CBF297 /* Managers */,
 				DD090A2726BF3A4D00DEAC82 /* Button Styles */,
 				DD090A1426BF0E8900DEAC82 /* Extensions */,
@@ -432,12 +432,22 @@
 		DD529D3E273F23D700CBF297 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				DD529D38273F235C00CBF297 /* Settings.swift */,
 				DD65C1E82739A8D600AC66B6 /* HUDManager.swift */,
 				DDB0D88826EEBB85007DCEF8 /* JavaScript.swift */,
 				DDA5704127475F4D00D8FDFF /* HapticManager.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		DD57762C287377C400DC7455 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				DD529D3F274032FB00CBF297 /* SettingsStorage.swift */,
+				DD529D38273F235C00CBF297 /* Settings.swift */,
+				DD57762D2873781000DC7455 /* AppSettings.swift */,
+				DD5776302873781500DC7455 /* Setting.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		DD6F51C326DD885900F3E0B3 /* Resources */ = {
@@ -487,9 +497,8 @@
 			);
 			name = "Cubing Timer (iOS)";
 			packageProductDependencies = (
-				DD36907D26ED762700924946 /* Introspect */,
-				DD4AFBEC270B6D6300B8E200 /* MarkdownUI */,
-				DDCFF0C52739AE51005A1043 /* CoreCharts */,
+				DDE63B6F281E0D6B0004D71B /* CoreCharts */,
+				DDE63B72281E0D890004D71B /* Introspect */,
 			);
 			productName = "Cubing Timer (iOS)";
 			productReference = DD0909DC26BF09C800DEAC82 /* Cubing Timer.app */;
@@ -541,9 +550,8 @@
 			);
 			mainGroup = DD0909CC26BF09C500DEAC82;
 			packageReferences = (
-				DD36907C26ED762700924946 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
-				DD4AFBEB270B6D6300B8E200 /* XCRemoteSwiftPackageReference "MarkdownUI" */,
-				DDCFF0C42739AE51005A1043 /* XCRemoteSwiftPackageReference "CoreCharts" */,
+				DDE63B6E281E0D6B0004D71B /* XCRemoteSwiftPackageReference "CoreCharts" */,
+				DDE63B71281E0D890004D71B /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
 			);
 			productRefGroup = DD0909DD26BF09C800DEAC82 /* Products */;
 			projectDirPath = "";
@@ -561,7 +569,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DD0B59482701066100E3E144 /* Assets.xcassets in Resources */,
-				DD39D666273C8C4100DD25F8 /* Algorithms.plist in Resources */,
+				DD596CA2279377A800B7ED3A /* Algorithms.plist in Resources */,
 				DD2C8FFE270A226D00A4ABE1 /* HELP.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -589,6 +597,7 @@
 				DDF6C79A26CA35A000B505B9 /* AddInstanceSheet.swift in Sources */,
 				DD090A4426C1B1A000DEAC82 /* ContentView.swift in Sources */,
 				DDE1095626FE3F23006E1626 /* AlgorithmView.swift in Sources */,
+				DD5776312873781500DC7455 /* Setting.swift in Sources */,
 				DD090A2C26BF3A7800DEAC82 /* StatisticButtonStyle.swift in Sources */,
 				DD44620726D892E70085CA18 /* TimerActions.swift in Sources */,
 				DD090A2526BF3A0A00DEAC82 /* StatisticView.swift in Sources */,
@@ -597,7 +606,6 @@
 				DD44621126D9D4B00085CA18 /* SizeReader.swift in Sources */,
 				DD0E676B26CDCB4400E1C444 /* ListSheet.swift in Sources */,
 				DD090A0926BF0C9100DEAC82 /* Solve+CoreDataProperties.swift in Sources */,
-				DD529D3C273F23C200CBF297 /* PropertyNameable.swift in Sources */,
 				DDA5704227475F4D00D8FDFF /* HapticManager.swift in Sources */,
 				DDE1451626E98E19009796D7 /* Color.swift in Sources */,
 				DDC6FC2C26F9517100998645 /* CodeView.swift in Sources */,
@@ -606,6 +614,7 @@
 				DD090A0726BF0C9100DEAC82 /* Solve+CoreDataClass.swift in Sources */,
 				DD0909E826BF09C800DEAC82 /* Cubing_Timer.xcdatamodeld in Sources */,
 				DD090A3226BF3AC900DEAC82 /* InstanceView.swift in Sources */,
+				DD57762E2873781000DC7455 /* AppSettings.swift in Sources */,
 				DD0909EE26BF09C800DEAC82 /* Persistence.swift in Sources */,
 				DD4F1A0626CC1306008A1022 /* String.swift in Sources */,
 				DD090A0D26BF0D4200DEAC82 /* Puzzle.swift in Sources */,
@@ -658,6 +667,7 @@
 				DDF6C79B26CA35A000B505B9 /* AddInstanceSheet.swift in Sources */,
 				DD090A4526C1B1A000DEAC82 /* ContentView.swift in Sources */,
 				DDE1095726FE3F23006E1626 /* AlgorithmView.swift in Sources */,
+				DD5776322873781500DC7455 /* Setting.swift in Sources */,
 				DD090A2D26BF3A7800DEAC82 /* StatisticButtonStyle.swift in Sources */,
 				DD44620826D892E70085CA18 /* TimerActions.swift in Sources */,
 				DD090A2626BF3A0A00DEAC82 /* StatisticView.swift in Sources */,
@@ -666,7 +676,6 @@
 				DD44621226D9D4B00085CA18 /* SizeReader.swift in Sources */,
 				DD0E676C26CDCB4400E1C444 /* ListSheet.swift in Sources */,
 				DD090A0A26BF0C9100DEAC82 /* Solve+CoreDataProperties.swift in Sources */,
-				DD529D3D273F23C200CBF297 /* PropertyNameable.swift in Sources */,
 				DDE1451726E98E19009796D7 /* Color.swift in Sources */,
 				DDA5704327475F4D00D8FDFF /* HapticManager.swift in Sources */,
 				DDC6FC2D26F9517100998645 /* CodeView.swift in Sources */,
@@ -675,6 +684,7 @@
 				DD090A0826BF0C9100DEAC82 /* Solve+CoreDataClass.swift in Sources */,
 				DD0909E926BF09C800DEAC82 /* Cubing_Timer.xcdatamodeld in Sources */,
 				DD090A3326BF3AC900DEAC82 /* InstanceView.swift in Sources */,
+				DD57762F2873781000DC7455 /* AppSettings.swift in Sources */,
 				DD0909EF26BF09C800DEAC82 /* Persistence.swift in Sources */,
 				DD4F1A0726CC1306008A1022 /* String.swift in Sources */,
 				DD090A0E26BF0D4200DEAC82 /* Puzzle.swift in Sources */,
@@ -963,47 +973,34 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		DD36907C26ED762700924946 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */ = {
+		DDE63B6E281E0D6B0004D71B /* XCRemoteSwiftPackageReference "CoreCharts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/captain-camel/CoreCharts";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.0;
+			};
+		};
+		DDE63B71281E0D890004D71B /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/siteline/SwiftUI-Introspect";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.1.3;
-			};
-		};
-		DD4AFBEB270B6D6300B8E200 /* XCRemoteSwiftPackageReference "MarkdownUI" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/gonzalezreal/MarkdownUI";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.5.2;
-			};
-		};
-		DDCFF0C42739AE51005A1043 /* XCRemoteSwiftPackageReference "CoreCharts" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/captain-camel/CoreCharts";
-			requirement = {
-				branch = main;
-				kind = branch;
+				minimumVersion = 0.1.4;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		DD36907D26ED762700924946 /* Introspect */ = {
+		DDE63B6F281E0D6B0004D71B /* CoreCharts */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = DD36907C26ED762700924946 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
-			productName = Introspect;
-		};
-		DD4AFBEC270B6D6300B8E200 /* MarkdownUI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = DD4AFBEB270B6D6300B8E200 /* XCRemoteSwiftPackageReference "MarkdownUI" */;
-			productName = MarkdownUI;
-		};
-		DDCFF0C52739AE51005A1043 /* CoreCharts */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = DDCFF0C42739AE51005A1043 /* XCRemoteSwiftPackageReference "CoreCharts" */;
+			package = DDE63B6E281E0D6B0004D71B /* XCRemoteSwiftPackageReference "CoreCharts" */;
 			productName = CoreCharts;
+		};
+		DDE63B72281E0D890004D71B /* Introspect */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DDE63B71281E0D890004D71B /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
+			productName = Introspect;
 		};
 /* End XCSwiftPackageProductDependency section */
 
