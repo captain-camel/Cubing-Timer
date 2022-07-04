@@ -45,7 +45,7 @@ struct CubeSideView: View {
                 }
                 .frame(height: geometry.size.width / 12)
                 
-                ForEach(0..<cube.size) { row in
+                ForEach(0..<cube.size, id: \.self) { row in
                     HStack(spacing: geometry.size.width / 50) {
                         CubeTileView(highlightedTiles.instance(of: cube.cubeState[Cube.surroundingSides[face]!.3]!.tiles[0][row]))
                             .frame(width: geometry.size.width / 12)
