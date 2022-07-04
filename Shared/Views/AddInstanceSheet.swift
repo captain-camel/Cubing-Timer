@@ -34,7 +34,20 @@ struct AddInstanceSheet: View {
                 }
                 
                 Section(header: Text("Puzzle")) {
-                    Picker(selection: $puzzle.kind, label: Text("Puzzle")) {
+                    Picker(
+                        selection: Binding(
+                            get: {
+                                if case .other = puzzle {
+                                    return .other("")
+                                }
+                                return puzzle
+                            },
+                            set: { newValue in
+                                puzzle = newValue
+                            }
+                        ),
+                        label: Text("Puzzle")
+                    ) {
                         ForEach(Puzzle.allCases, id: \.self) { puzzle in
                             Text(String(puzzle.displayName))
                                 .tag(puzzle)
@@ -42,7 +55,17 @@ struct AddInstanceSheet: View {
                     }
                     
                     if case .other = puzzle {
-                        TextField("Puzzle", text: $puzzle.other)
+                        TextField("Name", text: Binding(
+                            get: {
+                                if case .other(let name) = puzzle {
+                                    return name
+                                }
+                                return ""
+                            },
+                            set: { newValue in
+                                puzzle = .other(newValue)
+                            }
+                        ))
                     }
                 }
 
@@ -66,14 +89,14 @@ struct AddInstanceSheet: View {
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Create") {
                         createAction(
-                            name,
+                            name.isEmpty ? String(puzzle) : name,
                             puzzle,
                             doInspection ? inspectionDuration : nil
                         )
                         
                         presentationMode.wrappedValue.dismiss()
                     }
-                    .disabled(name == "" || puzzle == "")
+                    .disabled(puzzle == .other(""))
                 }
             }
         }
