@@ -79,7 +79,6 @@ enum Statistic: CaseIterable, Hashable {
         }
     }
     
-    
     /// The name of the `Statistic`s kind with no associated value.
     var kindName: String {
         switch self {
@@ -177,9 +176,9 @@ enum Statistic: CaseIterable, Hashable {
                 return nil
             }
             
-            if instance.average(of: solves) ?? .greatestFiniteMagnitude < instance.average(indices: 1...solves) ?? .greatestFiniteMagnitude {
+            if instance.average(of: solves) ?? .infinity < instance.average(indices: 1...solves) ?? .infinity {
                 return "chevron.up"
-            } else if instance.average(of: solves) ?? .greatestFiniteMagnitude > instance.average(indices: 1...solves) ?? .greatestFiniteMagnitude {
+            } else if instance.average(of: solves) ?? .infinity > instance.average(indices: 1...solves) ?? .infinity {
                 return "chevron.down"
             } else {
                 return "equal"
@@ -190,9 +189,9 @@ enum Statistic: CaseIterable, Hashable {
                 return nil
             }
             
-            if instance.average(of: solves) ?? .greatestFiniteMagnitude < instance.average(indices: 1...solves) ?? .greatestFiniteMagnitude {
+            if instance.average(of: solves) ?? .infinity < instance.average(indices: 1...solves) ?? .infinity {
                 return "chevron.up"
-            } else if instance.average(of: solves) ?? .greatestFiniteMagnitude > instance.average(indices: 1...solves) ?? .greatestFiniteMagnitude {
+            } else if instance.average(of: solves) ?? .infinity > instance.average(indices: 1...solves) ?? .infinity {
                 return "chevron.down"
             } else {
                 return "equal"
@@ -211,9 +210,9 @@ enum Statistic: CaseIterable, Hashable {
                 return nil
             }
             
-            if instance.average(of: solves) ?? .greatestFiniteMagnitude < instance.average(indices: 1...solves) ?? .greatestFiniteMagnitude {
+            if instance.average(of: solves) ?? .infinity < instance.average(indices: 1...solves) ?? .infinity {
                 return .green
-            } else if instance.average(of: solves) ?? .greatestFiniteMagnitude > instance.average(indices: 1...solves) ?? .greatestFiniteMagnitude {
+            } else if instance.average(of: solves) ?? .infinity > instance.average(indices: 1...solves) ?? .infinity {
                 return .red
             } else {
                 return .secondary
@@ -224,9 +223,9 @@ enum Statistic: CaseIterable, Hashable {
                 return nil
             }
             
-            if instance.average(of: solves) ?? .greatestFiniteMagnitude < instance.average(indices: 1...solves) ?? .greatestFiniteMagnitude {
+            if instance.average(of: solves) ?? .infinity < instance.average(indices: 1...solves) ?? .infinity {
                 return .green
-            } else if instance.average(of: solves) ?? .greatestFiniteMagnitude > instance.average(indices: 1...solves) ?? .greatestFiniteMagnitude {
+            } else if instance.average(of: solves) ?? .infinity > instance.average(indices: 1...solves) ?? .infinity {
                 return .red
             } else {
                 return .secondary
