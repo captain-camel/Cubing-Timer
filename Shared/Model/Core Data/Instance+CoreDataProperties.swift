@@ -114,6 +114,7 @@ extension Instance {
         PersistenceController.save()
     }
     
+    // TODO: Update `average` to always work even if not enough complete solves
     /// Returns the average time of the last solves. (Fastest and slowest times excluded.) The number of solves is determinted by the paramter `count`.
     func average(of count: Int) -> Double? {
         let outliers = max(count / 5, 1)
