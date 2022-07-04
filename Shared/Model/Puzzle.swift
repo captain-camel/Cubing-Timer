@@ -25,7 +25,7 @@ enum Puzzle: CaseIterable, Hashable {
     
     // MARK: Properties
     /// All WCA puzzles and `.other`.
-    static var allCases: [Puzzle] = (2...7).map { cube($0) } + [pyraminx, megaminx, skewb, square_1, other("")]
+    static var allCases: [Puzzle] = (2...7).map { .cube($0) } + [.pyraminx, .megaminx, .skewb, .square_1, .other("")]
     
     /// Serialized `String` representing the `Puzzle`.
     var serialized: String {
@@ -54,31 +54,6 @@ enum Puzzle: CaseIterable, Hashable {
             
         case .other:
             return "Other"
-        }
-    }
-    
-    /// A computed property to set the name of an `.other` `Puzzle`.
-    var other: String {
-        get {
-            return String(self)
-        }
-        set {
-            self = .other(newValue)
-        }
-    }
-    
-    /// The kind of the `Puzzle`, not including associated values.
-    var kind: Puzzle {
-        get {
-            switch self {
-            case .other:
-                return .other("")
-            default:
-                return self
-            }
-        }
-        set {
-            self = newValue
         }
     }
     
