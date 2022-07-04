@@ -65,20 +65,24 @@ enum Puzzle: CaseIterable, Hashable {
         if serialized.first == "_" {
             self = .other(name)
         } else {
-            switch name {
-            case _ where name.count == 3 && (Int(String(name.first!)) != nil) && (Int(String(name.last!)) != nil) && name[1] == "x":
-                self = .cube(Int(String(name.first!))!)
-            case "Pyraminx":
-                self = .pyraminx
-            case "Megaminx":
-                self = .megaminx
-            case "Skewb":
-                self = .skewb
-            case "Square-1":
-                self = .square_1
-                
-            default:
-                self = .other(name)
+            let components = name.components(separatedBy: "x")
+            
+            if components.count == 2, let firstPart = Int(components[0]), let secondPart = Int(components[1]), firstPart == secondPart { // If the string is in form of "NUMBERxNUMBER"
+                self = .cube(firstPart)
+            } else {
+                switch name {
+                case "Pyraminx":
+                    self = .pyraminx
+                case "Megaminx":
+                    self = .megaminx
+                case "Skewb":
+                    self = .skewb
+                case "Square-1":
+                    self = .square_1
+                    
+                default:
+                    self = .other(name)
+                }
             }
         }
     }
