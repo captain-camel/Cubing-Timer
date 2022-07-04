@@ -119,7 +119,7 @@ extension Instance {
         let outliers = max(count / 5, 1)
         
         if unwrappedSolves.count >= count && solveArray.suffix(count).filter({ $0.penalty == .dnf }).count <= outliers && count >= 3 {
-            return solveArray.suffix(count).map { $0.penalty == .dnf ? Double.greatestFiniteMagnitude : $0.adjustedTime }.removingOutliers(outliers).mean
+            return solveArray.suffix(count).map { $0.penalty == .dnf ? Double.infinity : $0.adjustedTime }.removingOutliers(outliers).mean
         }
         
         return nil
@@ -130,7 +130,7 @@ extension Instance {
         let outliers = max(indices.count / 5, 1)
         
         if unwrappedSolves.count >= indices.count && solveArray.suffix(indices.last! + 1).prefix(indices.count).filter({ $0.penalty == .dnf }).count <= outliers && indices.count >= 3 {
-            return solveArray.suffix(indices.last! + 1).prefix(indices.count).map { $0.penalty == .dnf ? Double.greatestFiniteMagnitude : $0.adjustedTime }.removingOutliers(outliers).mean
+            return solveArray.suffix(indices.last! + 1).prefix(indices.count).map { $0.penalty == .dnf ? Double.infinity : $0.adjustedTime }.removingOutliers(outliers).mean
         }
         
         return nil
